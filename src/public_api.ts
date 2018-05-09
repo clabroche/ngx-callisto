@@ -1,4 +1,3 @@
-export { BootstrapModule } from './modules/core/bootstrap/bootstrap.module'
 export { BoxComponent } from './modules/core/box/box.component'
 export { CoreModule } from './modules/core/core.module'
 export { DebounceInputDirective } from './modules/core/directives/debounceInput.directive'
@@ -10,7 +9,6 @@ export { FormErrorsComponent } from './modules/core/form-errors/form-errors.comp
 export { NavbarComponent } from './modules/core/navbar/navbar.component'
 export { NotificationsComponent } from './modules/core/notifications/notifications.component'
 export { ToId } from './modules/core/pipe/toId.pipe'
-export { PopoverComponent } from './modules/core/popover/popover.component'
 export { differences, CommonService } from './modules/core/providers/common.service'
 export { Notification, NotificationsService } from './modules/core/providers/notifications.service'
 export { SideBarService } from './modules/core/providers/sidebar.service'
