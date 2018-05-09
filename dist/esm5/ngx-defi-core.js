@@ -1,13 +1,13 @@
 import { __awaiter, __generator } from 'tslib';
-import { Component, Input, Injectable, EventEmitter, Output, Renderer2, ViewChildren, Directive, HostListener, ElementRef, Pipe, NgModule } from '@angular/core';
+import { Component, Input, Injectable, EventEmitter, Output, Renderer2, ViewChildren, Directive, HostListener, ElementRef, Pipe, ViewChild, NgModule } from '@angular/core';
 import { v4 } from 'uuid';
 import { Subject } from 'rxjs';
 import { each, filter } from 'bluebird';
 import { reduce, isEqual, map } from 'lodash';
 import { Subject as Subject$1 } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operators/debounceTime';
-import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 var BoxComponent = /** @class */ (function () {
     function BoxComponent() {
@@ -524,6 +524,33 @@ var ToId = /** @class */ (function () {
 ToId.decorators = [
     { type: Pipe, args: [{ name: 'toId', pure: true },] },
 ];
+var PopoverComponent = /** @class */ (function () {
+    function PopoverComponent() {
+        this.open = false;
+        this.placement = 'right';
+        this._open = false;
+    }
+    PopoverComponent.prototype.ngOnChanges = function (changes) {
+        this._open = changes['open'].currentValue;
+    };
+    PopoverComponent.prototype.ngOnInit = function () {
+        console.log(this.popover);
+        this.popover.open();
+    };
+    return PopoverComponent;
+}());
+PopoverComponent.decorators = [
+    { type: Component, args: [{
+                selector: "popover",
+                template: "<div id=\"popover\" [ngbPopover]=\"popTemplate\"  #popover=\"ngbPopover\" [placement]='placement'>\n    <ng-template #popTemplate>\n        <ng-content select=\"[popover=content]\"></ng-content>\n    </ng-template>\n\n    <ng-content></ng-content>\n</div>",
+                styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}:host #popover{width:auto}:host ::ng-deep ul{list-style:none;margin:0;padding:0}"]
+            },] },
+];
+PopoverComponent.propDecorators = {
+    "open": [{ type: Input, args: ['open',] },],
+    "placement": [{ type: Input, args: ['placement',] },],
+    "popover": [{ type: ViewChild, args: ['popover',] },],
+};
 var CoreModule = /** @class */ (function () {
     function CoreModule() {
     }
@@ -554,7 +581,8 @@ CoreModule.decorators = [
                     SpinningIconDirective,
                     ValidatorsDirective,
                     ShowPasswordDirective,
-                    ToId
+                    ToId,
+                    PopoverComponent
                 ],
                 imports: [
                     CommonModule,
@@ -571,7 +599,8 @@ CoreModule.decorators = [
                     SpinningIconDirective,
                     ValidatorsDirective,
                     ShowPasswordDirective,
-                    ToId
+                    ToId,
+                    PopoverComponent
                 ]
             },] },
 ];
@@ -599,5 +628,5 @@ var Password = /** @class */ (function () {
     return Password;
 }());
 
-export { BoxComponent, CoreModule, DebounceInputDirective, ShowPasswordDirective, SpinningIconDirective, ClickStopPropagation, ValidatorsDirective, FormErrorsComponent, NavbarComponent, NotificationsComponent, ToId, CommonService, NotificationsService, SideBarService, SidePanelService, SidePanelComponent, SidebarComponent, Password };
+export { BoxComponent, CoreModule, DebounceInputDirective, ShowPasswordDirective, SpinningIconDirective, ClickStopPropagation, ValidatorsDirective, FormErrorsComponent, NavbarComponent, NotificationsComponent, ToId, PopoverComponent, CommonService, NotificationsService, SideBarService, SidePanelService, SidePanelComponent, SidebarComponent, Password };
 //# sourceMappingURL=ngx-defi-core.js.map

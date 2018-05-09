@@ -1,4 +1,4 @@
-import { Component, Input, Injectable, EventEmitter, Output, Renderer2, ViewChildren, Directive, HostListener, ElementRef, Pipe, NgModule } from '@angular/core';
+import { Component, Input, Injectable, EventEmitter, Output, Renderer2, ViewChildren, Directive, HostListener, ElementRef, Pipe, ViewChild, NgModule } from '@angular/core';
 import { v4 } from 'uuid';
 import { Subject } from 'rxjs';
 import { __awaiter } from 'tslib';
@@ -6,8 +6,8 @@ import { each, filter } from 'bluebird';
 import { reduce, isEqual, map } from 'lodash';
 import { Subject as Subject$1 } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operators/debounceTime';
-import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 /**
  * @fileoverview added by tsickle
@@ -1059,6 +1059,70 @@ ToId.decorators = [
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
+/**
+ * Make a popoper around items
+ * \@example
+ * <popover [open]="open()" placement='right'>
+ * |  <button (click)="toggle()" style="width:100px;">hey</button>
+ * |  <div popover="content">Hey to you! I'm on your right!</div>
+ * </popover>
+ */
+class PopoverComponent {
+    constructor() {
+        /**
+         * Open or close popover;
+         * Default: close
+         */
+        this.open = false;
+        /**
+         * Define the placment of popover
+         */
+        this.placement = 'right';
+        /**
+         * private boolean to watching open/close status
+         */
+        this._open = false;
+    }
+    /**
+     * Track changes on input open to reflect status on private keys
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        this._open = changes['open'].currentValue;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        console.log(this.popover);
+        this.popover.open();
+    }
+}
+PopoverComponent.decorators = [
+    { type: Component, args: [{
+                selector: "popover",
+                template: `<div id="popover" [ngbPopover]="popTemplate"  #popover="ngbPopover" [placement]='placement'>
+    <ng-template #popTemplate>
+        <ng-content select="[popover=content]"></ng-content>
+    </ng-template>
+
+    <ng-content></ng-content>
+</div>`,
+                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}:host #popover{width:auto}:host ::ng-deep ul{list-style:none;margin:0;padding:0}`]
+            },] },
+];
+/** @nocollapse */
+PopoverComponent.propDecorators = {
+    "open": [{ type: Input, args: ['open',] },],
+    "placement": [{ type: Input, args: ['placement',] },],
+    "popover": [{ type: ViewChild, args: ['popover',] },],
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 class CoreModule {
     /**
      * @return {?}
@@ -1089,7 +1153,8 @@ CoreModule.decorators = [
                     SpinningIconDirective,
                     ValidatorsDirective,
                     ShowPasswordDirective,
-                    ToId
+                    ToId,
+                    PopoverComponent
                 ],
                 imports: [
                     CommonModule,
@@ -1106,7 +1171,8 @@ CoreModule.decorators = [
                     SpinningIconDirective,
                     ValidatorsDirective,
                     ShowPasswordDirective,
-                    ToId
+                    ToId,
+                    PopoverComponent
                 ]
             },] },
 ];
@@ -1177,5 +1243,5 @@ class Password {
  * Generated bundle index. Do not edit.
  */
 
-export { BoxComponent, CoreModule, DebounceInputDirective, ShowPasswordDirective, SpinningIconDirective, ClickStopPropagation, ValidatorsDirective, FormErrorsComponent, NavbarComponent, NotificationsComponent, ToId, CommonService, NotificationsService, SideBarService, SidePanelService, SidePanelComponent, SidebarComponent, Password };
+export { BoxComponent, CoreModule, DebounceInputDirective, ShowPasswordDirective, SpinningIconDirective, ClickStopPropagation, ValidatorsDirective, FormErrorsComponent, NavbarComponent, NotificationsComponent, ToId, PopoverComponent, CommonService, NotificationsService, SideBarService, SidePanelService, SidePanelComponent, SidebarComponent, Password };
 //# sourceMappingURL=ngx-defi-core.js.map

@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('uuid'), require('rxjs'), require('bluebird'), require('lodash'), require('rxjs/Subject'), require('rxjs/operators/debounceTime'), require('@angular/common'), require('@ng-bootstrap/ng-bootstrap')) :
-	typeof define === 'function' && define.amd ? define('ngx-defi-core', ['exports', '@angular/core', 'uuid', 'rxjs', 'bluebird', 'lodash', 'rxjs/Subject', 'rxjs/operators/debounceTime', '@angular/common', '@ng-bootstrap/ng-bootstrap'], factory) :
-	(factory((global['ngx-defi-core'] = {}),global.ng.core,global.uuid,global.rxjs,global.bluebird,global.lodash,global.Rx,global.Rx.Observable.prototype,global.ng.common,global.ngBootstrap));
-}(this, (function (exports,core,uuid,rxjs,bluebird,lodash,Subject,debounceTime,common,ngBootstrap) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('uuid'), require('rxjs'), require('bluebird'), require('lodash'), require('rxjs/Subject'), require('rxjs/operators/debounceTime'), require('@ng-bootstrap/ng-bootstrap'), require('@angular/common')) :
+	typeof define === 'function' && define.amd ? define('ngx-defi-core', ['exports', '@angular/core', 'uuid', 'rxjs', 'bluebird', 'lodash', 'rxjs/Subject', 'rxjs/operators/debounceTime', '@ng-bootstrap/ng-bootstrap', '@angular/common'], factory) :
+	(factory((global['ngx-defi-core'] = {}),global.ng.core,global.uuid,global.rxjs,global.bluebird,global.lodash,global.Rx,global.Rx.Observable.prototype,global.ngBootstrap,global.ng.common));
+}(this, (function (exports,core,uuid,rxjs,bluebird,lodash,Subject,debounceTime,ngBootstrap,common) { 'use strict';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -574,6 +574,33 @@ var ToId = /** @class */ (function () {
 ToId.decorators = [
     { type: core.Pipe, args: [{ name: 'toId', pure: true },] },
 ];
+var PopoverComponent = /** @class */ (function () {
+    function PopoverComponent() {
+        this.open = false;
+        this.placement = 'right';
+        this._open = false;
+    }
+    PopoverComponent.prototype.ngOnChanges = function (changes) {
+        this._open = changes['open'].currentValue;
+    };
+    PopoverComponent.prototype.ngOnInit = function () {
+        console.log(this.popover);
+        this.popover.open();
+    };
+    return PopoverComponent;
+}());
+PopoverComponent.decorators = [
+    { type: core.Component, args: [{
+                selector: "popover",
+                template: "<div id=\"popover\" [ngbPopover]=\"popTemplate\"  #popover=\"ngbPopover\" [placement]='placement'>\n    <ng-template #popTemplate>\n        <ng-content select=\"[popover=content]\"></ng-content>\n    </ng-template>\n\n    <ng-content></ng-content>\n</div>",
+                styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}:host #popover{width:auto}:host ::ng-deep ul{list-style:none;margin:0;padding:0}"]
+            },] },
+];
+PopoverComponent.propDecorators = {
+    "open": [{ type: core.Input, args: ['open',] },],
+    "placement": [{ type: core.Input, args: ['placement',] },],
+    "popover": [{ type: core.ViewChild, args: ['popover',] },],
+};
 var CoreModule = /** @class */ (function () {
     function CoreModule() {
     }
@@ -604,7 +631,8 @@ CoreModule.decorators = [
                     SpinningIconDirective,
                     ValidatorsDirective,
                     ShowPasswordDirective,
-                    ToId
+                    ToId,
+                    PopoverComponent
                 ],
                 imports: [
                     common.CommonModule,
@@ -621,7 +649,8 @@ CoreModule.decorators = [
                     SpinningIconDirective,
                     ValidatorsDirective,
                     ShowPasswordDirective,
-                    ToId
+                    ToId,
+                    PopoverComponent
                 ]
             },] },
 ];
@@ -660,6 +689,7 @@ exports.FormErrorsComponent = FormErrorsComponent;
 exports.NavbarComponent = NavbarComponent;
 exports.NotificationsComponent = NotificationsComponent;
 exports.ToId = ToId;
+exports.PopoverComponent = PopoverComponent;
 exports.CommonService = CommonService;
 exports.NotificationsService = NotificationsService;
 exports.SideBarService = SideBarService;
