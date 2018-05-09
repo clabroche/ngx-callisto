@@ -1,0 +1,18 @@
+<div id="navbar">
+  <div id="leftRight">
+    <div id="left">
+      <div id="logoContainer">
+        <ng-content select="[logo]"></ng-content>
+      </div>
+      <div id="description">
+        {{name}}
+      </div>
+    </div>
+
+    <div id="right">
+      <div id="actions">
+        <ng-content selector="[action]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

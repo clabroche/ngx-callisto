@@ -1,0 +1,59 @@
+@import '../common';
+
+#navbar{
+    height: $navbarWidth;
+    background-color: $mainColor;
+    color: $mainTextColor;
+    max-height: $navbarWidth;
+    background-image: url(../../../assets/img/nav.png);
+    background-size: 100%;
+    
+    #leftRight{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        #left{
+            height: 100%;
+            padding-left: 5px;
+            display: flex;
+            align-items: center;
+            #logoContainer{
+                height: 80%;
+                ::ng-deep{
+                    [logo]{
+                        height: 100%;
+                        border-radius:100%;
+                        overflow: hidden;
+                        img{
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+            #description{
+                margin-left:10px;
+                color: white;
+                font-size: 1.2em;
+            }
+        }
+        #right{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-right: 10px;
+            
+            #actions{
+                display: flex;
+                align-items: center;
+                ::ng-deep{
+                    .icon{
+                        font-size: 1.7em;
+                    }
+                }   
+            }
+        }
+    }
+}
+
