@@ -19,6 +19,7 @@ import { ClickStopPropagation } from './directives/stopPropagation.directive'
 import { ValidatorsDirective } from './directives/validators.directive'
 import { ShowPasswordDirective } from './directives/showPassword.directive'
 import { ToId } from './pipe/toId.pipe'
+import { PopoverComponent } from './popover/popover.component';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -32,7 +33,8 @@ import { ToId } from './pipe/toId.pipe'
     SpinningIconDirective,
     ValidatorsDirective,
     ShowPasswordDirective,
-    ToId
+    ToId,
+    PopoverComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { ToId } from './pipe/toId.pipe'
     SpinningIconDirective,
     ValidatorsDirective,
     ShowPasswordDirective,
-    ToId
+    ToId,
+    PopoverComponent
   ]
 })
 export class CoreModule { 

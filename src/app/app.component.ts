@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  _open= true
+  open(){
+    return this._open
+  }
+  toggle(){
+    this._open = ! this._open
+  }
 }

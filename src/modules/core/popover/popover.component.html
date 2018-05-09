@@ -1,0 +1,7 @@
+<div id="popover" [ngbPopover]="popTemplate"  #popover="ngbPopover" [placement]='placement'>
+    <ng-template #popTemplate>
+        <ng-content select="[popover=content]"></ng-content>
+    </ng-template>
+
+    <ng-content></ng-content>
+</div>
