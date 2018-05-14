@@ -1,12 +1,12 @@
 <div class="openSidebar" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}" id="sidebar">
     <div class="list">
         <div *ngFor='let item of conf.list'>
-            <ng-container *ngTemplateOutlet="itemTemplate;context:{$implicit:item}"></ng-container>  
+            <ng-container *ngTemplateOutlet="linkTemplate;context:{$implicit:item}"></ng-container>  
         </div>
     </div>
     <div class="bottomList">
         <div *ngFor='let item of conf.bottom'>
-            <ng-container *ngTemplateOutlet="itemTemplate;context:{$implicit:item}"></ng-container>
+            <ng-container *ngTemplateOutlet="linkTemplate;context:{$implicit:item}"></ng-container>
         </div>
         <div id="toggleSidebar" class="item" (click)="toggleSidebar();" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}">
             <div class="icon" >
@@ -16,8 +16,8 @@
     </div>
 </div>
 
-<ng-template #itemTemplate let-item>
-    <div id="{{item.id}}" class="item" (click)="goTo(item.click);" (mouseover)="toggleHint($event)" (mouseleave)="toggleHint($event)">
+<ng-template #linkTemplate let-item>
+    <div id="{{item.id}}" class="item" (click)="goTo(item)" (auxclick)="newWindow(item)" (mouseover)="toggleHint($event)" (mouseleave)="toggleHint($event)">
         <div class="icon">
             <i class="{{item.icon}}"></i>
         </div>

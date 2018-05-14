@@ -95,26 +95,32 @@ SideBarService.decorators = [
 var SidebarComponent = /** @class */ (function () {
     function SidebarComponent(sidebar) {
         this.sidebar = sidebar;
-        this.hintClass = "";
+        this.hintClass = '';
         this.conf = { list: [], bottom: [] };
-        this.click = new core.EventEmitter();
     }
-    SidebarComponent.prototype.goTo = function (data) { this.click.emit(data); };
+    SidebarComponent.prototype.goTo = function (data) {
+        data.click();
+    };
+    SidebarComponent.prototype.newWindow = function (data) {
+        if (data.url) {
+            window.open(data.url);
+        }
+    };
     SidebarComponent.prototype.toggleSidebar = function () {
         this.sidebar.toggle();
     };
     SidebarComponent.prototype.toggleHint = function ($event) {
         this.hintClass =
-            $event.type == "mouseover" && !this.sidebar._open
-                ? "openHint"
-                : "closeHint";
+            $event.type === 'mouseover' && !this.sidebar._open
+                ? 'openHint'
+                : 'closeHint';
     };
     return SidebarComponent;
 }());
 SidebarComponent.decorators = [
     { type: core.Component, args: [{
-                selector: "sidebar",
-                template: "<div class=\"openSidebar\" [ngClass]=\"{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}\" id=\"sidebar\">\n    <div class=\"list\">\n        <div *ngFor='let item of conf.list'>\n            <ng-container *ngTemplateOutlet=\"itemTemplate;context:{$implicit:item}\"></ng-container>  \n        </div>\n    </div>\n    <div class=\"bottomList\">\n        <div *ngFor='let item of conf.bottom'>\n            <ng-container *ngTemplateOutlet=\"itemTemplate;context:{$implicit:item}\"></ng-container>\n        </div>\n        <div id=\"toggleSidebar\" class=\"item\" (click)=\"toggleSidebar();\" [ngClass]=\"{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}\">\n            <div class=\"icon\" >\n                <i class=\"fa fa-arrow-right\"></i>\n            </div>\n        </div>\n    </div>\n</div>\n\n<ng-template #itemTemplate let-item>\n    <div id=\"{{item.id}}\" class=\"item\" (click)=\"goTo(item.click);\" (mouseover)=\"toggleHint($event)\" (mouseleave)=\"toggleHint($event)\">\n        <div class=\"icon\">\n            <i class=\"{{item.icon}}\"></i>\n        </div>\n        <div class=\"description\" [ngClass]=\"{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}\">\n            {{item.description}}\n        </div>\n        <div id=\"hint-{{item.id}}\" class=\"hintContainer\" [ngClass]=\"hintClass\">\n            <div class=\"hint\">{{item.description}}</div>\n        </div>\n    </div>\n</ng-template>",
+                selector: 'sidebar',
+                template: "<div class=\"openSidebar\" [ngClass]=\"{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}\" id=\"sidebar\">\n    <div class=\"list\">\n        <div *ngFor='let item of conf.list'>\n            <ng-container *ngTemplateOutlet=\"linkTemplate;context:{$implicit:item}\"></ng-container>  \n        </div>\n    </div>\n    <div class=\"bottomList\">\n        <div *ngFor='let item of conf.bottom'>\n            <ng-container *ngTemplateOutlet=\"linkTemplate;context:{$implicit:item}\"></ng-container>\n        </div>\n        <div id=\"toggleSidebar\" class=\"item\" (click)=\"toggleSidebar();\" [ngClass]=\"{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}\">\n            <div class=\"icon\" >\n                <i class=\"fa fa-arrow-right\"></i>\n            </div>\n        </div>\n    </div>\n</div>\n\n<ng-template #linkTemplate let-item>\n    <div id=\"{{item.id}}\" class=\"item\" (click)=\"goTo(item)\" (auxclick)=\"newWindow(item)\" (mouseover)=\"toggleHint($event)\" (mouseleave)=\"toggleHint($event)\">\n        <div class=\"icon\">\n            <i class=\"{{item.icon}}\"></i>\n        </div>\n        <div class=\"description\" [ngClass]=\"{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}\">\n            {{item.description}}\n        </div>\n        <div id=\"hint-{{item.id}}\" class=\"hintContainer\" [ngClass]=\"hintClass\">\n            <div class=\"hint\">{{item.description}}</div>\n        </div>\n    </div>\n</ng-template>\n",
                 styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}@-webkit-keyframes openSidebar{0%{width:40px}to{width:175px}}@keyframes openSidebar{0%{width:40px}to{width:175px}}@-webkit-keyframes closeSidebar{0%{width:175px}to{width:40px}}@keyframes closeSidebar{0%{width:175px}to{width:40px}}@-webkit-keyframes openSidebarDescription{0%{width:0}to{width:40px}}@keyframes openSidebarDescription{0%{width:0}to{width:40px}}@-webkit-keyframes closeSidebarDescription{0%{width:40px}to{width:0}}@keyframes closeSidebarDescription{0%{width:40px}to{width:0}}@-webkit-keyframes openSidebarIcon{0%{-webkit-transform:scale(1);transform:scale(1)}to{-webkit-transform:scale(-1);transform:scale(-1)}}@keyframes openSidebarIcon{0%{-webkit-transform:scale(1);transform:scale(1)}to{-webkit-transform:scale(-1);transform:scale(-1)}}@-webkit-keyframes closeSidebarIcon{0%{-webkit-transform:scale(-1);transform:scale(-1)}to{-webkit-transform:scale(1);transform:scale(1)}}@keyframes closeSidebarIcon{0%{-webkit-transform:scale(-1);transform:scale(-1)}to{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes openHint{0%{max-width:0}to{max-width:200px}}@keyframes openHint{0%{max-width:0}to{max-width:200px}}@-webkit-keyframes closeHint{0%{max-width:200px}to{max-width:0}}@keyframes closeHint{0%{max-width:200px}to{max-width:0}}#sidebar{color:#fff;height:100%;overflow-x:hidden;width:40px;background-color:#343a40;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;background-size:auto 100%;background-image:url(../../../assets/img/side.png)}#sidebar.openSidebar{-webkit-animation-name:openSidebar;animation-name:openSidebar;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar.closeSidebar{-webkit-animation-name:closeSidebar;animation-name:closeSidebar;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList,#sidebar .list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;width:100%}#sidebar .bottomList.list,#sidebar .list.list{height:100%}#sidebar .bottomList .item,#sidebar .list .item{-webkit-box-shadow:none;box-shadow:none;-webkit-box-pack:left;-ms-flex-pack:left;justify-content:left;margin:0;border:none;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer;padding-bottom:15px;padding-top:15px}#sidebar .bottomList .item:hover,#sidebar .list .item:hover{background-color:rgba(0,0,0,.5)}#sidebar .bottomList .item .hintContainer,#sidebar .list .item .hintContainer{position:absolute;overflow:hidden;left:40px;max-width:0;background-color:#1d2124}#sidebar .bottomList .item .hintContainer.openHint,#sidebar .list .item .hintContainer.openHint{-webkit-animation-name:openHint;animation-name:openHint;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList .item .hintContainer.closeHint,#sidebar .list .item .hintContainer.closeHint{-webkit-animation-name:closeHint;animation-name:closeHint;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList .item .hintContainer .hint,#sidebar .list .item .hintContainer .hint{color:#fff;padding:10px}#sidebar .bottomList .item .icon,#sidebar .list .item .icon{width:40px;text-align:center;font-size:1.5em}#sidebar .bottomList .item .description.openSidebar,#sidebar .list .item .description.openSidebar{-webkit-animation-name:openSidebarDescription;animation-name:openSidebarDescription;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList .item .description.closeSidebar,#sidebar .list .item .description.closeSidebar{-webkit-animation-name:closeSidebarDescription;animation-name:closeSidebarDescription;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList #toggleSidebar,#sidebar .list #toggleSidebar{background-color:rgba(0,0,0,.5)}#sidebar .bottomList #toggleSidebar .icon,#sidebar .list #toggleSidebar .icon{font-size:1em}#sidebar .bottomList #toggleSidebar.openSidebar,#sidebar .list #toggleSidebar.openSidebar{-webkit-animation-name:openSidebarIcon;animation-name:openSidebarIcon;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList #toggleSidebar.closeSidebar,#sidebar .list #toggleSidebar.closeSidebar{-webkit-animation-name:closeSidebarIcon;animation-name:closeSidebarIcon;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}"]
             },] },
 ];
@@ -122,8 +128,7 @@ SidebarComponent.ctorParameters = function () { return [
     { type: SideBarService, },
 ]; };
 SidebarComponent.propDecorators = {
-    "conf": [{ type: core.Input, args: ["conf",] },],
-    "click": [{ type: core.Output, args: ['router',] },],
+    "conf": [{ type: core.Input, args: ['conf',] },],
 };
 var NavbarComponent = /** @class */ (function () {
     function NavbarComponent() {
@@ -611,7 +616,7 @@ var CoreModule = /** @class */ (function () {
                 CommonService,
                 SideBarService,
                 NotificationsService,
-                SidePanelService
+                SidePanelService,
             ]
         };
     };
@@ -632,11 +637,11 @@ CoreModule.decorators = [
                     ValidatorsDirective,
                     ShowPasswordDirective,
                     ToId,
-                    PopoverComponent
+                    PopoverComponent,
                 ],
                 imports: [
                     common.CommonModule,
-                    ngBootstrap.NgbModule.forRoot()
+                    ngBootstrap.NgbModule.forRoot(),
                 ],
                 exports: [
                     SidebarComponent,

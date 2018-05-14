@@ -1,5 +1,5 @@
-import { Component, Input, EventEmitter, Output} from "@angular/core";
-import { SideBarService } from "../providers/sidebar.service";
+import { Component, Input, EventEmitter, Output} from '@angular/core';
+import { SideBarService } from '../providers/sidebar.service';
 
 
 /**
@@ -9,23 +9,27 @@ export interface Item {
   /**
    * icon class (e-g: fa fa-home)
    */
-  icon?:string,
+  icon?: string;
   /**
    * id of icon
    */
-  id?:string,
+  id?: string;
   /**
    * Description displat when sidebar is open
    */
-  description?:string
+  description?: string;
   /**
    * click function to interact outside of the component
    */
-  click?:Array<any>|string
+  click?: Array<any>|string | Function;
+  /**
+   * Url to redirect with router
+   */
+  url?: string;
   /**
    * possibilities to add an other list: Not implemented yet
    */
-  list?:Configuration
+  list?: Configuration;
 }
 
 /**
@@ -64,31 +68,35 @@ export interface Configuration {
  * </div>
  */
 @Component({
-  selector: "sidebar",
-  templateUrl: "./sidebar.component.html",
-  styleUrls: ["./sidebar.component.scss"]
+  // tslint:disable-next-line:component-selector
+  selector: 'sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
   /**
    * control css class that open/close sidebar: openHint/closeHint
    */
-  hintClass: string = "";
+  hintClass = '';
   /**
    * Get the configuration from outside
    */
-  @Input("conf") conf: Configuration = { list: [], bottom: [] };
+  @Input('conf') conf: Configuration = { list: [], bottom: [] };
+
   /**
-   * Return the route on click of the sidebar item
-   */
-  @Output('router') click = new EventEmitter<boolean>();
-  /**
-   * import dependencies 
+   * import dependencies
    */
   constructor(public sidebar: SideBarService) {}
   /**
    * Go to Home route
    */
-  goTo(data) {this.click.emit(data)}
+  goTo(data) {
+    data.click();
+  }
+
+  newWindow(data) {
+    if (data.url) { window.open(data.url); }
+  }
 
   /**
    * Toggle sidebar
@@ -98,13 +106,13 @@ export class SidebarComponent {
   }
 
   /**
-   * Toggle hint beside links icons on hover 
+   * Toggle hint beside links icons on hover
    */
   toggleHint($event) {
     this.hintClass =
-      $event.type == "mouseover" && !this.sidebar._open
-        ? "openHint"
-        : "closeHint";
+      $event.type === 'mouseover' && !this.sidebar._open
+        ? 'openHint'
+        : 'closeHint';
   }
 }
- 
+

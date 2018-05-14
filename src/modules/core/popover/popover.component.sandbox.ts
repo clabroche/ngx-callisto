@@ -1,6 +1,6 @@
 import { sandboxOf } from 'angular-playground';
 import { PopoverComponent } from './popover.component';
-import { BootstrapModule } from '../bootstrap/bootstrap.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 let bool = true
 const open = _=>bool
@@ -8,7 +8,7 @@ const toggle = _=> {bool=!bool; return bool}
 
 export default sandboxOf(PopoverComponent, {
   imports: [
-    BootstrapModule
+    NgbModule.forRoot()
   ],
 }).add('Simple', {
   context:{

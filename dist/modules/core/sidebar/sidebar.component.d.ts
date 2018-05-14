@@ -1,5 +1,4 @@
-import { EventEmitter } from "@angular/core";
-import { SideBarService } from "../providers/sidebar.service";
+import { SideBarService } from '../providers/sidebar.service';
 /**
  * Item present in sidebar
  */
@@ -19,7 +18,11 @@ export interface Item {
     /**
      * click function to interact outside of the component
      */
-    click?: Array<any> | string;
+    click?: Array<any> | string | Function;
+    /**
+     * Url to redirect with router
+     */
+    url?: string;
     /**
      * possibilities to add an other list: Not implemented yet
      */
@@ -69,10 +72,6 @@ export declare class SidebarComponent {
      */
     conf: Configuration;
     /**
-     * Return the route on click of the sidebar item
-     */
-    click: EventEmitter<boolean>;
-    /**
      * import dependencies
      */
     constructor(sidebar: SideBarService);
@@ -80,6 +79,7 @@ export declare class SidebarComponent {
      * Go to Home route
      */
     goTo(data: any): void;
+    newWindow(data: any): void;
     /**
      * Toggle sidebar
      */
