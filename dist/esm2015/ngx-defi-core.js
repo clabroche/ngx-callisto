@@ -193,7 +193,6 @@ SidebarComponent.decorators = [
 </div>
 
 <ng-template #linkTemplate let-item>
-    {{item | json}}
     <div id="{{item.id}}" class="item" (click)="goTo(item)" (auxclick)="newWindow(item)" (mouseover)="toggleHint($event)" (mouseleave)="toggleHint($event)">
         <div class="icon">
             <i class="{{item.icon}}"></i>
