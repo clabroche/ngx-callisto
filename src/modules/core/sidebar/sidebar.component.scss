@@ -29,15 +29,6 @@ $sidebarWidthClose:$navbarWidth;
   to {transform:scale(1)}
 }
 
-@keyframes openHint {
-  0% {max-width:0}
-  to {max-width:200px}
-}
-@keyframes closeHint {
-  0% {max-width:200px}
-  to {max-width:0}
-}
-
 #sidebar {
   color: $mainTextColor;
   height: 100%;
@@ -83,16 +74,6 @@ $sidebarWidthClose:$navbarWidth;
         left: $sidebarWidthClose;
         max-width: 0;
         background-color: darken($mainColor,10);
-        &.openHint{
-          animation-name: openHint;
-          animation-duration: 0.2s;
-          animation-fill-mode: forwards;
-        }
-        &.closeHint{
-          animation-name: closeHint;
-          animation-duration: 0.2s;
-          animation-fill-mode: forwards;
-        }
         .hint{
           color: white;
           padding: 10px;  

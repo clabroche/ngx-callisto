@@ -1,5 +1,6 @@
 import { Component, Input, EventEmitter, Output} from '@angular/core';
 import { SideBarService } from '../providers/sidebar.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 /**
@@ -71,13 +72,26 @@ export interface Configuration {
   // tslint:disable-next-line:component-selector
   selector: 'sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  animations: [
+    trigger('hintState', [
+      state('open', style({
+        'max-width': '200px'
+      })),
+      state('close', style({
+        'max-width': '0'
+
+      })),
+      transition('open => close', animate('100ms ease-in')),
+      transition('close => open', animate('100ms ease-out'))
+    ])
+  ]
 })
 export class SidebarComponent {
   /**
    * control css class that open/close sidebar: openHint/closeHint
    */
-  hintClass = '';
+  hintState = 'close';
   /**
    * Get the configuration from outside
    */
@@ -109,10 +123,11 @@ export class SidebarComponent {
    * Toggle hint beside links icons on hover
    */
   toggleHint($event) {
-    this.hintClass =
+    console.log('lkj');
+    this.hintState =
       $event.type === 'mouseover' && !this.sidebar._open
-        ? 'openHint'
-        : 'closeHint';
+        ? 'open'
+        : 'close';
   }
 }
 

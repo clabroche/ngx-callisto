@@ -24,7 +24,7 @@
         <div class="description" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}">
             {{item.description}}
         </div>
-        <div id="hint-{{item.id}}" class="hintContainer" [ngClass]="hintClass">
+        <div id="hint-{{item.id}}" class="hintContainer"  [@hintState]="hintState">
             <div class="hint">{{item.description}}</div>
         </div>
     </div>

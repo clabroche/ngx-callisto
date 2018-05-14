@@ -21,6 +21,7 @@ import { ShowPasswordDirective } from './directives/showPassword.directive';
 import { ToId } from './pipe/toId.pipe';
 import { PopoverComponent } from './popover/popover.component';
 import { Router, RouterModule, RouterLink } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -40,6 +41,7 @@ import { Router, RouterModule, RouterLink } from '@angular/router';
   imports: [
     CommonModule,
     NgbModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   exports: [
     SidebarComponent,
@@ -53,7 +55,7 @@ import { Router, RouterModule, RouterLink } from '@angular/router';
     ValidatorsDirective,
     ShowPasswordDirective,
     ToId,
-    PopoverComponent
+    PopoverComponent,
   ]
 })
 export class CoreModule {
