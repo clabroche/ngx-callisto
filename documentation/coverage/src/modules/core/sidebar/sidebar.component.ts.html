@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.75% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/16</span>
+        <span class='fraction'>15/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/5</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">86.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/13</span>
+        <span class='fraction'>13/15</span>
       </div>
     </div>
     <p class="quiet">
@@ -155,8 +155,22 @@
 <a name='L107'></a><a href='#L107'>107</a>
 <a name='L108'></a><a href='#L108'>108</a>
 <a name='L109'></a><a href='#L109'>109</a>
-<a name='L110'></a><a href='#L110'>110</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -237,15 +251,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -264,8 +281,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, Input, EventEmitter, Output} from "@angular/core";
-import { SideBarService } from "../providers/sidebar.service";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, Input, EventEmitter, Output} from '@angular/core';
+import { SideBarService } from '../providers/sidebar.service';
 &nbsp;
 &nbsp;
 /**
@@ -275,23 +293,27 @@ export interface Item {
   /**
    * icon class (e-g: fa fa-home)
    */
-  icon?:string,
+  icon?: string;
   /**
    * id of icon
    */
-  id?:string,
+  id?: string;
   /**
    * Description displat when sidebar is open
    */
-  description?:string
+  description?: string;
   /**
    * click function to interact outside of the component
    */
-  click?:Array&lt;any&gt;|string
+  click?: Array&lt;any&gt;|string | Function;
+  /**
+   * Url to redirect with router
+   */
+  url?: string;
   /**
    * possibilities to add an other list: Not implemented yet
    */
-  list?:Configuration
+  list?: Configuration;
 }
 &nbsp;
 /**
@@ -330,31 +352,35 @@ export interface Configuration {
  * &lt;/div&gt;
  */
 @Component({
-  selector: "sidebar",
-  templateUrl: "./sidebar.component.html",
-  styleUrls: ["./sidebar.component.scss"]
+  // tslint:disable-next-line:component-selector
+  selector: 'sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
   /**
    * control css class that open/close sidebar: openHint/closeHint
    */
-  hintClass: string = "";
+  hintClass = '';
   /**
    * Get the configuration from outside
    */
-  @Input("conf") conf: Configuration = { list: [], bottom: [] };
+  @Input('conf') conf: Configuration = { list: [], bottom: [] };
+&nbsp;
   /**
-   * Return the route on click of the sidebar item
-   */
-  @Output('router') click = new EventEmitter&lt;boolean&gt;();
-  /**
-   * import dependencies 
+   * import dependencies
    */
   constructor(public sidebar: SideBarService) {}
   /**
    * Go to Home route
    */
-<span class="fstat-no" title="function not covered" >  goTo(</span>data) {<span class="cstat-no" title="statement not covered" >this.click.emit(data)}</span>
+<span class="fstat-no" title="function not covered" >  goTo(</span>data) {
+<span class="cstat-no" title="statement not covered" >    data.click();</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  newWindow(</span>data) {
+<span class="cstat-no" title="statement not covered" >    if (data.url) { <span class="cstat-no" title="statement not covered" >window.open(data.url); </span>}</span>
+  }
 &nbsp;
   /**
    * Toggle sidebar
@@ -364,22 +390,23 @@ export class SidebarComponent {
   }
 &nbsp;
   /**
-   * Toggle hint beside links icons on hover 
+   * Toggle hint beside links icons on hover
    */
   toggleHint($event) {
     this.hintClass =
-      $event.type == "mouseover" &amp;&amp; !this.sidebar._open
-        ? "openHint"
-        : "closeHint";
+      $event.type === 'mouseover' &amp;&amp; !this.sidebar._open
+        ? 'openHint'
+        : 'closeHint';
   }
 }
- </pre></td></tr>
+&nbsp;
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 09 2018 12:45:09 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 14 2018 13:14:09 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
