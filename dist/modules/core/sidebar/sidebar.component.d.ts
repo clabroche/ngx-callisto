@@ -22,7 +22,7 @@ export interface Item {
     /**
      * Url to redirect with router
      */
-    url?: string;
+    externalUrl?: string;
     /**
      * possibilities to add an other list: Not implemented yet
      */
@@ -66,7 +66,7 @@ export declare class SidebarComponent {
     /**
      * control css class that open/close sidebar: openHint/closeHint
      */
-    hintClass: string;
+    hintState: string;
     /**
      * Get the configuration from outside
      */
