@@ -17,6 +17,7 @@ export class AppComponent {
        */
       list: [
         {
+          id: 'home',
           icon: 'fa fa-home',
           description: 'Accueil',
           click: function() {

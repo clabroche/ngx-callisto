@@ -109,7 +109,7 @@ export class SidebarComponent {
   }
 
   newWindow(data) {
-    if (data.url) { window.open(data.url); }
+    if (data.url) { window.open(data.externalUrl); }
   }
 
   /**
@@ -123,7 +123,6 @@ export class SidebarComponent {
    * Toggle hint beside links icons on hover
    */
   toggleHint($event) {
-    console.log('lkj');
     this.hintState =
       $event.type === 'mouseover' && !this.sidebar._open
         ? 'open'

@@ -6,6 +6,7 @@ import { SideBarService } from '../providers/sidebar.service';
 import { APP_BASE_HREF} from '@angular/common';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -13,24 +14,28 @@ export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
+const callbackFun = function () {
+  return 'random-routes';
+};
 
 const navbarConf: Configuration = {
-  list: [
-    {
-      icon: 'fa fa-home',
-      id: 'home',
-      description: 'Accueil',
-      click: ['/home']
-    }
-  ],
-  bottom: [
-    {
-      icon: 'fa fa-cog',
-      id: 'settings',
-      description: 'Settings',
-      click: ['/settings']
-    }
-  ]
+  list: [{
+    id: 'home',
+    icon: 'fa fa-home',
+    description: 'Accueil',
+    click: function () {
+      console.log('ho');
+    },
+    externalUrl: 'lkjelkjdelk'
+  }],
+  bottom: [{
+    icon: 'fa fa-cog',
+    description: 'Settings',
+    click: function () {
+      console.log('ho');
+    },
+    externalUrl: 'lkjelkjdelk'
+  }]
 };
 
 
@@ -42,6 +47,7 @@ describe('SidebarComponent', () => {
       ],
       imports: [
         RouterModule.forRoot(routes),
+        BrowserAnimationsModule
       ],
       providers: [{ provide: APP_BASE_HREF, useValue: '/' }, SideBarService]
     }).compileComponents();
@@ -56,7 +62,7 @@ describe('SidebarComponent', () => {
     const app = fixture.debugElement.componentInstance;
 
     expect(app.sidebar instanceof SideBarService).toBeTruthy();
-    expect(app.hintClass).toEqual('');
+    expect(app.hintState).toEqual('close');
   }));
 
   it(`should toggle slidebar`, async () => {
@@ -83,9 +89,9 @@ describe('SidebarComponent', () => {
   it(`should toggle hint`, async () => {
     const fixture = TestBed.createComponent(SidebarComponent);
     const app: SidebarComponent = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
     app.conf = navbarConf;
     fixture.detectChanges();
-    await wait(200);
 
     const homeButton: HTMLElement = fixture.debugElement.query(By.css('#home')).nativeElement;
     const hint: HTMLElement = fixture.debugElement.query(By.css('#hint-home')).nativeElement;
@@ -94,13 +100,13 @@ describe('SidebarComponent', () => {
     expect(hint.clientWidth).toEqual(0);
 
     homeButton.dispatchEvent(new MouseEvent('mouseover', {
-      view: window,
-      bubbles: true,
-      cancelable: true
-    }));
-    fixture.detectChanges();
-    await wait(200);
-    expect(hint.clientWidth).not.toEqual(0);
+        view: window,
+        bubbles: true,
+        cancelable: true
+      }));
+      fixture.detectChanges();
+      await wait(200);
+      expect(hint.clientWidth).not.toEqual(0);
   });
   it(`should not toggle hint when sidebar is open`, async () => {
     const fixture = TestBed.createComponent(SidebarComponent);
