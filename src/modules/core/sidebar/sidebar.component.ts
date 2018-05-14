@@ -109,7 +109,7 @@ export class SidebarComponent {
   }
 
   newWindow(data) {
-    if (data.url) { window.open(data.externalUrl); }
+    if (data.externalUrl) { window.open(data.externalUrl); }
   }
 
   /**

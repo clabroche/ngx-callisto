@@ -54,7 +54,7 @@ var SidebarComponent = /** @class */ (function () {
         data.click();
     };
     SidebarComponent.prototype.newWindow = function (data) {
-        if (data.url) {
+        if (data.externalUrl) {
             window.open(data.externalUrl);
         }
     };

@@ -147,7 +147,7 @@ class SidebarComponent {
      * @return {?}
      */
     newWindow(data) {
-        if (data.url) {
+        if (data.externalUrl) {
             window.open(data.externalUrl);
         }
     }
