@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CoreModule } from '../public_api';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CoreModule.forRoot(),
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot([{path: '**', component: AppComponent}])
   ],
   providers: [],

@@ -1,5 +1,6 @@
 <sidebar [conf]='conf'></sidebar>
-<popover [open]="true" style="display: inline-block">
+<input type="text" #name="ngModel" ngModel required>
+<popover [open]="name.invalid" style="display: inline-block" [placement]="'right'">
     <div class="hey">
     fmlef;elfm;e
     </div>

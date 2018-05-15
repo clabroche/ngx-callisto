@@ -1,5 +1,5 @@
-import { Component, Input, SimpleChange, OnInit, ViewChild } from "@angular/core";
-import { NgbPopover } from "@ng-bootstrap/ng-bootstrap";
+import { Component, Input, SimpleChange, OnInit, ViewChild, OnChanges } from '@angular/core';
+import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 
 /**
  * Make a popoper around items
@@ -10,34 +10,37 @@ import { NgbPopover } from "@ng-bootstrap/ng-bootstrap";
     </popover>
  */
 @Component({
-  selector: "popover",
-  templateUrl: "./popover.component.html",
-  styleUrls: ["./popover.component.scss"]
+  selector: 'popover',
+  templateUrl: './popover.component.html',
+  styleUrls: ['./popover.component.scss']
 })
-export class PopoverComponent implements OnInit{
+export class PopoverComponent implements OnInit, OnChanges  {
   /**
    * Open or close popover;
-   * Default: close 
+   * Default: close
    */
-  @Input('open') open = false
+  @Input('open') open = false;
   /**
    * Define the placment of popover
    */
-  @Input('placement') placement = 'right'
+  @Input('placement') placement = 'right';
   /**
    * private boolean to watching open/close status
    */
-  _open = false
-  @ViewChild('popover') popover: NgbPopover
+  @ViewChild('popover') popover: NgbPopover;
   /**
    * Track changes on input open to reflect status on private keys
    */
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
-    this._open = changes['open'].currentValue
+    this.loadState(changes['open'].currentValue);
+  }
+  loadState(open) {
+    open ? this.popover.open() : this.popover.close();
   }
   ngOnInit(): void {
-    console.log(this.popover)
-    this.popover.open()
+    setTimeout(() => {
+      this.loadState(this.open);
+    }, 100);
   }
 }
- 
+
