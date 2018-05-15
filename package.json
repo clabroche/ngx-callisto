@@ -1,6 +1,6 @@
 {
   "name": "ngx-defi-core",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "scripts": {
     "coverage": "ng test --watch=false --code-coverage",
     "linkCoverageWithDoc": "node documentation/addlinkcoverage.js",
