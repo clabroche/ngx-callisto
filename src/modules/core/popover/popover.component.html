@@ -1,4 +1,4 @@
-<div id="popover" [ngbPopover]="popTemplate"  #popover="ngbPopover" [placement]='placement'>
+<div id="popover" [ngbPopover]="popTemplate"  #popover="ngbPopover" [placement]='placement'  triggers="manual">
     <ng-template #popTemplate>
         <ng-content select="[popover=content]"></ng-content>
     </ng-template>
