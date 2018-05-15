@@ -561,7 +561,7 @@ var PopoverComponent = /** @class */ (function () {
 PopoverComponent.decorators = [
     { type: Component, args: [{
                 selector: "popover",
-                template: "<div id=\"popover\" [ngbPopover]=\"popTemplate\"  #popover=\"ngbPopover\" [placement]='placement'>\n    <ng-template #popTemplate>\n        <ng-content select=\"[popover=content]\"></ng-content>\n    </ng-template>\n\n    <ng-content></ng-content>\n</div>",
+                template: "<div id=\"popover\" [ngbPopover]=\"popTemplate\"  #popover=\"ngbPopover\" [placement]='placement'  triggers=\"manual\">\n    <ng-template #popTemplate>\n        <ng-content select=\"[popover=content]\"></ng-content>\n    </ng-template>\n\n    <ng-content></ng-content>\n</div>",
                 styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}:host #popover{width:auto}:host ::ng-deep ul{list-style:none;margin:0;padding:0}"]
             },] },
 ];

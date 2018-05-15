@@ -1124,7 +1124,7 @@ class PopoverComponent {
 PopoverComponent.decorators = [
     { type: Component, args: [{
                 selector: "popover",
-                template: `<div id="popover" [ngbPopover]="popTemplate"  #popover="ngbPopover" [placement]='placement'>
+                template: `<div id="popover" [ngbPopover]="popTemplate"  #popover="ngbPopover" [placement]='placement'  triggers="manual">
     <ng-template #popTemplate>
         <ng-content select="[popover=content]"></ng-content>
     </ng-template>
