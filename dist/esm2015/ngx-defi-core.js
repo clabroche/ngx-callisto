@@ -1100,10 +1100,6 @@ class PopoverComponent {
          * Define the placment of popover
          */
         this.placement = 'right';
-        /**
-         * private boolean to watching open/close status
-         */
-        this._open = false;
     }
     /**
      * Track changes on input open to reflect status on private keys
@@ -1111,19 +1107,27 @@ class PopoverComponent {
      * @return {?}
      */
     ngOnChanges(changes) {
-        this._open = changes['open'].currentValue;
+        this.loadState(changes['open'].currentValue);
+    }
+    /**
+     * @param {?} open
+     * @return {?}
+     */
+    loadState(open) {
+        open ? this.popover.open() : this.popover.close();
     }
     /**
      * @return {?}
      */
     ngOnInit() {
-        console.log(this.popover);
-        this.popover.open();
+        setTimeout(() => {
+            this.loadState(this.open);
+        }, 100);
     }
 }
 PopoverComponent.decorators = [
     { type: Component, args: [{
-                selector: "popover",
+                selector: 'popover',
                 template: `<div id="popover" [ngbPopover]="popTemplate"  #popover="ngbPopover" [placement]='placement'  triggers="manual">
     <ng-template #popTemplate>
         <ng-content select="[popover=content]"></ng-content>

@@ -1,5 +1,5 @@
-import { SimpleChange, OnInit } from "@angular/core";
-import { NgbPopover } from "@ng-bootstrap/ng-bootstrap";
+import { SimpleChange, OnInit, OnChanges } from '@angular/core';
+import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 /**
  * Make a popoper around items
  * @example
@@ -8,7 +8,7 @@ import { NgbPopover } from "@ng-bootstrap/ng-bootstrap";
     |  <div popover="content">Hey to you! I'm on your right!</div>
     </popover>
  */
-export declare class PopoverComponent implements OnInit {
+export declare class PopoverComponent implements OnInit, OnChanges {
     /**
      * Open or close popover;
      * Default: close
@@ -21,7 +21,6 @@ export declare class PopoverComponent implements OnInit {
     /**
      * private boolean to watching open/close status
      */
-    _open: boolean;
     popover: NgbPopover;
     /**
      * Track changes on input open to reflect status on private keys
@@ -29,5 +28,6 @@ export declare class PopoverComponent implements OnInit {
     ngOnChanges(changes: {
         [propName: string]: SimpleChange;
     }): void;
+    loadState(open: any): void;
     ngOnInit(): void;
 }

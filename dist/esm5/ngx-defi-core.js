@@ -547,20 +547,24 @@ var PopoverComponent = /** @class */ (function () {
     function PopoverComponent() {
         this.open = false;
         this.placement = 'right';
-        this._open = false;
     }
     PopoverComponent.prototype.ngOnChanges = function (changes) {
-        this._open = changes['open'].currentValue;
+        this.loadState(changes['open'].currentValue);
+    };
+    PopoverComponent.prototype.loadState = function (open) {
+        open ? this.popover.open() : this.popover.close();
     };
     PopoverComponent.prototype.ngOnInit = function () {
-        console.log(this.popover);
-        this.popover.open();
+        var _this = this;
+        setTimeout(function () {
+            _this.loadState(_this.open);
+        }, 100);
     };
     return PopoverComponent;
 }());
 PopoverComponent.decorators = [
     { type: Component, args: [{
-                selector: "popover",
+                selector: 'popover',
                 template: "<div id=\"popover\" [ngbPopover]=\"popTemplate\"  #popover=\"ngbPopover\" [placement]='placement'  triggers=\"manual\">\n    <ng-template #popTemplate>\n        <ng-content select=\"[popover=content]\"></ng-content>\n    </ng-template>\n\n    <ng-content></ng-content>\n</div>",
                 styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}:host #popover{width:auto}:host ::ng-deep ul{list-style:none;margin:0;padding:0}"]
             },] },
