@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/animations'), require('uuid'), require('rxjs'), require('bluebird'), require('lodash'), require('rxjs/Subject'), require('rxjs/operators/debounceTime'), require('@ng-bootstrap/ng-bootstrap'), require('@angular/common'), require('@angular/platform-browser/animations')) :
-	typeof define === 'function' && define.amd ? define('ngx-defi-core', ['exports', '@angular/core', '@angular/animations', 'uuid', 'rxjs', 'bluebird', 'lodash', 'rxjs/Subject', 'rxjs/operators/debounceTime', '@ng-bootstrap/ng-bootstrap', '@angular/common', '@angular/platform-browser/animations'], factory) :
-	(factory((global['ngx-defi-core'] = {}),global.ng.core,global.ng.animations,global.uuid,global.rxjs,global.bluebird,global.lodash,global.Rx,global.Rx.Observable.prototype,global.ngBootstrap,global.ng.common,global.ng.platformBrowser.animations));
-}(this, (function (exports,core,animations,uuid,rxjs,bluebird,lodash,Subject,debounceTime,ngBootstrap,common,animations$1) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/animations'), require('uuid'), require('rxjs'), require('bluebird'), require('lodash'), require('rxjs/Subject'), require('rxjs/operators/debounceTime'), require('@ng-bootstrap/ng-bootstrap'), require('@angular/common')) :
+	typeof define === 'function' && define.amd ? define('ngx-defi-core', ['exports', '@angular/core', '@angular/animations', 'uuid', 'rxjs', 'bluebird', 'lodash', 'rxjs/Subject', 'rxjs/operators/debounceTime', '@ng-bootstrap/ng-bootstrap', '@angular/common'], factory) :
+	(factory((global['ngx-defi-core'] = {}),global.ng.core,global.ng.animations,global.uuid,global.rxjs,global.bluebird,global.lodash,global.Rx,global.Rx.Observable.prototype,global.ngBootstrap,global.ng.common));
+}(this, (function (exports,core,animations,uuid,rxjs,bluebird,lodash,Subject,debounceTime,ngBootstrap,common) { 'use strict';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -145,20 +145,21 @@ SidebarComponent.propDecorators = {
 };
 var NavbarComponent = /** @class */ (function () {
     function NavbarComponent() {
-        this.name = "";
+        this.name = '';
     }
     return NavbarComponent;
 }());
 NavbarComponent.decorators = [
     { type: core.Component, args: [{
-                selector: "navbar",
-                template: "<div id=\"navbar\">\n  <div id=\"leftRight\">\n    <div id=\"left\">\n      <div id=\"logoContainer\">\n        <ng-content select=\"[logo]\"></ng-content>\n      </div>\n      <div id=\"description\">\n        {{name}}\n      </div>\n    </div>\n\n    <div id=\"right\">\n      <div id=\"actions\">\n        <ng-content selector=\"[action]\"></ng-content>\n      </div>\n    </div>\n  </div>\n</div>",
-                styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}#navbar{height:40px;background-color:#343a40;color:#fff;max-height:40px;background-image:url(../../../assets/img/nav.png);background-size:100%}#navbar #leftRight{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%}#navbar #leftRight #left{height:100%;padding-left:5px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #left #logoContainer{height:80%}#navbar #leftRight #left #logoContainer ::ng-deep [logo]{height:100%;border-radius:100%;overflow:hidden}#navbar #leftRight #left #logoContainer ::ng-deep [logo] img{height:100%}#navbar #leftRight #left #description{margin-left:10px;color:#fff;font-size:1.2em}#navbar #leftRight #right{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%;margin-right:10px}#navbar #leftRight #right #actions{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #right #actions ::ng-deep .icon{font-size:1.7em}"]
+                selector: 'navbar',
+                template: "<div id=\"navbar\" [ngStyle]=\"{'background-image': url ? 'url(img)' : ''}\">\n  <div id=\"leftRight\">\n    <div id=\"left\">\n      <div id=\"logoContainer\">\n        <ng-content select=\"[logo]\"></ng-content>\n      </div>\n      <div id=\"description\">\n        {{name}}\n      </div>\n    </div>\n\n    <div id=\"right\">\n      <div id=\"actions\">\n        <ng-content selector=\"[action]\"></ng-content>\n      </div>\n    </div>\n  </div>\n</div>",
+                styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}#navbar{height:40px;background-color:#343a40;color:#fff;max-height:40px;background-size:100%}#navbar #leftRight{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%}#navbar #leftRight #left{height:100%;padding-left:5px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #left #logoContainer{height:80%}#navbar #leftRight #left #logoContainer ::ng-deep [logo]{height:100%;border-radius:100%;overflow:hidden}#navbar #leftRight #left #logoContainer ::ng-deep [logo] img{height:100%}#navbar #leftRight #left #description{margin-left:10px;color:#fff;font-size:1.2em}#navbar #leftRight #right{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%;margin-right:10px}#navbar #leftRight #right #actions{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #right #actions ::ng-deep .icon{font-size:1.7em}"]
             },] },
 ];
 NavbarComponent.ctorParameters = function () { return []; };
 NavbarComponent.propDecorators = {
     "name": [{ type: core.Input, args: ['name',] },],
+    "img": [{ type: core.Input, args: ['img',] },],
 };
 var FormErrorsComponent = /** @class */ (function () {
     function FormErrorsComponent() {
@@ -659,7 +660,6 @@ CoreModule.decorators = [
                 imports: [
                     common.CommonModule,
                     ngBootstrap.NgbModule.forRoot(),
-                    animations$1.NoopAnimationsModule,
                 ],
                 exports: [
                     SidebarComponent,

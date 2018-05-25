@@ -21,6 +21,7 @@ export declare class NavbarComponent {
      * Name displaying on left after icon
      */
     name: string;
+    img: string;
     /**
      * Load dependencies instances
      */

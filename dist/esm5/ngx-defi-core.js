@@ -9,7 +9,6 @@ import { Subject as Subject$1 } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 var BoxComponent = /** @class */ (function () {
     function BoxComponent() {
@@ -97,20 +96,21 @@ SidebarComponent.propDecorators = {
 };
 var NavbarComponent = /** @class */ (function () {
     function NavbarComponent() {
-        this.name = "";
+        this.name = '';
     }
     return NavbarComponent;
 }());
 NavbarComponent.decorators = [
     { type: Component, args: [{
-                selector: "navbar",
-                template: "<div id=\"navbar\">\n  <div id=\"leftRight\">\n    <div id=\"left\">\n      <div id=\"logoContainer\">\n        <ng-content select=\"[logo]\"></ng-content>\n      </div>\n      <div id=\"description\">\n        {{name}}\n      </div>\n    </div>\n\n    <div id=\"right\">\n      <div id=\"actions\">\n        <ng-content selector=\"[action]\"></ng-content>\n      </div>\n    </div>\n  </div>\n</div>",
-                styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}#navbar{height:40px;background-color:#343a40;color:#fff;max-height:40px;background-image:url(../../../assets/img/nav.png);background-size:100%}#navbar #leftRight{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%}#navbar #leftRight #left{height:100%;padding-left:5px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #left #logoContainer{height:80%}#navbar #leftRight #left #logoContainer ::ng-deep [logo]{height:100%;border-radius:100%;overflow:hidden}#navbar #leftRight #left #logoContainer ::ng-deep [logo] img{height:100%}#navbar #leftRight #left #description{margin-left:10px;color:#fff;font-size:1.2em}#navbar #leftRight #right{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%;margin-right:10px}#navbar #leftRight #right #actions{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #right #actions ::ng-deep .icon{font-size:1.7em}"]
+                selector: 'navbar',
+                template: "<div id=\"navbar\" [ngStyle]=\"{'background-image': url ? 'url(img)' : ''}\">\n  <div id=\"leftRight\">\n    <div id=\"left\">\n      <div id=\"logoContainer\">\n        <ng-content select=\"[logo]\"></ng-content>\n      </div>\n      <div id=\"description\">\n        {{name}}\n      </div>\n    </div>\n\n    <div id=\"right\">\n      <div id=\"actions\">\n        <ng-content selector=\"[action]\"></ng-content>\n      </div>\n    </div>\n  </div>\n</div>",
+                styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}#navbar{height:40px;background-color:#343a40;color:#fff;max-height:40px;background-size:100%}#navbar #leftRight{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%}#navbar #leftRight #left{height:100%;padding-left:5px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #left #logoContainer{height:80%}#navbar #leftRight #left #logoContainer ::ng-deep [logo]{height:100%;border-radius:100%;overflow:hidden}#navbar #leftRight #left #logoContainer ::ng-deep [logo] img{height:100%}#navbar #leftRight #left #description{margin-left:10px;color:#fff;font-size:1.2em}#navbar #leftRight #right{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%;margin-right:10px}#navbar #leftRight #right #actions{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #right #actions ::ng-deep .icon{font-size:1.7em}"]
             },] },
 ];
 NavbarComponent.ctorParameters = function () { return []; };
 NavbarComponent.propDecorators = {
     "name": [{ type: Input, args: ['name',] },],
+    "img": [{ type: Input, args: ['img',] },],
 };
 var FormErrorsComponent = /** @class */ (function () {
     function FormErrorsComponent() {
@@ -611,7 +611,6 @@ CoreModule.decorators = [
                 imports: [
                     CommonModule,
                     NgbModule.forRoot(),
-                    NoopAnimationsModule,
                 ],
                 exports: [
                     SidebarComponent,
