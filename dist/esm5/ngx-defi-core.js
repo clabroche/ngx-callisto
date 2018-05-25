@@ -497,11 +497,15 @@ var ShowPasswordDirective = /** @class */ (function () {
     }
     ShowPasswordDirective.prototype.ngOnInit = function () {
         var _this = this;
+        var container = this.renderer.createElement('div');
+        this.renderer.setStyle(container, 'position', 'relative');
         var div = this.renderer.createElement('i');
         this.renderer.addClass(div, 'fa');
         this.renderer.addClass(div, 'fa-eye-slash');
         this.renderer.addClass(div, 'toggle-eye');
         this.renderer.setStyle(div, 'position', 'absolute');
+        this.renderer.setStyle(div, 'top', 0);
+        this.renderer.setStyle(div, 'right', 0);
         this.renderer.setStyle(div, 'display', 'inherit');
         this.renderer.setStyle(div, 'cursor', 'pointer');
         this.renderer.listen(div, 'click', function (event) {
@@ -517,16 +521,16 @@ var ShowPasswordDirective = /** @class */ (function () {
                 _this.renderer.addClass(div, 'fa-eye-slash');
             }
         });
-        this.renderer.setStyle(this.hostElement.nativeElement, 'padding-left', '2em');
         var parent = this.hostElement.nativeElement.parentNode;
-        this.renderer.insertBefore(parent, div, this.hostElement.nativeElement);
+        this.renderer.insertBefore(parent, container, this.renderer.nextSibling(this.hostElement.nativeElement));
+        this.renderer.appendChild(container, this.hostElement.nativeElement);
+        this.renderer.appendChild(container, div);
     };
     return ShowPasswordDirective;
 }());
 ShowPasswordDirective.decorators = [
     { type: Directive, args: [{
                 selector: '[show-password]',
-                host: {}
             },] },
 ];
 ShowPasswordDirective.ctorParameters = function () { return [
