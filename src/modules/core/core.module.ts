@@ -36,12 +36,10 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     ValidatorsDirective,
     ShowPasswordDirective,
     ToId,
-    PopoverComponent,
   ],
   imports: [
     CommonModule,
-    NgbModule.forRoot(),
-    NoopAnimationsModule,
+    // NoopAnimationsModule,
   ],
   exports: [
     SidebarComponent,
@@ -55,7 +53,6 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     ValidatorsDirective,
     ShowPasswordDirective,
     ToId,
-    PopoverComponent,
   ]
 })
 export class CoreModule {
