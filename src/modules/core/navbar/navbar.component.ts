@@ -1,9 +1,9 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 /**
  * Navbar Component
- * 
- * ng-content: 
+ *
+ * ng-content:
  *  - [logo] element on the left
  *  - [actions] element on the right
  * @example
@@ -19,19 +19,21 @@ import { Component, Input } from "@angular/core";
     </navbar>
  */
 @Component({
-  selector: "navbar",
-  templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.scss"]
+  selector: 'navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
   /**
    * Name displaying on left after icon
    */
-  @Input('name') name = ""
+  @Input('name') name = '';
+
+  @Input('img') img: string;
 
   /**
    * Load dependencies instances
    */
-  constructor(){}
+  constructor() {}
 }
- 
+
