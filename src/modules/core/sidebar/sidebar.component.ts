@@ -97,10 +97,12 @@ export class SidebarComponent {
    */
   @Input('conf') conf: Configuration = { list: [], bottom: [] };
 
-  /**
+  @Input('img') img: string;
+   /**
    * import dependencies
    */
-  constructor(public sidebar: SideBarService) {}
+  constructor(public sidebar: SideBarService) {
+  }
   /**
    * Go to Home route
    */

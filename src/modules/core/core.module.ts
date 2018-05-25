@@ -21,7 +21,7 @@ import { ShowPasswordDirective } from './directives/showPassword.directive';
 import { ToId } from './pipe/toId.pipe';
 import { PopoverComponent } from './popover/popover.component';
 import { Router, RouterModule, RouterLink } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -41,7 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     CommonModule,
     NgbModule.forRoot(),
-    BrowserAnimationsModule,
+    NoopAnimationsModule,
   ],
   exports: [
     SidebarComponent,
