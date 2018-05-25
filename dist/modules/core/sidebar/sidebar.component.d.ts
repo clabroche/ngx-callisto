@@ -71,9 +71,10 @@ export declare class SidebarComponent {
      * Get the configuration from outside
      */
     conf: Configuration;
+    img: string;
     /**
-     * import dependencies
-     */
+    * import dependencies
+    */
     constructor(sidebar: SideBarService);
     /**
      * Go to Home route
