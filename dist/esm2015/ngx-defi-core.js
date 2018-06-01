@@ -343,7 +343,7 @@ FormErrorsComponent.decorators = [
     </li>
 </ul>
 `,
-                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}`]
+                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}:host{display:inline-block;font-size:.7em;width:100%;min-height:.7em;top:-2px;line-height:0;text-align:right;color:#dc3545}`]
             },] },
 ];
 /** @nocollapse */
