@@ -1,6 +1,6 @@
 {
   "name": "ngx-defi-core",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.0",
@@ -17,6 +17,7 @@
     "angular2-csv": "^0.2.5",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.6",
+    "element-resize-detector": "^1.1.14",
     "ngx-bootstrap": "^2.0.5",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.1.0",
@@ -29,6 +30,7 @@
     "@angular/compiler-cli": "^6.0.0",
     "@angular/language-service": "^6.0.0",
     "@compodoc/compodoc": "^1.1.2",
+    "@types/element-resize-detector": "^1.1.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
@@ -42,6 +44,7 @@
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-mocha-reporter": "^2.2.5",
+    "karma-spec-reporter": "0.0.32",
     "lcov2badge": "^0.1.0",
     "ng-packagr": "^2.4.4",
     "node-sass": "^4.9.0",

@@ -9,8 +9,8 @@ import { Component,
   ElementRef,
   Renderer2
 } from '@angular/core';
-import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
-import * as resize from 'element-resize-detector';
+import * as erdImported from 'element-resize-detector';
+const erd = erdImported;
 /**
  * Make a popoper around items
  * @example
@@ -38,7 +38,7 @@ export class PopoverComponent implements AfterContentInit, OnChanges {
   positionClass = 'popover-right';
   resizeDetector;
   constructor(private renderer: Renderer2) {
-    this.resizeDetector = resize({
+    this.resizeDetector = erd({
       strategy: 'scroll' // <- For ultra performance.
     });
   }

@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/animations'), require('uuid'), require('rxjs'), require('bluebird'), require('lodash'), require('rxjs/Subject'), require('rxjs/operators/debounceTime'), require('@ng-bootstrap/ng-bootstrap'), require('@angular/common')) :
-	typeof define === 'function' && define.amd ? define('ngx-defi-core', ['exports', '@angular/core', '@angular/animations', 'uuid', 'rxjs', 'bluebird', 'lodash', 'rxjs/Subject', 'rxjs/operators/debounceTime', '@ng-bootstrap/ng-bootstrap', '@angular/common'], factory) :
-	(factory((global['ngx-defi-core'] = {}),global.ng.core,global.ng.animations,global.uuid,global.rxjs,global.bluebird,global.lodash,global.Rx,global.Rx.Observable.prototype,global.ngBootstrap,global.ng.common));
-}(this, (function (exports,core,animations,uuid,rxjs,bluebird,lodash,Subject,debounceTime,ngBootstrap,common) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/animations'), require('uuid'), require('rxjs'), require('bluebird'), require('lodash'), require('rxjs/Subject'), require('rxjs/operators/debounceTime'), require('element-resize-detector'), require('@angular/common'), require('@ng-bootstrap/ng-bootstrap')) :
+	typeof define === 'function' && define.amd ? define('ngx-defi-core', ['exports', '@angular/core', '@angular/animations', 'uuid', 'rxjs', 'bluebird', 'lodash', 'rxjs/Subject', 'rxjs/operators/debounceTime', 'element-resize-detector', '@angular/common', '@ng-bootstrap/ng-bootstrap'], factory) :
+	(factory((global['ngx-defi-core'] = {}),global.ng.core,global.ng.animations,global.uuid,global.rxjs,global.bluebird,global.lodash,global.Rx,global.Rx.Observable.prototype,global.erdImported,global.ng.common,global.ngBootstrap));
+}(this, (function (exports,core,animations,uuid,rxjs,bluebird,lodash,Subject,debounceTime,erdImported,common,ngBootstrap) { 'use strict';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -597,36 +597,56 @@ var ToId = /** @class */ (function () {
 ToId.decorators = [
     { type: core.Pipe, args: [{ name: 'toId', pure: true },] },
 ];
+var erd = erdImported;
 var PopoverComponent = /** @class */ (function () {
-    function PopoverComponent() {
+    function PopoverComponent(renderer) {
+        this.renderer = renderer;
         this.open = false;
         this.placement = 'right';
+        this.positionClass = 'popover-right';
+        this.resizeDetector = erd({
+            strategy: 'scroll'
+        });
     }
+    PopoverComponent.prototype.loadState = function (open) {
+        console.log('loadState', open);
+        open ?
+            this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'visible') :
+            this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'hidden');
+    };
     PopoverComponent.prototype.ngOnChanges = function (changes) {
         this.loadState(changes['open'].currentValue);
     };
-    PopoverComponent.prototype.loadState = function (open) {
-        open ? this.popover.open() : this.popover.close();
-    };
-    PopoverComponent.prototype.ngOnInit = function () {
+    PopoverComponent.prototype.ngAfterContentInit = function () {
         var _this = this;
-        setTimeout(function () {
-            _this.loadState(_this.open);
-        }, 100);
+        this.resizeDetector.listenTo(this.popupContainer.nativeElement, function (element) {
+            var width = element.offsetWidth;
+            var height = element.offsetHeight;
+            console.log('Size: ' + width + 'x' + height);
+            if (_this.placement === 'top' || _this.placement === 'bottom') {
+                _this.renderer.setStyle(_this.popupContainer.nativeElement, 'left', '-' + width / 2 + 'px');
+            }
+            if (_this.placement === 'right' || _this.placement === 'left') {
+                _this.renderer.setStyle(_this.popupContainer.nativeElement, 'top', '-' + height / 2 + 'px');
+            }
+        });
     };
     return PopoverComponent;
 }());
 PopoverComponent.decorators = [
     { type: core.Component, args: [{
                 selector: 'popover',
-                template: "<div id=\"popover\" [ngbPopover]=\"popTemplate\"  #popover=\"ngbPopover\" [placement]='placement'  triggers=\"manual\">\n    <ng-template #popTemplate>\n        <ng-content select=\"[popover=content]\"></ng-content>\n    </ng-template>\n\n    <ng-content></ng-content>\n</div>",
-                styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}:host #popover{width:auto}:host ::ng-deep ul{list-style:none;margin:0;padding:0}"]
+                template: "<div class=\"defi-popover\">\n    <div class=\"defi-popover-container {{placement}}\" #popupContainer>\n        <ng-content select=\"[popover=content]\"></ng-content>\n    </div>\n    <ng-content></ng-content>\n</div>",
+                styles: [".formGroup{margin-bottom:10px}.formGroup label{width:100%}:host .defi-popover{position:relative;display:inline-block}:host .defi-popover .defi-popover-container{padding:10px;-webkit-transition-property:all;transition-property:all;-webkit-transition-duration:.1s;transition-duration:.1s;-webkit-transition-timing-function:cubic-bezier(.075,.82,.165,1);transition-timing-function:cubic-bezier(.075,.82,.165,1);visibility:hidden;background-color:#000;color:#fff;position:absolute;z-index:1}:host .defi-popover .defi-popover-container::after{content:\"\";position:absolute;border-style:solid;border-width:5px}:host .defi-popover .defi-popover-container.right{left:calc(100% + 10px);top:-31px;margin-top:25%}:host .defi-popover .defi-popover-container.right::after{right:100%;top:50%;margin-top:-10px;border-color:transparent #555 transparent transparent}:host .defi-popover .defi-popover-container.left{right:calc(100% + 10px);top:-31px;margin-top:25%}:host .defi-popover .defi-popover-container.left::after{left:100%;top:50%;margin-top:-10px;border-color:transparent transparent transparent #555}:host .defi-popover .defi-popover-container.bottom{top:calc(100% + 10px);left:-101.5px;margin-left:50%}:host .defi-popover .defi-popover-container.bottom::after{left:50%;margin-left:-5px;bottom:100%;border-color:transparent transparent #555}:host .defi-popover .defi-popover-container.top{bottom:calc(100% + 10px);left:-101.5px;margin-left:50%}:host .defi-popover .defi-popover-container.top::after{left:50%;margin-left:-5px;top:100%;border-color:#555 transparent transparent}:host ::ng-deep ul{list-style:none;margin:0;padding:0}"]
             },] },
 ];
+PopoverComponent.ctorParameters = function () { return [
+    { type: core.Renderer2, },
+]; };
 PopoverComponent.propDecorators = {
     "open": [{ type: core.Input, args: ['open',] },],
     "placement": [{ type: core.Input, args: ['placement',] },],
-    "popover": [{ type: core.ViewChild, args: ['popover',] },],
+    "popupContainer": [{ type: core.ViewChild, args: ['popupContainer',] },],
 };
 var CoreModule = /** @class */ (function () {
     function CoreModule() {

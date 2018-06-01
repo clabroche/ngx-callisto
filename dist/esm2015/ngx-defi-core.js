@@ -7,8 +7,9 @@ import { each, filter } from 'bluebird';
 import { reduce, isEqual, map } from 'lodash';
 import { Subject as Subject$1 } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operators/debounceTime';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import * as erdImported from 'element-resize-detector';
 import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /**
  * @fileoverview added by tsickle
@@ -1090,6 +1091,7 @@ ToId.decorators = [
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
+const erd = erdImported;
 /**
  * Make a popoper around items
  * \@example
@@ -1099,7 +1101,11 @@ ToId.decorators = [
  * </popover>
  */
 class PopoverComponent {
-    constructor() {
+    /**
+     * @param {?} renderer
+     */
+    constructor(renderer) {
+        this.renderer = renderer;
         /**
          * Open or close popover;
          * Default: close
@@ -1109,9 +1115,22 @@ class PopoverComponent {
          * Define the placment of popover
          */
         this.placement = 'right';
+        this.positionClass = 'popover-right';
+        this.resizeDetector = erd({
+            strategy: 'scroll' // <- For ultra performance.
+        });
     }
     /**
-     * Track changes on input open to reflect status on private keys
+     * @param {?} open
+     * @return {?}
+     */
+    loadState(open) {
+        console.log('loadState', open);
+        open ?
+            this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'visible') :
+            this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'hidden');
+    }
+    /**
      * @param {?} changes
      * @return {?}
      */
@@ -1119,39 +1138,42 @@ class PopoverComponent {
         this.loadState(changes['open'].currentValue);
     }
     /**
-     * @param {?} open
      * @return {?}
      */
-    loadState(open) {
-        open ? this.popover.open() : this.popover.close();
-    }
-    /**
-     * @return {?}
-     */
-    ngOnInit() {
-        setTimeout(() => {
-            this.loadState(this.open);
-        }, 100);
+    ngAfterContentInit() {
+        this.resizeDetector.listenTo(this.popupContainer.nativeElement, (element) => {
+            const /** @type {?} */ width = element.offsetWidth;
+            const /** @type {?} */ height = element.offsetHeight;
+            console.log('Size: ' + width + 'x' + height);
+            if (this.placement === 'top' || this.placement === 'bottom') {
+                this.renderer.setStyle(this.popupContainer.nativeElement, 'left', '-' + width / 2 + 'px');
+            }
+            if (this.placement === 'right' || this.placement === 'left') {
+                this.renderer.setStyle(this.popupContainer.nativeElement, 'top', '-' + height / 2 + 'px');
+            }
+        });
     }
 }
 PopoverComponent.decorators = [
     { type: Component, args: [{
                 selector: 'popover',
-                template: `<div id="popover" [ngbPopover]="popTemplate"  #popover="ngbPopover" [placement]='placement'  triggers="manual">
-    <ng-template #popTemplate>
+                template: `<div class="defi-popover">
+    <div class="defi-popover-container {{placement}}" #popupContainer>
         <ng-content select="[popover=content]"></ng-content>
-    </ng-template>
-
+    </div>
     <ng-content></ng-content>
 </div>`,
-                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}:host #popover{width:auto}:host ::ng-deep ul{list-style:none;margin:0;padding:0}`]
+                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}:host .defi-popover{position:relative;display:inline-block}:host .defi-popover .defi-popover-container{padding:10px;-webkit-transition-property:all;transition-property:all;-webkit-transition-duration:.1s;transition-duration:.1s;-webkit-transition-timing-function:cubic-bezier(.075,.82,.165,1);transition-timing-function:cubic-bezier(.075,.82,.165,1);visibility:hidden;background-color:#000;color:#fff;position:absolute;z-index:1}:host .defi-popover .defi-popover-container::after{content:"";position:absolute;border-style:solid;border-width:5px}:host .defi-popover .defi-popover-container.right{left:calc(100% + 10px);top:-31px;margin-top:25%}:host .defi-popover .defi-popover-container.right::after{right:100%;top:50%;margin-top:-10px;border-color:transparent #555 transparent transparent}:host .defi-popover .defi-popover-container.left{right:calc(100% + 10px);top:-31px;margin-top:25%}:host .defi-popover .defi-popover-container.left::after{left:100%;top:50%;margin-top:-10px;border-color:transparent transparent transparent #555}:host .defi-popover .defi-popover-container.bottom{top:calc(100% + 10px);left:-101.5px;margin-left:50%}:host .defi-popover .defi-popover-container.bottom::after{left:50%;margin-left:-5px;bottom:100%;border-color:transparent transparent #555}:host .defi-popover .defi-popover-container.top{bottom:calc(100% + 10px);left:-101.5px;margin-left:50%}:host .defi-popover .defi-popover-container.top::after{left:50%;margin-left:-5px;top:100%;border-color:#555 transparent transparent}:host ::ng-deep ul{list-style:none;margin:0;padding:0}`]
             },] },
 ];
 /** @nocollapse */
+PopoverComponent.ctorParameters = () => [
+    { type: Renderer2, },
+];
 PopoverComponent.propDecorators = {
     "open": [{ type: Input, args: ['open',] },],
     "placement": [{ type: Input, args: ['placement',] },],
-    "popover": [{ type: ViewChild, args: ['popover',] },],
+    "popupContainer": [{ type: ViewChild, args: ['popupContainer',] },],
 };
 
 /**
