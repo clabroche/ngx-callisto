@@ -23,7 +23,7 @@
                     right: 100%;
                     top: 50%;
                     margin-top: -10px;
-                    border-color: transparent #555 transparent transparent;        
+                    border-color: transparent #b9b9b9 transparent transparent;        
                 }
             }
             &.left {
@@ -34,7 +34,7 @@
                     left: 100%;
                     top: 50%;
                     margin-top: -10px;
-                    border-color: transparent transparent transparent #555;        
+                    border-color: transparent transparent transparent #b9b9b9;        
                 }
             }
             &.bottom {
@@ -45,7 +45,7 @@
                     left: 50%;
                     margin-left: -5px;
                     bottom: 100%;
-                    border-color: transparent transparent #555 transparent;        
+                    border-color: transparent transparent #b9b9b9 transparent;        
                 }
             }
             &.top {
@@ -56,7 +56,7 @@
                     left: 50%;
                     margin-left: -5px;
                     top: 100%;
-                    border-color: #555 transparent transparent transparent;        
+                    border-color: #b9b9b9 transparent transparent transparent;        
                 }
             }
         }
@@ -65,10 +65,12 @@
 
     .defi-popover .defi-popover-container {
         visibility: hidden;
-        background-color: black;
-        color: #fff;
+        border: 1px solid #d2d2d2;
         position: absolute;
         z-index: 1;
+        background-color: white;
+        border-radius: 3px;
+        
     }
     & ::ng-deep {
         ul{
