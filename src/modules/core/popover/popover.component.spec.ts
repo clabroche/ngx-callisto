@@ -14,7 +14,7 @@ describe('PopoverComponent', () => {
       ]
     }).compileComponents();
   });
-  fit('should create the component', () => {
+  it('should create the component', () => {
     const fixture = TestBed.createComponent(PopoverComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
