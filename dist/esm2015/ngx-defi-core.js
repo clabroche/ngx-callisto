@@ -1125,7 +1125,6 @@ class PopoverComponent {
      * @return {?}
      */
     loadState(open) {
-        console.log('loadState', open);
         open ?
             this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'visible') :
             this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'hidden');
@@ -1144,7 +1143,6 @@ class PopoverComponent {
         this.resizeDetector.listenTo(this.popupContainer.nativeElement, (element) => {
             const /** @type {?} */ width = element.offsetWidth;
             const /** @type {?} */ height = element.offsetHeight;
-            console.log('Size: ' + width + 'x' + height);
             if (this.placement === 'top' || this.placement === 'bottom') {
                 this.renderer.setStyle(this.popupContainer.nativeElement, 'left', '-' + width / 2 + 'px');
             }

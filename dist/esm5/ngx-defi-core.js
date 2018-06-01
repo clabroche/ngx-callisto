@@ -561,7 +561,6 @@ var PopoverComponent = /** @class */ (function () {
         });
     }
     PopoverComponent.prototype.loadState = function (open) {
-        console.log('loadState', open);
         open ?
             this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'visible') :
             this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'hidden');
@@ -574,7 +573,6 @@ var PopoverComponent = /** @class */ (function () {
         this.resizeDetector.listenTo(this.popupContainer.nativeElement, function (element) {
             var width = element.offsetWidth;
             var height = element.offsetHeight;
-            console.log('Size: ' + width + 'x' + height);
             if (_this.placement === 'top' || _this.placement === 'bottom') {
                 _this.renderer.setStyle(_this.popupContainer.nativeElement, 'left', '-' + width / 2 + 'px');
             }

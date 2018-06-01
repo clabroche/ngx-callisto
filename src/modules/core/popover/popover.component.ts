@@ -46,7 +46,6 @@ export class PopoverComponent implements AfterContentInit, OnChanges {
   //  * Track changes on input open to reflect status on private keys
   //  */
   loadState(open) {
-    console.log('loadState', open);
     open ?
       this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'visible') :
       this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'hidden');
@@ -58,7 +57,6 @@ export class PopoverComponent implements AfterContentInit, OnChanges {
     this.resizeDetector.listenTo(this.popupContainer.nativeElement, (element) => {
       const width = element.offsetWidth;
       const height = element.offsetHeight;
-      console.log('Size: ' + width + 'x' + height);
       if (this.placement === 'top' || this.placement === 'bottom') {
         this.renderer.setStyle(this.popupContainer.nativeElement, 'left', '-' + width / 2 + 'px');
       }
