@@ -1,7 +1,6 @@
-<div id="popover" [ngbPopover]="popTemplate"  #popover="ngbPopover" [placement]='placement'  triggers="manual">
-    <ng-template #popTemplate>
+<div class="defi-popover">
+    <div class="defi-popover-container {{placement}}" #popupContainer>
         <ng-content select="[popover=content]"></ng-content>
-    </ng-template>
-
+    </div>
     <ng-content></ng-content>
 </div>

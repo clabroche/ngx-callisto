@@ -6,15 +6,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 describe('PopoverComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[
-        NgbModule.forRoot()
+      imports: [
+        // NgbModule.forRoot()
       ],
       declarations: [
         PopoverComponent
-      ] 
+      ]
     }).compileComponents();
   });
-  it('should create the component', () => {
+  fit('should create the component', () => {
     const fixture = TestBed.createComponent(PopoverComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();

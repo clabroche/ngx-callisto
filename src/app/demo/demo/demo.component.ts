@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { SideBarService, Configuration } from '../../../public_api';
 
 @Component({
@@ -6,9 +6,11 @@ import { SideBarService, Configuration } from '../../../public_api';
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
 })
-export class DemoComponent  {
+export class DemoComponent implements OnInit {
   conf: Configuration = {};
-  constructor(private sideBarService: SideBarService) {
+  @ViewChild('popovertest') popovertest;
+  @ViewChild('popovertestleft') popovertestleft;
+  constructor(private sideBarService: SideBarService, private renderer: Renderer2) {
     sideBarService.open();
     this.conf = {
       /**
@@ -38,5 +40,14 @@ export class DemoComponent  {
         }
       ]
     };
+  }
+
+  ngOnInit() {
+    let width = 200;
+    setInterval(_ => {
+      width += 5;
+      this.renderer.setStyle(this.popovertestleft.nativeElement, 'height', width + 'px');
+      this.renderer.setStyle(this.popovertest.nativeElement, 'width', width + 'px');
+    }, 500);
   }
 }

@@ -31,5 +31,22 @@
   <br>
    dzakdjnazjdkzandada
   <br>
+ 
 
 </div>
+__________________________
+
+<popover [open]="true" placement="bottom">
+  <div popover="content" #popovertest>Heyxsxsxsxsxssxxsssxxsx <br>Hey</div>
+  <popover [open]="true" placement="top">
+    <div popover="content">Heyxsxsxsxsxssxxsssxxsx
+    <br>Hey</div>
+    <popover [open]="true" placement="left" >
+      <div popover="content" #popovertestleft>Heyxsxsxsxsxssxxsssxxsx <br>Hey</div>
+      <popover [open]="true" placement="right">
+        <div popover="content">Heyxsxsxsxsxssxxsssxxsx <br>Hey</div>
+        Outside
+      </popover>
+    </popover>
+  </popover>
+</popover>

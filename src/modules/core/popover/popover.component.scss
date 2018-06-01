@@ -1,7 +1,74 @@
 @import '../common';
 :host{
-    #popover{
-        width: auto;
+    
+    .defi-popover {
+        position: relative;
+        display: inline-block;
+        .defi-popover-container{
+            padding: 10px;
+            transition-property: all;
+            transition-duration: 0.1s;
+            transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            &::after {
+                content: "";
+                position: absolute;
+                border-style: solid;
+                border-width: 5px;
+            }
+            &.right {
+                left: calc(100% + 10px);
+                top: -31px;
+                margin-top:25%;
+                &::after {
+                    right: 100%;
+                    top: 50%;
+                    margin-top: -10px;
+                    border-color: transparent #555 transparent transparent;        
+                }
+            }
+            &.left {
+                right: calc(100% + 10px);
+                top: -31px;
+                margin-top:25%;
+                &::after {
+                    left: 100%;
+                    top: 50%;
+                    margin-top: -10px;
+                    border-color: transparent transparent transparent #555;        
+                }
+            }
+            &.bottom {
+                top: calc(100% + 10px);
+                left:-101.5px;
+                margin-left:50%;
+                &::after {
+                    left: 50%;
+                    margin-left: -5px;
+                    bottom: 100%;
+                    border-color: transparent transparent #555 transparent;        
+                }
+            }
+            &.top {
+                bottom: calc(100% + 10px);
+                left:-101.5px;
+                margin-left:50%;
+                &::after {
+                    left: 50%;
+                    margin-left: -5px;
+                    top: 100%;
+                    border-color: #555 transparent transparent transparent;        
+                }
+            }
+        }
+    }
+    
+
+    .defi-popover .defi-popover-container {
+        visibility: hidden;
+        background-color: black;
+        color: #fff;
+        position: absolute;
+        z-index: 1;
     }
     & ::ng-deep {
         ul{
@@ -10,5 +77,5 @@
             padding: 0;
         }
     }
-
+    
 }
