@@ -4,7 +4,7 @@ import { SideBarService, Configuration } from '../../../public_api';
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.css']
+  styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit {
   conf: Configuration = {};
@@ -43,11 +43,6 @@ export class DemoComponent implements OnInit {
   }
 
   ngOnInit() {
-    let width = 200;
-    setInterval(_ => {
-      width += 5;
-      this.renderer.setStyle(this.popovertestleft.nativeElement, 'height', width + 'px');
-      this.renderer.setStyle(this.popovertest.nativeElement, 'width', width + 'px');
-    }, 500);
+    
   }
 }
