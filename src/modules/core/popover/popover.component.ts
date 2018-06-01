@@ -62,9 +62,6 @@ export class PopoverComponent implements AfterContentInit, OnChanges {
       if (this.placement === 'top' || this.placement === 'bottom') {
         this.renderer.setStyle(this.popupContainer.nativeElement, 'left', '-' + width / 2 + 'px');
       }
-      if (this.placement === 'right' || this.placement === 'left') {
-        this.renderer.setStyle(this.popupContainer.nativeElement, 'top', '-' + height / 2 + 'px');
-      }
     });
   }
 }

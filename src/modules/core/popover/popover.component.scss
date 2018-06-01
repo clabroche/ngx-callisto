@@ -3,7 +3,7 @@
     
     .defi-popover {
         position: relative;
-        display: inline-block;
+        width: 100%;
         .defi-popover-container{
             padding: 10px;
             transition-property: all;
@@ -17,8 +17,6 @@
             }
             &.right {
                 left: calc(100% + 10px);
-                top: -31px;
-                margin-top:25%;
                 &::after {
                     right: 100%;
                     top: 50%;
@@ -28,8 +26,6 @@
             }
             &.left {
                 right: calc(100% + 10px);
-                top: -31px;
-                margin-top:25%;
                 &::after {
                     left: 100%;
                     top: 50%;
