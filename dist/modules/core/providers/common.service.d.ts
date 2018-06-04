@@ -58,4 +58,8 @@ export declare class CommonService {
      * stringifyWithoutPropertiesQuote
      */
     stringifyWithoutPropertiesQuote(obj: any): string;
+    filter(): {
+        filter: (_: any) => (value: any) => any;
+        update: (search: any, propertiesToSearch: any) => void;
+    };
 }

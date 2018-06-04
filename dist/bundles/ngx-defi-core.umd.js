@@ -345,7 +345,7 @@ SidePanelComponent.ctorParameters = function () { return [
 ]; };
 var CommonService = /** @class */ (function () {
     function CommonService() {
-        this.api = "http://localhost:3000";
+        this.api = 'http://localhost:3000';
         this.graphQL = this.api + '/graphql';
         this.refreshTokenInterval = 4000;
     }
@@ -363,18 +363,19 @@ var CommonService = /** @class */ (function () {
         };
         lodash.reduce(a, function (result, value, key) {
             if (b.hasOwnProperty(key)) {
-                if (lodash.isEqual(value, b[key]))
+                if (lodash.isEqual(value, b[key])) {
                     return result;
+                }
                 else {
-                    if (typeof (a[key]) != typeof ({}) || typeof (b[key]) != typeof ({})) {
+                    if (typeof (a[key]) !== typeof ({}) || typeof (b[key]) !== typeof ({})) {
                         result.different.push(key);
                         return result;
                     }
                     else {
                         var deeper = _this.differences(a[key], b[key]);
-                        result.different = result.different.concat(lodash.map(deeper.different, function (sub_path) { return key + "." + sub_path; }));
-                        result.missing_from_second = result.missing_from_second.concat(lodash.map(deeper.missing_from_second, function (sub_path) { return key + "." + sub_path; }));
-                        result.missing_from_first = result.missing_from_first.concat(lodash.map(deeper.missing_from_first, function (sub_path) { return key + "." + sub_path; }));
+                        result.different = result.different.concat(lodash.map(deeper.different, function (sub_path) { return key + '.' + sub_path; }));
+                        result.missing_from_second = result.missing_from_second.concat(lodash.map(deeper.missing_from_second, function (sub_path) { return key + '.' + sub_path; }));
+                        result.missing_from_first = result.missing_from_first.concat(lodash.map(deeper.missing_from_first, function (sub_path) { return key + '.' + sub_path; }));
                         return result;
                     }
                 }
@@ -385,8 +386,9 @@ var CommonService = /** @class */ (function () {
             }
         }, result);
         lodash.reduce(b, function (result, value, key) {
-            if (a.hasOwnProperty(key))
+            if (a.hasOwnProperty(key)) {
                 return result;
+            }
             else {
                 result.missing_from_first.push(key);
                 return result;
@@ -405,10 +407,12 @@ var CommonService = /** @class */ (function () {
         var newObj = {};
         function flat(obj) {
             Object.keys(obj).map(function (key) {
-                if (typeof obj[key] === "object")
+                if (typeof obj[key] === 'object') {
                     flat(obj[key]);
-                else
+                }
+                else {
                     newObj[key] = obj[key];
+                }
             });
         }
         flat(obj);
@@ -416,9 +420,38 @@ var CommonService = /** @class */ (function () {
     };
     CommonService.prototype.stringifyWithoutPropertiesQuote = function (obj) {
         return JSON.stringify(obj)
-            .replace(/\\"/g, "\uFFFF")
-            .replace(/\"([^"]+)\":/g, "$1:")
-            .replace(/\uFFFF/g, "\\\"");
+            .replace(/\\"/g, '\uFFFF')
+            .replace(/\"([^"]+)\":/g, '$1:')
+            .replace(/\uFFFF/g, '\\"');
+    };
+    CommonService.prototype.filter = function () {
+        var filterFun = function (value) { return value; };
+        return {
+            filter: function (_) { return filterFun; },
+            update: function (search, propertiesToSearch) {
+                filterFun = function (accounts) {
+                    var tmpAccounts = [];
+                    propertiesToSearch.map(function (propertyToSearch) {
+                        accounts.forEach(function (account) {
+                            var accountValue = recursiveCheck(account, propertyToSearch.split('.'));
+                            if (accountValue && accountValue.toUpperCase().includes(search.toUpperCase())) {
+                                tmpAccounts.push(account);
+                            }
+                        });
+                    });
+                    return tmpAccounts.reduce(function (a, b) {
+                        if (a.indexOf(b) < 0)
+                            a.push(b);
+                        return a;
+                    }, []);
+                };
+            }
+        };
+        function recursiveCheck(obj, props) {
+            if (props.length)
+                return recursiveCheck(obj[props[0]], props.slice(1, props.length));
+            return obj;
+        }
     };
     return CommonService;
 }());

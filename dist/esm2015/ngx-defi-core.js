@@ -673,7 +673,7 @@ class CommonService {
      * Instanciate all members
      */
     constructor() {
-        this.api = "http://localhost:3000";
+        this.api = 'http://localhost:3000';
         this.graphQL = this.api + '/graphql';
         this.refreshTokenInterval = 4000;
     }
@@ -695,25 +695,26 @@ class CommonService {
      * @return {?}
      */
     differences(a, b) {
-        var /** @type {?} */ result = {
+        const /** @type {?} */ result = {
             different: [],
             missing_from_first: [],
             missing_from_second: []
         };
         reduce(a, (result, value, key) => {
             if (b.hasOwnProperty(key)) {
-                if (isEqual(value, b[key]))
+                if (isEqual(value, b[key])) {
                     return result;
+                }
                 else {
-                    if (typeof (a[key]) != typeof ({}) || typeof (b[key]) != typeof ({})) {
+                    if (typeof (a[key]) !== typeof ({}) || typeof (b[key]) !== typeof ({})) {
                         result.different.push(key);
                         return result;
                     }
                     else {
-                        var /** @type {?} */ deeper = this.differences(a[key], b[key]);
-                        result.different = result.different.concat(map(deeper.different, (sub_path) => key + "." + sub_path));
-                        result.missing_from_second = result.missing_from_second.concat(map(deeper.missing_from_second, (sub_path) => key + "." + sub_path));
-                        result.missing_from_first = result.missing_from_first.concat(map(deeper.missing_from_first, (sub_path) => key + "." + sub_path));
+                        const /** @type {?} */ deeper = this.differences(a[key], b[key]);
+                        result.different = result.different.concat(map(deeper.different, (sub_path) => key + '.' + sub_path));
+                        result.missing_from_second = result.missing_from_second.concat(map(deeper.missing_from_second, (sub_path) => key + '.' + sub_path));
+                        result.missing_from_first = result.missing_from_first.concat(map(deeper.missing_from_first, (sub_path) => key + '.' + sub_path));
                         return result;
                     }
                 }
@@ -724,8 +725,9 @@ class CommonService {
             }
         }, result);
         reduce(b, function (result, value, key) {
-            if (a.hasOwnProperty(key))
+            if (a.hasOwnProperty(key)) {
                 return result;
+            }
             else {
                 result.missing_from_first.push(key);
                 return result;
@@ -758,10 +760,12 @@ class CommonService {
          */
         function flat(obj) {
             Object.keys(obj).map(key => {
-                if (typeof obj[key] === "object")
+                if (typeof obj[key] === 'object') {
                     flat(obj[key]);
-                else
+                }
+                else {
                     newObj[key] = obj[key];
+                }
             });
         }
         flat(obj);
@@ -774,9 +778,43 @@ class CommonService {
      */
     stringifyWithoutPropertiesQuote(obj) {
         return JSON.stringify(obj)
-            .replace(/\\"/g, "\uFFFF")
-            .replace(/\"([^"]+)\":/g, "$1:")
-            .replace(/\uFFFF/g, "\\\"");
+            .replace(/\\"/g, '\uFFFF')
+            .replace(/\"([^"]+)\":/g, '$1:')
+            .replace(/\uFFFF/g, '\\"');
+    }
+    /**
+     * @return {?}
+     */
+    filter() {
+        let /** @type {?} */ filterFun = (value) => value;
+        return {
+            filter: _ => filterFun,
+            update: function (search, propertiesToSearch) {
+                filterFun = (accounts) => {
+                    const /** @type {?} */ tmpAccounts = [];
+                    propertiesToSearch.map(propertyToSearch => {
+                        accounts.forEach(account => {
+                            const /** @type {?} */ accountValue = recursiveCheck(account, propertyToSearch.split('.'));
+                            if (accountValue && accountValue.toUpperCase().includes(search.toUpperCase())) {
+                                tmpAccounts.push(account);
+                            }
+                        });
+                    });
+                    return tmpAccounts.reduce(function (a, b) { if (a.indexOf(b) < 0)
+                        a.push(b); return a; }, []);
+                };
+            }
+        };
+        /**
+         * @param {?} obj
+         * @param {?} props
+         * @return {?}
+         */
+        function recursiveCheck(obj, props) {
+            if (props.length)
+                return recursiveCheck(obj[props[0]], props.slice(1, props.length));
+            return obj;
+        }
     }
 }
 CommonService.decorators = [
