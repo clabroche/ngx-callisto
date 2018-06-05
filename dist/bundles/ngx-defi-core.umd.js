@@ -420,6 +420,7 @@ var CommonService = /** @class */ (function () {
     };
     CommonService.prototype.stringifyWithoutPropertiesQuote = function (obj) {
         return JSON.stringify(obj)
+            .replace(/(\{ *"enum" *\: *")([a-z A-Z 0-9]*)" *}/gm, '$2')
             .replace(/\\"/g, '\uFFFF')
             .replace(/\"([^"]+)\":/g, '$1:')
             .replace(/\uFFFF/g, '\\"');
