@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
-import { SideBarService, Configuration } from '../../../public_api';
+import { DefiSideBarService, Configuration } from '../../../public_api';
 
 @Component({
   selector: 'app-demo',
@@ -10,7 +10,7 @@ export class DemoComponent implements OnInit {
   conf: Configuration = {};
   @ViewChild('popovertest') popovertest;
   @ViewChild('popovertestleft') popovertestleft;
-  constructor(private sideBarService: SideBarService, private renderer: Renderer2) {
+  constructor(private sideBarService: DefiSideBarService, private renderer: Renderer2) {
     sideBarService.open();
     this.conf = {
       /**

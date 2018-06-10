@@ -1,7 +1,7 @@
-<navbar></navbar>
-<sidebar [conf]='conf' img="../../../assets/img/side.png"></sidebar>
+<defi-navbar></defi-navbar>
+<defi-sidebar [conf]='conf' img="../../../assets/img/side.png"></defi-sidebar>
 <input type="text" #name="ngModel" ngModel required>
-<formErrors [model]='name' [validators]='name'></formErrors>
+<defi-form-errors [model]='name' [defi-validators]='name'></defi-form-errors>
 <div class="hey">
   e"e"Z
 </div>
@@ -17,7 +17,7 @@
    dzakdjnazjdkzandada
   <br>
   dzakdjnazjdkzandada <br>
-    <input type="password" show-password>
+    <input type="password" defi-show-password>
    dzakdjnazjdkzandada
   <br>
    dzakdjnazjdkzandada
@@ -39,12 +39,12 @@ __________________________
 
 <div style="position: relative; margin-left: 50%;">
   <div style="overflow: hidden;">
-    <popover [open]="true" placement="left">
+    <defi-popover [open]="true" placement="left">
       <div popover="content">
         Hello
       </div>
       <div class="label" for=""></div>
       <input/>
-    </popover>
+    </defi-popover>
   </div>
 </div>
