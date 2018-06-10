@@ -9,6 +9,9 @@ import { DefiNotificationsComponent } from './notifications/notifications.compon
   ],
   declarations: [
     DefiNotificationsComponent
+  ],
+  exports: [
+    DefiNotificationsComponent
   ]
 })
 export class DefiOverlayModule {

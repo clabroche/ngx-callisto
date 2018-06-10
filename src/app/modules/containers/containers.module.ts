@@ -11,6 +11,10 @@ import { DefiBoxComponent } from './box/box.component';
   declarations: [
     DefiSidePanelComponent,
     DefiBoxComponent
+  ],
+  exports: [
+    DefiSidePanelComponent,
+    DefiBoxComponent
   ]
 })
 export class DefiContainersModule {
