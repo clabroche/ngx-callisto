@@ -9,7 +9,6 @@ import { Subject as Subject$1 } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import * as erdImported from 'element-resize-detector';
 import { CommonModule } from '@angular/common';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /**
  * @fileoverview added by tsickle
@@ -1249,7 +1248,6 @@ CoreModule.decorators = [
                 ],
                 imports: [
                     CommonModule,
-                    NgbModule.forRoot(),
                 ],
                 exports: [
                     SidebarComponent,

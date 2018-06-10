@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/animations'), require('uuid'), require('rxjs'), require('bluebird'), require('lodash'), require('rxjs/Subject'), require('rxjs/operators/debounceTime'), require('element-resize-detector'), require('@angular/common'), require('@ng-bootstrap/ng-bootstrap')) :
-	typeof define === 'function' && define.amd ? define('ngx-defi-core', ['exports', '@angular/core', '@angular/animations', 'uuid', 'rxjs', 'bluebird', 'lodash', 'rxjs/Subject', 'rxjs/operators/debounceTime', 'element-resize-detector', '@angular/common', '@ng-bootstrap/ng-bootstrap'], factory) :
-	(factory((global['ngx-defi-core'] = {}),global.ng.core,global.ng.animations,global.uuid,global.rxjs,global.bluebird,global.lodash,global.Rx,global.Rx.Observable.prototype,global.erdImported,global.ng.common,global.ngBootstrap));
-}(this, (function (exports,core,animations,uuid,rxjs,bluebird,lodash,Subject,debounceTime,erdImported,common,ngBootstrap) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/animations'), require('uuid'), require('rxjs'), require('bluebird'), require('lodash'), require('rxjs/Subject'), require('rxjs/operators/debounceTime'), require('element-resize-detector'), require('@angular/common')) :
+	typeof define === 'function' && define.amd ? define('ngx-defi-core', ['exports', '@angular/core', '@angular/animations', 'uuid', 'rxjs', 'bluebird', 'lodash', 'rxjs/Subject', 'rxjs/operators/debounceTime', 'element-resize-detector', '@angular/common'], factory) :
+	(factory((global['ngx-defi-core'] = {}),global.ng.core,global.ng.animations,global.uuid,global.rxjs,global.bluebird,global.lodash,global.Rx,global.Rx.Observable.prototype,global.erdImported,global.ng.common));
+}(this, (function (exports,core,animations,uuid,rxjs,bluebird,lodash,Subject,debounceTime,erdImported,common) { 'use strict';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -712,7 +712,6 @@ CoreModule.decorators = [
                 ],
                 imports: [
                     common.CommonModule,
-                    ngBootstrap.NgbModule.forRoot(),
                 ],
                 exports: [
                     SidebarComponent,
