@@ -84,6 +84,10 @@ DefiContainersModule.decorators = [
                 declarations: [
                     DefiSidePanelComponent,
                     DefiBoxComponent
+                ],
+                exports: [
+                    DefiSidePanelComponent,
+                    DefiBoxComponent
                 ]
             },] },
 ];
@@ -777,6 +781,9 @@ DefiOverlayModule.decorators = [
                     CommonModule
                 ],
                 declarations: [
+                    DefiNotificationsComponent
+                ],
+                exports: [
                     DefiNotificationsComponent
                 ]
             },] },
