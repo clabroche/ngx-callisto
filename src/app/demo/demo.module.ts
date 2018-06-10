@@ -8,6 +8,7 @@ import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Browser } from 'protractor';
 import { BrowserModule } from '@angular/platform-browser';
+import { DefiOverlayModule } from '../modules/overlay/overlay.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { BrowserModule } from '@angular/platform-browser';
     DefiFormsModule,
     DefiNavigationsModule,
     DefiContainersModule,
+    DefiOverlayModule,
     DefiCoreModule,
     RouterModule.forChild([
       {path: '', component: DemoComponent}

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { DemoModule } from './demo/demo.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefiNavigationsModule, DefiContainersModule } from '../public_api';
+import { DefiOverlayModule } from './modules/overlay/overlay.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DefiNavigationsModule, DefiContainersModule } from '../public_api';
     DefiCoreModule.forRoot(),
     DefiNavigationsModule.forRoot(),
     DefiContainersModule.forRoot(),
+    DefiOverlayModule.forRoot(),
     FormsModule,
     BrowserModule,
     FormsModule,
