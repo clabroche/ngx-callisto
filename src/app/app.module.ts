@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DemoModule } from './demo/demo.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DefiNavigationsModule } from '../public_api';
+import { DefiNavigationsModule, DefiContainersModule } from '../public_api';
 
 @NgModule({
   declarations: [
@@ -16,6 +16,7 @@ import { DefiNavigationsModule } from '../public_api';
   imports: [
     DefiCoreModule.forRoot(),
     DefiNavigationsModule.forRoot(),
+    DefiContainersModule.forRoot(),
     FormsModule,
     BrowserModule,
     FormsModule,
