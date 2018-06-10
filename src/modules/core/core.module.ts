@@ -12,7 +12,6 @@ import { CommonService } from './providers/common.service';
 import { SideBarService } from './providers/sidebar.service';
 import { SidePanelService } from './providers/sidepanel.service';
 import { NotificationsService } from './providers/notifications.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DebounceInputDirective } from './directives/debounceInput.directive';
 import { SpinningIconDirective } from './directives/spinningIcon.directive';
 import { ClickStopPropagation } from './directives/stopPropagation.directive';
@@ -40,7 +39,6 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
   ],
   imports: [
     CommonModule,
-    NgbModule.forRoot(),
     // NoopAnimationsModule,
   ],
   exports: [

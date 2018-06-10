@@ -22,11 +22,11 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     specReporter: {
-      suppressFailed: false,      // do not print information about failed tests
-      suppressPassed: false,      // do not print information about passed tests
-      suppressSkipped: true,      // do not print information about skipped tests
-      showSpecTiming: true,      // print the time elapsed for each spec
-      failFast: false              // test would finish with error when a first fail occurs. 
+      suppressFailed: false, // do not print information about failed tests
+      suppressPassed: false, // do not print information about passed tests
+      suppressSkipped: true, // do not print information about skipped tests
+      showSpecTiming: true, // print the time elapsed for each spec
+      failFast: false // test would finish with error when a first fail occurs.
     },
     coverageIstanbulReporter: {
       reports: ['html', 'lcovonly'],
