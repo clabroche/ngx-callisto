@@ -1,9 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DemoComponent } from './demo.component';
-import { CoreModule, SideBarService, SidePanelService } from '../../../public_api';
+import { DefiCoreModule, DefiSideBarService, DefiSidePanelService, DefiFormsModule, DefiCommonService, DefiNotificationsService, DefiNavigationsModule} from '../../../public_api';
 import { DemoModule } from '../demo.module';
-import { CommonService, NotificationsService } from '../../../public_api';
 import { PopupService } from '@ng-bootstrap/ng-bootstrap/util/popup';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,8 +20,10 @@ describe('DemoComponent', () => {
       imports: [
         ReactiveFormsModule,
         FormsModule,
+        DefiFormsModule,
+        DefiNavigationsModule.forRoot(),
         BrowserAnimationsModule,
-        CoreModule.forRoot(),
+        DefiCoreModule.forRoot(),
         RouterModule.forRoot([
           { path: '', component: DemoComponent }
         ])

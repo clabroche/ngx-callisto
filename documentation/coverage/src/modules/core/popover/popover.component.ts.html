@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.17% </span>
+        <span class="strong">95.83% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>13/24</span>
+        <span class='fraction'>23/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">52.38% </span>
+        <span class="strong">95.24% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>11/21</span>
+        <span class='fraction'>20/21</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -143,35 +143,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -215,29 +215,29 @@ export class PopoverComponent implements AfterContentInit, OnChanges {
    */
   @Input('placement') placement = 'right';
   @ViewChild('popupContainer') popupContainer: ElementRef;
-<span class="cstat-no" title="statement not covered" >  positionClass = 'popover-right';</span>
+  positionClass = 'popover-right';
   resizeDetector;
-<span class="fstat-no" title="function not covered" >  constructor(private <span class="cstat-no" title="statement not covered" ></span>renderer: Renderer2)</span> {
-<span class="cstat-no" title="statement not covered" >    this.resizeDetector = erd({</span>
+  constructor(private renderer: Renderer2) {
+    this.resizeDetector = erd({
       strategy: 'scroll' // &lt;- For ultra performance.
     });
   }
   // /**
   //  * Track changes on input open to reflect status on private keys
   //  */
-<span class="fstat-no" title="function not covered" >  loadState(</span>open) {
-<span class="cstat-no" title="statement not covered" >    open ?</span>
+  loadState(open) {
+    open ?
       this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'visible') :
-      this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'hidden');
+<span class="branch-1 cbranch-no" title="branch not covered" >      this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'hidden');</span>
   }
-<span class="fstat-no" title="function not covered" >  ngOnChanges(</span>changes: { [propName: string]: SimpleChange }) {
-<span class="cstat-no" title="statement not covered" >    this.loadState(changes['open'].currentValue);</span>
+  ngOnChanges(changes: { [propName: string]: SimpleChange }) {
+    this.loadState(changes['open'].currentValue);
   }
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  ngAfterContentInit(): void {</span></span>
-<span class="cstat-no" title="statement not covered" >    this.resizeDetector.listenTo(this.popupContainer.nativeElement, <span class="fstat-no" title="function not covered" >(</span>element) =&gt; {</span>
-      const width = <span class="cstat-no" title="statement not covered" >element.offsetWidth;</span>
-      const height = <span class="cstat-no" title="statement not covered" >element.offsetHeight;</span>
-<span class="cstat-no" title="statement not covered" >      if (this.placement === 'top' || this.placement === 'bottom') {</span>
+  ngAfterContentInit(): void {
+    this.resizeDetector.listenTo(this.popupContainer.nativeElement, (element) =&gt; {
+      const width = element.offsetWidth;
+      const height = element.offsetHeight;
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (this.placement === 'top' || this.placement === 'bottom') {
 <span class="cstat-no" title="statement not covered" >        this.renderer.setStyle(this.popupContainer.nativeElement, 'left', '-' + width / 2 + 'px');</span>
       }
     });
@@ -250,7 +250,7 @@ export class PopoverComponent implements AfterContentInit, OnChanges {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jun 05 2018 09:29:49 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jun 10 2018 11:30:50 GMT+0200 (CEST)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

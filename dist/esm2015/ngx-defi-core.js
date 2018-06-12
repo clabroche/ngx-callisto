@@ -1,15 +1,14 @@
-import { Component, Input, Injectable, Renderer2, ViewChildren, Directive, EventEmitter, HostListener, Output, ElementRef, Pipe, ViewChild, NgModule } from '@angular/core';
+import { Component, Input, Injectable, NgModule, Directive, Renderer2, ElementRef, HostListener, Pipe, ViewChild, EventEmitter, Output, ViewChildren } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { reduce, isEqual, map } from 'lodash';
+import * as erdImported from 'element-resize-detector';
+import { Subject } from 'rxjs/Subject';
+import { debounceTime } from 'rxjs/operators/debounceTime';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { v4 } from 'uuid';
-import { Subject } from 'rxjs';
+import { Subject as Subject$1 } from 'rxjs';
 import { __awaiter } from 'tslib';
 import { each, filter } from 'bluebird';
-import { reduce, isEqual, map } from 'lodash';
-import { Subject as Subject$1 } from 'rxjs/Subject';
-import { debounceTime } from 'rxjs/operators/debounceTime';
-import * as erdImported from 'element-resize-detector';
-import { CommonModule } from '@angular/common';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /**
  * @fileoverview added by tsickle
@@ -22,11 +21,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
  *  |  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
  *  </box>
  */
-class BoxComponent {
+class DefiBoxComponent {
 }
-BoxComponent.decorators = [
+DefiBoxComponent.decorators = [
     { type: Component, args: [{
-                selector: "box",
+                selector: "defi-box",
                 template: `<div id="box">
     <div id="box-title">
         {{title}}
@@ -40,525 +39,8 @@ BoxComponent.decorators = [
             },] },
 ];
 /** @nocollapse */
-BoxComponent.propDecorators = {
+DefiBoxComponent.propDecorators = {
     "title": [{ type: Input },],
-};
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * Control the sidebar outside the component
- */
-class SideBarService {
-    constructor() {
-        /**
-         * Component watch this variable to open/close the sidebar
-         */
-        this._open = false;
-    }
-    /**
-     * Open sidebar
-     * @return {?}
-     */
-    open() {
-        this._open = true;
-    }
-    /**
-     * Close sidebar
-     * @return {?}
-     */
-    close() {
-        this._open = false;
-    }
-    /**
-     * Toggle sidebar
-     * @return {?}
-     */
-    toggle() {
-        this._open = !this._open;
-    }
-}
-SideBarService.decorators = [
-    { type: Injectable },
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * Item present in sidebar
- * @record
- */
-
-/**
- * Configuration object of the sidebar
- * @record
- */
-
-/**
- * Display Sidebar on the app component
- * \@example
- * const conf: Configuration = {
- * | list: [{
- * | | icon: "fa fa-home",
- * | | description: "Accueil",
- * | | click: ["/home"]
- * | }],
- * | bottom: [{
- * | | icon: "fa fa-cog",
- * | | description: "Settings",
- * | | click: ["/settings"]
- * | }]
- * };
- * <div style="display:flex">
- * | <sidebar [conf]="conf" (router)='click($event)'></sidebar>
- * | <div>I want to go to {{route()}}</div>
- * </div>
- */
-class SidebarComponent {
-    /**
-     * import dependencies
-     * @param {?} sidebar
-     */
-    constructor(sidebar) {
-        this.sidebar = sidebar;
-        /**
-         * control css class that open/close sidebar: openHint/closeHint
-         */
-        this.hintState = 'close';
-        /**
-         * Get the configuration from outside
-         */
-        this.conf = { list: [], bottom: [] };
-    }
-    /**
-     * Go to Home route
-     * @param {?} data
-     * @return {?}
-     */
-    goTo(data) {
-        data.click();
-    }
-    /**
-     * @param {?} data
-     * @return {?}
-     */
-    newWindow(data) {
-        if (data.externalUrl) {
-            window.open(data.externalUrl);
-        }
-    }
-    /**
-     * Toggle sidebar
-     * @return {?}
-     */
-    toggleSidebar() {
-        this.sidebar.toggle();
-    }
-    /**
-     * Toggle hint beside links icons on hover
-     * @param {?} $event
-     * @return {?}
-     */
-    toggleHint($event) {
-        this.hintState =
-            $event.type === 'mouseover' && !this.sidebar._open
-                ? 'open'
-                : 'close';
-    }
-}
-SidebarComponent.decorators = [
-    { type: Component, args: [{
-                // tslint:disable-next-line:component-selector
-                selector: 'sidebar',
-                template: `<div class="openSidebar" 
-    [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}"
-    [ngStyle]="{'background-image': url ? 'url(img)' : ''}"
-    id="sidebar">
-    <div class="list">
-        <div *ngFor='let item of conf.list'>
-            <ng-container *ngTemplateOutlet="linkTemplate;context:{$implicit:item}"></ng-container>  
-        </div>
-    </div>
-    <div class="bottomList">
-        <div *ngFor='let item of conf.bottom'>
-            <ng-container *ngTemplateOutlet="linkTemplate;context:{$implicit:item}"></ng-container>
-        </div>
-        <div id="toggleSidebar" class="item" (click)="toggleSidebar();" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}">
-            <div class="icon" >
-                <i class="fa fa-arrow-right"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-<ng-template #linkTemplate let-item>
-    <div id="{{item.id}}" class="item" (click)="goTo(item)" (auxclick)="newWindow(item)" (mouseover)="toggleHint($event)" (mouseleave)="toggleHint($event)">
-        <div class="icon">
-            <i class="{{item.icon}}"></i>
-        </div>
-        <div class="description" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}">
-            {{item.description}}
-        </div>
-        <div id="hint-{{item.id}}" class="hintContainer"  [@hintState]="hintState">
-            <div class="hint">{{item.description}}</div>
-        </div>
-    </div>
-</ng-template>
-`,
-                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}@-webkit-keyframes openSidebar{0%{width:40px}to{width:175px}}@keyframes openSidebar{0%{width:40px}to{width:175px}}@-webkit-keyframes closeSidebar{0%{width:175px}to{width:40px}}@keyframes closeSidebar{0%{width:175px}to{width:40px}}@-webkit-keyframes openSidebarDescription{0%{width:0}to{width:40px}}@keyframes openSidebarDescription{0%{width:0}to{width:40px}}@-webkit-keyframes closeSidebarDescription{0%{width:40px}to{width:0}}@keyframes closeSidebarDescription{0%{width:40px}to{width:0}}@-webkit-keyframes openSidebarIcon{0%{-webkit-transform:scale(1);transform:scale(1)}to{-webkit-transform:scale(-1);transform:scale(-1)}}@keyframes openSidebarIcon{0%{-webkit-transform:scale(1);transform:scale(1)}to{-webkit-transform:scale(-1);transform:scale(-1)}}@-webkit-keyframes closeSidebarIcon{0%{-webkit-transform:scale(-1);transform:scale(-1)}to{-webkit-transform:scale(1);transform:scale(1)}}@keyframes closeSidebarIcon{0%{-webkit-transform:scale(-1);transform:scale(-1)}to{-webkit-transform:scale(1);transform:scale(1)}}#sidebar{color:#fff;height:100%;overflow-x:hidden;width:40px;background-color:#343a40;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;background-size:auto 100%}#sidebar.openSidebar{-webkit-animation-name:openSidebar;animation-name:openSidebar;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar.closeSidebar{-webkit-animation-name:closeSidebar;animation-name:closeSidebar;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList,#sidebar .list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;width:100%}#sidebar .bottomList.list,#sidebar .list.list{height:100%}#sidebar .bottomList .item,#sidebar .list .item{-webkit-box-shadow:none;box-shadow:none;-webkit-box-pack:left;-ms-flex-pack:left;justify-content:left;margin:0;border:none;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer;padding-bottom:15px;padding-top:15px}#sidebar .bottomList .item:hover,#sidebar .list .item:hover{background-color:rgba(0,0,0,.5)}#sidebar .bottomList .item .hintContainer,#sidebar .list .item .hintContainer{position:absolute;overflow:hidden;left:40px;max-width:0;background-color:#1d2124;z-index:3}#sidebar .bottomList .item .hintContainer .hint,#sidebar .list .item .hintContainer .hint{color:#fff;padding:10px}#sidebar .bottomList .item .icon,#sidebar .list .item .icon{width:40px;text-align:center;font-size:1.5em}#sidebar .bottomList .item .description.openSidebar,#sidebar .list .item .description.openSidebar{-webkit-animation-name:openSidebarDescription;animation-name:openSidebarDescription;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList .item .description.closeSidebar,#sidebar .list .item .description.closeSidebar{-webkit-animation-name:closeSidebarDescription;animation-name:closeSidebarDescription;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList #toggleSidebar,#sidebar .list #toggleSidebar{background-color:rgba(0,0,0,.5)}#sidebar .bottomList #toggleSidebar .icon,#sidebar .list #toggleSidebar .icon{font-size:1em}#sidebar .bottomList #toggleSidebar.openSidebar,#sidebar .list #toggleSidebar.openSidebar{-webkit-animation-name:openSidebarIcon;animation-name:openSidebarIcon;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList #toggleSidebar.closeSidebar,#sidebar .list #toggleSidebar.closeSidebar{-webkit-animation-name:closeSidebarIcon;animation-name:closeSidebarIcon;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}`],
-                animations: [
-                    trigger('hintState', [
-                        state('open', style({
-                            'max-width': '200px'
-                        })),
-                        state('close', style({
-                            'max-width': '0'
-                        })),
-                        transition('open => close', animate('100ms ease-in')),
-                        transition('close => open', animate('100ms ease-out'))
-                    ])
-                ]
-            },] },
-];
-/** @nocollapse */
-SidebarComponent.ctorParameters = () => [
-    { type: SideBarService, },
-];
-SidebarComponent.propDecorators = {
-    "conf": [{ type: Input, args: ['conf',] },],
-    "img": [{ type: Input, args: ['img',] },],
-};
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * Navbar Component
- *
- * ng-content:
- *  - [logo] element on the left
- *  - [actions] element on the right
- * \@example
- *  <navbar name="Hygisoft Web">
- * |  <div logo>
- * |  |  <img src="assets/img/logo.png" alt="">
- * |  </div>
- * |  <div actions>
- * |  |  <div class="icon">
- * |  |  | <i class="fa fa-user"></i>
- * |  |  </div>
- * |  </div>
- * </navbar>
- */
-class NavbarComponent {
-    /**
-     * Load dependencies instances
-     */
-    constructor() {
-        /**
-         * Name displaying on left after icon
-         */
-        this.name = '';
-    }
-}
-NavbarComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'navbar',
-                template: `<div id="navbar" [ngStyle]="{'background-image': url ? 'url(img)' : ''}">
-  <div id="leftRight">
-    <div id="left">
-      <div id="logoContainer">
-        <ng-content select="[logo]"></ng-content>
-      </div>
-      <div id="description">
-        {{name}}
-      </div>
-    </div>
-
-    <div id="right">
-      <div id="actions">
-        <ng-content selector="[action]"></ng-content>
-      </div>
-    </div>
-  </div>
-</div>`,
-                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}#navbar{height:40px;background-color:#343a40;color:#fff;max-height:40px;background-size:100%}#navbar #leftRight{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%}#navbar #leftRight #left{height:100%;padding-left:5px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #left #logoContainer{height:80%}#navbar #leftRight #left #logoContainer ::ng-deep [logo]{height:100%;border-radius:100%;overflow:hidden}#navbar #leftRight #left #logoContainer ::ng-deep [logo] img{height:100%}#navbar #leftRight #left #description{margin-left:10px;color:#fff;font-size:1.2em}#navbar #leftRight #right{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%;margin-right:10px}#navbar #leftRight #right #actions{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #right #actions ::ng-deep .icon{font-size:1.7em}`]
-            },] },
-];
-/** @nocollapse */
-NavbarComponent.ctorParameters = () => [];
-NavbarComponent.propDecorators = {
-    "name": [{ type: Input, args: ['name',] },],
-    "img": [{ type: Input, args: ['img',] },],
-};
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * Encapsule an input and all validators attached
- * \@example
- *
- *  <form (submit)="" [formGroup]="form">
- * | <input type="text" [formControlName]="'email'" placeholder="Email">
- * | <formErrors [model]="form.controls['email']"></formErrors>
- * </form>
- */
-class FormErrorsComponent {
-}
-FormErrorsComponent.decorators = [
-    { type: Component, args: [{
-                selector: "formErrors",
-                template: `<!-- {{model.errors | json}} -->
-
-<ul *ngIf="model && model.errors">
-    <li *ngIf="model.errors.pattern" class="hint">
-         <ng-container *ngIf="patternName; else notPatternName">
-            {{patternName}}
-        </ng-container>
-        <ng-template #notPatternName>
-            Pattern: {{model.errors.pattern.requiredPattern}}
-        </ng-template>
-    </li>
-    <li *ngIf="model.errors.required" class="hint">
-        Obligatoire
-    </li>
-    <li *ngIf="model.errors.minlength" class="hint">
-        Contient au moins {{model.errors.minlength.requiredLength}} caractères
-    </li>
-    <li *ngIf="model.errors.maxlength" class="hint">
-        Contient au plus {{model.errors.maxlength.requiredLength}} caractères
-    </li>
-    <li *ngIf="model.errors.recheckPassphrase" class="hint">
-        Doit correspondre à la phrase de passe
-    </li>
-    <li *ngIf="model.errors.email" class="hint">
-        Doit être un email
-    </li>
-</ul>
-`,
-                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}:host{display:inline-block;font-size:.7em;width:100%;min-height:.7em;top:-2px;line-height:0;text-align:right;color:#dc3545}`]
-            },] },
-];
-/** @nocollapse */
-FormErrorsComponent.propDecorators = {
-    "model": [{ type: Input, args: ['model',] },],
-    "patternName": [{ type: Input, args: ['patternName',] },],
-};
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * Describe a notification
- * @record
- */
-
-/**
- * Control the sidebar outside the component
- */
-class NotificationsService {
-    /**
-     * Fetch delay from localStorage
-     */
-    constructor() {
-        /**
-         * Component watch this variable to open/close the sidebar
-         */
-        this.notifications = [];
-        /**
-         * Emit event that contains complete notification on add
-         */
-        this.addEvent = new Subject();
-        /**
-         * Emit event that contains id on remove
-         */
-        this.removeEvent = new Subject();
-        let /** @type {?} */ notificationsDelay = +localStorage.getItem("notificationsDelay");
-        if (notificationsDelay < 500) {
-            notificationsDelay = 6000;
-            localStorage.setItem("notificationsDelay", "6000");
-        }
-    }
-    /**
-     * Open sidebar
-     * @param {?} title
-     * @param {?} msg
-     * @return {?}
-     */
-    add(title, msg) {
-        const /** @type {?} */ notif = {
-            id: v4(),
-            title: title || "",
-            msg: msg || ""
-        };
-        this.addEvent.next(notif);
-        notif.timeout = this.defaultTimeout(notif);
-        this.notifications.push(notif);
-        return notif;
-    }
-    /**
-     * Time to display notification on screen. (Localstorage key: notificationsDelay)
-     * @param {?} notif
-     * @return {?}
-     */
-    defaultTimeout(notif) {
-        return setTimeout(() => {
-            this.delete(notif.id);
-        }, +localStorage.getItem("notificationsDelay"));
-    }
-    /**
-     * update notification from id
-     * @param {?} id
-     * @param {?} _notif
-     * @return {?}
-     */
-    updateNotif(id, _notif) {
-        this.notifications.map(notif => {
-            if (notif.id === id) {
-                if (_notif.msg)
-                    notif.msg = _notif.msg;
-                if (_notif.title)
-                    notif.title = _notif.title;
-                clearTimeout(notif.timeout);
-                notif.timeout = this.defaultTimeout(notif);
-            }
-        });
-    }
-    /**
-     * delete a notification
-     * @param {?} id
-     * @return {?}
-     */
-    delete(id) {
-        this.removeEvent.next(id);
-        this.notifications = this.notifications.filter(notif => notif.id !== id);
-    }
-    /**
-     * Delete all notifications
-     * @return {?}
-     */
-    deleteAll() {
-        this.notifications.map(notif => this.delete(notif.id));
-    }
-}
-NotificationsService.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-NotificationsService.ctorParameters = () => [];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * Display an mini-popup
- * \@example
- * const ns= new NotificationsService()
- * const getFirstNotifId = _=>ns.notifications[0].id
- * const random=_=>Math.random()
- *
- * <button (click)="ns.add('add','test')">Add notif</button>
- * <button (click)="ns.delete(getFirstNotifId())">delete notif</button>
- * <button (click)="ns.deleteAll()">delete all notif</button>
- * <button (click)="ns.updateNotif(getFirstNotifId(),{title:random(),msg: random()})">Update notif</button>
- * <notifications></notifications>
- */
-class NotificationsComponent {
-    /**
-     * Load dependencies instances
-     * @param {?} ns
-     * @param {?} renderer2
-     */
-    constructor(ns, renderer2) {
-        this.ns = ns;
-        this.renderer2 = renderer2;
-        this._notifications = [];
-        this.ns.addEvent.subscribe(data => this._notifications.push(data));
-        this.ns.removeEvent.subscribe((id) => this.deleteNotif(id));
-    }
-    /**
-     * launch css animations and delete notification from id
-     * @param {?} id
-     * @return {?}
-     */
-    deleteNotif(id) {
-        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-            const /** @type {?} */ htmlNotif = yield this.getHtmlNotif(id);
-            if (!htmlNotif)
-                return;
-            this.renderer2.addClass(htmlNotif, "deleteNotif");
-            setTimeout(() => {
-                this._notifications = this._notifications.filter(notif => notif.id !== id);
-                resolve();
-            }, 500);
-        }));
-    }
-    /**
-     * delete All notifications
-     * @return {?}
-     */
-    deleteAll() {
-        return each(this.htmlNotifications, htmlNotif => {
-            this.deleteNotif(htmlNotif.nativeElement.id);
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve();
-                }, 50);
-            });
-        });
-    }
-    /**
-     * Get HTML ref of the concern id
-     * @param {?} id
-     * @return {?}
-     */
-    getHtmlNotif(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let /** @type {?} */ htmlNotif = yield filter(this.htmlNotifications, htmlNotif => htmlNotif.nativeElement.id === id);
-            if (htmlNotif.length)
-                return htmlNotif.pop().nativeElement;
-        });
-    }
-}
-NotificationsComponent.decorators = [
-    { type: Component, args: [{
-                selector: "notifications",
-                template: `<div id="notifications">
-    <div id="closeAll" *ngIf='_notifications.length' (click)="deleteAll()">
-        <i class="fa fa-trash" aria-hidden="true"></i>
-    </div>
-    <div class="notifsWrapper">
-        <div class="notifWrapper" (click)="ns.delete(notif.id)" #notifModel *ngFor="let notif of _notifications" [id]="notif.id">
-            <div class="notifContainer">
-                <div class="title">
-                    {{notif.title}}
-                </div>
-                <div class="msg">
-                    {{notif.msg}}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>`,
-                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}@-webkit-keyframes openNotif{0%{max-height:0}to{max-height:400px}}@keyframes openNotif{0%{max-height:0}to{max-height:400px}}@-webkit-keyframes closeNotif{0%{max-height:400px}to{max-height:0}}@keyframes closeNotif{0%{max-height:400px}to{max-height:0}}#notifications{z-index:100000;position:fixed;bottom:20px;right:20px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}#notifications #closeAll{text-align:right}#notifications #closeAll i{font-size:1.7em;background-color:#343a40;color:#fff;padding:10px;-webkit-box-shadow:0 0 10px grey;box-shadow:0 0 10px grey}#notifications .notifWrapper{-webkit-animation-name:openNotif;animation-name:openNotif;-webkit-animation-duration:.4s;animation-duration:.4s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;overflow-y:hidden;-webkit-box-shadow:0 0 10px grey;box-shadow:0 0 10px grey;margin-top:10px;background-color:#343a40;color:#fff}#notifications .notifWrapper.deleteNotif{-webkit-animation-name:closeNotif;animation-name:closeNotif;-webkit-animation-duration:.4s;animation-duration:.4s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#notifications .notifWrapper .notifContainer{padding:10px;width:400px}#notifications .notifWrapper .notifContainer .title{width:100%;border-bottom:1px solid #fff}#notifications .notifWrapper .notifContainer .msg{width:100%;padding-top:10px}`]
-            },] },
-];
-/** @nocollapse */
-NotificationsComponent.ctorParameters = () => [
-    { type: NotificationsService, },
-    { type: Renderer2, },
-];
-NotificationsComponent.propDecorators = {
-    "htmlNotifications": [{ type: ViewChildren, args: ['notifModel',] },],
 };
 
 /**
@@ -568,7 +50,7 @@ NotificationsComponent.propDecorators = {
 /**
  * Control the sidePanel outside the component
  */
-class SidePanelService {
+class DefiSidePanelService {
     constructor() {
         /**
          * Component watch this variable to open/close the sidePanel
@@ -603,7 +85,7 @@ class SidePanelService {
         this._open = !this._open;
     }
 }
-SidePanelService.decorators = [
+DefiSidePanelService.decorators = [
     { type: Injectable },
 ];
 
@@ -629,7 +111,7 @@ SidePanelService.decorators = [
  * </div>
  * <ng-template #template let-value="value"> Hey {{value}} !</ng-template>
  */
-class SidePanelComponent {
+class DefiSidePanelComponent {
     /**
      * Load dependencies
      * @param {?} sidepanel
@@ -638,9 +120,9 @@ class SidePanelComponent {
         this.sidepanel = sidepanel;
     }
 }
-SidePanelComponent.decorators = [
+DefiSidePanelComponent.decorators = [
     { type: Component, args: [{
-                selector: "sidePanel",
+                selector: "defi-side-panel",
                 template: `<div id="sidePanelClose" [ngClass]="{'openSidePanel':sidepanel._open, 'closeSidePanel':!sidepanel._open}" (click)="sidepanel._open=false">
     <i class='fa fa-chevron-right'></i>
     <div id="sidePanelContainer" click-stop-propagation>
@@ -652,8 +134,41 @@ SidePanelComponent.decorators = [
             },] },
 ];
 /** @nocollapse */
-SidePanelComponent.ctorParameters = () => [
-    { type: SidePanelService, },
+DefiSidePanelComponent.ctorParameters = () => [
+    { type: DefiSidePanelService, },
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+class DefiContainersModule {
+    /**
+     * @return {?}
+     */
+    static forRoot() {
+        return {
+            ngModule: DefiContainersModule,
+            providers: [
+                DefiSidePanelService,
+            ]
+        };
+    }
+}
+DefiContainersModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [
+                    CommonModule
+                ],
+                declarations: [
+                    DefiSidePanelComponent,
+                    DefiBoxComponent
+                ],
+                exports: [
+                    DefiSidePanelComponent,
+                    DefiBoxComponent
+                ]
+            },] },
 ];
 
 /**
@@ -668,7 +183,7 @@ SidePanelComponent.ctorParameters = () => [
 /**
  * Share variable and function commonly use in the app
  */
-class CommonService {
+class DefiCommonService {
     /**
      * Instanciate all members
      */
@@ -818,86 +333,11 @@ class CommonService {
         }
     }
 }
-CommonService.decorators = [
+DefiCommonService.decorators = [
     { type: Injectable },
 ];
 /** @nocollapse */
-CommonService.ctorParameters = () => [];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * Directive that debounce an element that supports keyListener
- * \@example
- * <input type="text" debounce-input (debounce)="doSomething($event.target.value)" [debounceTime]="200" />
- */
-class DebounceInputDirective {
-    constructor() {
-        /**
-         * Describe the debounce time; Default: 500ms
-         */
-        this.debounceTime = 500;
-        /**
-         * Emit and call function after the debounce time
-         */
-        this.debounce = new EventEmitter();
-        /**
-         * Observable that register the flow
-         */
-        this.subject = new Subject$1();
-    }
-    /**
-     * Register observable pipe that describe the flow of the debounce directive
-     * @return {?}
-     */
-    ngOnInit() {
-        this.createSubsription();
-    }
-    /**
-     * @return {?}
-     */
-    createSubsription() {
-        this.subscription = this.subject.pipe(debounceTime(this.debounceTime)).subscribe(e => this.debounce.emit(e));
-    }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    ngOnChanges(changes) {
-        if (changes["debounceTime"] && this.subject.observers[0])
-            this.subject.observers[0]['dueTime'] = changes["debounceTime"].currentValue;
-    }
-    /**
-     * Unregister observable on the component destruct
-     * @return {?}
-     */
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
-    /**
-     * Trigger keyup event and inject it to the pipe of the debounce
-     * @param {?} event
-     * @return {?}
-     */
-    keyupEvent(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.subject.next(event);
-    }
-}
-DebounceInputDirective.decorators = [
-    { type: Directive, args: [{
-                selector: '[debounce-input]'
-            },] },
-];
-/** @nocollapse */
-DebounceInputDirective.propDecorators = {
-    "debounceTime": [{ type: Input },],
-    "debounce": [{ type: Output },],
-    "keyupEvent": [{ type: HostListener, args: ['keyup', ['$event'],] },],
-};
+DefiCommonService.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
@@ -912,7 +352,7 @@ DebounceInputDirective.propDecorators = {
  * </button>
  * <button (click)="icon.stop()">Click to stop</button>
  */
-class SpinningIconDirective {
+class DefiSpinningIconDirective {
     /**
      * Load some dependencies
      * @param {?} renderer
@@ -938,14 +378,14 @@ class SpinningIconDirective {
         this.renderer.removeClass(this.hostElement.nativeElement, 'fa-spinner');
     }
 }
-SpinningIconDirective.decorators = [
+DefiSpinningIconDirective.decorators = [
     { type: Directive, args: [{
-                selector: "[spinning-icon]",
+                selector: "[defi-spinning-icon]",
                 exportAs: 'spinning'
             },] },
 ];
 /** @nocollapse */
-SpinningIconDirective.ctorParameters = () => [
+DefiSpinningIconDirective.ctorParameters = () => [
     { type: Renderer2, },
     { type: ElementRef, },
 ];
@@ -961,7 +401,7 @@ SpinningIconDirective.ctorParameters = () => [
  *  | <div click-stop-propagation></div>
  *  </div>
  */
-class ClickStopPropagation {
+class DefiClickStopPropagation {
     /**
      * Trigger click event to stop propagation
      * @param {?} event
@@ -971,13 +411,13 @@ class ClickStopPropagation {
         event.stopPropagation();
     }
 }
-ClickStopPropagation.decorators = [
+DefiClickStopPropagation.decorators = [
     { type: Directive, args: [{
-                selector: "[click-stop-propagation]"
+                selector: "[defi-click-stop-propagation]"
             },] },
 ];
 /** @nocollapse */
-ClickStopPropagation.propDecorators = {
+DefiClickStopPropagation.propDecorators = {
     "onClick": [{ type: HostListener, args: ["click", ["$event"],] },],
 };
 
@@ -986,132 +426,9 @@ ClickStopPropagation.propDecorators = {
  * @suppress {checkTypes} checked by tsc
  */
 /**
- * Load differents directive with an array of key value
- * \@example
- * <input type="text" [formControlName]="'hello'" [validators]="form.controls['hello']"/>
- */
-class ValidatorsDirective {
-    /**
-     * Load some dependencies
-     * @param {?} renderer
-     * @param {?} hostElement
-     */
-    constructor(renderer, hostElement) {
-        this.renderer = renderer;
-        this.hostElement = hostElement;
-    }
-    /**
-     * Launch validator check for the first time init
-     * @return {?}
-     */
-    ngAfterViewChecked() {
-        this.onInputChange();
-    }
-    /**
-     * Change appearance of input with goodInput/badInout class
-     * @return {?}
-     */
-    onInputChange() {
-        if (this.validators.valid) {
-            this.renderer.addClass(this.hostElement.nativeElement, 'goodInput');
-            this.renderer.removeClass(this.hostElement.nativeElement, 'badInput');
-        }
-        else {
-            this.renderer.addClass(this.hostElement.nativeElement, 'badInput');
-            this.renderer.removeClass(this.hostElement.nativeElement, 'goodInput');
-        }
-    }
-}
-ValidatorsDirective.decorators = [
-    { type: Directive, args: [{
-                selector: '[validators]',
-                host: {
-                    "(input)": 'onInputChange($event)'
-                }
-            },] },
-];
-/** @nocollapse */
-ValidatorsDirective.ctorParameters = () => [
-    { type: Renderer2, },
-    { type: ElementRef, },
-];
-ValidatorsDirective.propDecorators = {
-    "validators": [{ type: Input },],
-};
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * Load differents directive with an array of key value
- * \@example
- * <input type="text" [formControlName]="'hello'" [validators]="form.controls['hello']"/>
- */
-class ShowPasswordDirective {
-    /**
-     * Load some dependencies
-     * @param {?} renderer
-     * @param {?} hostElement
-     */
-    constructor(renderer, hostElement) {
-        this.renderer = renderer;
-        this.hostElement = hostElement;
-    }
-    /**
-     * @return {?}
-     */
-    ngOnInit() {
-        const /** @type {?} */ container = this.renderer.createElement('div');
-        this.renderer.setStyle(container, 'position', 'relative');
-        const /** @type {?} */ div = this.renderer.createElement('i');
-        this.renderer.addClass(div, 'fa');
-        this.renderer.addClass(div, 'fa-eye-slash');
-        this.renderer.addClass(div, 'toggle-eye');
-        this.renderer.setStyle(div, 'position', 'absolute');
-        this.renderer.setStyle(div, 'top', 0);
-        this.renderer.setStyle(div, 'right', 0);
-        this.renderer.setStyle(div, 'display', 'inherit');
-        this.renderer.setStyle(div, 'cursor', 'pointer');
-        this.renderer.listen(div, 'click', event => {
-            const /** @type {?} */ input = this.hostElement.nativeElement;
-            if (input.type === 'password') {
-                input.type = 'text';
-                this.renderer.addClass(div, 'fa-eye');
-                this.renderer.removeClass(div, 'fa-eye-slash');
-            }
-            else {
-                input.type = 'password';
-                this.renderer.removeClass(div, 'fa-eye');
-                this.renderer.addClass(div, 'fa-eye-slash');
-            }
-        });
-        const /** @type {?} */ parent = this.hostElement.nativeElement.parentNode;
-        this.renderer.insertBefore(parent, container, this.renderer.nextSibling(this.hostElement.nativeElement));
-        this.renderer.appendChild(container, this.hostElement.nativeElement);
-        this.renderer.appendChild(container, div);
-        // this.renderer.removeChild(parent,this.hostElement.nativeElement)
-    }
-}
-ShowPasswordDirective.decorators = [
-    { type: Directive, args: [{
-                selector: '[show-password]',
-            },] },
-];
-/** @nocollapse */
-ShowPasswordDirective.ctorParameters = () => [
-    { type: Renderer2, },
-    { type: ElementRef, },
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
  * Transform string to be a valid HtmlID
  */
-class ToId {
+class DefiToId {
     /**
      * Transform function
      * It remove special characters
@@ -1122,8 +439,8 @@ class ToId {
         return value.split(' ').join('').replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
     }
 }
-ToId.decorators = [
-    { type: Pipe, args: [{ name: 'toId', pure: true },] },
+DefiToId.decorators = [
+    { type: Pipe, args: [{ name: 'defi-toId', pure: true },] },
 ];
 
 /**
@@ -1139,7 +456,7 @@ const erd = erdImported;
  * |  <div popover="content">Hey to you! I'm on your right!</div>
  * </popover>
  */
-class PopoverComponent {
+class DefiPopoverComponent {
     /**
      * @param {?} renderer
      */
@@ -1188,9 +505,9 @@ class PopoverComponent {
         });
     }
 }
-PopoverComponent.decorators = [
+DefiPopoverComponent.decorators = [
     { type: Component, args: [{
-                selector: 'popover',
+                selector: 'defi-popover',
                 template: `<div class="defi-popover">
     <div class="defi-popover-container {{placement}}" #popupContainer>
         <ng-content select="[popover=content]"></ng-content>
@@ -1201,10 +518,10 @@ PopoverComponent.decorators = [
             },] },
 ];
 /** @nocollapse */
-PopoverComponent.ctorParameters = () => [
+DefiPopoverComponent.ctorParameters = () => [
     { type: Renderer2, },
 ];
-PopoverComponent.propDecorators = {
+DefiPopoverComponent.propDecorators = {
     "open": [{ type: Input, args: ['open',] },],
     "placement": [{ type: Input, args: ['placement',] },],
     "popupContainer": [{ type: ViewChild, args: ['popupContainer',] },],
@@ -1214,56 +531,313 @@ PopoverComponent.propDecorators = {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-class CoreModule {
+class DefiCoreModule {
     /**
      * @return {?}
      */
     static forRoot() {
         return {
-            ngModule: CoreModule,
+            ngModule: DefiCoreModule,
             providers: [
-                CommonService,
-                SideBarService,
-                NotificationsService,
-                SidePanelService,
+                DefiCommonService,
             ]
         };
     }
 }
-CoreModule.decorators = [
+DefiCoreModule.decorators = [
     { type: NgModule, args: [{
                 declarations: [
-                    SidebarComponent,
-                    NavbarComponent,
-                    FormErrorsComponent,
-                    BoxComponent,
-                    SidePanelComponent,
-                    NotificationsComponent,
-                    DebounceInputDirective,
-                    ClickStopPropagation,
-                    SpinningIconDirective,
-                    ValidatorsDirective,
-                    ShowPasswordDirective,
-                    ToId,
-                    PopoverComponent,
+                    DefiClickStopPropagation,
+                    DefiSpinningIconDirective,
+                    DefiToId,
+                    DefiPopoverComponent,
                 ],
                 imports: [
                     CommonModule,
-                    NgbModule.forRoot(),
                 ],
                 exports: [
-                    SidebarComponent,
-                    NavbarComponent,
-                    FormErrorsComponent,
-                    SidePanelComponent,
-                    NotificationsComponent,
-                    BoxComponent,
-                    DebounceInputDirective,
-                    SpinningIconDirective,
-                    ValidatorsDirective,
-                    ShowPasswordDirective,
-                    ToId,
-                    PopoverComponent,
+                    DefiSpinningIconDirective,
+                    DefiToId,
+                    DefiPopoverComponent,
+                ]
+            },] },
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Directive that debounce an element that supports keyListener
+ * \@example
+ * <input type="text" debounce-input (debounce)="doSomething($event.target.value)" [debounceTime]="200" />
+ */
+class DefiDebounceInputDirective {
+    constructor() {
+        /**
+         * Describe the debounce time; Default: 500ms
+         */
+        this.debounceTime = 500;
+        /**
+         * Emit and call function after the debounce time
+         */
+        this.debounce = new EventEmitter();
+        /**
+         * Observable that register the flow
+         */
+        this.subject = new Subject();
+    }
+    /**
+     * Register observable pipe that describe the flow of the debounce directive
+     * @return {?}
+     */
+    ngOnInit() {
+        this.createSubsription();
+    }
+    /**
+     * @return {?}
+     */
+    createSubsription() {
+        this.subscription = this.subject.pipe(debounceTime(this.debounceTime)).subscribe(e => this.debounce.emit(e));
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        if (changes["debounceTime"] && this.subject.observers[0])
+            this.subject.observers[0]['dueTime'] = changes["debounceTime"].currentValue;
+    }
+    /**
+     * Unregister observable on the component destruct
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
+    /**
+     * Trigger keyup event and inject it to the pipe of the debounce
+     * @param {?} event
+     * @return {?}
+     */
+    keyupEvent(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.subject.next(event);
+    }
+}
+DefiDebounceInputDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[defi-debounce-input]'
+            },] },
+];
+/** @nocollapse */
+DefiDebounceInputDirective.propDecorators = {
+    "debounceTime": [{ type: Input },],
+    "debounce": [{ type: Output },],
+    "keyupEvent": [{ type: HostListener, args: ['keyup', ['$event'],] },],
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Load differents directive with an array of key value
+ * \@example
+ * <input type="text" [formControlName]="'hello'" [validators]="form.controls['hello']"/>
+ */
+class DefiShowPasswordDirective {
+    /**
+     * Load some dependencies
+     * @param {?} renderer
+     * @param {?} hostElement
+     */
+    constructor(renderer, hostElement) {
+        this.renderer = renderer;
+        this.hostElement = hostElement;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        const /** @type {?} */ container = this.renderer.createElement('div');
+        this.renderer.setStyle(container, 'position', 'relative');
+        const /** @type {?} */ div = this.renderer.createElement('i');
+        this.renderer.addClass(div, 'fa');
+        this.renderer.addClass(div, 'fa-eye-slash');
+        this.renderer.addClass(div, 'toggle-eye');
+        this.renderer.setStyle(div, 'position', 'absolute');
+        this.renderer.setStyle(div, 'top', 0);
+        this.renderer.setStyle(div, 'right', 0);
+        this.renderer.setStyle(div, 'display', 'inherit');
+        this.renderer.setStyle(div, 'cursor', 'pointer');
+        this.renderer.listen(div, 'click', event => {
+            const /** @type {?} */ input = this.hostElement.nativeElement;
+            if (input.type === 'password') {
+                input.type = 'text';
+                this.renderer.addClass(div, 'fa-eye');
+                this.renderer.removeClass(div, 'fa-eye-slash');
+            }
+            else {
+                input.type = 'password';
+                this.renderer.removeClass(div, 'fa-eye');
+                this.renderer.addClass(div, 'fa-eye-slash');
+            }
+        });
+        const /** @type {?} */ parent = this.hostElement.nativeElement.parentNode;
+        this.renderer.insertBefore(parent, container, this.renderer.nextSibling(this.hostElement.nativeElement));
+        this.renderer.appendChild(container, this.hostElement.nativeElement);
+        this.renderer.appendChild(container, div);
+        // this.renderer.removeChild(parent,this.hostElement.nativeElement)
+    }
+}
+DefiShowPasswordDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[defi-show-password]',
+            },] },
+];
+/** @nocollapse */
+DefiShowPasswordDirective.ctorParameters = () => [
+    { type: Renderer2, },
+    { type: ElementRef, },
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Load differents directive with an array of key value
+ * \@example
+ * <input type="text" [formControlName]="'hello'" [validators]="form.controls['hello']"/>
+ */
+class DefiValidatorsDirective {
+    /**
+     * Load some dependencies
+     * @param {?} renderer
+     * @param {?} hostElement
+     */
+    constructor(renderer, hostElement) {
+        this.renderer = renderer;
+        this.hostElement = hostElement;
+    }
+    /**
+     * Launch validator check for the first time init
+     * @return {?}
+     */
+    ngAfterViewChecked() {
+        this.onInputChange();
+    }
+    /**
+     * Change appearance of input with goodInput/badInout class
+     * @return {?}
+     */
+    onInputChange() {
+        if (this.validators.valid) {
+            this.renderer.addClass(this.hostElement.nativeElement, 'goodInput');
+            this.renderer.removeClass(this.hostElement.nativeElement, 'badInput');
+        }
+        else {
+            this.renderer.addClass(this.hostElement.nativeElement, 'badInput');
+            this.renderer.removeClass(this.hostElement.nativeElement, 'goodInput');
+        }
+    }
+}
+DefiValidatorsDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[defi-validators]',
+                host: {
+                    "(input)": 'onInputChange($event)'
+                }
+            },] },
+];
+/** @nocollapse */
+DefiValidatorsDirective.ctorParameters = () => [
+    { type: Renderer2, },
+    { type: ElementRef, },
+];
+DefiValidatorsDirective.propDecorators = {
+    "validators": [{ type: Input, args: ['defi-validators',] },],
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Encapsule an input and all validators attached
+ * \@example
+ *
+ *  <form (submit)="" [formGroup]="form">
+ * | <input type="text" [formControlName]="'email'" placeholder="Email">
+ * | <formErrors [model]="form.controls['email']"></formErrors>
+ * </form>
+ */
+class DefiFormErrorsComponent {
+}
+DefiFormErrorsComponent.decorators = [
+    { type: Component, args: [{
+                selector: "defi-form-errors",
+                template: `<!-- {{model.errors | json}} -->
+
+<ul *ngIf="model && model.errors">
+    <li *ngIf="model.errors.pattern" class="hint">
+         <ng-container *ngIf="patternName; else notPatternName">
+            {{patternName}}
+        </ng-container>
+        <ng-template #notPatternName>
+            Pattern: {{model.errors.pattern.requiredPattern}}
+        </ng-template>
+    </li>
+    <li *ngIf="model.errors.required" class="hint">
+        Obligatoire
+    </li>
+    <li *ngIf="model.errors.minlength" class="hint">
+        Contient au moins {{model.errors.minlength.requiredLength}} caractères
+    </li>
+    <li *ngIf="model.errors.maxlength" class="hint">
+        Contient au plus {{model.errors.maxlength.requiredLength}} caractères
+    </li>
+    <li *ngIf="model.errors.recheckPassphrase" class="hint">
+        Doit correspondre à la phrase de passe
+    </li>
+    <li *ngIf="model.errors.email" class="hint">
+        Doit être un email
+    </li>
+</ul>
+`,
+                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}:host{display:inline-block;font-size:.7em;width:100%;min-height:.7em;top:-2px;line-height:0;text-align:right;color:#dc3545}`]
+            },] },
+];
+/** @nocollapse */
+DefiFormErrorsComponent.propDecorators = {
+    "model": [{ type: Input, args: ['model',] },],
+    "patternName": [{ type: Input, args: ['patternName',] },],
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+class DefiFormsModule {
+}
+DefiFormsModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [
+                    CommonModule
+                ],
+                declarations: [
+                    DefiFormErrorsComponent,
+                    DefiDebounceInputDirective,
+                    DefiValidatorsDirective,
+                    DefiShowPasswordDirective,
+                ],
+                exports: [
+                    DefiFormErrorsComponent,
+                    DefiDebounceInputDirective,
+                    DefiValidatorsDirective,
+                    DefiShowPasswordDirective,
                 ]
             },] },
 ];
@@ -1291,7 +865,7 @@ CoreModule.decorators = [
  *  </form>
  *  MatchPassword: {{formPassphrases.valid}}
  */
-class Password {
+class DefiPassword {
     /**
      * check function
      * @param {?} AC
@@ -1325,6 +899,532 @@ class Password {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
+/**
+ * Navbar Component
+ *
+ * ng-content:
+ *  - [logo] element on the left
+ *  - [actions] element on the right
+ * \@example
+ *  <navbar name="Hygisoft Web">
+ * |  <div logo>
+ * |  |  <img src="assets/img/logo.png" alt="">
+ * |  </div>
+ * |  <div actions>
+ * |  |  <div class="icon">
+ * |  |  | <i class="fa fa-user"></i>
+ * |  |  </div>
+ * |  </div>
+ * </navbar>
+ */
+class DefiNavbarComponent {
+    /**
+     * Load dependencies instances
+     */
+    constructor() {
+        /**
+         * Name displaying on left after icon
+         */
+        this.name = '';
+    }
+}
+DefiNavbarComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'defi-navbar',
+                template: `<div id="navbar" [ngStyle]="{'background-image': url ? 'url(img)' : ''}">
+  <div id="leftRight">
+    <div id="left">
+      <div id="logoContainer">
+        <ng-content select="[logo]"></ng-content>
+      </div>
+      <div id="description">
+        {{name}}
+      </div>
+    </div>
+
+    <div id="right">
+      <div id="actions">
+        <ng-content selector="[action]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>`,
+                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}#navbar{height:40px;background-color:#343a40;color:#fff;max-height:40px;background-size:100%}#navbar #leftRight{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%}#navbar #leftRight #left{height:100%;padding-left:5px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #left #logoContainer{height:80%}#navbar #leftRight #left #logoContainer ::ng-deep [logo]{height:100%;border-radius:100%;overflow:hidden}#navbar #leftRight #left #logoContainer ::ng-deep [logo] img{height:100%}#navbar #leftRight #left #description{margin-left:10px;color:#fff;font-size:1.2em}#navbar #leftRight #right{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%;margin-right:10px}#navbar #leftRight #right #actions{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}#navbar #leftRight #right #actions ::ng-deep .icon{font-size:1.7em}`]
+            },] },
+];
+/** @nocollapse */
+DefiNavbarComponent.ctorParameters = () => [];
+DefiNavbarComponent.propDecorators = {
+    "name": [{ type: Input, args: ['name',] },],
+    "img": [{ type: Input, args: ['img',] },],
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Control the sidebar outside the component
+ */
+class DefiSideBarService {
+    constructor() {
+        /**
+         * Component watch this variable to open/close the sidebar
+         */
+        this._open = false;
+    }
+    /**
+     * Open sidebar
+     * @return {?}
+     */
+    open() {
+        this._open = true;
+    }
+    /**
+     * Close sidebar
+     * @return {?}
+     */
+    close() {
+        this._open = false;
+    }
+    /**
+     * Toggle sidebar
+     * @return {?}
+     */
+    toggle() {
+        this._open = !this._open;
+    }
+}
+DefiSideBarService.decorators = [
+    { type: Injectable },
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Item present in sidebar
+ * @record
+ */
+
+/**
+ * Configuration object of the sidebar
+ * @record
+ */
+
+/**
+ * Display Sidebar on the app component
+ * \@example
+ * const conf: Configuration = {
+ * | list: [{
+ * | | icon: "fa fa-home",
+ * | | description: "Accueil",
+ * | | click: ["/home"]
+ * | }],
+ * | bottom: [{
+ * | | icon: "fa fa-cog",
+ * | | description: "Settings",
+ * | | click: ["/settings"]
+ * | }]
+ * };
+ * <div style="display:flex">
+ * | <sidebar [conf]="conf" (router)='click($event)'></sidebar>
+ * | <div>I want to go to {{route()}}</div>
+ * </div>
+ */
+class DefiSidebarComponent {
+    /**
+     * import dependencies
+     * @param {?} sidebar
+     */
+    constructor(sidebar) {
+        this.sidebar = sidebar;
+        /**
+         * control css class that open/close sidebar: openHint/closeHint
+         */
+        this.hintState = 'close';
+        /**
+         * Get the configuration from outside
+         */
+        this.conf = { list: [], bottom: [] };
+    }
+    /**
+     * Go to Home route
+     * @param {?} data
+     * @return {?}
+     */
+    goTo(data) {
+        data.click();
+    }
+    /**
+     * @param {?} data
+     * @return {?}
+     */
+    newWindow(data) {
+        if (data.externalUrl) {
+            window.open(data.externalUrl);
+        }
+    }
+    /**
+     * Toggle sidebar
+     * @return {?}
+     */
+    toggleSidebar() {
+        this.sidebar.toggle();
+    }
+    /**
+     * Toggle hint beside links icons on hover
+     * @param {?} $event
+     * @return {?}
+     */
+    toggleHint($event) {
+        this.hintState =
+            $event.type === 'mouseover' && !this.sidebar._open
+                ? 'open'
+                : 'close';
+    }
+}
+DefiSidebarComponent.decorators = [
+    { type: Component, args: [{
+                // tslint:disable-next-line:component-selector
+                selector: 'defi-sidebar',
+                template: `<div class="openSidebar" 
+    [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}"
+    [ngStyle]="{'background-image': url ? 'url(img)' : ''}"
+    id="sidebar">
+    <div class="list">
+        <div *ngFor='let item of conf.list'>
+            <ng-container *ngTemplateOutlet="linkTemplate;context:{$implicit:item}"></ng-container>  
+        </div>
+    </div>
+    <div class="bottomList">
+        <div *ngFor='let item of conf.bottom'>
+            <ng-container *ngTemplateOutlet="linkTemplate;context:{$implicit:item}"></ng-container>
+        </div>
+        <div id="toggleSidebar" class="item" (click)="toggleSidebar();" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}">
+            <div class="icon" >
+                <i class="fa fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #linkTemplate let-item>
+    <div id="{{item.id}}" class="item" (click)="goTo(item)" (auxclick)="newWindow(item)" (mouseover)="toggleHint($event)" (mouseleave)="toggleHint($event)">
+        <div class="icon">
+            <i class="{{item.icon}}"></i>
+        </div>
+        <div class="description" [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}">
+            {{item.description}}
+        </div>
+        <div id="hint-{{item.id}}" class="hintContainer"  [@hintState]="hintState">
+            <div class="hint">{{item.description}}</div>
+        </div>
+    </div>
+</ng-template>
+`,
+                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}@-webkit-keyframes openSidebar{0%{width:40px}to{width:175px}}@keyframes openSidebar{0%{width:40px}to{width:175px}}@-webkit-keyframes closeSidebar{0%{width:175px}to{width:40px}}@keyframes closeSidebar{0%{width:175px}to{width:40px}}@-webkit-keyframes openSidebarDescription{0%{width:0}to{width:40px}}@keyframes openSidebarDescription{0%{width:0}to{width:40px}}@-webkit-keyframes closeSidebarDescription{0%{width:40px}to{width:0}}@keyframes closeSidebarDescription{0%{width:40px}to{width:0}}@-webkit-keyframes openSidebarIcon{0%{-webkit-transform:scale(1);transform:scale(1)}to{-webkit-transform:scale(-1);transform:scale(-1)}}@keyframes openSidebarIcon{0%{-webkit-transform:scale(1);transform:scale(1)}to{-webkit-transform:scale(-1);transform:scale(-1)}}@-webkit-keyframes closeSidebarIcon{0%{-webkit-transform:scale(-1);transform:scale(-1)}to{-webkit-transform:scale(1);transform:scale(1)}}@keyframes closeSidebarIcon{0%{-webkit-transform:scale(-1);transform:scale(-1)}to{-webkit-transform:scale(1);transform:scale(1)}}#sidebar{color:#fff;height:100%;overflow-x:hidden;width:40px;background-color:#343a40;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;background-size:auto 100%}#sidebar.openSidebar{-webkit-animation-name:openSidebar;animation-name:openSidebar;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar.closeSidebar{-webkit-animation-name:closeSidebar;animation-name:closeSidebar;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList,#sidebar .list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;width:100%}#sidebar .bottomList.list,#sidebar .list.list{height:100%}#sidebar .bottomList .item,#sidebar .list .item{-webkit-box-shadow:none;box-shadow:none;-webkit-box-pack:left;-ms-flex-pack:left;justify-content:left;margin:0;border:none;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer;padding-bottom:15px;padding-top:15px}#sidebar .bottomList .item:hover,#sidebar .list .item:hover{background-color:rgba(0,0,0,.5)}#sidebar .bottomList .item .hintContainer,#sidebar .list .item .hintContainer{position:absolute;overflow:hidden;left:40px;max-width:0;background-color:#1d2124;z-index:3}#sidebar .bottomList .item .hintContainer .hint,#sidebar .list .item .hintContainer .hint{color:#fff;padding:10px}#sidebar .bottomList .item .icon,#sidebar .list .item .icon{width:40px;text-align:center;font-size:1.5em}#sidebar .bottomList .item .description.openSidebar,#sidebar .list .item .description.openSidebar{-webkit-animation-name:openSidebarDescription;animation-name:openSidebarDescription;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList .item .description.closeSidebar,#sidebar .list .item .description.closeSidebar{-webkit-animation-name:closeSidebarDescription;animation-name:closeSidebarDescription;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList #toggleSidebar,#sidebar .list #toggleSidebar{background-color:rgba(0,0,0,.5)}#sidebar .bottomList #toggleSidebar .icon,#sidebar .list #toggleSidebar .icon{font-size:1em}#sidebar .bottomList #toggleSidebar.openSidebar,#sidebar .list #toggleSidebar.openSidebar{-webkit-animation-name:openSidebarIcon;animation-name:openSidebarIcon;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#sidebar .bottomList #toggleSidebar.closeSidebar,#sidebar .list #toggleSidebar.closeSidebar{-webkit-animation-name:closeSidebarIcon;animation-name:closeSidebarIcon;-webkit-animation-duration:.2s;animation-duration:.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}`],
+                animations: [
+                    trigger('hintState', [
+                        state('open', style({
+                            'max-width': '200px'
+                        })),
+                        state('close', style({
+                            'max-width': '0'
+                        })),
+                        transition('open => close', animate('100ms ease-in')),
+                        transition('close => open', animate('100ms ease-out'))
+                    ])
+                ]
+            },] },
+];
+/** @nocollapse */
+DefiSidebarComponent.ctorParameters = () => [
+    { type: DefiSideBarService, },
+];
+DefiSidebarComponent.propDecorators = {
+    "conf": [{ type: Input, args: ['conf',] },],
+    "img": [{ type: Input, args: ['img',] },],
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+class DefiNavigationsModule {
+    /**
+     * @return {?}
+     */
+    static forRoot() {
+        return {
+            ngModule: DefiNavigationsModule,
+            providers: [
+                DefiSideBarService,
+            ]
+        };
+    }
+}
+DefiNavigationsModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [
+                    CommonModule
+                ],
+                declarations: [
+                    DefiNavbarComponent,
+                    DefiSidebarComponent
+                ],
+                exports: [
+                    DefiNavbarComponent,
+                    DefiSidebarComponent
+                ],
+            },] },
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Describe a notification
+ * @record
+ */
+
+/**
+ * Control the sidebar outside the component
+ */
+class DefiNotificationsService {
+    /**
+     * Fetch delay from localStorage
+     */
+    constructor() {
+        /**
+         * Component watch this variable to open/close the sidebar
+         */
+        this.notifications = [];
+        /**
+         * Emit event that contains complete notification on add
+         */
+        this.addEvent = new Subject$1();
+        /**
+         * Emit event that contains id on remove
+         */
+        this.removeEvent = new Subject$1();
+        let /** @type {?} */ notificationsDelay = +localStorage.getItem("notificationsDelay");
+        if (notificationsDelay < 500) {
+            notificationsDelay = 6000;
+            localStorage.setItem("notificationsDelay", "6000");
+        }
+    }
+    /**
+     * Open sidebar
+     * @param {?} title
+     * @param {?} msg
+     * @return {?}
+     */
+    add(title, msg) {
+        const /** @type {?} */ notif = {
+            id: v4(),
+            title: title || "",
+            msg: msg || ""
+        };
+        this.addEvent.next(notif);
+        notif.timeout = this.defaultTimeout(notif);
+        this.notifications.push(notif);
+        return notif;
+    }
+    /**
+     * Time to display notification on screen. (Localstorage key: notificationsDelay)
+     * @param {?} notif
+     * @return {?}
+     */
+    defaultTimeout(notif) {
+        return setTimeout(() => {
+            this.delete(notif.id);
+        }, +localStorage.getItem("notificationsDelay"));
+    }
+    /**
+     * update notification from id
+     * @param {?} id
+     * @param {?} _notif
+     * @return {?}
+     */
+    updateNotif(id, _notif) {
+        this.notifications.map(notif => {
+            if (notif.id === id) {
+                if (_notif.msg)
+                    notif.msg = _notif.msg;
+                if (_notif.title)
+                    notif.title = _notif.title;
+                clearTimeout(notif.timeout);
+                notif.timeout = this.defaultTimeout(notif);
+            }
+        });
+    }
+    /**
+     * delete a notification
+     * @param {?} id
+     * @return {?}
+     */
+    delete(id) {
+        this.removeEvent.next(id);
+        this.notifications = this.notifications.filter(notif => notif.id !== id);
+    }
+    /**
+     * Delete all notifications
+     * @return {?}
+     */
+    deleteAll() {
+        this.notifications.map(notif => this.delete(notif.id));
+    }
+}
+DefiNotificationsService.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+DefiNotificationsService.ctorParameters = () => [];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Display an mini-popup
+ * \@example
+ * const ns= new DefiNotificationsService()
+ * const getFirstNotifId = _=>ns.notifications[0].id
+ * const random=_=>Math.random()
+ *
+ * <button (click)="ns.add('add','test')">Add notif</button>
+ * <button (click)="ns.delete(getFirstNotifId())">delete notif</button>
+ * <button (click)="ns.deleteAll()">delete all notif</button>
+ * <button (click)="ns.updateNotif(getFirstNotifId(),{title:random(),msg: random()})">Update notif</button>
+ * <notifications></notifications>
+ */
+class DefiNotificationsComponent {
+    /**
+     * Load dependencies instances
+     * @param {?} ns
+     * @param {?} renderer2
+     */
+    constructor(ns, renderer2) {
+        this.ns = ns;
+        this.renderer2 = renderer2;
+        this._notifications = [];
+        this.ns.addEvent.subscribe(data => this._notifications.push(data));
+        this.ns.removeEvent.subscribe((id) => this.deleteNotif(id));
+    }
+    /**
+     * launch css animations and delete notification from id
+     * @param {?} id
+     * @return {?}
+     */
+    deleteNotif(id) {
+        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+            const /** @type {?} */ htmlNotif = yield this.getHtmlNotif(id);
+            if (!htmlNotif)
+                return;
+            this.renderer2.addClass(htmlNotif, "deleteNotif");
+            setTimeout(() => {
+                this._notifications = this._notifications.filter(notif => notif.id !== id);
+                resolve();
+            }, 500);
+        }));
+    }
+    /**
+     * delete All notifications
+     * @return {?}
+     */
+    deleteAll() {
+        return each(this.htmlNotifications, htmlNotif => {
+            this.deleteNotif(htmlNotif.nativeElement.id);
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve();
+                }, 50);
+            });
+        });
+    }
+    /**
+     * Get HTML ref of the concern id
+     * @param {?} id
+     * @return {?}
+     */
+    getHtmlNotif(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let /** @type {?} */ htmlNotif = yield filter(this.htmlNotifications, htmlNotif => htmlNotif.nativeElement.id === id);
+            if (htmlNotif.length)
+                return htmlNotif.pop().nativeElement;
+        });
+    }
+}
+DefiNotificationsComponent.decorators = [
+    { type: Component, args: [{
+                selector: "defi-notifications",
+                template: `<div id="notifications">
+    <div id="closeAll" *ngIf='_notifications.length' (click)="deleteAll()">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+    </div>
+    <div class="notifsWrapper">
+        <div class="notifWrapper" (click)="ns.delete(notif.id)" #notifModel *ngFor="let notif of _notifications" [id]="notif.id">
+            <div class="notifContainer">
+                <div class="title">
+                    {{notif.title}}
+                </div>
+                <div class="msg">
+                    {{notif.msg}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`,
+                styles: [`.formGroup{margin-bottom:10px}.formGroup label{width:100%}@-webkit-keyframes openNotif{0%{max-height:0}to{max-height:400px}}@keyframes openNotif{0%{max-height:0}to{max-height:400px}}@-webkit-keyframes closeNotif{0%{max-height:400px}to{max-height:0}}@keyframes closeNotif{0%{max-height:400px}to{max-height:0}}#notifications{z-index:100000;position:fixed;bottom:20px;right:20px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}#notifications #closeAll{text-align:right}#notifications #closeAll i{font-size:1.7em;background-color:#343a40;color:#fff;padding:10px;-webkit-box-shadow:0 0 10px grey;box-shadow:0 0 10px grey}#notifications .notifWrapper{-webkit-animation-name:openNotif;animation-name:openNotif;-webkit-animation-duration:.4s;animation-duration:.4s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;overflow-y:hidden;-webkit-box-shadow:0 0 10px grey;box-shadow:0 0 10px grey;margin-top:10px;background-color:#343a40;color:#fff}#notifications .notifWrapper.deleteNotif{-webkit-animation-name:closeNotif;animation-name:closeNotif;-webkit-animation-duration:.4s;animation-duration:.4s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}#notifications .notifWrapper .notifContainer{padding:10px;width:400px}#notifications .notifWrapper .notifContainer .title{width:100%;border-bottom:1px solid #fff}#notifications .notifWrapper .notifContainer .msg{width:100%;padding-top:10px}`]
+            },] },
+];
+/** @nocollapse */
+DefiNotificationsComponent.ctorParameters = () => [
+    { type: DefiNotificationsService, },
+    { type: Renderer2, },
+];
+DefiNotificationsComponent.propDecorators = {
+    "htmlNotifications": [{ type: ViewChildren, args: ['notifModel',] },],
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+class DefiOverlayModule {
+    /**
+     * @return {?}
+     */
+    static forRoot() {
+        return {
+            ngModule: DefiOverlayModule,
+            providers: [
+                DefiNotificationsService,
+            ]
+        };
+    }
+}
+DefiOverlayModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [
+                    CommonModule
+                ],
+                declarations: [
+                    DefiNotificationsComponent
+                ],
+                exports: [
+                    DefiNotificationsComponent
+                ]
+            },] },
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 
 /**
  * @fileoverview added by tsickle
@@ -1334,5 +1434,5 @@ class Password {
  * Generated bundle index. Do not edit.
  */
 
-export { BoxComponent, CoreModule, DebounceInputDirective, ShowPasswordDirective, SpinningIconDirective, ClickStopPropagation, ValidatorsDirective, FormErrorsComponent, NavbarComponent, NotificationsComponent, ToId, PopoverComponent, CommonService, NotificationsService, SideBarService, SidePanelService, SidePanelComponent, SidebarComponent, Password };
+export { DefiBoxComponent, DefiContainersModule, DefiSidePanelService, DefiSidePanelComponent, DefiCoreModule, DefiSpinningIconDirective, DefiClickStopPropagation, DefiToId, DefiPopoverComponent, DefiCommonService, DefiDebounceInputDirective, DefiShowPasswordDirective, DefiValidatorsDirective, DefiFormErrorsComponent, DefiFormsModule, DefiPassword, DefiNavbarComponent, DefiNavigationsModule, DefiSideBarService, DefiSidebarComponent, DefiNotificationsComponent, DefiOverlayModule, DefiNotificationsService };
 //# sourceMappingURL=ngx-defi-core.js.map

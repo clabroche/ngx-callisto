@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Configuration } from '../modules/core/sidebar/sidebar.component';
-import { SideBarService } from '../public_api';
 
 @Component({
   selector: 'app-root',
