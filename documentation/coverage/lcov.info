@@ -1,5 +1,5 @@
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/polyfills.ts
+SF:/home/coco/Project/ngx-defi-core/src/polyfills.ts
 FNF:0
 FNH:0
 DA:46,1
@@ -10,7 +10,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/public_api.ts
+SF:/home/coco/Project/ngx-defi-core/src/public_api.ts
 FNF:0
 FNH:0
 DA:1,1
@@ -42,7 +42,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/test.ts
+SF:/home/coco/Project/ngx-defi-core/src/test.ts
 FNF:0
 FNH:0
 DA:3,1
@@ -57,7 +57,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/app.component.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/app.component.ts
 FN:8,(anonymous_1)
 FNF:1
 FNH:1
@@ -71,7 +71,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/app.module.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/app.module.ts
 FN:33,(anonymous_1)
 FNF:1
 FNH:1
@@ -92,7 +92,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/demo/demo.module.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/demo/demo.module.ts
 FN:33,(anonymous_1)
 FNF:1
 FNH:1
@@ -111,7 +111,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/demo/demo/demo.component.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/demo/demo/demo.component.ts
 FN:9,(anonymous_2)
 FN:13,DemoComponent
 FN:24,(anonymous_4)
@@ -143,7 +143,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/containers/containers.module.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/containers/containers.module.ts
 FN:20,(anonymous_1)
 FN:21,(anonymous_3)
 FNF:2
@@ -165,7 +165,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/containers/box/box.component.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/containers/box/box.component.ts
 FN:15,(anonymous_2)
 FNF:1
 FNH:1
@@ -180,7 +180,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/containers/providers/sidepanel.service.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/containers/providers/sidepanel.service.ts
 FN:7,(anonymous_1)
 FN:6,DefiSidePanelService
 FN:17,(anonymous_3)
@@ -215,7 +215,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/containers/side-panel/side-panel.component.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/containers/side-panel/side-panel.component.ts
 FN:27,(anonymous_2)
 FN:31,DefiSidePanelComponent
 FNF:2
@@ -233,7 +233,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/core/core.module.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/core/core.module.ts
 FN:28,(anonymous_1)
 FN:29,(anonymous_3)
 FNF:2
@@ -257,7 +257,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/core/directives/spinningIcon.directive.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/core/directives/spinningIcon.directive.ts
 FN:16,(anonymous_2)
 FN:21,DefiSpinningIconDirective
 FN:23,(anonymous_4)
@@ -284,7 +284,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/core/directives/stopPropagation.directive.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/core/directives/stopPropagation.directive.ts
 FN:13,(anonymous_2)
 FN:18,(anonymous_4)
 FNF:2
@@ -302,7 +302,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/core/pipe/toId.pipe.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/core/pipe/toId.pipe.ts
 FN:7,(anonymous_1)
 FN:13,(anonymous_3)
 FNF:2
@@ -320,7 +320,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/core/popover/popover.component.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/core/popover/popover.component.ts
 FN:27,(anonymous_2)
 FN:40,DefiPopoverComponent
 FN:48,(anonymous_4)
@@ -368,7 +368,7 @@ BRF:6
 BRH:4
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/core/providers/common.service.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/core/providers/common.service.ts
 FN:27,(anonymous_2)
 FN:44,DefiCommonService
 FN:53,(anonymous_4)
@@ -506,7 +506,7 @@ BRF:22
 BRH:14
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/forms/forms.module.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/forms/forms.module.ts
 FN:25,(anonymous_1)
 FNF:1
 FNH:1
@@ -524,7 +524,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/forms/directives/debounceInput.directive.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/forms/directives/debounceInput.directive.ts
 FN:14,(anonymous_2)
 FN:11,DefiDebounceInputDirective
 FN:37,(anonymous_4)
@@ -574,7 +574,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/forms/directives/showPassword.directive.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/forms/directives/showPassword.directive.ts
 FN:11,(anonymous_2)
 FN:16,DefiShowPasswordDirective
 FN:18,(anonymous_4)
@@ -622,7 +622,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/forms/directives/validators.directive.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/forms/directives/validators.directive.ts
 FN:14,(anonymous_2)
 FN:23,DefiValidatorsDirective
 FN:28,(anonymous_4)
@@ -654,7 +654,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/forms/form-errors/form-errors.component.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/forms/form-errors/form-errors.component.ts
 FN:19,(anonymous_2)
 FNF:1
 FNH:1
@@ -670,7 +670,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/forms/validators/Password.validator.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/forms/validators/Password.validator.ts
 FN:22,(anonymous_0)
 FN:27,(anonymous_2)
 FN:37,(anonymous_3)
@@ -703,7 +703,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/navigations/navigations.module.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/navigations/navigations.module.ts
 FN:20,(anonymous_1)
 FN:21,(anonymous_3)
 FNF:2
@@ -725,7 +725,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/navigations/navbar/navbar.component.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/navigations/navbar/navbar.component.ts
 FN:26,(anonymous_2)
 FN:37,DefiNavbarComponent
 FNF:2
@@ -743,7 +743,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/navigations/providers/sidebar.service.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/navigations/providers/sidebar.service.ts
 FN:7,(anonymous_1)
 FN:6,DefiSideBarService
 FN:16,(anonymous_3)
@@ -772,7 +772,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/navigations/sidebar/sidebar.component.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/navigations/sidebar/sidebar.component.ts
 FN:90,(anonymous_2)
 FN:104,DefiSidebarComponent
 FN:109,(anonymous_4)
@@ -816,7 +816,7 @@ BRF:6
 BRH:4
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/overlay/overlay.module.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/overlay/overlay.module.ts
 FN:17,(anonymous_1)
 FN:18,(anonymous_3)
 FNF:2
@@ -837,7 +837,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/overlay/notifications/notifications.component.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/overlay/notifications/notifications.component.ts
 FN:24,(anonymous_14)
 FN:33,DefiNotificationsComponent
 FN:34,(anonymous_16)
@@ -905,7 +905,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:/home/coco/Project-ssd/web/ngx-defi-front/src/app/modules/overlay/providers/notifications.service.ts
+SF:/home/coco/Project/ngx-defi-core/src/app/modules/overlay/providers/notifications.service.ts
 FN:30,(anonymous_2)
 FN:47,DefiNotificationsService
 FN:58,(anonymous_4)
