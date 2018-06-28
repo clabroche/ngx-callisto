@@ -6,8 +6,6 @@ import { DefiSpinningIconDirective } from './directives/spinningIcon.directive';
 import { DefiClickStopPropagation } from './directives/stopPropagation.directive';
 import { DefiToId } from './pipe/toId.pipe';
 import { DefiPopoverComponent } from './popover/popover.component';
-import { Router, RouterModule, RouterLink } from '@angular/router';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     DefiClickStopPropagation,
@@ -17,12 +15,12 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
   ],
   imports: [
     CommonModule,
-    // NoopAnimationsModule,
   ],
   exports: [
     DefiSpinningIconDirective,
     DefiToId,
     DefiPopoverComponent,
+    DefiClickStopPropagation
   ]
 })
 export class DefiCoreModule {
