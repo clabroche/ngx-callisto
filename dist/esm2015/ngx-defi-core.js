@@ -398,7 +398,7 @@ DefiSpinningIconDirective.ctorParameters = () => [
  * Prevent bubbling of events
  * \@example
  *  <div (click)="doSomething()"> // not call when click happenned on child
- *  | <div click-stop-propagation></div>
+ *  | <div defi-click-stop-propagation></div>
  *  </div>
  */
 class DefiClickStopPropagation {
@@ -413,12 +413,12 @@ class DefiClickStopPropagation {
 }
 DefiClickStopPropagation.decorators = [
     { type: Directive, args: [{
-                selector: "[defi-click-stop-propagation]"
+                selector: '[defi-click-stop-propagation]'
             },] },
 ];
 /** @nocollapse */
 DefiClickStopPropagation.propDecorators = {
-    "onClick": [{ type: HostListener, args: ["click", ["$event"],] },],
+    "onClick": [{ type: HostListener, args: ['click', ['$event'],] },],
 };
 
 /**
@@ -559,6 +559,7 @@ DefiCoreModule.decorators = [
                     DefiSpinningIconDirective,
                     DefiToId,
                     DefiPopoverComponent,
+                    DefiClickStopPropagation
                 ]
             },] },
 ];

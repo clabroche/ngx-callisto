@@ -243,11 +243,11 @@ var DefiClickStopPropagation = /** @class */ (function () {
 }());
 DefiClickStopPropagation.decorators = [
     { type: Directive, args: [{
-                selector: "[defi-click-stop-propagation]"
+                selector: '[defi-click-stop-propagation]'
             },] },
 ];
 DefiClickStopPropagation.propDecorators = {
-    "onClick": [{ type: HostListener, args: ["click", ["$event"],] },],
+    "onClick": [{ type: HostListener, args: ['click', ['$event'],] },],
 };
 var DefiToId = /** @class */ (function () {
     function DefiToId() {
@@ -334,6 +334,7 @@ DefiCoreModule.decorators = [
                     DefiSpinningIconDirective,
                     DefiToId,
                     DefiPopoverComponent,
+                    DefiClickStopPropagation
                 ]
             },] },
 ];

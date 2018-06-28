@@ -2,7 +2,7 @@
  * Prevent bubbling of events
  * @example
  *  <div (click)="doSomething()"> // not call when click happenned on child
- *  | <div click-stop-propagation></div>
+ *  | <div defi-click-stop-propagation></div>
  *  </div>
  */
 export declare class DefiClickStopPropagation {
