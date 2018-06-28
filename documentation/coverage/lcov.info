@@ -234,8 +234,8 @@ BRH:0
 end_of_record
 TN:
 SF:/home/coco/Project/ngx-defi-core/src/app/modules/core/core.module.ts
-FN:28,(anonymous_1)
-FN:29,(anonymous_3)
+FN:26,(anonymous_1)
+FN:27,(anonymous_3)
 FNF:2
 FNH:2
 FNDA:3,(anonymous_1)
@@ -247,10 +247,10 @@ DA:5,1
 DA:6,1
 DA:7,1
 DA:8,1
-DA:28,1
-DA:29,1
-DA:30,2
-DA:37,1
+DA:26,1
+DA:27,1
+DA:28,2
+DA:35,1
 LF:11
 LH:11
 BRF:0
