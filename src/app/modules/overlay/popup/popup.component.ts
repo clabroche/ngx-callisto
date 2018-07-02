@@ -2,7 +2,35 @@ import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { Subject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
-
+/**
+ * Display a popup
+ * @example
+ * popup.open().subscibe(result=>{
+ * |  // result = undefined or 'ok'
+ * })
+ * <popup #popup>
+ * |  <div title>Some templating</div>
+ * |  <div body>Some templating</div>
+ * </popup>
+ *
+ * formGroup: FormGroup
+ * popupWithBind.bindForm(formGroup).open().subscibe(result=>{
+ * |  // result = undefined or formGroup.value
+ * })
+ * <popup #popupWithBind>
+ * |  <div title>Some templating</div>
+ * |  <div body>Some templating with input control etc...</div>
+ * </popup>
+ *
+ * data = { $implicit: 'Hello', name:'world' }
+ * popupWithContext.open(data).subscibe(result=>{
+ * |  // result = undefined or 'ok'
+ * })
+ * <popup #popupWithContext>
+ * |  <div title>Some templating</div>
+ * |  <div body>Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !</div>
+ * </popup>
+ */
 @Component({
   selector: 'popup',
   templateUrl: './popup.component.html',
