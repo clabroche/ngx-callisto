@@ -1395,6 +1395,35 @@ DefiNotificationsComponent.propDecorators = {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
+/**
+ * Display a popup
+ * \@example
+ * popup.open().subscibe(result=>{
+ * |  // result = undefined or 'ok'
+ * })
+ * <popup #popup>
+ * |  <div title>Some templating</div>
+ * |  <div body>Some templating</div>
+ * </popup>
+ *
+ * formGroup: FormGroup
+ * popupWithBind.bindForm(formGroup).open().subscibe(result=>{
+ * |  // result = undefined or formGroup.value
+ * })
+ * <popup #popupWithBind>
+ * |  <div title>Some templating</div>
+ * |  <div body>Some templating with input control etc...</div>
+ * </popup>
+ *
+ * data = { $implicit: 'Hello', name:'world' }
+ * popupWithContext.open(data).subscibe(result=>{
+ * |  // result = undefined or 'ok'
+ * })
+ * <popup #popupWithContext>
+ * |  <div title>Some templating</div>
+ * |  <div body>Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !</div>
+ * </popup>
+ */
 class PopupComponent {
     constructor() {
         this.body = '';
