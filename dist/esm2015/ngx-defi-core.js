@@ -1395,6 +1395,137 @@ DefiNotificationsComponent.propDecorators = {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
+class PopupComponent {
+    constructor() {
+        this.body = '';
+        this.cancelButton = 'Annuler';
+        this.validateButton = 'Valider';
+        this.width = 'auto';
+        this.height = 'auto';
+        this.mainColor = '#343a40';
+        this.noActions = false;
+        this._open = false;
+        this.state = 'close';
+    }
+    /**
+     * @param {?=} context
+     * @return {?}
+     */
+    open(context) {
+        this.context = context;
+        this.result = new Subject$1();
+        this._open = true;
+        this.state = 'open';
+        return this.result;
+    }
+    /**
+     * @param {?=} $event
+     * @return {?}
+     */
+    close($event) {
+        if ($event) {
+            this.stopPropagation($event);
+        }
+        this._open = false;
+        this.state = 'close';
+        if (this.result) {
+            this.result.unsubscribe();
+            this.result = null;
+        }
+    }
+    /**
+     * @param {?} form
+     * @return {?}
+     */
+    bindForm(form) {
+        this.form = form;
+        return this;
+    }
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    stopPropagation($event) {
+        $event.stopPropagation();
+    }
+    /**
+     * @param {?} isValidate
+     * @param {?=} $event
+     * @param {?=} value
+     * @return {?}
+     */
+    out(isValidate, $event, value) {
+        if ($event) {
+            $event.preventDefault();
+        }
+        if (!isValidate)
+            this.result.next(null);
+        else if (this.form)
+            this.result.next(this.form.value);
+        else
+            this.result.next(value || 'ok');
+        this.close();
+    }
+}
+PopupComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'popup',
+                template: `<div class="popup" (click)="close($event)" [@openState]="state" >
+  
+  <div class="popup-container" *ngIf=_open [ngStyle]="{width:width, height:height}" (click)="stopPropagation($event)">
+    <div class="popup-title" [ngStyle]="{'background-color':mainColor}">
+      <ng-content select="[title]"></ng-content>
+      <div *ngIf='title'>
+        {{title}}
+      </div> 
+    </div>
+    <div class="popup-body">
+      <div *ngIf='body;else bodyTemplateContainer'>
+        {{body}}
+      </div>
+      <ng-template #bodyTemplateContainer>
+        <ng-content select="[body]"></ng-content>
+      </ng-template>
+    </div>
+    <div class="popup-actions" *ngIf='!noActions'>
+      <button class="popup-action popup-cancel" (click)="out(false)">{{cancelButton}}</button>
+      <button class="popup-action popup-ok" [ngClass]="{'popup-disable': form?.invalid}" [disabled]="form?.invalid" (click)="out(true)">{{validateButton}}</button>
+    </div>
+  </div>
+</div>`,
+                styles: [`.popup{position:absolute;bottom:0;left:0;width:100vw;height:100vh;z-index:1000;background-color:rgba(0,0,0,.8);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;opacity:0}.popup .popup-container{-webkit-box-shadow:0 0 20px 1px #000;box-shadow:0 0 20px 1px #000;min-width:400px;background-color:#fff;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;max-height:100vh;max-width:100vw}.popup .popup-container .popup-title{background-color:#343a40;color:#fff;padding:10px}.popup .popup-container .popup-body{padding:10px;-webkit-box-flex:1;-ms-flex:1;flex:1;overflow-y:auto}.popup .popup-container .popup-body::ng-deep>.ng-star-inserted{height:100%}.popup .popup-container .popup-actions{display:-webkit-box;display:-ms-flexbox;display:flex}.popup .popup-container .popup-actions .popup-action{padding:10px;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:#fff;cursor:pointer;border:none}.popup .popup-container .popup-actions .popup-action.popup-ok{background-color:#28a745}.popup .popup-container .popup-actions .popup-action.popup-cancel{background-color:#dc3545}.popup .popup-container .popup-actions .popup-action.popup-disable{background-color:#a2a2a2}`],
+                animations: [
+                    trigger('openState', [
+                        state('open', style({
+                            'display': 'flex',
+                            'opacity': '1'
+                        })),
+                        state('close', style({
+                            'display': 'none',
+                            'opacity': '0'
+                        })),
+                        transition('open => close', animate('100ms ease-in')),
+                        transition('close => open', animate('100ms ease-out'))
+                    ])
+                ]
+            },] },
+];
+/** @nocollapse */
+PopupComponent.propDecorators = {
+    "body": [{ type: Input },],
+    "title": [{ type: Input },],
+    "cancelButton": [{ type: Input },],
+    "validateButton": [{ type: Input },],
+    "width": [{ type: Input },],
+    "height": [{ type: Input },],
+    "mainColor": [{ type: Input },],
+    "noActions": [{ type: Input },],
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 class DefiOverlayModule {
     /**
      * @return {?}
@@ -1414,10 +1545,12 @@ DefiOverlayModule.decorators = [
                     CommonModule
                 ],
                 declarations: [
-                    DefiNotificationsComponent
+                    DefiNotificationsComponent,
+                    PopupComponent
                 ],
                 exports: [
-                    DefiNotificationsComponent
+                    DefiNotificationsComponent,
+                    PopupComponent
                 ]
             },] },
 ];
@@ -1435,5 +1568,5 @@ DefiOverlayModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { DefiBoxComponent, DefiContainersModule, DefiSidePanelService, DefiSidePanelComponent, DefiCoreModule, DefiSpinningIconDirective, DefiClickStopPropagation, DefiToId, DefiPopoverComponent, DefiCommonService, DefiDebounceInputDirective, DefiShowPasswordDirective, DefiValidatorsDirective, DefiFormErrorsComponent, DefiFormsModule, DefiPassword, DefiNavbarComponent, DefiNavigationsModule, DefiSideBarService, DefiSidebarComponent, DefiNotificationsComponent, DefiOverlayModule, DefiNotificationsService };
+export { DefiBoxComponent, DefiContainersModule, DefiSidePanelService, DefiSidePanelComponent, DefiCoreModule, DefiSpinningIconDirective, DefiClickStopPropagation, DefiToId, DefiPopoverComponent, DefiCommonService, DefiDebounceInputDirective, DefiShowPasswordDirective, DefiValidatorsDirective, DefiFormErrorsComponent, DefiFormsModule, DefiPassword, DefiNavbarComponent, DefiNavigationsModule, DefiSideBarService, DefiSidebarComponent, DefiNotificationsComponent, DefiOverlayModule, PopupComponent, DefiNotificationsService };
 //# sourceMappingURL=ngx-defi-core.js.map
