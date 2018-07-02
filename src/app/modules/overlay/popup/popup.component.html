@@ -1,0 +1,23 @@
+<div class="popup" (click)="close($event)" [@openState]="state" >
+  
+  <div class="popup-container" *ngIf=_open [ngStyle]="{width:width, height:height}" (click)="stopPropagation($event)">
+    <div class="popup-title" [ngStyle]="{'background-color':mainColor}">
+      <ng-content select="[title]"></ng-content>
+      <div *ngIf='title'>
+        {{title}}
+      </div> 
+    </div>
+    <div class="popup-body">
+      <div *ngIf='body;else bodyTemplateContainer'>
+        {{body}}
+      </div>
+      <ng-template #bodyTemplateContainer>
+        <ng-content select="[body]"></ng-content>
+      </ng-template>
+    </div>
+    <div class="popup-actions" *ngIf='!noActions'>
+      <button class="popup-action popup-cancel" (click)="out(false)">{{cancelButton}}</button>
+      <button class="popup-action popup-ok" [ngClass]="{'popup-disable': form?.invalid}" [disabled]="form?.invalid" (click)="out(true)">{{validateButton}}</button>
+    </div>
+  </div>
+</div>
