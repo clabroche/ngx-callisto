@@ -480,6 +480,11 @@ var DefiValidatorsDirective = /** @class */ (function () {
         this.onInputChange();
     };
     DefiValidatorsDirective.prototype.onInputChange = function () {
+        if (this.hostElement.nativeElement.disabled) {
+            this.renderer.removeClass(this.hostElement.nativeElement, 'badInput');
+            this.renderer.removeClass(this.hostElement.nativeElement, 'goodInput');
+            return;
+        }
         if (this.validators.valid) {
             this.renderer.addClass(this.hostElement.nativeElement, 'goodInput');
             this.renderer.removeClass(this.hostElement.nativeElement, 'badInput');
@@ -495,7 +500,7 @@ DefiValidatorsDirective.decorators = [
     { type: core.Directive, args: [{
                 selector: '[defi-validators]',
                 host: {
-                    "(input)": 'onInputChange($event)'
+                    '(input)': 'onInputChange($event)'
                 }
             },] },
 ];
