@@ -9,7 +9,7 @@
     |  <div logo>
     |  |  <img src="assets/img/logo.png" alt="">
     |  </div>
-    |  <div actions>
+    |  <div right>
     |  |  <div class="icon">
     |  |  | <i class="fa fa-user"></i>
     |  |  </div>

@@ -1,6 +1,6 @@
 {
   "name": "ngx-defi-core",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.0",
