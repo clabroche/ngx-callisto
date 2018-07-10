@@ -38,19 +38,14 @@
             }
         }
         #right{
-            display: flex;
-            align-items: center;
-            height: 100%;
-            margin-right: 10px;
-            
-            #actions{
+            &::ng-deep{
                 display: flex;
                 align-items: center;
-                ::ng-deep{
-                    .icon{
-                        font-size: 1.7em;
-                    }
-                }   
+                height: 100%;
+                margin-right: 10px;
+                .icon{
+                    font-size: 1.7em;
+                }
             }
         }
     }
