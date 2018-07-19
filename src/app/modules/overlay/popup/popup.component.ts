@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Directive, TemplateRef, ContentChild } from '@angular/core';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { Subject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
@@ -31,6 +31,13 @@ import { FormGroup } from '@angular/forms';
  * |  <div body>Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !</div>
  * </popup>
  */
+
+ @Directive({
+   selector: '[popup-body]'
+ })
+ export class BodyDirective {
+  constructor(public templateRef: TemplateRef<any>) {}
+ }
 @Component({
   selector: 'popup',
   templateUrl: './popup.component.html',
@@ -51,7 +58,7 @@ import { FormGroup } from '@angular/forms';
   ]
 })
 export class PopupComponent {
-
+  @ContentChild(BodyDirective) bodyTemplate;
   @Input() body = '';
   @Input() title: string;
 

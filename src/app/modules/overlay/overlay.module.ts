@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DefiNotificationsService } from './providers/notifications.service';
 import { DefiNotificationsComponent } from './notifications/notifications.component';
-import { PopupComponent } from './popup/popup.component';
+import { PopupComponent, BodyDirective } from './popup/popup.component';
 
 @NgModule({
   imports: [
@@ -10,11 +10,13 @@ import { PopupComponent } from './popup/popup.component';
   ],
   declarations: [
     DefiNotificationsComponent,
-    PopupComponent
+    PopupComponent,
+    BodyDirective
   ],
   exports: [
     DefiNotificationsComponent,
-    PopupComponent
+    PopupComponent,
+    BodyDirective
   ]
 })
 export class DefiOverlayModule {

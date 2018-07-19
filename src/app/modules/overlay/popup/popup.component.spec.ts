@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupComponent } from './popup.component';
+import { PopupComponent, BodyDirective } from './popup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -13,7 +13,8 @@ describe('PopupComponent', () => {
     TestBed.configureTestingModule({
       imports: [BrowserAnimationsModule],
       declarations: [
-        PopupComponent
+        PopupComponent,
+        BodyDirective
       ]
     })
     .compileComponents();

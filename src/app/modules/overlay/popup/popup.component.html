@@ -12,7 +12,7 @@
         {{body}}
       </div>
       <ng-template #bodyTemplateContainer>
-        <ng-content select="[body]"></ng-content>
+        <ng-container [ngTemplateOutlet]="bodyTemplate?.templateRef"></ng-container>
       </ng-template>
     </div>
     <div class="popup-actions" *ngIf='!noActions'>
