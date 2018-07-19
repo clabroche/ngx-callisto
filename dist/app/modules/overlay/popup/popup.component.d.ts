@@ -1,3 +1,4 @@
+import { TemplateRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 /**
@@ -29,7 +30,12 @@ import { FormGroup } from '@angular/forms';
  * |  <div body>Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !</div>
  * </popup>
  */
+export declare class BodyDirective {
+    templateRef: TemplateRef<any>;
+    constructor(templateRef: TemplateRef<any>);
+}
 export declare class PopupComponent {
+    bodyTemplate: any;
     body: string;
     title: string;
     cancelButton: string;

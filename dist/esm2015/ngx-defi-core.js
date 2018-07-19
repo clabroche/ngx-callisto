@@ -1,4 +1,4 @@
-import { Component, Input, Injectable, NgModule, Directive, Renderer2, ElementRef, HostListener, Pipe, ViewChild, EventEmitter, Output, ViewChildren } from '@angular/core';
+import { Component, Input, Injectable, NgModule, Directive, Renderer2, ElementRef, HostListener, Pipe, ViewChild, EventEmitter, Output, ViewChildren, TemplateRef, ContentChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { reduce, isEqual, map } from 'lodash';
 import * as erdImported from 'element-resize-detector';
@@ -1427,6 +1427,23 @@ DefiNotificationsComponent.propDecorators = {
  * |  <div body>Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !</div>
  * </popup>
  */
+class BodyDirective {
+    /**
+     * @param {?} templateRef
+     */
+    constructor(templateRef) {
+        this.templateRef = templateRef;
+    }
+}
+BodyDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[popup-body]'
+            },] },
+];
+/** @nocollapse */
+BodyDirective.ctorParameters = () => [
+    { type: TemplateRef, },
+];
 class PopupComponent {
     constructor() {
         this.body = '';
@@ -1516,7 +1533,7 @@ PopupComponent.decorators = [
         {{body}}
       </div>
       <ng-template #bodyTemplateContainer>
-        <ng-content select="[body]"></ng-content>
+        <ng-container [ngTemplateOutlet]="bodyTemplate?.templateRef"></ng-container>
       </ng-template>
     </div>
     <div class="popup-actions" *ngIf='!noActions'>
@@ -1544,6 +1561,7 @@ PopupComponent.decorators = [
 ];
 /** @nocollapse */
 PopupComponent.propDecorators = {
+    "bodyTemplate": [{ type: ContentChild, args: [BodyDirective,] },],
     "body": [{ type: Input },],
     "title": [{ type: Input },],
     "cancelButton": [{ type: Input },],
@@ -1578,11 +1596,13 @@ DefiOverlayModule.decorators = [
                 ],
                 declarations: [
                     DefiNotificationsComponent,
-                    PopupComponent
+                    PopupComponent,
+                    BodyDirective
                 ],
                 exports: [
                     DefiNotificationsComponent,
-                    PopupComponent
+                    PopupComponent,
+                    BodyDirective
                 ]
             },] },
 ];
@@ -1600,5 +1620,5 @@ DefiOverlayModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { DefiBoxComponent, DefiContainersModule, DefiSidePanelService, DefiSidePanelComponent, DefiCoreModule, DefiSpinningIconDirective, DefiClickStopPropagation, DefiToId, DefiPopoverComponent, DefiCommonService, DefiDebounceInputDirective, DefiShowPasswordDirective, DefiValidatorsDirective, DefiFormErrorsComponent, DefiFormsModule, DefiPassword, DefiNavbarComponent, DefiNavigationsModule, DefiSideBarService, DefiSidebarComponent, DefiNotificationsComponent, DefiOverlayModule, PopupComponent, DefiNotificationsService };
+export { DefiBoxComponent, DefiContainersModule, DefiSidePanelService, DefiSidePanelComponent, DefiCoreModule, DefiSpinningIconDirective, DefiClickStopPropagation, DefiToId, DefiPopoverComponent, DefiCommonService, DefiDebounceInputDirective, DefiShowPasswordDirective, DefiValidatorsDirective, DefiFormErrorsComponent, DefiFormsModule, DefiPassword, DefiNavbarComponent, DefiNavigationsModule, DefiSideBarService, DefiSidebarComponent, DefiNotificationsComponent, DefiOverlayModule, BodyDirective, PopupComponent, DefiNotificationsService };
 //# sourceMappingURL=ngx-defi-core.js.map

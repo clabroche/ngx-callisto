@@ -20,5 +20,5 @@ export { DefiSideBarService } from './app/modules/navigations/providers/sidebar.
 export { Item, Configuration, DefiSidebarComponent } from './app/modules/navigations/sidebar/sidebar.component'
 export { DefiNotificationsComponent } from './app/modules/overlay/notifications/notifications.component'
 export { DefiOverlayModule } from './app/modules/overlay/overlay.module'
-export { PopupComponent } from './app/modules/overlay/popup/popup.component'
+export { BodyDirective, PopupComponent } from './app/modules/overlay/popup/popup.component'
 export { Notification, DefiNotificationsService } from './app/modules/overlay/providers/notifications.service'
