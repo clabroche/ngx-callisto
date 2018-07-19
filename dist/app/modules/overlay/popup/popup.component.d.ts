@@ -1,4 +1,4 @@
-import { TemplateRef } from '@angular/core';
+import { TemplateRef, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 /**
@@ -44,6 +44,7 @@ export declare class PopupComponent {
     height: string;
     mainColor: string;
     noActions: boolean;
+    openEvent: EventEmitter<{}>;
     context: any;
     _open: boolean;
     state: string;
@@ -54,4 +55,5 @@ export declare class PopupComponent {
     bindForm(form: FormGroup): this;
     stopPropagation($event: Event): void;
     out(isValidate: any, $event?: Event, value?: any): void;
+    onOpen(cb: any): void;
 }

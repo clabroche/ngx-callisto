@@ -791,6 +791,7 @@ var PopupComponent = /** @class */ (function () {
         this.height = 'auto';
         this.mainColor = '#343a40';
         this.noActions = false;
+        this.openEvent = new EventEmitter();
         this._open = false;
         this.state = 'close';
     }
@@ -799,6 +800,8 @@ var PopupComponent = /** @class */ (function () {
         this.result = new Subject$1();
         this._open = true;
         this.state = 'open';
+        console.log('hey');
+        this.openEvent.emit();
         return this.result;
     };
     PopupComponent.prototype.close = function ($event) {
@@ -830,6 +833,9 @@ var PopupComponent = /** @class */ (function () {
         else
             this.result.next(value || 'ok');
         this.close();
+    };
+    PopupComponent.prototype.onOpen = function (cb) {
+        cb();
     };
     return PopupComponent;
 }());
@@ -864,6 +870,7 @@ PopupComponent.propDecorators = {
     "height": [{ type: Input },],
     "mainColor": [{ type: Input },],
     "noActions": [{ type: Input },],
+    "openEvent": [{ type: Output, args: ['openEvent',] },],
 };
 var DefiOverlayModule = /** @class */ (function () {
     function DefiOverlayModule() {

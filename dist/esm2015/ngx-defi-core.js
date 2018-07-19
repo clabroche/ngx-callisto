@@ -1453,6 +1453,7 @@ class PopupComponent {
         this.height = 'auto';
         this.mainColor = '#343a40';
         this.noActions = false;
+        this.openEvent = new EventEmitter();
         this._open = false;
         this.state = 'close';
     }
@@ -1465,6 +1466,8 @@ class PopupComponent {
         this.result = new Subject$1();
         this._open = true;
         this.state = 'open';
+        console.log('hey');
+        this.openEvent.emit();
         return this.result;
     }
     /**
@@ -1514,6 +1517,13 @@ class PopupComponent {
         else
             this.result.next(value || 'ok');
         this.close();
+    }
+    /**
+     * @param {?} cb
+     * @return {?}
+     */
+    onOpen(cb) {
+        cb();
     }
 }
 PopupComponent.decorators = [
@@ -1570,6 +1580,7 @@ PopupComponent.propDecorators = {
     "height": [{ type: Input },],
     "mainColor": [{ type: Input },],
     "noActions": [{ type: Input },],
+    "openEvent": [{ type: Output, args: ['openEvent',] },],
 };
 
 /**

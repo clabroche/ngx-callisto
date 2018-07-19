@@ -840,6 +840,7 @@ var PopupComponent = /** @class */ (function () {
         this.height = 'auto';
         this.mainColor = '#343a40';
         this.noActions = false;
+        this.openEvent = new core.EventEmitter();
         this._open = false;
         this.state = 'close';
     }
@@ -848,6 +849,8 @@ var PopupComponent = /** @class */ (function () {
         this.result = new rxjs.Subject();
         this._open = true;
         this.state = 'open';
+        console.log('hey');
+        this.openEvent.emit();
         return this.result;
     };
     PopupComponent.prototype.close = function ($event) {
@@ -879,6 +882,9 @@ var PopupComponent = /** @class */ (function () {
         else
             this.result.next(value || 'ok');
         this.close();
+    };
+    PopupComponent.prototype.onOpen = function (cb) {
+        cb();
     };
     return PopupComponent;
 }());
@@ -913,6 +919,7 @@ PopupComponent.propDecorators = {
     "height": [{ type: core.Input },],
     "mainColor": [{ type: core.Input },],
     "noActions": [{ type: core.Input },],
+    "openEvent": [{ type: core.Output, args: ['openEvent',] },],
 };
 var DefiOverlayModule = /** @class */ (function () {
     function DefiOverlayModule() {
