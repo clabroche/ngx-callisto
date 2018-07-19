@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Directive, TemplateRef, ContentChild } from '@angular/core';
+import { Component, OnInit, Input, Directive, TemplateRef, ContentChild, EventEmitter, Output } from '@angular/core';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { Subject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
@@ -72,6 +72,8 @@ export class PopupComponent {
 
   @Input() noActions = false;
 
+  @Output('openEvent') openEvent = new EventEmitter();
+
   context: any;
 
   _open = false;
@@ -86,6 +88,8 @@ export class PopupComponent {
     this.result = new Subject();
     this._open = true;
     this.state = 'open';
+    console.log('hey')
+    this.openEvent.emit();
     return this.result;
   }
   close($event?: Event) {
@@ -113,6 +117,10 @@ export class PopupComponent {
     else if (this.form) this.result.next(this.form.value);
     else this.result.next(value || 'ok');
     this.close();
+  }
+
+  onOpen(cb) {
+    cb();
   }
 
 }
