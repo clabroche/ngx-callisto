@@ -845,12 +845,12 @@ var PopupComponent = /** @class */ (function () {
         this.state = 'close';
     }
     PopupComponent.prototype.open = function (context) {
+        var _this = this;
         this.context = context;
         this.result = new rxjs.Subject();
         this._open = true;
         this.state = 'open';
-        console.log('hey');
-        this.openEvent.emit();
+        setTimeout(function (_) { return _this.openEvent.emit(); });
         return this.result;
     };
     PopupComponent.prototype.close = function ($event) {
@@ -882,9 +882,6 @@ var PopupComponent = /** @class */ (function () {
         else
             this.result.next(value || 'ok');
         this.close();
-    };
-    PopupComponent.prototype.onOpen = function (cb) {
-        cb();
     };
     return PopupComponent;
 }());

@@ -55,5 +55,4 @@ export declare class PopupComponent {
     bindForm(form: FormGroup): this;
     stopPropagation($event: Event): void;
     out(isValidate: any, $event?: Event, value?: any): void;
-    onOpen(cb: any): void;
 }

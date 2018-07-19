@@ -88,8 +88,7 @@ export class PopupComponent {
     this.result = new Subject();
     this._open = true;
     this.state = 'open';
-    console.log('hey')
-    this.openEvent.emit();
+    setTimeout(_ => this.openEvent.emit());
     return this.result;
   }
   close($event?: Event) {
@@ -118,9 +117,4 @@ export class PopupComponent {
     else this.result.next(value || 'ok');
     this.close();
   }
-
-  onOpen(cb) {
-    cb();
-  }
-
 }

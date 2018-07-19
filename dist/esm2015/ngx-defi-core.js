@@ -1466,8 +1466,7 @@ class PopupComponent {
         this.result = new Subject$1();
         this._open = true;
         this.state = 'open';
-        console.log('hey');
-        this.openEvent.emit();
+        setTimeout(_ => this.openEvent.emit());
         return this.result;
     }
     /**
@@ -1517,13 +1516,6 @@ class PopupComponent {
         else
             this.result.next(value || 'ok');
         this.close();
-    }
-    /**
-     * @param {?} cb
-     * @return {?}
-     */
-    onOpen(cb) {
-        cb();
     }
 }
 PopupComponent.decorators = [
