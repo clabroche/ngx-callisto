@@ -775,20 +775,16 @@
 </nav>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content directive">
                    <div class="content-data">
 
 
 
 
 
-
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>DefiPassword</li>
+  <li>Directives</li>
+  <li>BodyDirective</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -800,6 +796,7 @@
     <li>
         <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
     </li>
+
 </ul>
 
 <div class="tab-content">
@@ -808,17 +805,16 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/modules/forms/validators/Password.validator.ts</code>
+            <code>src/app/modules/overlay/popup/popup.component.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Check if passphrase are the same</p>
+                <p>Display a popup</p>
 
             </p>
-
 
 
             <p class="comment">
@@ -826,44 +822,63 @@
             </p>
             <div class="io-description">
                         <div>
-                            <pre class="line-numbers"><code class="language-html">fb.group({
-passphrase: [&quot;&quot;,Validators.required],
-recheckPassphrase: [&quot;&quot;,Validators.required],
-}, { validator: MatchPassword.MatchPassword })
+                            <pre class="line-numbers"><code class="language-html">popup.open().subscibe(result=&gt;{
+|  // result = undefined or 'ok'
+})
+&lt;popup #popup&gt;
+|  &lt;div title&gt;Some templating&lt;/div&gt;
+|  &lt;div body&gt;Some templating&lt;/div&gt;
+&lt;/popup&gt;
 
-&lt;form [formGroup]=&quot;formPassphrases&quot;&gt;
-|  &lt;div class=&quot;label&quot; for=&quot;passphrase&quot;&gt;Passphrase&lt;/div&gt;
-|  &lt;input type=&quot;password&quot; [formControlName]=&quot;'passphrase'&quot; /&gt;
-|
-|  &lt;div class=&quot;label&quot; for=&quot;recheckPassphrase&quot;&gt;Recheck passphrase&lt;/div&gt;
-|  &lt;input type=&quot;password&quot; [formControlName]=&quot;'recheckPassphrase'&quot; /&gt;
-|
-|  &lt;button [disabled]=&quot;formPassphrases.invalid&quot;&gt;Submit button&lt;/button&gt;
-&lt;/form&gt;
-MatchPassword: {{formPassphrases.valid}}</code></pre>
+formGroup: FormGroup
+popupWithBind.bindForm(formGroup).open().subscibe(result=&gt;{
+|  // result = undefined or formGroup.value
+})
+&lt;popup #popupWithBind&gt;
+|  &lt;div title&gt;Some templating&lt;/div&gt;
+|  &lt;div body&gt;Some templating with input control etc...&lt;/div&gt;
+&lt;/popup&gt;
+
+data = { $implicit: 'Hello', name:'world' }
+popupWithContext.open(data).subscibe(result=&gt;{
+|  // result = undefined or 'ok'
+})
+&lt;popup #popupWithContext&gt;
+|  &lt;div title&gt;Some templating&lt;/div&gt;
+|  &lt;div body&gt;Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !&lt;/div&gt;
+&lt;/popup&gt;</code></pre>
                         </div>
             </div>
+
+        <section>
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover">
+                <tbody>
+
+                    <tr>
+                        <td class="col-md-3">selector</td>
+                        <td class="col-md-9"><code>[popup-body]</code></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
 
             <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-
                 <tr>
                     <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
+                        <h6><b>Properties</b></h6>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Static</span>
-                                <a href="#GeneratePassword">GeneratePassword</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Static</span>
-                                <a href="#MatchPassword">MatchPassword</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#templateRef">templateRef</a>
                             </li>
                         </ul>
                     </td>
@@ -873,223 +888,238 @@ MatchPassword: {{formPassphrases.valid}}</code></pre>
 
 
 
+
         </tbody>
     </table>
 </section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(templateRef: TemplateRef<any>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/overlay/popup/popup.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                    <td>templateRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>TemplateRef&lt;any&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
 
 
 
             <section>
     
-        <h3 id="methods">
-            Methods
+        <h3 id="inputs">
+            Properties
         </h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="GeneratePassword"></a>
+                        <a name="templateRef"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Static</span>
-                            GeneratePassword
+                                <span class="modifier">Public</span>
+                            templateRef
                             </b>
-                            <a href="#GeneratePassword"><span class="fa fa-link"></span></a>
+                            <a href="#templateRef"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span>
-                        <code>GeneratePassword(length: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                        <span class="modifier-icon fa fa-reset"></span><code>templateRef:     <code>TemplateRef&lt;any&gt;</code>
+</code>
                     </td>
                 </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
 
-
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/modules/forms/validators/Password.validator.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/modules/overlay/popup/popup.component.ts:39</a></div>
                             </td>
                         </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Return a password</p>
-</div>
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                                    <td>Default value</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>length</td>
-                                                        <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code>12</code>
-                                                        </td>
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="MatchPassword"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Static</span>
-                            MatchPassword
-                            </b>
-                            <a href="#MatchPassword"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span>
-                        <code>MatchPassword(AC: <a href="https://angular.io/api/forms/AbstractControl" target="_blank">AbstractControl</a>)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/forms/validators/Password.validator.ts:27</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>check function</p>
-</div>
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>AC</td>
-                                                        <td>
-                                                                    <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="../miscellaneous/variables.html#sp" target="_self" >{ recheckPassphrase: boolean; }</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
             </tbody>
         </table>
 </section>
-
-
-
-
 
 
     </div>
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AbstractControl } from &#x27;@angular/forms&#x27;;
-
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Directive, TemplateRef, ContentChild } from &#x27;@angular/core&#x27;;
+import { trigger, state, transition, animate, style } from &#x27;@angular/animations&#x27;;
+import { Subject } from &#x27;rxjs&#x27;;
+import { FormGroup } from &#x27;@angular/forms&#x27;;
 /**
- * Check if passphrase are the same
- * @example 
- *  fb.group({
- *      passphrase: [&quot;&quot;,Validators.required],
- *      recheckPassphrase: [&quot;&quot;,Validators.required],
- *  }, { validator: MatchPassword.MatchPassword })
- * 
- *  &lt;form [formGroup]&#x3D;&quot;formPassphrases&quot;&gt;
- *  |  &lt;div class&#x3D;&quot;label&quot; for&#x3D;&quot;passphrase&quot;&gt;Passphrase&lt;/div&gt;
- *  |  &lt;input type&#x3D;&quot;password&quot; [formControlName]&#x3D;&quot;&#x27;passphrase&#x27;&quot; /&gt;
- *  |
- *  |  &lt;div class&#x3D;&quot;label&quot; for&#x3D;&quot;recheckPassphrase&quot;&gt;Recheck passphrase&lt;/div&gt;
- *  |  &lt;input type&#x3D;&quot;password&quot; [formControlName]&#x3D;&quot;&#x27;recheckPassphrase&#x27;&quot; /&gt;
- *  |
- *  |  &lt;button [disabled]&#x3D;&quot;formPassphrases.invalid&quot;&gt;Submit button&lt;/button&gt;
- *  &lt;/form&gt;
- *  MatchPassword: {{formPassphrases.valid}}
+ * Display a popup
+ * @example
+ * popup.open().subscibe(result&#x3D;&gt;{
+ * |  // result &#x3D; undefined or &#x27;ok&#x27;
+ * })
+ * &lt;popup #popup&gt;
+ * |  &lt;div title&gt;Some templating&lt;/div&gt;
+ * |  &lt;div body&gt;Some templating&lt;/div&gt;
+ * &lt;/popup&gt;
+ *
+ * formGroup: FormGroup
+ * popupWithBind.bindForm(formGroup).open().subscibe(result&#x3D;&gt;{
+ * |  // result &#x3D; undefined or formGroup.value
+ * })
+ * &lt;popup #popupWithBind&gt;
+ * |  &lt;div title&gt;Some templating&lt;/div&gt;
+ * |  &lt;div body&gt;Some templating with input control etc...&lt;/div&gt;
+ * &lt;/popup&gt;
+ *
+ * data &#x3D; { $implicit: &#x27;Hello&#x27;, name:&#x27;world&#x27; }
+ * popupWithContext.open(data).subscibe(result&#x3D;&gt;{
+ * |  // result &#x3D; undefined or &#x27;ok&#x27;
+ * })
+ * &lt;popup #popupWithContext&gt;
+ * |  &lt;div title&gt;Some templating&lt;/div&gt;
+ * |  &lt;div body&gt;Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !&lt;/div&gt;
+ * &lt;/popup&gt;
  */
-export class DefiPassword {
 
-    /**
-     * check function
-     */
-    static MatchPassword(AC: AbstractControl) {
-        let confirmPassword &#x3D; AC.value.passphrase
-        let password &#x3D; AC.value.recheckPassphrase; // to get value in input tag
-        if (confirmPassword !&#x3D;&#x3D; password) {
-            return { recheckPassphrase: true }
-        } else return null
-    }
-    /**
-     * Return a password
-     */
-    static GeneratePassword(length:number &#x3D; 12):string {
-        const charset &#x3D; &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&amp;*()_+~&#x60;|}{[]\:;?&gt;&lt;,./-&#x3D;&quot;
-        let retVal &#x3D; &quot;&quot;;
-        for (var i &#x3D; 0, n &#x3D; charset.length; i &lt; length; ++i) {
-            retVal +&#x3D; charset.charAt(Math.floor(Math.random() * n));
-        }
-        return retVal;
-    }
-}</code></pre>
+ @Directive({
+   selector: &#x27;[popup-body]&#x27;
+ })
+ export class BodyDirective {
+  constructor(public templateRef: TemplateRef&lt;any&gt;) {}
+ }
+@Component({
+  selector: &#x27;popup&#x27;,
+  templateUrl: &#x27;./popup.component.html&#x27;,
+  styleUrls: [&#x27;./popup.component.scss&#x27;],
+  animations: [
+    trigger(&#x27;openState&#x27;, [
+      state(&#x27;open&#x27;, style({
+        &#x27;display&#x27;: &#x27;flex&#x27;,
+        &#x27;opacity&#x27;: &#x27;1&#x27;
+      })),
+      state(&#x27;close&#x27;, style({
+        &#x27;display&#x27;: &#x27;none&#x27;,
+        &#x27;opacity&#x27;: &#x27;0&#x27;
+      })),
+      transition(&#x27;open &#x3D;&gt; close&#x27;, animate(&#x27;100ms ease-in&#x27;)),
+      transition(&#x27;close &#x3D;&gt; open&#x27;, animate(&#x27;100ms ease-out&#x27;))
+    ])
+  ]
+})
+export class PopupComponent {
+  @ContentChild(BodyDirective) bodyTemplate;
+  @Input() body &#x3D; &#x27;&#x27;;
+  @Input() title: string;
+
+  @Input() cancelButton &#x3D; &#x27;Annuler&#x27;;
+  @Input() validateButton &#x3D; &#x27;Valider&#x27;;
+
+  @Input() width &#x3D; &#x27;auto&#x27;;
+  @Input() height &#x3D; &#x27;auto&#x27;;
+
+  @Input() mainColor &#x3D; &#x27;#343a40&#x27;;
+
+  @Input() noActions &#x3D; false;
+
+  context: any;
+
+  _open &#x3D; false;
+  state &#x3D; &#x27;close&#x27;;
+
+  result: Subject&lt;any&gt;;
+
+  form: FormGroup;
+
+  open(context?): Subject&lt;any&gt; {
+    this.context &#x3D; context;
+    this.result &#x3D; new Subject();
+    this._open &#x3D; true;
+    this.state &#x3D; &#x27;open&#x27;;
+    return this.result;
+  }
+  close($event?: Event) {
+    if ($event) { this.stopPropagation($event); }
+    this._open &#x3D; false;
+    this.state &#x3D; &#x27;close&#x27;;
+    if (this.result) {
+      this.result.unsubscribe();
+      this.result &#x3D; null;
+     }
+  }
+
+  bindForm(form: FormGroup) {
+    this.form &#x3D; form;
+    return this;
+  }
+
+  stopPropagation($event: Event) {
+    $event.stopPropagation();
+  }
+
+  out(isValidate, $event?: Event, value?: any) {
+    if ($event) { $event.preventDefault(); }
+    if (!isValidate) this.result.next(null);
+    else if (this.form) this.result.next(this.form.value);
+    else this.result.next(value || &#x27;ok&#x27;);
+    this.close();
+  }
+
+}
+</code></pre>
     </div>
+
 </div>
+
+
+
+
 
 
 
@@ -1121,7 +1151,7 @@ export class DefiPassword {
 
         <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_URL = 'DefiPassword.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'BodyDirective.html';
         </script>
 
        <script src="../js/search/search.js"></script>

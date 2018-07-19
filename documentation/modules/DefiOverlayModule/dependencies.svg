@@ -22,69 +22,93 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_DefiOverlayModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="71.5,-70 71.5,-268 424.5,-268 424.5,-70 71.5,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="11.5,-70 11.5,-268 484.5,-268 484.5,-70 11.5,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_DefiOverlayModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="82.5,-78 82.5,-130 413.5,-130 413.5,-78 82.5,-78"/>
+<polygon fill="none" stroke="#000000" points="24.5,-78 24.5,-130 471.5,-130 471.5,-78 24.5,-78"/>
 </g>
-<g id="clust6" class="cluster">
+<g id="clust7" class="cluster">
 <title>cluster_DefiOverlayModule_exports</title>
-<polygon fill="none" stroke="#000000" points="79.5,-208 79.5,-260 416.5,-260 416.5,-208 79.5,-208"/>
+<polygon fill="none" stroke="#000000" points="19.5,-208 19.5,-260 476.5,-260 476.5,-208 19.5,-208"/>
 </g>
 <!-- DefiNotificationsComponent -->
 <g id="node1" class="node">
 <title>DefiNotificationsComponent</title>
-<polygon fill="#ffffb3" stroke="#000000" points="405.299,-122 225.701,-122 225.701,-86 405.299,-86 405.299,-122"/>
-<text text-anchor="middle" x="315.5" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">DefiNotificationsComponent</text>
+<polygon fill="#ffffb3" stroke="#000000" points="463.299,-122 283.701,-122 283.701,-86 463.299,-86 463.299,-122"/>
+<text text-anchor="middle" x="373.5" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">DefiNotificationsComponent</text>
 </g>
 <!-- DefiOverlayModule -->
-<g id="node3" class="node">
+<g id="node4" class="node">
 <title>DefiOverlayModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="214.0101,-187 211.0101,-191 190.0101,-191 187.0101,-187 84.9899,-187 84.9899,-151 214.0101,-151 214.0101,-187"/>
-<text text-anchor="middle" x="149.5" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">DefiOverlayModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="272.0101,-187 269.0101,-191 248.0101,-191 245.0101,-187 142.9899,-187 142.9899,-151 272.0101,-151 272.0101,-187"/>
+<text text-anchor="middle" x="207.5" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">DefiOverlayModule</text>
 </g>
 <!-- DefiNotificationsComponent&#45;&gt;DefiOverlayModule -->
 <g id="edge1" class="edge">
 <title>DefiNotificationsComponent&#45;&gt;DefiOverlayModule</title>
-<path fill="none" stroke="#000000" d="M345.4665,-122.0225C345.4665,-139.3734 345.4665,-163 345.4665,-163 345.4665,-163 224.2099,-163 224.2099,-163"/>
-<polygon fill="#000000" stroke="#000000" points="224.2099,-159.5001 214.2099,-163 224.2098,-166.5001 224.2099,-159.5001"/>
+<path fill="none" stroke="#000000" d="M404.1331,-122.0225C404.1331,-139.3734 404.1331,-163 404.1331,-163 404.1331,-163 282.1574,-163 282.1574,-163"/>
+<polygon fill="#000000" stroke="#000000" points="282.1574,-159.5001 272.1574,-163 282.1574,-166.5001 282.1574,-159.5001"/>
 </g>
 <!-- PopupComponent -->
 <g id="node2" class="node">
 <title>PopupComponent</title>
-<polygon fill="#ffffb3" stroke="#000000" points="208.1151,-122 90.8849,-122 90.8849,-86 208.1151,-86 208.1151,-122"/>
-<text text-anchor="middle" x="149.5" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">PopupComponent</text>
+<polygon fill="#ffffb3" stroke="#000000" points="266.1151,-122 148.8849,-122 148.8849,-86 266.1151,-86 266.1151,-122"/>
+<text text-anchor="middle" x="207.5" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">PopupComponent</text>
 </g>
 <!-- PopupComponent&#45;&gt;DefiOverlayModule -->
 <g id="edge2" class="edge">
 <title>PopupComponent&#45;&gt;DefiOverlayModule</title>
-<path fill="none" stroke="#000000" d="M149.5,-122.1061C149.5,-122.1061 149.5,-140.991 149.5,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="146.0001,-140.9909 149.5,-150.991 153.0001,-140.991 146.0001,-140.9909"/>
+<path fill="none" stroke="#000000" d="M207.5,-122.1061C207.5,-122.1061 207.5,-140.991 207.5,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="204.0001,-140.9909 207.5,-150.991 211.0001,-140.991 204.0001,-140.9909"/>
+</g>
+<!-- BodyDirective -->
+<g id="node3" class="node">
+<title>BodyDirective</title>
+<polygon fill="#ffffb3" stroke="#000000" points="130.9203,-122 32.0797,-122 32.0797,-86 130.9203,-86 130.9203,-122"/>
+<text text-anchor="middle" x="81.5" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">BodyDirective</text>
+</g>
+<!-- BodyDirective&#45;&gt;DefiOverlayModule -->
+<g id="edge3" class="edge">
+<title>BodyDirective&#45;&gt;DefiOverlayModule</title>
+<path fill="none" stroke="#000000" d="M97.0699,-122.0225C97.0699,-139.3734 97.0699,-163 97.0699,-163 97.0699,-163 132.9428,-163 132.9428,-163"/>
+<polygon fill="#000000" stroke="#000000" points="132.9429,-166.5001 142.9428,-163 132.9428,-159.5001 132.9429,-166.5001"/>
 </g>
 <!-- DefiNotificationsComponent  -->
-<g id="node4" class="node">
+<g id="node5" class="node">
 <title>DefiNotificationsComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="408.7989,-252 226.2011,-252 226.2011,-216 408.7989,-216 408.7989,-252"/>
-<text text-anchor="middle" x="317.5" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">DefiNotificationsComponent </text>
+<polygon fill="#fb8072" stroke="#000000" points="468.7989,-252 286.2011,-252 286.2011,-216 468.7989,-216 468.7989,-252"/>
+<text text-anchor="middle" x="377.5" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">DefiNotificationsComponent </text>
 </g>
 <!-- DefiOverlayModule&#45;&gt;DefiNotificationsComponent  -->
-<g id="edge3" class="edge">
+<g id="edge4" class="edge">
 <title>DefiOverlayModule&#45;&gt;DefiNotificationsComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M214.0498,-175C249.2749,-175 285.7835,-175 285.7835,-175 285.7835,-175 285.7835,-205.9775 285.7835,-205.9775"/>
-<polygon fill="#000000" stroke="#000000" points="282.2836,-205.9774 285.7835,-215.9775 289.2836,-205.9775 282.2836,-205.9774"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M272.2787,-175C307.9723,-175 345.1169,-175 345.1169,-175 345.1169,-175 345.1169,-205.9775 345.1169,-205.9775"/>
+<polygon fill="#000000" stroke="#000000" points="341.617,-205.9774 345.1169,-215.9775 348.617,-205.9775 341.617,-205.9774"/>
 </g>
 <!-- PopupComponent  -->
-<g id="node5" class="node">
+<g id="node6" class="node">
 <title>PopupComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="207.6156,-252 87.3844,-252 87.3844,-216 207.6156,-216 207.6156,-252"/>
-<text text-anchor="middle" x="147.5" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">PopupComponent </text>
+<polygon fill="#fb8072" stroke="#000000" points="267.6156,-252 147.3844,-252 147.3844,-216 267.6156,-216 267.6156,-252"/>
+<text text-anchor="middle" x="207.5" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">PopupComponent </text>
 </g>
 <!-- DefiOverlayModule&#45;&gt;PopupComponent  -->
-<g id="edge4" class="edge">
+<g id="edge5" class="edge">
 <title>DefiOverlayModule&#45;&gt;PopupComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M147.5,-187.1061C147.5,-187.1061 147.5,-205.991 147.5,-205.991"/>
-<polygon fill="#000000" stroke="#000000" points="144.0001,-205.9909 147.5,-215.991 151.0001,-205.991 144.0001,-205.9909"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M207.5,-187.1061C207.5,-187.1061 207.5,-205.991 207.5,-205.991"/>
+<polygon fill="#000000" stroke="#000000" points="204.0001,-205.9909 207.5,-215.991 211.0001,-205.991 204.0001,-205.9909"/>
+</g>
+<!-- BodyDirective  -->
+<g id="node7" class="node">
+<title>BodyDirective </title>
+<polygon fill="#fb8072" stroke="#000000" points="129.4194,-252 27.5806,-252 27.5806,-216 129.4194,-216 129.4194,-252"/>
+<text text-anchor="middle" x="78.5" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">BodyDirective </text>
+</g>
+<!-- DefiOverlayModule&#45;&gt;BodyDirective  -->
+<g id="edge6" class="edge">
+<title>DefiOverlayModule&#45;&gt;BodyDirective </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M142.776,-175C104.9877,-175 64.6801,-175 64.6801,-175 64.6801,-175 64.6801,-205.9775 64.6801,-205.9775"/>
+<polygon fill="#000000" stroke="#000000" points="61.1802,-205.9774 64.6801,-215.9775 68.1802,-205.9775 61.1802,-205.9774"/>
 </g>
 </g>
 </svg>
