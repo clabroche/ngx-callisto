@@ -37,8 +37,8 @@
                 font-size: 1.2em;
             }
         }
-        #right{
-            &::ng-deep{
+        &::ng-deep{
+            #right>[right] {
                 display: flex;
                 align-items: center;
                 height: 100%;
