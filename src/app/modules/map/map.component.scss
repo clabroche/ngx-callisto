@@ -1,0 +1,13 @@
+.map-container{
+  position: relative;
+  padding-top: 56.25%;
+  .map {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    height: 100%;;
+  }
+}

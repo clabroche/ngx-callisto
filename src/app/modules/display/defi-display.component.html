@@ -1,0 +1,13 @@
+<p-sidebar [visible]="visible" (visibleChange)="changeVisibleState($event)" position="right">
+  <h1>Affichage</h1>
+  <ul>
+    <li *ngFor="let component of elements">
+      <div>
+        <input type="checkbox" (onChange)="component.toggle($event)" [value]="component.display" />
+      </div>
+      <div class="display-name">{{component.name}}</div>
+    </li>
+  </ul>
+</p-sidebar>
+
+<ng-content></ng-content>

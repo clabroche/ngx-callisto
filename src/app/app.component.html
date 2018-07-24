@@ -1,2 +1,18 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<router-outlet></router-outlet>
+<div id="appContainer">
+<defi-sidebar [conf]="conf">
+
+    </defi-sidebar>
+    <div id="appContent">
+        <defi-navbar>
+            <div logo>
+                <img src="assets/img/logo.png" alt="Logo">
+            </div>
+            <div right>
+                
+            </div>
+        </defi-navbar>
+        <div id="outletContent">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

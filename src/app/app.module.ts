@@ -24,7 +24,7 @@ import { DefiOverlayModule } from './modules/overlay/overlay.module';
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      {path: '**', loadChildren: './demo/demo.module#DemoModule'}
+      {path: '', loadChildren: './demo/demo.module#DemoModule'}
     ])
   ],
   providers: [],

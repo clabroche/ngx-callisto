@@ -1,0 +1,3 @@
+<div [id]="overlay.uuid" *ngFor="let overlay of overlays">
+  <ng-container *ngTemplateOutlet='overlay.template; context: {$implicit:overlay.context}'></ng-container>
+</div>

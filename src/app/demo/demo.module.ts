@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DemoComponent } from './demo/demo.component';
 import { RouterModule } from '@angular/router';
 import { DefiCoreModule, DefiFormsModule, DefiNavigationsModule, DefiContainersModule } from '../../public_api';
-import { NoopAnimationPlayer } from '@angular/animations';
-import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { Browser } from 'protractor';
-import { BrowserModule } from '@angular/platform-browser';
 import { DefiOverlayModule } from '../modules/overlay/overlay.module';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   imports: [
@@ -21,13 +17,12 @@ import { DefiOverlayModule } from '../modules/overlay/overlay.module';
     DefiOverlayModule,
     DefiCoreModule,
     RouterModule.forChild([
-      {path: '', component: DemoComponent}
+      {path: 'map', component: MapComponent}
     ])
   ],
   exports: [
-    DemoComponent,
     RouterModule
   ],
-  declarations: [DemoComponent],
+  declarations: [MapComponent],
 })
 export class DemoModule { }

@@ -29,6 +29,40 @@ $sidebarWidthClose:$navbarWidth;
   to {transform:scale(1)}
 }
 
+$navbarWidth: 50px;
+#sidebar {
+  background-color: white !important;
+  position: relative;
+  color: #616161 !important;
+  box-shadow: 2px 0 11px #00000080;
+  &:before {
+    content: "";
+    height: 70px !important;
+    background-color: var(--headerBgColorAccent);
+  }
+  .icon {
+    font-size: 1.3rem !important;
+  }
+  .item {
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1) !important
+    }
+  }
+  .hintContainer {
+    background-color: #e7e7e7 !important;
+    .hint {
+      color: #636363 !important;
+    }
+  }
+  #toggleSidebar {
+    background-color: var(--headerBgColorAccent) !important;
+    color: var(--headerTextColor) !important;
+  }
+}
+
+
 #sidebar {
   color: $mainTextColor;
   height: 100%;
