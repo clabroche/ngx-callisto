@@ -31,6 +31,12 @@ $sidebarWidthClose:$navbarWidth;
 
 $navbarWidth: 50px;
 #sidebar {
+  height: 100%;
+  overflow-x: hidden;
+  width: $sidebarWidthClose;
+  display: flex;
+  flex-direction: column;
+  background-size: auto 100%;
   background-color: white !important;
   position: relative;
   color: #616161 !important;
@@ -40,38 +46,6 @@ $navbarWidth: 50px;
     height: 70px !important;
     background-color: var(--headerBgColorAccent);
   }
-  .icon {
-    font-size: 1.3rem !important;
-  }
-  .item {
-    padding-bottom: 10px !important;
-    padding-top: 10px !important;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.1) !important
-    }
-  }
-  .hintContainer {
-    background-color: #e7e7e7 !important;
-    .hint {
-      color: #636363 !important;
-    }
-  }
-  #toggleSidebar {
-    background-color: var(--headerBgColorAccent) !important;
-    color: var(--headerTextColor) !important;
-  }
-}
-
-
-#sidebar {
-  color: $mainTextColor;
-  height: 100%;
-  overflow-x: hidden;
-  width: $sidebarWidthClose;
-  background-color: $mainColor;
-  display: flex;
-  flex-direction: column;
-  background-size: auto 100%;
   &.openSidebar {
     animation-name: openSidebar;
     animation-duration: 0.2s;
@@ -96,27 +70,27 @@ $navbarWidth: 50px;
       display: flex;
       align-items: center;
       cursor: pointer;
-      padding-bottom: 15px;
-      padding-top: 15px;
+      padding-bottom: 10px;
+      padding-top: 10px;
       &:hover{
-        background-color: rgba(0,0,0,.5);
+        background-color: rgba(0, 0, 0, 0.1);
       }
       .hintContainer{
         position: absolute;
         overflow: hidden;
         left: $sidebarWidthClose;
         max-width: 0;
-        background-color: darken($mainColor,10);
         z-index: 3;
+        background-color: #e7e7e7;
         .hint{
-          color: white;
+          color: #636363;
           padding: 10px;  
         }
       }
       .icon{
         width:$sidebarWidthClose ;
         text-align: center;
-        font-size: 1.5em;
+        font-size: 1.3rem;
       }
       .description{
         &.openSidebar {
@@ -132,7 +106,8 @@ $navbarWidth: 50px;
       }
     }
     #toggleSidebar{
-      background-color: rgba(0,0,0,.5);
+      background-color: var(--headerBgColorAccent);
+      color: var(--headerTextColor);
       .icon {
         font-size: 1em;
       }

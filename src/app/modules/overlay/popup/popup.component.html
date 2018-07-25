@@ -1,13 +1,13 @@
-<div class="popup" (click)="close($event)" [@openState]="state" >
-  
-  <div class="popup-container" *ngIf=_open [ngStyle]="{width:width, height:height}" (click)="stopPropagation($event)">
-    <div class="popup-title" [ngStyle]="{'background-color':mainColor}">
+<div class="host {{direction}} {{ghost ? 'ghost' : ''}}" (click)="close($event)" [@openState]="state" #host>
+  <div class="host-container" *ngIf="_open" [ngStyle]="{width:width, height:height}" (click)="stopPropagation($event)" #hostContainer>
+    <div class="host-title" #titleRef [ngClass]='titleRef.children.length ? "": "nothing"'>
       <ng-content select="[title]"></ng-content>
-      <div *ngIf='title'>
+      <div *ngIf='!titleRef?.children?.length && title'>
         {{title}}
-      </div> 
+      </div>
+    <div class="close" (click)="out(false)">x</div>
     </div>
-    <div class="popup-body">
+    <div class="host-body">
       <div *ngIf='body;else bodyTemplateContainer'>
         {{body}}
       </div>
@@ -15,9 +15,9 @@
         <ng-container [ngTemplateOutlet]="bodyTemplate?.templateRef"></ng-container>
       </ng-template>
     </div>
-    <div class="popup-actions" *ngIf='!noActions'>
-      <button class="popup-action popup-cancel" (click)="out(false)">{{cancelButton}}</button>
-      <button class="popup-action popup-ok" [ngClass]="{'popup-disable': form?.invalid}" [disabled]="form?.invalid" (click)="out(true)">{{validateButton}}</button>
+    <div class="host-actions" *ngIf='!noActions'>
+      <button class="host-action host-cancel" (click)="out(false)">{{cancelButton}}</button>
+      <button class="host-action host-ok" [ngClass]="{'host-disable': form?.invalid}" [disabled]="form?.invalid" (click)="out(true)">{{validateButton}}</button>
     </div>
   </div>
 </div>

@@ -3,20 +3,23 @@ import { CommonModule } from '@angular/common';
 import { DefiNotificationsService } from './providers/notifications.service';
 import { DefiNotificationsComponent } from './notifications/notifications.component';
 import { PopupComponent, BodyDirective } from './popup/popup.component';
+import { DefiSidePanelComponent } from './side-panel/side-panel.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     DefiNotificationsComponent,
     PopupComponent,
-    BodyDirective
+    BodyDirective,
+    DefiSidePanelComponent
   ],
   exports: [
     DefiNotificationsComponent,
     PopupComponent,
-    BodyDirective
+    BodyDirective,
+    DefiSidePanelComponent
   ]
 })
 export class DefiOverlayModule {

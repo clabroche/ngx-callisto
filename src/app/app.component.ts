@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Configuration } from './modules/navigations/sidebar/sidebar.component';
+import { ThemeService } from './modules/theme/providers/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -19,4 +20,6 @@ export class AppComponent {
       click: ['/settings']
     }]
   };
+
+  constructor(theme: ThemeService) {}
 }

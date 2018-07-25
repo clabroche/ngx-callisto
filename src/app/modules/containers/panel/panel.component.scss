@@ -1,0 +1,24 @@
+@import '../../../../_placeholders.scss';
+.panel-container {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: var(--contentBorderWidth) solid var(--contentBorderColor);
+  .panel-header {
+    @extend %header;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    .panel-actions {
+      button {
+        @include button(var(--headerBgColorAccent), var(--headerTextColor));
+        font-weight: bold;
+      }
+    }
+  }
+  .panel-body {
+    overflow: hidden;
+    padding: 10px;
+  }
+}

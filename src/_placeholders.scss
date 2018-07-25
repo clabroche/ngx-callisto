@@ -1,0 +1,23 @@
+%header {
+  background-color: var(--headerBgColor);
+  color: var(--headerTextColor);
+  padding: 10px;
+  font-weight: bold;
+  align-items: center;
+}
+@mixin button ($bg, $color) {
+  border: none;
+  background-color: $bg;
+  color: $color;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: var(--stateHoverBgColor);
+  }
+}
+@mixin size ($width, $height: $width) {
+  width: $width;
+  height: $height;
+}

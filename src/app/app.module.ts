@@ -5,24 +5,25 @@ import { AppComponent } from './app.component';
 import { DefiCoreModule } from './modules/core/core.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { DemoModule } from './demo/demo.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DefiNavigationsModule, DefiContainersModule } from '../public_api';
 import { DefiOverlayModule } from './modules/overlay/overlay.module';
+import { ThemeModule } from './modules/theme/theme.module';
+import { DefiNavigationsModule } from './modules/navigations/navigations.module';
+import { DefiContainersModule } from './modules/containers/containers.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     DefiCoreModule.forRoot(),
     DefiNavigationsModule.forRoot(),
-    DefiContainersModule.forRoot(),
     DefiOverlayModule.forRoot(),
+    ThemeModule.forRoot(),
+    DefiContainersModule,
     FormsModule,
-    BrowserModule,
-    FormsModule,
-    BrowserAnimationsModule,
     RouterModule.forRoot([
       {path: '', loadChildren: './demo/demo.module#DemoModule'}
     ])

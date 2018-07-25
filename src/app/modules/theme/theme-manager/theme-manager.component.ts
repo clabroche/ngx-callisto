@@ -1,0 +1,55 @@
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ThemeService } from '../providers/theme.service';
+import { DefiCommonService } from '../../core/providers/common.service';
+const mockdataTable = require('./datatable_data.json');
+
+@Component({
+  selector: 'app-theme-manager',
+  templateUrl: './theme-manager.component.html',
+  styleUrls: ['./theme-manager.component.scss']
+})
+export class ThemeManagerComponent implements OnInit {
+  mockData = mockdataTable;
+  variables = [];
+  currentTheme = '';
+  @ViewChild('exportButton') exportButton: ElementRef;
+  @ViewChild('exportInput') exportInput: ElementRef;
+  constructor(public themeService: ThemeService, private common: DefiCommonService) { }
+
+  ngOnInit() {
+    this.variables = Object.keys(this.themeService.theme);
+  }
+
+  changeTheme(theme) {
+    const selectedTheme = this.themeService.themes.filter(_theme => _theme.name === theme)[0];
+    this.currentTheme = selectedTheme.name;
+    this.themeService.reload(selectedTheme.theme);
+  }
+
+  difference() {
+    const differences = this.common.differences(this.themeService.theme, this.themeService.themes[0].theme).different;
+    if (differences.length) {
+      const json = {};
+      differences.forEach(difference => {
+        json[difference] = this.themeService.theme[difference];
+      });
+      return json;
+    }
+    return {};
+  }
+
+  changeStyle(variable, style) {
+    this.themeService.setStyle(variable, style);
+  }
+  export() {
+    console.log('hey');
+    const link = this.exportButton.nativeElement;
+    link.download = this.exportInput.nativeElement.value + '.json' || 'theme.json';
+    const data = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.difference()));
+    link.href = 'data:' + data;
+  }
+
+  getTheme() {
+    return encodeURIComponent(JSON.stringify(this.themeService.theme));
+  }
+}

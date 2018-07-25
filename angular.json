@@ -118,5 +118,14 @@
       }
     }
   },
-  "defaultProject": "ngx-defi-core"
+  "defaultProject": "ngx-defi-core",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  }
 }

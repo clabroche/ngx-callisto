@@ -1,4 +1,17 @@
-import { Component, OnInit, Input, Directive, TemplateRef, ContentChild, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  Input,
+  Directive,
+  TemplateRef,
+  ContentChild,
+  EventEmitter,
+  Output,
+  ViewChild,
+  ElementRef,
+  Renderer2,
+  AfterContentInit,
+  ChangeDetectorRef
+} from '@angular/core';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { Subject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
@@ -57,18 +70,20 @@ import { FormGroup } from '@angular/forms';
     ])
   ]
 })
-export class PopupComponent {
+export class PopupComponent implements AfterContentInit {
   @ContentChild(BodyDirective) bodyTemplate;
+  @ViewChild('host') host: ElementRef;
+  @ViewChild('hostContainer') hostContainer: ElementRef;
   @Input() body = '';
+  @Input() ghost = false;
   @Input() title: string;
 
   @Input() cancelButton = 'Annuler';
   @Input() validateButton = 'Valider';
 
-  @Input() width = 'auto';
-  @Input() height = 'auto';
-
-  @Input() mainColor = '#343a40';
+  @Input() width;
+  @Input() height;
+  @Input() direction: 'left' | 'right' | 'top' | 'bottom' | 'center'  = 'center';
 
   @Input() noActions = false;
 
@@ -82,13 +97,20 @@ export class PopupComponent {
   result: Subject<any>;
 
   form: FormGroup;
+  className = 'popup';
 
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+
+  ngAfterContentInit() {
+    this.cdr.detectChanges();
+  }
   open(context?): Subject<any> {
     this.context = context;
     this.result = new Subject();
     this._open = true;
     this.state = 'open';
-    setTimeout(_ => this.openEvent.emit());
+
+    setTimeout(_ => {this.openEvent.emit(); });
     return this.result;
   }
   close($event?: Event) {

@@ -12,7 +12,14 @@
             </div>
         </defi-navbar>
         <div id="outletContent">
+            <button (click)="sidePanel.open()"> open</button>
             <router-outlet></router-outlet>
         </div>
     </div>
 </div>
+<defi-side-panel #sidePanel [ghost]="true">
+    <ng-template popup-body>
+        hey!
+    </ng-template>
+    <div title>Hey</div>
+</defi-side-panel>

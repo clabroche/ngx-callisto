@@ -1,5 +1,6 @@
 @import './app/modules/_common';
 @import '~font-awesome5/css/fontawesome-all.min.css';
+
 body,
 html {
   margin: 0;
@@ -13,7 +14,9 @@ html {
     transform: rotate(360deg)
   }
 }
-
+ul {
+  padding: 0;
+}
 .spin-animation {
   animation-name: spin;
   animation-duration: 1s;
