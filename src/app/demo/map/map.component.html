@@ -1,44 +1,4 @@
-<!-- <map #map (olsingleclick)="mapSingleClick($event)" (geocoder)="onGeocoder($event)" [height]="height">
-  <map-layer #addressesLayer></map-layer>
-  <map-layer #buildingsLayer></map-layer>
-  <ng-template #overlayTemplateAddress let-address>
-    <div class="overlay">
-      <input *ngIf="!readOnly" type="text" placeholder="Nom de l'adresse" [value]='address.name || ""' (keyup)="updateAddressName($event.target.value)"
-        #inputAddressName>
-      <div *ngIf='address.name && readOnly'>{{address.name}}</div>
-      {{address.streetAddress}}, {{address.postalCode}} {{address.addressLocality}}
-    </div>
-  </ng-template>
-  <ng-template #overlayTemplateBuilding let-building>
-    <div class="overlay">
-      {{building.name}}
-    </div>
-  </ng-template>
-
-  <div id="buildings-container" *ngIf='buildingsLayer?.nbFeatures' [@buildingsState]="buildingsState">
-    <button class="btn btn-primary" id="toggleBuildings" (click)="toggleBuildings()">
-      <div class="defi-badge">{{buildingsLayer?.nbFeatures}}</div>
-      <i class="fas fa-building"></i>
-    </button>
-    <ul class='buildings'>
-      <li *ngFor='let buildingFeature of buildingsLayer?.getFeatures()' class="building">
-        <div class='building-color-picker' [cpDisabled]="readOnly" [ngStyle]="{'background-color': buildingFeature.get('building').color}"
-          [(colorPicker)]="buildingFeature.get('building').color" (colorPickerChange)="updateBuilding(buildingFeature, 'color', $event)">
-        </div>
-        <input type="text" [disabled]="readOnly" [value]="buildingFeature.get('building').name" (keyup)="updateBuilding(buildingFeature, 'name', $event.target.value)">
-        <button type="button" class="btn btn-danger btn-sm" (click)="removeBuilding(buildingFeature)" *ngIf='!readOnly'>
-          <span class="fa fa-trash"></span>
-        </button>
-      </li>
-    </ul>
-  </div>
-  <div class="loading" [ngClass]='load ? "load" : ""'>
-    <div class="loading-container">
-      <i class="fas fa-circle-notch"></i>
-    </div>
-  </div>
-  <div id="actions">
-    <button type="button" class="btn btn-danger" (click)="resetMap()" *ngIf='!readOnly'>Reset</button>
-    <button type="button" class="btn btn-success" (click)="save()" *ngIf='!readOnly && !noSave'>Save</button>
-  </div>
-</map> -->
+<clt-map #map>
+  <clt-map-layer #addressesLayer></clt-map-layer>
+  <clt-map-layer #buildingsLayer></clt-map-layer>
+</clt-map>

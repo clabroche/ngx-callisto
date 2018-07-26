@@ -13,6 +13,8 @@ import { TabViewModule } from 'primeng/tabview';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { SampleDirective } from './sample.directive';
 import { DemoComponent } from './demo.component';
+import { MapModule } from '../modules/map/map.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { DemoComponent } from './demo.component';
     DefiCoreModule,
     TabViewModule,
     CodemirrorModule,
+    MapModule.forRoot(),
     RouterModule.forChild([
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },

@@ -8,11 +8,11 @@ import Feature from 'ol/feature';
 import * as v4 from 'uuid/v4';
 import { MapService } from '../providers/map.service';
 @Component({
-  selector: 'map-layer',
+  selector: 'clt-map-layer',
   templateUrl: './map-layer.component.html',
   styleUrls: ['./map-layer.component.scss']
 })
-export class MapLayerComponent {
+export class CltMapLayerComponent {
 
   olLayer: VectorLayer;
   map: Map;

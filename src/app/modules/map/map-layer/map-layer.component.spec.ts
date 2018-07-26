@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MapLayerComponent } from './map-layer.component';
+import { CltMapLayerComponent } from './map-layer.component';
 import Map from 'ol/map';
 import View from 'ol/view';
 import Point from 'ol/geom/point';
@@ -9,13 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 import Feature from 'ol/feature';
 import Modify from 'ol/interaction/modify';
 
-describe('MapLayerComponent', () => {
-  let component: MapLayerComponent;
-  let fixture: ComponentFixture<MapLayerComponent>;
+describe('CltMapLayerComponent', () => {
+  let component: CltMapLayerComponent;
+  let fixture: ComponentFixture<CltMapLayerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MapLayerComponent ],
+      declarations: [ CltMapLayerComponent ],
       providers: [MapService],
       imports: [HttpClientModule]
     }).compileComponents();
@@ -28,7 +28,7 @@ describe('MapLayerComponent', () => {
         zoom: 16
       })
     });
-    fixture = TestBed.createComponent(MapLayerComponent);
+    fixture = TestBed.createComponent(CltMapLayerComponent);
     component = fixture.componentInstance;
     component.map = map;
   });

@@ -10,6 +10,7 @@ import { DefiOverlayModule } from './modules/overlay/overlay.module';
 import { ThemeModule } from './modules/theme/theme.module';
 import { DefiNavigationsModule } from './modules/navigations/navigations.module';
 import { DefiContainersModule } from './modules/containers/containers.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DefiContainersModule } from './modules/containers/containers.module';
     DefiOverlayModule.forRoot(),
     ThemeModule.forRoot(),
     DefiContainersModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
       {path: '', loadChildren: './demo/demo.module#DemoModule'}

@@ -20,15 +20,15 @@ import OSM from 'ol/source/osm';
 import * as uuid from 'uuid/v4';
 import * as Geocoder from 'ol-geocoder';
 import { Subject } from 'rxjs';
-import { MapLayerComponent } from './map-layer/map-layer.component';
+import { CltMapLayerComponent } from './map-layer/map-layer.component';
 import { MapService } from './providers/map.service';
 
 @Component({
-  selector: 'map',
+  selector: 'clt-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements AfterViewChecked, AfterContentInit {
+export class CltMapComponent implements AfterViewChecked, AfterContentInit {
   map: Map;
   initialized = false;
   is_init = new Subject();
@@ -57,7 +57,7 @@ export class MapComponent implements AfterViewChecked, AfterContentInit {
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('mapContainer') mapContainer: ElementRef;
   @ViewChild('layersContainer', { read: ViewContainerRef }) layersContainer;
-  @ContentChildren(MapLayerComponent) layersComponent: QueryList<MapLayerComponent>;
+  @ContentChildren(CltMapLayerComponent) layersComponent: QueryList<CltMapLayerComponent>;
 
   constructor(private mapService: MapService, private componentFactoryResolver: ComponentFactoryResolver, private renderer: Renderer2 ) {}
   ngAfterContentInit() {
@@ -113,9 +113,9 @@ export class MapComponent implements AfterViewChecked, AfterContentInit {
     return this.setCenter(this.mapService.fromLonLat(coordinate));
   }
 
-  addLayer(component?: MapLayerComponent) {
+  addLayer(component?: CltMapLayerComponent) {
     if (!component) {
-      const layerComponent = this.componentFactoryResolver.resolveComponentFactory(MapLayerComponent);
+      const layerComponent = this.componentFactoryResolver.resolveComponentFactory(CltMapLayerComponent);
       component = layerComponent.create(this.layersContainer).instance;
     }
     component.map = this.map;

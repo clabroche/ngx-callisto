@@ -1,24 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { MapComponent } from './map.component';
+import { CltMapComponent } from './map.component';
 import OlProj from 'ol/proj';
 import Layer from 'ol/layer/layer';
 import { HttpClientModule } from '@angular/common/http';
 import View from 'ol/view';
-import { MapLayerComponent } from '../map/map-layer/map-layer.component';
+import { CltMapLayerComponent } from '../map/map-layer/map-layer.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
-describe('MapComponent', () => {
-  let component: MapComponent;
-  let fixture: ComponentFixture<MapComponent>;
+describe('CltMapComponent', () => {
+  let component: CltMapComponent;
+  let fixture: ComponentFixture<CltMapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      declarations: [MapComponent, MapLayerComponent]
+      declarations: [CltMapComponent, CltMapLayerComponent]
     }).overrideModule(BrowserDynamicTestingModule, {
       set: {
-        entryComponents: [MapLayerComponent],
+        entryComponents: [CltMapLayerComponent],
       }
     }).compileComponents();
   }));
@@ -28,7 +28,7 @@ describe('MapComponent', () => {
       const position = { coords: { latitude: 32, longitude: -96 } };
       arguments[0](position);
     });
-    fixture = TestBed.createComponent(MapComponent);
+    fixture = TestBed.createComponent(CltMapComponent);
     component = fixture.componentInstance;
   });
 
@@ -78,7 +78,7 @@ describe('MapComponent', () => {
   });
   describe('should set correct size', () => {
     beforeEach(() => {
-      fixture = TestBed.createComponent(MapComponent);
+      fixture = TestBed.createComponent(CltMapComponent);
       component = fixture.componentInstance;
     });
     it('on height auto', () => {
