@@ -1,5 +1,9 @@
 @import './app/modules/_common';
-
+@import '~primeng/resources/primeng.min.css';
+@import './_overide-prime';
+@import './_theme';
+@import "~codemirror/lib/codemirror.css";
+@import "~codemirror/theme/material.css";
 body,
 html {
   margin: 0;

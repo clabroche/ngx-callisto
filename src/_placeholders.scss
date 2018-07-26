@@ -1,10 +1,16 @@
 %header {
-  background-color: var(--headerBgColor);
-  color: var(--headerTextColor);
   padding: 10px;
   font-weight: bold;
   align-items: center;
+  background-color: var(--headerBgColor);
+  color: var(--headerTextColor);
+  border-width: var(--headerBorderWidth);
+  border-color: var(--headerBorderColor);
+  font-weight: var(--headerFontWeight);
 }
+%headerIcon{background-color: var(--headerIconTextColor)}
+%headerAccent {background-color: var(--headerBgColorAccent)}
+
 @mixin button ($bg, $color) {
   border: none;
   background-color: $bg;

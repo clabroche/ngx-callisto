@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Configuration } from './modules/navigations/sidebar/sidebar.component';
 import { ThemeService } from './modules/theme/providers/theme.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +9,24 @@ import { ThemeService } from './modules/theme/providers/theme.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  conf: Configuration = {
-    list: [{
-      icon: 'fas fa-home',
-      description: 'Accueil',
-      click: ['/home']
-    }],
-    bottom: [{
-      icon: 'fas fa-cog',
-      description: 'Settings',
-      click: ['/settings']
-    }]
-  };
+  conf: Configuration = {};
 
-  constructor(theme: ThemeService) {}
+  constructor(theme: ThemeService, ) {
+    this.conf = {
+      list: [{
+        icon: 'fas fa-home',
+        description: 'Home',
+        url: '/home',
+      }, {
+        icon: 'fas fa-map',
+        description: 'Map',
+        url: '/map',
+      }],
+      bottom: [{
+        icon: 'fas fa-map',
+        description: 'Documentation',
+        url: '/documentation'
+      }]
+    };
+  }
 }

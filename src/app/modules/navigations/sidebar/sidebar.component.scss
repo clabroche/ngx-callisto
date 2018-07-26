@@ -37,13 +37,13 @@ $navbarWidth: 50px;
   display: flex;
   flex-direction: column;
   background-size: auto 100%;
-  background-color: white !important;
+  background-color: white;
   position: relative;
-  color: #616161 !important;
+  color: #616161;
   box-shadow: 2px 0 11px #00000080;
   &:before {
     content: "";
-    height: 70px !important;
+    height: 70px;
     background-color: var(--headerBgColorAccent);
   }
   &.openSidebar {
@@ -72,6 +72,7 @@ $navbarWidth: 50px;
       cursor: pointer;
       padding-bottom: 10px;
       padding-top: 10px;
+      color: #616161;
       &:hover{
         background-color: rgba(0, 0, 0, 0.1);
       }

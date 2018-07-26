@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output} from '@angular/core';
 import { DefiSideBarService } from '../providers/sidebar.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Router } from '@angular/router';
 
 
 /**
@@ -22,11 +23,9 @@ export interface Item {
   /**
    * click function to interact outside of the component
    */
-  click?: Array<any>|string | Function;
-  /**
-   * Url to redirect with router
-   */
-  externalUrl?: string;
+  click?: Function;
+  /** url to go */
+  url?: string;
   /**
    * possibilities to add an other list: Not implemented yet
    */
@@ -101,17 +100,19 @@ export class DefiSidebarComponent {
    /**
    * import dependencies
    */
-  constructor(public sidebar: DefiSideBarService) {
+  constructor(public sidebar: DefiSideBarService, private router: Router) {
   }
   /**
    * Go to Home route
    */
-  goTo(data) {
-    data.click();
+  goTo(item, event?) {
+    if (event) event.preventDefault();
+    if (item.hasOwnProperty('url')) this.router.navigateByUrl(item.url);
+    if (item.hasOwnProperty('click')) item.click(item);
   }
 
   newWindow(data) {
-    if (data.externalUrl) { window.open(data.externalUrl); }
+    if (data.url) { window.open(data.url); }
   }
 
   /**

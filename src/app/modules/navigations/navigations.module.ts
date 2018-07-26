@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { DefiSideBarService } from './providers/sidebar.service';
 import { DefiSidebarComponent } from './sidebar/sidebar.component';
 import { DefiNavbarComponent } from './navbar/navbar.component';
+import { RouterLink } from '@angular/router';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     DefiNavbarComponent,

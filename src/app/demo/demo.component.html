@@ -1,0 +1,39 @@
+<div id="demo-container">
+  <a [href]="link">
+    <h2>{{name}}</h2>
+  </a>
+
+  <p-tabView>
+    <p-tabPanel header="Overview">
+      <ngx-codemirror 
+        ngModel="import { BrowserModule } from '@angular/platform-browser';
+...
+import { {{relativeModule.name}} } from 'ngx-defi-core/dist';
+
+@NgModule({
+  declarations: [
+      ...
+  ],
+  imports: [
+    BrowserModule,
+    ... ,
+    {{relativeModule.name}}{{relativeModule.forRoot ? '.forRoot()' : ''}},
+  ],
+  providers: [
+      ...
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}"
+        [options]="{
+          lineNumbers: true,
+          theme: 'material',
+          mode: 'javascript',
+          scrollbarStyle: 'null'
+        }"></ngx-codemirror>
+    </p-tabPanel>
+    <p-tabPanel header="Sample">
+      <ng-template sample></ng-template>
+    </p-tabPanel>
+  </p-tabView>
+</div>
