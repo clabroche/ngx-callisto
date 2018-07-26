@@ -49,7 +49,6 @@ export class DefiSidePanelComponent extends PopupComponent {
    */
   constructor(renderer: Renderer2, cdr: ChangeDetectorRef) {
     super(renderer, cdr);
-    this.open();
   }
 }
 

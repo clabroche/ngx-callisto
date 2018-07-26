@@ -1,21 +1,12 @@
 #theme-manager {
-  display: flex;
+  height: 95%;
+  max-width: 450px;
+  flex-shrink: 0;
   h2 {
     margin-top: 0.5em;
   }
   label {
     margin: 0;
-  }
-  .themeBackup {
-    display: flex;
-    flex-direction: column;
-    height: 80vh;
-    width: 450px;
-    flex-shrink: 0;
-  }
-  .themeChanger-list {
-    overflow-y: auto;
-    max-height: 75vh;
   }
   .colorPicker {
     width: 25px;
