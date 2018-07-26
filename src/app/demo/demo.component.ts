@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ComponentFactoryResolver, ViewEncapsulation } from '@angular/core';
 import { SampleDirective } from './sample.directive';
 
 @Component({
