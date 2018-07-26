@@ -10,7 +10,8 @@ import {
   ElementRef,
   Renderer2,
   AfterContentInit,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  OnDestroy
 } from '@angular/core';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { Subject } from 'rxjs';
@@ -45,12 +46,12 @@ import { FormGroup } from '@angular/forms';
  * </popup>
  */
 
- @Directive({
-   selector: '[popup-body]'
- })
- export class BodyDirective {
-  constructor(public templateRef: TemplateRef<any>) {}
- }
+@Directive({
+  selector: '[popup-body]'
+})
+export class BodyDirective {
+  constructor(public templateRef: TemplateRef<any>) { }
+}
 @Component({
   selector: 'popup',
   templateUrl: './popup.component.html',
@@ -70,7 +71,7 @@ import { FormGroup } from '@angular/forms';
     ])
   ]
 })
-export class PopupComponent implements AfterContentInit {
+export class PopupComponent implements AfterContentInit, OnDestroy {
   @ContentChild(BodyDirective) bodyTemplate;
   @ViewChild('host') host: ElementRef;
   @ViewChild('hostContainer') hostContainer: ElementRef;
@@ -83,7 +84,7 @@ export class PopupComponent implements AfterContentInit {
 
   @Input() width;
   @Input() height;
-  @Input() direction: 'left' | 'right' | 'top' | 'bottom' | 'center'  = 'center';
+  @Input() direction: 'left' | 'right' | 'top' | 'bottom' | 'center' = 'center';
 
   @Input() noActions = false;
 
@@ -98,11 +99,21 @@ export class PopupComponent implements AfterContentInit {
 
   form: FormGroup;
   className = 'popup';
-
-  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+  keyEvents;
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
 
   ngAfterContentInit() {
     this.cdr.detectChanges();
+    this.keyEvents = window.onkeyup = (e) => {
+      const key = e.keyCode ? e.keyCode : e.which;
+      if (key === 27 && this._open) {
+        console.log('esc');
+        this.close();
+      }
+    };
+  }
+  ngOnDestroy() {
+    window.removeEventListener('keyup', this.keyEvents);
   }
   open(context?): Subject<any> {
     this.context = context;
@@ -110,7 +121,7 @@ export class PopupComponent implements AfterContentInit {
     this._open = true;
     this.state = 'open';
 
-    setTimeout(_ => {this.openEvent.emit(); });
+    setTimeout(_ => { this.openEvent.emit(); });
     return this.result;
   }
   close($event?: Event) {
@@ -120,7 +131,7 @@ export class PopupComponent implements AfterContentInit {
     if (this.result) {
       this.result.unsubscribe();
       this.result = null;
-     }
+    }
   }
 
   bindForm(form: FormGroup) {
