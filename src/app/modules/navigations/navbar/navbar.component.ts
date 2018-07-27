@@ -30,6 +30,7 @@ export class DefiNavbarComponent {
   @Input('name') name = '';
 
   @Input('img') img: string;
+  @Input('url') url: string;
 
   /**
    * Load dependencies instances

@@ -1,6 +1,6 @@
 <div class="openSidebar" 
     [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}"
-    [ngStyle]="{'background-image': url ? 'url(img)' : ''}"
+    [ngStyle]="{'background-image': img ? 'url(img)' : ''}"
     id="sidebar">
     <div class="list">
         <div *ngFor='let item of conf.list'>

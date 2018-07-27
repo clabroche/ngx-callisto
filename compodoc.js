@@ -9,6 +9,7 @@ const cheerio = require('cheerio');
     await Promise.map(arrayOfHtmlFile, async htmlFile=>{
         const $ = cheerio.load(await fse.readFile(htmlFile))
         $('head').prepend('<base href="documentation">')
+        $('.menu .list .copyright').prev().before('<li class="chapter"><a type="chapter-link" href="./coverage/index.html" ><span class="fa fa-fw fa-external-link"></span>Code coverage</a ></li >');
         await fse.writeFile(htmlFile, $.html());
     })
 })().catch(console.error)

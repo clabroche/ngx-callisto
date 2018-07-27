@@ -3,14 +3,14 @@
   "version": "3.0.4",
   "scripts": {
     "coverage": "ng test --watch=false --code-coverage",
-    "linkCoverageWithDoc": "node src/documentation/addlinkcoverage.js",
     "test": "ng test",
     "compodoc": "compodoc -d src/documentation -p src/tsconfig.app.json && node compodoc.js",
-    "doc": "npm run compodoc && npm run coverage && npm run linkCoverageWithDoc && npm run badge && git add src/documentation && git commit -m 'update documentation'",
+    "doc": "npm run compodoc && npm run coverage && npm run badge && npm run build && git add src/documentation dist/ && git commit -m 'update documentation'",
     "start": "ng serve",
     "autoExport": "node autoExport",
     "packagr": "ng-packagr -p ng-package.json",
     "badge": "node badge.js",
+    "build": "ng build --prod",
     "patch": "npm run doc && npm run autoExport && npm run packagr && git add . && git commit -m 'patch' && npm version patch && git push origin master --follow-tags",
     "minor": "npm run doc && npm run autoExport && npm run packagr && git add . && git commit -m 'minor' && npm version minor && git push origin master --follow-tags",
     "major": "npm run doc && npm run autoExport && npm run packagr && git add . && git commit -m 'major' && npm version major && git push origin master --follow-tags"
