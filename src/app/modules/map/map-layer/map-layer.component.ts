@@ -5,7 +5,7 @@ import Overlay from 'ol/overlay';
 import VectorSource from 'ol/source/vector';
 import VectorLayer from 'ol/layer/vector';
 import Feature from 'ol/feature';
-import * as v4 from 'uuid/v4';
+import * as uuidV4 from 'uuid';
 import { MapService } from '../providers/map.service';
 @Component({
   selector: 'clt-map-layer',
@@ -68,7 +68,7 @@ export class CltMapLayerComponent {
   }
 
   addOverlay(feature, infos, positioning = 'bottom-center', offset = [0, -25]) {
-    const uuid = v4();
+    const uuid = uuidV4.v4();
     infos.uuid = uuid;
     this.overlays.push(infos);
     const popup = new Overlay({

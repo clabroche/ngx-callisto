@@ -1,20 +1,6 @@
 {
   "name": "ngx-callisto",
   "version": "3.0.4",
-  "scripts": {
-    "coverage": "ng test --watch=false --code-coverage && rm -rf src/documentation/coverage && mv coverage src/documentation",
-    "test": "ng test",
-    "compodoc": "compodoc -d src/documentation -p src/tsconfig.app.json && node compodoc.js",
-    "doc": "npm run compodoc && npm run coverage && npm run badge && npm run build && git add src/documentation dist/ && git commit -m 'update documentation'",
-    "start": "ng serve",
-    "autoExport": "node autoExport",
-    "packagr": "ng-packagr -p ng-package.json",
-    "badge": "node badge.js",
-    "build": "ng build --prod",
-    "patch": "npm run doc && npm run autoExport && npm run packagr && git add . && git commit -m 'patch' && npm version patch && git push origin master --follow-tags",
-    "minor": "npm run doc && npm run autoExport && npm run packagr && git add . && git commit -m 'minor' && npm version minor && git push origin master --follow-tags",
-    "major": "npm run doc && npm run autoExport && npm run packagr && git add . && git commit -m 'major' && npm version major && git push origin master --follow-tags"
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.0",
@@ -41,7 +27,8 @@
     "primeng": "^6.0.2",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.1.0",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "tslib": "^1.9.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.0",
@@ -71,5 +58,10 @@
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
     "typescript": "~2.7.2"
-  }
+  },
+  "main": "bundles/ngx-callisto.umd.js",
+  "module": "esm5/ngx-callisto.js",
+  "es2015": "esm2015/ngx-callisto.js",
+  "typings": "ngx-callisto.d.ts",
+  "metadata": "ngx-callisto.metadata.json"
 }

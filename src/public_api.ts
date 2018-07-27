@@ -1,23 +1,34 @@
-export { CltBoxComponent } from './app/modules/containers/box/box.component';
-export { CltContainersModule } from './app/modules/containers/containers.module';
-export { CltCoreModule } from './app/modules/core/core.module';
-export { CltSpinningIconDirective } from './app/modules/core/directives/spinningIcon.directive';
-export { CltClickStopPropagationDirective } from './app/modules/core/directives/stopPropagation.directive';
-export { CltToId } from './app/modules/core/pipe/toId.pipe';
-export { CltPopoverComponent } from './app/modules/core/popover/popover.component';
-export { Differences, CltCommonService } from './app/modules/core/providers/common.service';
-export { CltDebounceInputDirective } from './app/modules/forms/directives/debounceInput.directive';
-export { CltShowPasswordDirective } from './app/modules/forms/directives/showPassword.directive';
-export { CltValidatorsDirective } from './app/modules/forms/directives/validators.directive';
-export { CltFormErrorsComponent } from './app/modules/forms/form-errors/form-errors.component';
-export { CltFormsModule } from './app/modules/forms/forms.module';
-export { CltPassword } from './app/modules/forms/validators/Password.validator';
-export { CltNavbarComponent } from './app/modules/navigations/navbar/navbar.component';
-export { CltNavigationsModule } from './app/modules/navigations/navigations.module';
-export { CltSideBarService } from './app/modules/navigations/providers/sidebar.service';
-export { Item, Configuration, CltSidebarComponent } from './app/modules/navigations/sidebar/sidebar.component';
-export { CltNotificationsComponent } from './app/modules/overlay/notifications/notifications.component';
-export { CltOverlayModule } from './app/modules/overlay/overlay.module';
-export { CltSidePanelComponent } from './app/modules/overlay/side-panel/side-panel.component';
-export { BodyDirective, PopupComponent } from './app/modules/overlay/popup/popup.component';
-export { Notification, CltNotificationsService } from './app/modules/overlay/providers/notifications.service';
+export { CltBoxComponent } from './app/modules/containers/box/box.component'
+export { CltContainersModule } from './app/modules/containers/containers.module'
+export { CltPanelComponent } from './app/modules/containers/panel/panel.component'
+export { CltCoreModule } from './app/modules/core/core.module'
+export { CltSpinningIconDirective } from './app/modules/core/directives/spinningIcon.directive'
+export { CltClickStopPropagationDirective } from './app/modules/core/directives/stopPropagation.directive'
+export { CltToId } from './app/modules/core/pipe/toId.pipe'
+export { CltPopoverComponent } from './app/modules/core/popover/popover.component'
+export { Differences, CltCommonService } from './app/modules/core/providers/common.service'
+export { CltDisplayItemDirective } from './app/modules/display/directives/display-item.directive'
+export { CltDisplayComponent } from './app/modules/display/display.component'
+export { CltDisplayModule } from './app/modules/display/display.module'
+export { CltDebounceInputDirective } from './app/modules/forms/directives/debounceInput.directive'
+export { CltShowPasswordDirective } from './app/modules/forms/directives/showPassword.directive'
+export { CltValidatorsDirective } from './app/modules/forms/directives/validators.directive'
+export { CltFormErrorsComponent } from './app/modules/forms/form-errors/form-errors.component'
+export { CltFormsModule } from './app/modules/forms/forms.module'
+export { CltPassword } from './app/modules/forms/validators/Password.validator'
+export { CltMapLayerComponent } from './app/modules/map/map-layer/map-layer.component'
+export { CltMapComponent } from './app/modules/map/map.component'
+export { MapModule } from './app/modules/map/map.module'
+export { MapService } from './app/modules/map/providers/map.service'
+export { CltNavbarComponent } from './app/modules/navigations/navbar/navbar.component'
+export { CltNavigationsModule } from './app/modules/navigations/navigations.module'
+export { CltSideBarService } from './app/modules/navigations/providers/sidebar.service'
+export { Item, Configuration, CltSidebarComponent } from './app/modules/navigations/sidebar/sidebar.component'
+export { CltNotificationsComponent } from './app/modules/overlay/notifications/notifications.component'
+export { CltOverlayModule } from './app/modules/overlay/overlay.module'
+export { BodyDirective, PopupComponent } from './app/modules/overlay/popup/popup.component'
+export { Notification, CltNotificationsService } from './app/modules/overlay/providers/notifications.service'
+export { CltSidePanelComponent } from './app/modules/overlay/side-panel/side-panel.component'
+export { ThemeService } from './app/modules/theme/providers/theme.service'
+export { ThemeManagerComponent } from './app/modules/theme/theme-manager/theme-manager.component'
+export { ThemeModule } from './app/modules/theme/theme.module'

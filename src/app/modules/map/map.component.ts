@@ -18,7 +18,7 @@ import View from 'ol/view';
 import Layer from 'ol/layer/layer';
 import Tile from 'ol/layer/tile';
 import OSM from 'ol/source/osm';
-import * as uuid from 'uuid/v4';
+import * as uuidV4 from 'uuid';
 import * as Geocoder from 'ol-geocoder';
 import { Subject } from 'rxjs';
 import { CltMapLayerComponent } from './map-layer/map-layer.component';
@@ -34,7 +34,7 @@ export class CltMapComponent implements AfterViewChecked, AfterContentInit {
   initialized = false;
   is_init = new Subject();
   geocoderControl;
-  @Input() id = 'map-' + uuid();
+  @Input() id = 'map-' + uuidV4.v4();
   @Input() height: string;
   @Input() center: {longitude?; latitude?} = {};
   @Input() points: Array<any>;
