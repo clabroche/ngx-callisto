@@ -93,6 +93,8 @@ export class PopupComponent implements AfterContentInit, OnDestroy {
   context: any;
 
   _open = false;
+  @Input() visible = false;
+  @Output() visibleChange = new EventEmitter();
   state = 'close';
 
   result: Subject<any>;
@@ -121,13 +123,17 @@ export class PopupComponent implements AfterContentInit, OnDestroy {
     this._open = true;
     this.state = 'open';
 
-    setTimeout(_ => { this.openEvent.emit(); });
+    setTimeout(_ => {
+      this.visibleChange.emit(this._open);
+      this.openEvent.emit();
+    });
     return this.result;
   }
   close($event?: Event) {
     if ($event) { this.stopPropagation($event); }
     this._open = false;
     this.state = 'close';
+    setTimeout(_ => { this.visibleChange.emit(this._open); });
     if (this.result) {
       this.result.unsubscribe();
       this.result = null;

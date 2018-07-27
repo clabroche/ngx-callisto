@@ -3,8 +3,8 @@
   <div class="sample">
     <ng-content></ng-content>
   </div>
-  <div class="code">
-    <panel header="HTML" [toggleable]="true" [collapsed]="true" (toggleChange)="!$event ? html.codeMirror.refresh() : ''">
+  <div class="code" *ngIf='code'>
+    <panel header="HTML" [toggleable]="true" [collapsed]="true" (toggleChange)="!$event ? html.codeMirror.refresh() : ''" *ngIf="code.html">
       <ngx-codemirror [ngModel]="code.html" [autoFocus]="true" [options]="{
         lineNumbers: true,
         theme: 'material',
@@ -12,7 +12,7 @@
         scrollbarStyle: 'null'
       }" #html></ngx-codemirror>
     </panel>
-    <panel header="JS" [toggleable]="true" [collapsed]="true" (toggleChange)="!$event ? js.codeMirror.refresh(): ''">
+    <panel header="JS" [toggleable]="true" [collapsed]="true" (toggleChange)="!$event ? js.codeMirror.refresh(): ''" *ngIf="code.js">
       <ngx-codemirror [ngModel]="code.js" [autoFocus]="true" [options]="{
         lineNumbers: true,
         theme: 'material',

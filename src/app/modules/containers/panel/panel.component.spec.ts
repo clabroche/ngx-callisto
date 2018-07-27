@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PanelComponent } from './panel.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PanelComponent', () => {
   let component: PanelComponent;
@@ -8,6 +9,7 @@ describe('PanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [NoopAnimationsModule],
       declarations: [ PanelComponent ]
     })
     .compileComponents();

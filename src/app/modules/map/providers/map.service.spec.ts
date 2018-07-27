@@ -1,4 +1,4 @@
-import { TestBed, inject, async } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 
 import { MapService } from './map.service';
 import proj from 'ol/proj';

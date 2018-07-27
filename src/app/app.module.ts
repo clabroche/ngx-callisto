@@ -11,14 +11,15 @@ import { ThemeModule } from './modules/theme/theme.module';
 import { DefiNavigationsModule } from './modules/navigations/navigations.module';
 import { DefiContainersModule } from './modules/containers/containers.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DemoSDK } from './demo/demo-sdk.module';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    BrowserModule,
     BrowserAnimationsModule,
+    DemoSDK,
     DefiCoreModule.forRoot(),
     DefiNavigationsModule.forRoot(),
     DefiOverlayModule.forRoot(),

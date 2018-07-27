@@ -1,18 +1,11 @@
-import { TestBed, async, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 
-import { Routes, RouterModule, Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { DefiSidebarComponent, Configuration } from './sidebar.component';
 import { DefiSideBarService } from '../providers/sidebar.service';
 import { APP_BASE_HREF} from '@angular/common';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
-const callbackFun = function () {
-  return 'random-routes';
-};
 
 const navbarConf: Configuration = {
   list: [{
@@ -22,7 +15,7 @@ const navbarConf: Configuration = {
     click: function () {
       console.log('ho');
     },
-    externalUrl: 'lkjelkjdelk'
+    url: 'lkjelkjdelk'
   }],
   bottom: [{
     icon: 'fa fa-cog',
@@ -30,7 +23,7 @@ const navbarConf: Configuration = {
     click: function () {
       console.log('ho');
     },
-    externalUrl: 'lkjelkjdelk'
+    url: 'lkjelkjdelk'
   }]
 };
 
@@ -42,9 +35,12 @@ describe('DefiSidebarComponent', () => {
         DefiSidebarComponent
       ],
       imports: [
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        RouterModule.forRoot([{
+          path: '', component: DefiSidebarComponent
+        }])
       ],
-      providers: [DefiSideBarService]
+      providers: [DefiSideBarService, {provide: APP_BASE_HREF, useValue: '/'}]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

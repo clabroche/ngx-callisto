@@ -1,10 +1,10 @@
-import { MapModule } from './map.module';
+import { MapModuleSample } from './map.module';
 
-describe('MapModule', () => {
-  let mapModule: MapModule;
+describe('MapModuleSample', () => {
+  let mapModule: MapModuleSample;
 
   beforeEach(() => {
-    mapModule = new MapModule();
+    mapModule = new MapModuleSample();
   });
 
   it('should create an instance', () => {

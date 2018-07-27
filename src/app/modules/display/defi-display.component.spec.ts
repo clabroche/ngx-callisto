@@ -3,8 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DefiDisplayComponent } from './defi-display.component';
 import { DefiDisplayModule } from './defi-display.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DefiDisplayItemDirective } from './defi-display-item.directive';
+import { DefiDisplayItemDirective } from './directives/defi-display-item.directive';
 import { Component, ViewChildren, ViewChild, QueryList } from '@angular/core';
+import { DefiOverlayModule } from '../overlay/overlay.module';
 @Component({
   selector: 'container',
   template: `
@@ -26,7 +27,10 @@ describe('DefiDisplayComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ContainerComponent],
-      imports: [ DefiDisplayModule, BrowserAnimationsModule ]
+      imports: [
+        DefiDisplayModule,
+        BrowserAnimationsModule,
+      ],
     })
     .compileComponents();
   }));

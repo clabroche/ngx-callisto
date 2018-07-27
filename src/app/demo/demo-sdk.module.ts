@@ -10,6 +10,8 @@ import { DefiCoreModule } from '../modules/core/core.module';
 import { DefiNavigationsModule } from '../modules/navigations/navigations.module';
 import { DefiOverlayModule } from '../modules/overlay/overlay.module';
 import { SampleDirective } from './sample.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -21,6 +23,7 @@ import { SampleDirective } from './sample.directive';
     ReactiveFormsModule,
     FormsModule,
     DefiFormsModule,
+    HttpClientModule,
   ],
   declarations: [
     SampleCodeComponent,
