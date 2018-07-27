@@ -4,14 +4,14 @@ import { ThemeService } from './providers/theme.service';
 import { ThemeManagerComponent } from './theme-manager/theme-manager.component';
 import { RouterModule } from '@angular/router';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { DefiOverlayModule } from '../overlay/overlay.module';
-import { DefiContainersModule } from '../containers/containers.module';
+import { CltOverlayModule } from '../overlay/overlay.module';
+import { CltContainersModule } from '../containers/containers.module';
 @NgModule({
   imports: [
     CommonModule,
     ColorPickerModule,
-    DefiContainersModule,
-    DefiOverlayModule.forRoot()
+    CltContainersModule,
+    CltOverlayModule.forRoot()
   ],
   declarations: [ThemeManagerComponent],
   exports: [ThemeManagerComponent, RouterModule]

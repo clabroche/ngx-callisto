@@ -23,7 +23,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class DefiNavbarComponent {
+export class CltNavbarComponent {
   /**
    * Name displaying on left after icon
    */

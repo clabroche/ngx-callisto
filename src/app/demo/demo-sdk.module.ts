@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SampleCodeComponent } from './sample-code/sample-code.component';
-import { DefiContainersModule } from '../modules/containers/containers.module';
+import { CltContainersModule } from '../modules/containers/containers.module';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { TabViewModule } from 'primeng/tabview';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DefiFormsModule } from '../modules/forms/forms.module';
-import { DefiCoreModule } from '../modules/core/core.module';
-import { DefiNavigationsModule } from '../modules/navigations/navigations.module';
-import { DefiOverlayModule } from '../modules/overlay/overlay.module';
+import { CltFormsModule } from '../modules/forms/forms.module';
+import { CltCoreModule } from '../modules/core/core.module';
+import { CltNavigationsModule } from '../modules/navigations/navigations.module';
+import { CltOverlayModule } from '../modules/overlay/overlay.module';
 import { SampleDirective } from './sample.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,13 +16,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   imports: [
     CommonModule,
-    DefiContainersModule,
+    CltContainersModule,
     CodemirrorModule,
     FormsModule,
     TabViewModule,
     ReactiveFormsModule,
     FormsModule,
-    DefiFormsModule,
+    CltFormsModule,
     HttpClientModule,
   ],
   declarations: [
@@ -32,16 +32,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   exports: [
     SampleCodeComponent,
     SampleDirective,
-    DefiContainersModule,
+    CltContainersModule,
     CodemirrorModule,
     FormsModule,
     TabViewModule,
     ReactiveFormsModule,
     FormsModule,
-    DefiFormsModule,
-    DefiNavigationsModule,
-    DefiOverlayModule,
-    DefiCoreModule,
+    CltFormsModule,
+    CltNavigationsModule,
+    CltOverlayModule,
+    CltCoreModule,
   ]
 })
 export class DemoSDK { }

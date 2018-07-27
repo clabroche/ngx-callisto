@@ -6,9 +6,9 @@ import { TableModule } from 'primeng/table';
 import { ScheduleModule } from 'primeng/schedule';
 import { TabViewModule } from 'primeng/tabview';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DefiOverlayModule } from '../../overlay/overlay.module';
-import { DefiCoreModule } from '../../core/core.module';
-import { DefiContainersModule } from '../../containers/containers.module';
+import { CltOverlayModule } from '../../overlay/overlay.module';
+import { CltCoreModule } from '../../core/core.module';
+import { CltContainersModule } from '../../containers/containers.module';
 
 
 describe('ThemeManagerComponent', () => {
@@ -20,13 +20,13 @@ describe('ThemeManagerComponent', () => {
       declarations: [ ThemeManagerComponent ],
       imports: [
         BrowserAnimationsModule,
-        DefiContainersModule,
+        CltContainersModule,
         ColorPickerModule,
         TableModule,
         ScheduleModule,
         TabViewModule,
-        DefiOverlayModule,
-        DefiCoreModule.forRoot()
+        CltOverlayModule,
+        CltCoreModule.forRoot()
       ]
     })
     .compileComponents();

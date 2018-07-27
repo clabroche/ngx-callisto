@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { DefiCoreModule } from '../public_api';
+import { CltCoreModule } from '../public_api';
 import { AppModule } from './app.module';
 import { APP_BASE_HREF } from '@angular/common';
 

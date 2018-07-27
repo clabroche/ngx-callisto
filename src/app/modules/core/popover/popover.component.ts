@@ -24,14 +24,14 @@ const erd = erdImported;
   templateUrl: './popover.component.html',
   styleUrls: ['./popover.component.scss']
 })
-export class DefiPopoverComponent implements AfterContentInit, OnChanges {
+export class CltPopoverComponent implements AfterContentInit, OnChanges {
   /**
    * Open or close popover;
    * Default: close
    */
   @Input('open') open = false;
   /**
-   * Define the placment of popover
+   * where popover is show
    */
   @Input('placement') placement = 'right';
   @ViewChild('popupContainer') popupContainer: ElementRef;
@@ -39,12 +39,13 @@ export class DefiPopoverComponent implements AfterContentInit, OnChanges {
   resizeDetector;
   constructor(private renderer: Renderer2) {
     this.resizeDetector = erd({
-      strategy: 'scroll' // <- For ultra performance.
+      strategy: 'scroll'
     });
   }
-  // /**
-  //  * Track changes on input open to reflect status on private keys
-  //  */
+
+  /**
+   * Track changes on input open to reflect status on private keys
+   */
   loadState(open) {
     open ?
       this.renderer.setStyle(this.popupContainer.nativeElement, 'visibility', 'visible') :

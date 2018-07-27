@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DefiDisplayComponent } from './defi-display.component';
-import { DefiDisplayItemDirective } from './directives/defi-display-item.directive';
-import { DefiOverlayModule } from '../overlay/overlay.module';
+import { CltDisplayComponent } from './defi-display.component';
+import { CltDisplayItemDirective } from './directives/defi-display-item.directive';
+import { CltOverlayModule } from '../overlay/overlay.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    DefiOverlayModule
+    CltOverlayModule
   ],
-  declarations: [DefiDisplayComponent, DefiDisplayItemDirective],
-  exports: [DefiDisplayComponent, DefiDisplayItemDirective]
+  declarations: [CltDisplayComponent, CltDisplayItemDirective],
+  exports: [CltDisplayComponent, CltDisplayItemDirective]
 })
-export class DefiDisplayModule { }
+export class CltDisplayModule { }

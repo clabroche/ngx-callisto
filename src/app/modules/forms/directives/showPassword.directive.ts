@@ -8,7 +8,7 @@ import { Directive, OnDestroy, Input, AfterViewChecked, ElementRef, Renderer2, O
 @Directive({
   selector: '[defi-show-password]',
 })
-export class DefiShowPasswordDirective implements OnInit {
+export class CltShowPasswordDirective implements OnInit {
 
   /**
    * Load some dependencies

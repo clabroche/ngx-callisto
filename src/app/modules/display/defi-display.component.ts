@@ -9,17 +9,17 @@ import {
   QueryList,
   OnInit,
   AfterContentInit } from '@angular/core';
-import { DefiDisplayItemDirective } from './directives/defi-display-item.directive';
+import { CltDisplayItemDirective } from './directives/defi-display-item.directive';
 
 @Component({
   selector: 'defi-display',
   templateUrl: './defi-display.component.html',
   styleUrls: ['./defi-display.component.scss']
 })
-export class DefiDisplayComponent implements OnChanges, AfterContentInit {
+export class CltDisplayComponent implements OnChanges, AfterContentInit {
   @Input() storage: string;
   @Input() visible: boolean;
-  @Input() elements: DefiDisplayItemDirective[] = [];
+  @Input() elements: CltDisplayItemDirective[] = [];
   @Output() visibleChange = new EventEmitter();
   ngOnChanges(changes: SimpleChanges) {
     if (changes.hasOwnProperty('visible')) {

@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DefiDisplayComponent } from './defi-display.component';
-import { DefiDisplayModule } from './defi-display.module';
+import { CltDisplayComponent } from './defi-display.component';
+import { CltDisplayModule } from './defi-display.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DefiDisplayItemDirective } from './directives/defi-display-item.directive';
+import { CltDisplayItemDirective } from './directives/defi-display-item.directive';
 import { Component, ViewChildren, ViewChild, QueryList } from '@angular/core';
-import { DefiOverlayModule } from '../overlay/overlay.module';
+import { CltOverlayModule } from '../overlay/overlay.module';
 @Component({
   selector: 'container',
   template: `
@@ -16,19 +16,19 @@ import { DefiOverlayModule } from '../overlay/overlay.module';
     <div defiDisplayItem name="d" #d="defiDisplayItem"></div>
   `
 }) class ContainerComponent {
-  @ViewChild(DefiDisplayComponent) displayComponent: DefiDisplayComponent;
-  @ViewChildren(DefiDisplayItemDirective) displayItems: QueryList<DefiDisplayItemDirective>;
+  @ViewChild(CltDisplayComponent) displayComponent: CltDisplayComponent;
+  @ViewChildren(CltDisplayItemDirective) displayItems: QueryList<CltDisplayItemDirective>;
   visible = false;
 }
-describe('DefiDisplayComponent', () => {
-  let component: DefiDisplayComponent;
+describe('CltDisplayComponent', () => {
+  let component: CltDisplayComponent;
   let fixture: ComponentFixture<ContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ContainerComponent],
       imports: [
-        DefiDisplayModule,
+        CltDisplayModule,
         BrowserAnimationsModule,
       ],
     })

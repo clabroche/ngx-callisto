@@ -1,4 +1,4 @@
-import { Directive, OnDestroy, Input, AfterViewChecked, ElementRef, Renderer2} from '@angular/core';
+import { Directive, OnDestroy, Input, AfterViewChecked, ElementRef, Renderer2, HostListener} from '@angular/core';
 
 /**
  * Load differents directive with an array of key value
@@ -7,15 +7,12 @@ import { Directive, OnDestroy, Input, AfterViewChecked, ElementRef, Renderer2} f
  */
 @Directive({
   selector: '[defi-validators]',
-  host: {
-    '(input)': 'onInputChange($event)'
-  }
 })
-export class DefiValidatorsDirective implements AfterViewChecked {
+export class CltValidatorsDirective implements AfterViewChecked {
   /**
    * Array of key value that describe all directive to put on the element
    */
-  @Input('defi-validators') validators;
+  @Input() validators;
 
   /**
    * Load some dependencies
@@ -32,6 +29,7 @@ export class DefiValidatorsDirective implements AfterViewChecked {
   /**
    * Change appearance of input with goodInput/badInout class
    */
+  @HostListener('input')
   onInputChange() {
     if (this.hostElement.nativeElement.disabled) {
       this.renderer.removeClass(this.hostElement.nativeElement, 'badInput');

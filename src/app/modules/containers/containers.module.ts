@@ -1,19 +1,19 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DefiBoxComponent } from './box/box.component';
-import { PanelComponent } from './panel/panel.component';
+import { CltBoxComponent } from './box/box.component';
+import { CltPanelComponent } from './panel/panel.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    DefiBoxComponent,
-    PanelComponent
+    CltBoxComponent,
+    CltPanelComponent
   ],
   exports: [
-    DefiBoxComponent,
-    PanelComponent
+    CltBoxComponent,
+    CltPanelComponent
   ]
 })
-export class DefiContainersModule {}
+export class CltContainersModule {}

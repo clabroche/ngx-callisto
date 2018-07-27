@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ThemeService } from '../providers/theme.service';
-import { DefiCommonService } from '../../core/providers/common.service';
+import { CltCommonService } from '../../core/providers/common.service';
 const mockdataTable = require('./datatable_data.json');
 
 @Component({
@@ -14,7 +14,7 @@ export class ThemeManagerComponent implements OnInit {
   currentTheme = '';
   @ViewChild('exportButton') exportButton: ElementRef;
   @ViewChild('exportInput') exportInput: ElementRef;
-  constructor(public themeService: ThemeService, private common: DefiCommonService) { }
+  constructor(public themeService: ThemeService, private common: CltCommonService) { }
 
   ngOnInit() {
     this.variables = Object.keys(this.themeService.theme);

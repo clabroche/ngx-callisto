@@ -39,7 +39,7 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
     ])
   ]
 })
-export class DefiSidePanelComponent extends PopupComponent {
+export class CltSidePanelComponent extends PopupComponent {
   className = 'sidepanel';
   direction: 'left' | 'right' | 'top' | 'bottom' | 'center'
     = 'right';

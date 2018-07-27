@@ -3,7 +3,7 @@ import { Directive, ElementRef, Input, Renderer2, AfterViewInit, ChangeDetectorR
   selector: '[defiDisplayItem]',
   exportAs: 'defiDisplayItem'
 })
-export class DefiDisplayItemDirective implements AfterViewInit {
+export class CltDisplayItemDirective implements AfterViewInit {
   @Input() name;
   display = true;
   storage: string;

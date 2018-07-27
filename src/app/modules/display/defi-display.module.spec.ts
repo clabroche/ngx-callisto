@@ -1,10 +1,10 @@
-import { DefiDisplayModule } from './defi-display.module';
+import { CltDisplayModule } from './defi-display.module';
 
-describe('DefiDisplayModule', () => {
-  let defiDisplayModule: DefiDisplayModule;
+describe('CltDisplayModule', () => {
+  let defiDisplayModule: CltDisplayModule;
 
   beforeEach(() => {
-    defiDisplayModule = new DefiDisplayModule();
+    defiDisplayModule = new CltDisplayModule();
   });
 
   it('should create an instance', () => {

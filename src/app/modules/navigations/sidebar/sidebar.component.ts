@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output} from '@angular/core';
-import { DefiSideBarService } from '../providers/sidebar.service';
+import { CltSideBarService } from '../providers/sidebar.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
 
@@ -86,7 +86,7 @@ export interface Configuration {
     ])
   ]
 })
-export class DefiSidebarComponent {
+export class CltSidebarComponent {
   /**
    * control css class that open/close sidebar: openHint/closeHint
    */
@@ -100,7 +100,7 @@ export class DefiSidebarComponent {
    /**
    * import dependencies
    */
-  constructor(public sidebar: DefiSideBarService, private router: Router) {
+  constructor(public sidebar: CltSideBarService, private router: Router) {
   }
   /**
    * Go to Home route

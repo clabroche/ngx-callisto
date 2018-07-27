@@ -1,4 +1,4 @@
-import { DefiDisplayItemDirective } from './defi-display-item.directive';
+import { CltDisplayItemDirective } from './defi-display-item.directive';
 import { Component, ViewChild } from '@angular/core';
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 
@@ -8,15 +8,15 @@ import { TestBed, ComponentFixture, async } from '@angular/core/testing';
     <div defiDisplayItem="defiDisplayItem"></div>
   `
 }) class ContainerComponent {
-  @ViewChild(DefiDisplayItemDirective) defiDisplayItem: DefiDisplayItemDirective;
+  @ViewChild(CltDisplayItemDirective) defiDisplayItem: CltDisplayItemDirective;
 }
-describe('DefiDisplayItemDirective', () => {
-  let component: DefiDisplayItemDirective;
+describe('CltDisplayItemDirective', () => {
+  let component: CltDisplayItemDirective;
   let fixture: ComponentFixture<ContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ContainerComponent, DefiDisplayItemDirective]
+      declarations: [ContainerComponent, CltDisplayItemDirective]
     }).compileComponents();
   }));
 

@@ -7,7 +7,7 @@ import {
   transition
 } from '@angular/animations';
 @Component({
-  selector: 'panel',
+  selector: 'clt-panel',
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.scss'],
   animations: [
@@ -27,7 +27,7 @@ import {
     ])
   ]
 })
-export class PanelComponent implements OnInit {
+export class CltPanelComponent implements OnInit {
   @Input() header: string;
   @Input() toggleable = false;
   @Input() collapsed = false;

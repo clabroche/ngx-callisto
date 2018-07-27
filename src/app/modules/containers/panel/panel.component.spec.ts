@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PanelComponent } from './panel.component';
+import { CltPanelComponent } from './panel.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('PanelComponent', () => {
-  let component: PanelComponent;
-  let fixture: ComponentFixture<PanelComponent>;
+describe('CltPanelComponent', () => {
+  let component: CltPanelComponent;
+  let fixture: ComponentFixture<CltPanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [NoopAnimationsModule],
-      declarations: [ PanelComponent ]
+      declarations: [ CltPanelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PanelComponent);
+    fixture = TestBed.createComponent(CltPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

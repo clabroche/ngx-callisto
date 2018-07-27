@@ -1,10 +1,10 @@
-import { DefiContainersModule } from './containers.module';
+import { CltContainersModule } from './containers.module';
 
-describe('DefiContainersModule', () => {
-  let containersModule: DefiContainersModule;
+describe('CltContainersModule', () => {
+  let containersModule: CltContainersModule;
 
   beforeEach(() => {
-    containersModule = new DefiContainersModule();
+    containersModule = new CltContainersModule();
   });
 
   it('should create an instance', () => {
