@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">63.41% </span>
+        <span class="strong">39.02% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>26/41</span>
+        <span class='fraction'>16/41</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">10% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/10</span>
+        <span class='fraction'>1/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.11% </span>
+        <span class="strong">38.89% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>22/36</span>
+        <span class='fraction'>14/36</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -112,15 +112,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -129,16 +129,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -158,7 +158,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ThemeService } from '../providers/theme.service';
-import { DefiCommonService } from '../../core/providers/common.service';
+import { CltCommonService } from '../../core/providers/common.service';
 const mockdataTable = require('./datatable_data.json');
 &nbsp;
 @Component({
@@ -167,15 +167,15 @@ const mockdataTable = require('./datatable_data.json');
   styleUrls: ['./theme-manager.component.scss']
 })
 export class ThemeManagerComponent implements OnInit {
-  mockData = mockdataTable;
-  variables = [];
-  currentTheme = '';
+<span class="cstat-no" title="statement not covered" >  mockData = mockdataTable;</span>
+<span class="cstat-no" title="statement not covered" >  variables = [];</span>
+<span class="cstat-no" title="statement not covered" >  currentTheme = '';</span>
   @ViewChild('exportButton') exportButton: ElementRef;
   @ViewChild('exportInput') exportInput: ElementRef;
-  constructor(public themeService: ThemeService, private common: DefiCommonService) { }
+<span class="fstat-no" title="function not covered" >  constructor(public <span class="cstat-no" title="statement not covered" ></span>themeService: ThemeService,</span> private <span class="cstat-no" title="statement not covered" >common: CltCommonService)</span> { }
 &nbsp;
-  ngOnInit() {
-    this.variables = Object.keys(this.themeService.theme);
+<span class="fstat-no" title="function not covered" >  ngOnInit() {</span>
+<span class="cstat-no" title="statement not covered" >    this.variables = Object.keys(this.themeService.theme);</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  changeTheme(</span>theme) {
@@ -184,16 +184,16 @@ export class ThemeManagerComponent implements OnInit {
 <span class="cstat-no" title="statement not covered" >    this.themeService.reload(selectedTheme.theme);</span>
   }
 &nbsp;
-  difference() {
-    const differences = this.common.differences(this.themeService.theme, this.themeService.themes[0].theme).different;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (differences.length) {
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  difference() {</span></span>
+    const differences = <span class="cstat-no" title="statement not covered" >this.common.differences(this.themeService.theme, this.themeService.themes[0].theme).different;</span>
+<span class="cstat-no" title="statement not covered" >    if (differences.length) {</span>
       const json = <span class="cstat-no" title="statement not covered" >{};</span>
 <span class="cstat-no" title="statement not covered" >      differences.forEach(<span class="fstat-no" title="function not covered" >difference =&gt; {</span></span>
 <span class="cstat-no" title="statement not covered" >        json[difference] = this.themeService.theme[difference];</span>
       });
 <span class="cstat-no" title="statement not covered" >      return json;</span>
     }
-    return {};
+<span class="cstat-no" title="statement not covered" >    return {};</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  changeStyle(</span>variable, style) {
@@ -217,7 +217,7 @@ export class ThemeManagerComponent implements OnInit {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 27 2018 14:02:31 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 27 2018 15:06:03 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

@@ -6,13 +6,13 @@ import { Directive, OnDestroy, Input, AfterViewChecked, ElementRef, Renderer2, H
  * <input type="text" [formControlName]="'hello'" [validators]="form.controls['hello']"/>
  */
 @Directive({
-  selector: '[clt-validators]',
+  selector: '[cltValidators]',
 })
 export class CltValidatorsDirective implements AfterViewChecked {
   /**
    * Array of key value that describe all directive to put on the element
    */
-  @Input() validators;
+  @Input() cltValidators;
 
   /**
    * Load some dependencies
@@ -36,7 +36,7 @@ export class CltValidatorsDirective implements AfterViewChecked {
       this.renderer.removeClass(this.hostElement.nativeElement, 'goodInput');
       return;
     }
-    if (this.validators.valid) {
+    if (this.cltValidators.valid) {
       this.renderer.addClass(this.hostElement.nativeElement, 'goodInput');
       this.renderer.removeClass(this.hostElement.nativeElement, 'badInput');
     } else {

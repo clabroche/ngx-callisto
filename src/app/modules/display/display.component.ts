@@ -10,8 +10,8 @@ import { CltDisplayItemDirective } from './directives/display-item.directive';
 
 @Component({
   selector: 'clt-display',
-  templateUrl: './clt-display.component.html',
-  styleUrls: ['./clt-display.component.scss']
+  templateUrl: './display.component.html',
+  styleUrls: ['./display.component.scss']
 })
 export class CltDisplayComponent implements OnChanges, AfterContentInit {
   @Input() storage: string;

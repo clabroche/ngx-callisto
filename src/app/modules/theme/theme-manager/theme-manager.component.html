@@ -1,5 +1,5 @@
 <div id="theme-manager">
-  <panel *ngIf="difference()" header="Export" [toggleable]="true" [collapsed]="true">
+  <clt-panel *ngIf="difference()" header="Export" [toggleable]="true" [collapsed]="true">
     <label>Nom du theme</label>
     <input type="text" [value]="currentTheme || 'default'" #exportInput>
     <a href="#" #exportButton>
@@ -10,16 +10,16 @@
     <button class='btn btn-primary' (click)='jsonPopup.open()'>
       Voir le theme
     </button>
-  </panel>
+  </clt-panel>
 
-  <panel header="Gestionnaire de theme" [toggleable]="true" [collapsed]="true">
+  <clt-panel header="Gestionnaire de theme" [toggleable]="true" [collapsed]="true">
     <h3>Selection</h3>
     <select name="theme" id="theme" (change)="changeTheme($event.target.value)" #selectedTheme>
       <option *ngFor="let theme of themeService.themes" [value]="theme.name">{{theme.name}}</option>
     </select>
-  </panel>
+  </clt-panel>
 
-  <panel header="Gestionnaire de style" [toggleable]="true" [collapsed]="true">
+  <clt-panel header="Gestionnaire de style" [toggleable]="true" [collapsed]="true">
     <div>Gestionnaire de style</div>
     <div class="themeChanger-list">
       <div class="themeChanger-color">
@@ -145,7 +145,7 @@
         </ng-container>
       </div>
     </div>
-  </panel>
+  </clt-panel>
 </div>
 
 <popup title='Json' [body]="difference() | json" #jsonPopup></popup>

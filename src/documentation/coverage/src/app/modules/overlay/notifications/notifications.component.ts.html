@@ -111,30 +111,9 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -196,54 +175,44 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, Renderer2, ViewChildren, ElementRef, QueryList } from "@angular/core";
-import { DefiNotificationsService } from "../providers/notifications.service";
-import * as bluebird from 'bluebird'
-import { Observable } from "rxjs/Observable";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, Renderer2, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { CltNotificationsService } from '../providers/notifications.service';
+import * as bluebird from 'bluebird';
 &nbsp;
 /**
- * Display an mini-popup 
- * @example
- * const ns= new DefiNotificationsService()
- * const getFirstNotifId = _=&gt;ns.notifications[0].id
- * const random=_=&gt;Math.random()
- *
- * &lt;button (click)="ns.add('add','test')"&gt;Add notif&lt;/button&gt;
- * &lt;button (click)="ns.delete(getFirstNotifId())"&gt;delete notif&lt;/button&gt;
- * &lt;button (click)="ns.deleteAll()"&gt;delete all notif&lt;/button&gt;
- * &lt;button (click)="ns.updateNotif(getFirstNotifId(),{title:random(),msg: random()})"&gt;Update notif&lt;/button&gt;
- * &lt;notifications&gt;&lt;/notifications&gt;
+ * Display an mini-popup
  */
 @Component({
-  selector: "defi-notifications",
-  templateUrl: "./notifications.component.html",
-  styleUrls: ["./notifications.component.scss"]
+  selector: 'clt-notifications',
+  templateUrl: './notifications.component.html',
+  styleUrls: ['./notifications.component.scss']
 })
-export class DefiNotificationsComponent {
+export class CltNotificationsComponent {
 &nbsp;
-  @ViewChildren('notifModel') htmlNotifications:Iterable&lt;ElementRef&gt;
+  @ViewChildren('notifModel') htmlNotifications: Iterable&lt;ElementRef&gt;;
 &nbsp;
-  _notifications = []
+  _notifications = [];
 &nbsp;
   /**
    * Load dependencies instances
    */
-  constructor(public ns: DefiNotificationsService, private renderer2: Renderer2) {
-    this.ns.addEvent.subscribe(data =&gt; this._notifications.push(data))
-    this.ns.removeEvent.subscribe((id:any) =&gt; this.deleteNotif(id))
+  constructor(public ns: CltNotificationsService, private renderer2: Renderer2) {
+    this.ns.addEvent.subscribe(data =&gt; this._notifications.push(data));
+    this.ns.removeEvent.subscribe((id: any) =&gt; this.deleteNotif(id));
   }
 &nbsp;
   /**
-   * launch css animations and delete notification from id 
+   * launch css animations and delete notification from id
    */
-  deleteNotif(id){
+  deleteNotif(id) {
     return new Promise(async (resolve, reject) =&gt; {
-      const htmlNotif = await this.getHtmlNotif(id)
-      if(!htmlNotif) return
-      this.renderer2.addClass(htmlNotif,"deleteNotif")
+      const htmlNotif = await this.getHtmlNotif(id);
+      if (!htmlNotif) return;
+      this.renderer2.addClass(htmlNotif, 'deleteNotif');
       setTimeout(() =&gt; {
-        this._notifications = this._notifications.filter(notif =&gt; notif.id !== id)
-        resolve()
+        this._notifications = this._notifications.filter(notif =&gt; notif.id !== id);
+        resolve();
       }, 500);
     });
   }
@@ -251,33 +220,34 @@ export class DefiNotificationsComponent {
   /**
    * delete All notifications
    */
-  deleteAll(){
+  deleteAll() {
 &nbsp;
-    return bluebird.each(this.htmlNotifications, htmlNotif=&gt;{
-      this.deleteNotif(htmlNotif.nativeElement.id)
+    return bluebird.each(this.htmlNotifications, htmlNotif =&gt; {
+      this.deleteNotif(htmlNotif.nativeElement.id);
       return new Promise((resolve, reject) =&gt; {
         setTimeout(() =&gt; {
-          resolve()
-        }, 50);  
+          resolve();
+        }, 50);
       });
-    })
+    });
   }
 &nbsp;
   /**
    * Get HTML ref of the concern id
    */
   async getHtmlNotif(id) {
-    let htmlNotif = await bluebird.filter(this.htmlNotifications, htmlNotif =&gt; htmlNotif.nativeElement.id === id)
-    if (htmlNotif.length) return htmlNotif.pop().nativeElement
+    const htmlNotif = await bluebird.filter(this.htmlNotifications, _htmlNotif =&gt; _htmlNotif.nativeElement.id === id);
+    if (htmlNotif.length) return htmlNotif.pop().nativeElement;
   }
 }
- </pre></td></tr>
+&nbsp;
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 27 2018 14:02:31 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 27 2018 15:06:03 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

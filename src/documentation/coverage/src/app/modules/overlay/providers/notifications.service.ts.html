@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">69.05% </span>
+        <span class="strong">64.29% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>29/42</span>
+        <span class='fraction'>27/42</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">25% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/12</span>
+        <span class='fraction'>3/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">54.55% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>6/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.76% </span>
+        <span class="strong">69.7% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>25/33</span>
+        <span class='fraction'>23/33</span>
       </div>
     </div>
     <p class="quiet">
@@ -151,7 +151,8 @@
 <a name='L103'></a><a href='#L103'>103</a>
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,8 +201,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -256,9 +257,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable, IterableDiffers } from "@angular/core";
-import * as uuid from 'uuid'
-import { Observable, Subject } from "rxjs";
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from '@angular/core';
+import * as uuid from 'uuid';
+import { Subject } from 'rxjs';
 &nbsp;
 /**
  * Describe a notification
@@ -277,7 +279,7 @@ export interface Notification {
    */
   msg?: string;
   /**
-   * Timeout function 
+   * Timeout function
    */
   timeout?: any;
 }
@@ -285,7 +287,7 @@ export interface Notification {
  * Control the sidebar outside the component
  */
 @Injectable()
-export class DefiNotificationsService {
+export class CltNotificationsService {
   /**
    * Component watch this variable to open/close the sidebar
    */
@@ -295,18 +297,18 @@ export class DefiNotificationsService {
    */
   addEvent: Subject&lt;any&gt; = new Subject();
   /**
-   * Emit event that contains id on remove 
+   * Emit event that contains id on remove
    */
   removeEvent: Subject&lt;any&gt; = new Subject();
 &nbsp;
   /**
-   * Fetch delay from localStorage 
+   * Fetch delay from localStorage
    */
   constructor() {
-    let notificationsDelay = +localStorage.getItem("notificationsDelay");
-    if (notificationsDelay &lt; 500) {
-      notificationsDelay = 6000;
-      localStorage.setItem("notificationsDelay", "6000");
+    let notificationsDelay = +localStorage.getItem('notificationsDelay');
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (notificationsDelay &lt; 500) {
+<span class="cstat-no" title="statement not covered" >      notificationsDelay = 6000;</span>
+<span class="cstat-no" title="statement not covered" >      localStorage.setItem('notificationsDelay', '6000');</span>
     }
   }
 &nbsp;
@@ -316,8 +318,8 @@ export class DefiNotificationsService {
   add(title, msg) {
     const notif: Notification = {
       id: uuid.v4(),
-      title: title || <span class="branch-1 cbranch-no" title="branch not covered" >"",</span>
-      msg: msg || <span class="branch-1 cbranch-no" title="branch not covered" >""</span>
+      title: title || <span class="branch-1 cbranch-no" title="branch not covered" >'',</span>
+      msg: msg || <span class="branch-1 cbranch-no" title="branch not covered" >''</span>
     };
     this.addEvent.next(notif);
     notif.timeout = this.defaultTimeout(notif);
@@ -331,11 +333,11 @@ export class DefiNotificationsService {
   defaultTimeout(notif) {
     return setTimeout(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      this.delete(notif.id);</span>
-    }, +localStorage.getItem("notificationsDelay"));
+    }, +localStorage.getItem('notificationsDelay'));
   }
 &nbsp;
   /**
-   * update notification from id 
+   * update notification from id
    */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  updateNotif(</span>id, _notif: Notification) {</span>
 <span class="cstat-no" title="statement not covered" >    this.notifications.map(<span class="fstat-no" title="function not covered" >notif =&gt; {</span></span>
@@ -356,18 +358,19 @@ export class DefiNotificationsService {
   }
 &nbsp;
   /**
-   * Delete all notifications 
+   * Delete all notifications
    */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  deleteAll() {</span></span>
 <span class="cstat-no" title="statement not covered" >    this.notifications.map(<span class="fstat-no" title="function not covered" >notif =&gt; <span class="cstat-no" title="statement not covered" >this.delete(notif.id))</span>;</span></span>
   }
-}</pre></td></tr>
+}
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 27 2018 14:02:31 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 27 2018 15:06:03 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>
