@@ -6,7 +6,7 @@ import * as bluebird from 'bluebird';
  * Display an mini-popup
  */
 @Component({
-  selector: 'defi-notifications',
+  selector: 'clt-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss']
 })

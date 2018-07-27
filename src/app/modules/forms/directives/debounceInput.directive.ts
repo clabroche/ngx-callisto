@@ -9,7 +9,7 @@ import { debounceTime } from 'rxjs/operators/debounceTime';
  * <input type="text" debounce-input (debounce)="doSomething($event.target.value)" [debounceTime]="200" />
  */
 @Directive({
-  selector: '[defi-debounce-input]'
+  selector: '[clt-debounce-input]'
 })
 export class CltDebounceInputDirective implements OnInit, OnDestroy, OnChanges {
   /**

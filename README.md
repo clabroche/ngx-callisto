@@ -10,14 +10,14 @@ Make sure that you are allowed to access this repository and have your ssh agent
 ```bash
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
-npm i git@github.com:defi-informatique-team/ngx-defi-front.git
+npm i git@github.com:clt-informatique-team/ngx-clt-front.git
 ```
 
 Import module in your RootModule
 ```javascript
 import { BrowserModule } from '@angular/platform-browser';
 ...
-import { CoreModule } from 'ngx-defi-core/dist';
+import { CoreModule } from 'ngx-clt-core/dist';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { CoreModule } from 'ngx-defi-core/dist';
 })
 export class AppModule {}
 ```
-All components are exported from top of ``` ngx-defi-core/dist ```, you can import like ``` import { BoxComponent } from 'ngx-defi-core/dist' ```
+All components are exported from top of ``` ngx-clt-core/dist ```, you can import like ``` import { BoxComponent } from 'ngx-clt-core/dist' ```
 
 ## Development
 

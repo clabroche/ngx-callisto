@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-defi-core": {
+    "ngx-clt-core": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-defi-core",
+            "outputPath": "dist/ngx-clt-core",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -52,18 +52,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-defi-core:build"
+            "browserTarget": "ngx-clt-core:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-defi-core:build:production"
+              "browserTarget": "ngx-clt-core:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-defi-core:build"
+            "browserTarget": "ngx-clt-core:build"
           }
         },
         "test": {
@@ -97,7 +97,7 @@
         }
       }
     },
-    "ngx-defi-core-e2e": {
+    "ngx-clt-core-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -105,7 +105,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-defi-core:serve"
+            "devServerTarget": "ngx-clt-core:serve"
           }
         },
         "lint": {
@@ -120,7 +120,7 @@
       }
     }
   },
-  "defaultProject": "ngx-defi-core",
+  "defaultProject": "ngx-clt-core",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

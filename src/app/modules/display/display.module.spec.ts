@@ -1,4 +1,4 @@
-import { CltDisplayModule } from './defi-display.module';
+import { CltDisplayModule } from './display.module';
 
 describe('CltDisplayModule', () => {
   let defiDisplayModule: CltDisplayModule;

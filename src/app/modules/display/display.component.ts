@@ -2,19 +2,16 @@ import {
   Component,
   Input,
   Output,
-  ContentChildren,
   OnChanges,
   SimpleChanges,
   EventEmitter,
-  QueryList,
-  OnInit,
   AfterContentInit } from '@angular/core';
-import { CltDisplayItemDirective } from './directives/defi-display-item.directive';
+import { CltDisplayItemDirective } from './directives/display-item.directive';
 
 @Component({
-  selector: 'defi-display',
-  templateUrl: './defi-display.component.html',
-  styleUrls: ['./defi-display.component.scss']
+  selector: 'clt-display',
+  templateUrl: './clt-display.component.html',
+  styleUrls: ['./clt-display.component.scss']
 })
 export class CltDisplayComponent implements OnChanges, AfterContentInit {
   @Input() storage: string;

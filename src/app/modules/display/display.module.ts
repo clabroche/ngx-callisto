@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CltDisplayComponent } from './defi-display.component';
-import { CltDisplayItemDirective } from './directives/defi-display-item.directive';
+import { CltDisplayComponent } from './display.component';
+import { CltDisplayItemDirective } from './directives/display-item.directive';
 import { CltOverlayModule } from '../overlay/overlay.module';
 
 @NgModule({

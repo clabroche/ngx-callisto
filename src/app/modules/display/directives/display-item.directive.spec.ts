@@ -1,4 +1,4 @@
-import { CltDisplayItemDirective } from './defi-display-item.directive';
+import { CltDisplayItemDirective } from './display-item.directive';
 import { Component, ViewChild } from '@angular/core';
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 

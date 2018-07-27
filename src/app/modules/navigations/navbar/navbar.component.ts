@@ -19,7 +19,7 @@ import { Component, Input } from '@angular/core';
     </navbar>
  */
 @Component({
-  selector: 'defi-navbar',
+  selector: 'clt-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })

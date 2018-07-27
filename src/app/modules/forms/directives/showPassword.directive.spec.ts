@@ -10,7 +10,7 @@ describe('CltShowPasswordDirective', function () {
 
   @Component({
     template: `
-     <input type="password" defi-show-password/>`
+     <input type="password" clt-show-password/>`
   })
   class TestComponent {
     model;

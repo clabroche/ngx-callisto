@@ -1,5 +1,5 @@
 {
-  "name": "ngx-defi-core",
+  "name": "ngx-clt-core",
   "version": "3.0.4",
   "scripts": {
     "coverage": "ng test --watch=false --code-coverage",

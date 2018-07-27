@@ -1,9 +1,9 @@
 <div id="appContainer">
-  <defi-sidebar [conf]="conf">
+  <clt-sidebar [conf]="conf">
 
-  </defi-sidebar>
+  </clt-sidebar>
   <div id="appContent">
-    <defi-navbar name="ngx-callisto">
+    <clt-navbar name="ngx-callisto">
       <div logo>
         <img src="assets/img/logo.jpg" alt="Logo">
       </div>
@@ -11,15 +11,15 @@
       <div right>
         <i class="fas fa-palette" (click)="sidePanel.open()"></i>
       </div>
-    </defi-navbar>
+    </clt-navbar>
     <div id="outletContent">
       <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-<defi-side-panel #sidePanel [ghost]="true">
+<clt-side-panel #sidePanel [ghost]="true">
   <ng-template popup-body>
     <app-theme-manager></app-theme-manager>
   </ng-template>
   <div title>Hey</div>
-</defi-side-panel>
+</clt-side-panel>

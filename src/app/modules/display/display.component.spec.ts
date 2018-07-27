@@ -1,15 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CltDisplayComponent } from './defi-display.component';
-import { CltDisplayModule } from './defi-display.module';
+import { CltDisplayComponent } from './display.component';
+import { CltDisplayModule } from './display.module';
+import { CltDisplayItemDirective } from './directives/display-item.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CltDisplayItemDirective } from './directives/defi-display-item.directive';
 import { Component, ViewChildren, ViewChild, QueryList } from '@angular/core';
-import { CltOverlayModule } from '../overlay/overlay.module';
+
 @Component({
   selector: 'container',
   template: `
-    <defi-display [elements]='[a,b,c,d]' [(visible)]="visible"></defi-display>
+    <clt-display [elements]='[a,b,c,d]' [(visible)]="visible"></clt-display>
     <div defiDisplayItem name="a" #a="defiDisplayItem"></div>
     <div defiDisplayItem name="b" #b="defiDisplayItem"></div>
     <div defiDisplayItem name="c" #c="defiDisplayItem"></div>

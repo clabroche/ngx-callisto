@@ -1,5 +1,5 @@
 import { Component, Renderer2, ChangeDetectorRef } from '@angular/core';
-import { PopupComponent } from '../../overlay/popup/popup.component';
+import { PopupComponent } from '../popup/popup.component';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 
 /**
@@ -21,7 +21,7 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
  * <ng-template #template let-value="value"> Hey {{value}} !</ng-template>
  */
 @Component({
-  selector: 'defi-side-panel',
+  selector: 'clt-side-panel',
   templateUrl: '../popup/popup.component.html',
   styleUrls: ['./side-panel.component.scss'],
   animations: [

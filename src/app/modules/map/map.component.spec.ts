@@ -5,7 +5,7 @@ import OlProj from 'ol/proj';
 import Layer from 'ol/layer/layer';
 import { HttpClientModule } from '@angular/common/http';
 import View from 'ol/view';
-import { CltMapLayerComponent } from '../map/map-layer/map-layer.component';
+import { CltMapLayerComponent } from './map-layer/map-layer.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 describe('CltMapComponent', () => {

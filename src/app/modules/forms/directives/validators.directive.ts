@@ -6,7 +6,7 @@ import { Directive, OnDestroy, Input, AfterViewChecked, ElementRef, Renderer2, H
  * <input type="text" [formControlName]="'hello'" [validators]="form.controls['hello']"/>
  */
 @Directive({
-  selector: '[defi-validators]',
+  selector: '[clt-validators]',
 })
 export class CltValidatorsDirective implements AfterViewChecked {
   /**

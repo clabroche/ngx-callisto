@@ -10,7 +10,7 @@ describe('CltValidatorsDirective', function () {
 
   @Component({
     template: `
-     <input type="text" [defi-validators]="model"/>`
+     <input type="text" [clt-validators]="model"/>`
   })
   class TestComponent {
     model;

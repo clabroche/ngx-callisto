@@ -1,4 +1,4 @@
-<defi-side-panel [visible]="visible" (visibleChange)="changeVisibleState($event)" position="right">
+<clt-side-panel [visible]="visible" (visibleChange)="changeVisibleState($event)" position="right">
   <h1>Affichage</h1>
   <ul>
     <li *ngFor="let component of elements">
@@ -8,6 +8,6 @@
       <div class="display-name">{{component.name}}</div>
     </li>
   </ul>
-</defi-side-panel>
+</clt-side-panel>
 
 <ng-content></ng-content>

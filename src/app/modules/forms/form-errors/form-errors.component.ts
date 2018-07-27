@@ -12,7 +12,7 @@ import { FormControl, Validators, NgModel, Validator } from '@angular/forms';
     </form>
  */
 @Component({
-  selector: 'defi-form-errors',
+  selector: 'clt-form-errors',
   templateUrl: './form-errors.component.html',
   styleUrls: ['./form-errors.component.scss']
 })

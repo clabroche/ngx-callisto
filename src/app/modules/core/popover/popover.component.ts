@@ -20,7 +20,7 @@ const erd = erdImported;
     </popover>
  */
 @Component({
-  selector: 'defi-popover',
+  selector: 'clt-popover',
   templateUrl: './popover.component.html',
   styleUrls: ['./popover.component.scss']
 })

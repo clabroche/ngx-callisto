@@ -69,7 +69,7 @@ export interface Configuration {
  */
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'defi-sidebar',
+  selector: 'clt-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
   animations: [
