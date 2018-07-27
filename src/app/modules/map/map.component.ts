@@ -11,7 +11,8 @@ import {
   ViewContainerRef,
   ComponentFactoryResolver,
   AfterContentInit,
-  Renderer2} from '@angular/core';
+  Renderer2,
+  ChangeDetectorRef} from '@angular/core';
 import Map from 'ol/map';
 import View from 'ol/view';
 import Layer from 'ol/layer/layer';
@@ -59,7 +60,11 @@ export class CltMapComponent implements AfterViewChecked, AfterContentInit {
   @ViewChild('layersContainer', { read: ViewContainerRef }) layersContainer;
   @ContentChildren(CltMapLayerComponent) layersComponent: QueryList<CltMapLayerComponent>;
 
-  constructor(private mapService: MapService, private componentFactoryResolver: ComponentFactoryResolver, private renderer: Renderer2 ) {}
+  constructor(
+    private mapService: MapService,
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private renderer: Renderer2) {}
+
   ngAfterContentInit() {
     this.map = new Map({
       layers: [
@@ -73,6 +78,7 @@ export class CltMapComponent implements AfterViewChecked, AfterContentInit {
     });
   }
   ngAfterViewChecked() {
+    this.map.updateSize();
     return new Promise((resolve, reject) => {
       if (this.initialized || !document.getElementById(this.id)) return;
       this.initialized = true;
@@ -156,13 +162,13 @@ export class CltMapComponent implements AfterViewChecked, AfterContentInit {
       const elem = this.mapContainer.nativeElement;
       this.renderer.setStyle(elem, 'paddingTop', 0);
       this.renderer.setStyle(elem, 'position', 'relative');
-      this.renderer.setStyle(elem, 'height', this.height);
+      if (this.height) this.renderer.setStyle(elem, 'height', this.height);
     }
 
     return new Promise((resolve, reject) => {
       this.map.renderSync();
       if (!this.getCenter())
-        this.setCenterFromLonLat([this.center.longitude, this.center.latitude]);
+      this.setCenterFromLonLat([this.center.longitude, this.center.latitude]);
       setTimeout(() => {
         this.map.setTarget(this.mapElement.nativeElement);
         resolve();

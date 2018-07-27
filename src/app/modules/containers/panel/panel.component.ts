@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import {
   trigger,
   state,
@@ -31,19 +31,20 @@ export class PanelComponent implements OnInit {
   @Input() header: string;
   @Input() toggleable = false;
   @Input() collapsed = false;
+
+  @Output() toggleChange = new EventEmitter();
   state: 'open' | 'close' = 'open';
 
   ngOnInit() {
     if (this.collapsed) {
-      console.log('collapsed')
       this.state = this.collapsed ? 'close' : 'open';
-
     }
   }
   toggleCollapse() {
     if (this.toggleable) {
       this.collapsed = !this.collapsed;
       this.state = this.collapsed ? 'close' : 'open';
+      this.toggleChange.emit(this.collapsed);
     }
   }
 }

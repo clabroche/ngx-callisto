@@ -1,9 +1,6 @@
 <div class="map-container" #mapContainer>
     <div 
         [id]="id" 
-        [ngStyle]='{
-            height: height
-        }'
         class="map" #map>
         <ng-content></ng-content> <!-- for overlays ... -->
         <ng-template #layersContainer></ng-template>

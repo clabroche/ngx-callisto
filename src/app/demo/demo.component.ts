@@ -1,23 +1,18 @@
-import { AfterViewInit, Component, ViewChild, ComponentFactoryResolver, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ComponentFactoryResolver, ViewEncapsulation, AfterContentInit } from '@angular/core';
 import { SampleDirective } from './sample.directive';
 
 @Component({
   selector: 'app-map',
   templateUrl: './demo.component.html',
 })
-export class DemoComponent implements AfterViewInit {
+export class DemoComponent implements AfterContentInit {
   sampleComponent;
   @ViewChild(SampleDirective) sample: SampleDirective;
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
-  ngAfterViewInit() {
-    console.log(this.sample);
-
+  ngAfterContentInit() {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.sampleComponent);
-
     const viewContainerRef = this.sample.viewContainerRef;
     viewContainerRef.clear();
-
     viewContainerRef.createComponent(componentFactory);
-
   }
 }
