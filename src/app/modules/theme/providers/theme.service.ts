@@ -5,7 +5,7 @@ const bluegreygreen = require('./bluegrey-green.json');
 @Injectable({
   providedIn: 'root'
 })
-export class ThemeService {
+export class CltThemeService {
   rootElement: Element;
   themes = [
     {name: 'default', theme: defaultTheme},

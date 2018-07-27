@@ -18,38 +18,12 @@ import { Subject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 /**
  * Display a popup
- * @example
- * popup.open().subscibe(result=>{
- * |  // result = undefined or 'ok'
- * })
- * <popup #popup>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating</div>
- * </popup>
- *
- * formGroup: FormGroup
- * popupWithBind.bindForm(formGroup).open().subscibe(result=>{
- * |  // result = undefined or formGroup.value
- * })
- * <popup #popupWithBind>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating with input control etc...</div>
- * </popup>
- *
- * data = { $implicit: 'Hello', name:'world' }
- * popupWithContext.open(data).subscibe(result=>{
- * |  // result = undefined or 'ok'
- * })
- * <popup #popupWithContext>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !</div>
- * </popup>
  */
 
 @Directive({
-  selector: '[popup-body]'
+  selector: '[clt-popup-body]'
 })
-export class BodyDirective {
+export class CltBodyDirective {
   constructor(public templateRef: TemplateRef<any>) { }
 }
 @Component({
@@ -71,11 +45,12 @@ export class BodyDirective {
     ])
   ]
 })
-export class PopupComponent implements AfterContentInit, OnDestroy {
-  @ContentChild(BodyDirective) bodyTemplate;
+export class CltPopupComponent implements AfterContentInit, OnDestroy {
+  @ContentChild(CltBodyDirective) bodyTemplate;
   @ViewChild('host') host: ElementRef;
   @ViewChild('hostContainer') hostContainer: ElementRef;
-  @Input() body = '';
+  // tslint:disable-next-line:no-input-rename
+  @Input('clt-body') body = '';
   @Input() ghost = false;
   @Input() title: string;
 

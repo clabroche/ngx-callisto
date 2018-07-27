@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MapComponent, MapBridgeComponent } from './map.component';
-import { MapModule } from '../../modules/map/map.module';
-import { DemoSDK } from '../demo-sdk.module';
+import { CltMapModule } from '../../modules/map/map.module';
+import { CltDemoSDKModule } from '../demo-sdk.module';
 import { Sample1Component } from './sample1/sample1.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,8 +15,8 @@ describe('MapComponentSample', () => {
     TestBed.configureTestingModule({
       imports: [
         NoopAnimationsModule,
-        DemoSDK,
-        MapModule.forRoot()
+        CltDemoSDKModule,
+        CltMapModule.forRoot()
       ],
       declarations: [
         MapComponent,

@@ -6,7 +6,7 @@ import Icon from 'ol/style/icon';
 @Injectable({
   providedIn: 'root'
 })
-export class MapService {
+export class CltMapMapService {
 
   constructor(private http: HttpClient) { }
 

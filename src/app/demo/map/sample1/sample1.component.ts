@@ -1,5 +1,5 @@
 import { CltMapLayerComponent } from '../../../modules/map/map-layer/map-layer.component';
-import { MapService } from '../../../modules/map/providers/map.service';
+import { CltMapMapService } from '../../../modules/map/providers/map.service';
 import { CltMapComponent } from '../../../modules/map/map.component';
 import { ViewChild, Component, OnInit } from '@angular/core';
 import Point from 'ol/geom/point';
@@ -10,7 +10,7 @@ import Point from 'ol/geom/point';
   @ViewChild('addressesLayer') addressesLayer: CltMapLayerComponent;
   @ViewChild('buildingsLayer') buildingsLayer: CltMapLayerComponent;
   @ViewChild('map') map: CltMapComponent;
-  constructor(private mapservice: MapService) { }
+  constructor(private mapservice: CltMapMapService) { }
   ngOnInit() {
     for (let i = 0; i < 100; i++) {
       this.addressesLayer.addFeature(new Point(this.mapservice.fromLonLat([this.longitude(), this.latitude()])), {

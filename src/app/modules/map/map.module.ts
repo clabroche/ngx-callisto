@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CltMapComponent } from './map.component';
 import { CltMapLayerComponent } from './map-layer/map-layer.component';
-import { MapService } from './providers/map.service';
+import { CltMapMapService } from './providers/map.service';
 
 @NgModule({
   imports: [
@@ -18,12 +18,12 @@ import { MapService } from './providers/map.service';
   ],
   entryComponents: [CltMapLayerComponent]
 })
-export class MapModule {
+export class CltMapModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: MapModule,
+      ngModule: CltMapModule,
       providers: [
-        MapService
+        CltMapMapService
       ]
     };
   }

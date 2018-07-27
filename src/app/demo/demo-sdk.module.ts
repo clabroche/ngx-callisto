@@ -44,4 +44,4 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CltCoreModule,
   ]
 })
-export class DemoSDK { }
+export class CltDemoSDKModule { }

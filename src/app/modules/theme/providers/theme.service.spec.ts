@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ThemeService } from './theme.service';
+import { CltThemeService } from './theme.service';
 
-describe('ThemeService', () => {
+describe('CltThemeService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ThemeService]
+      providers: [CltThemeService]
     });
   });
 
-  it('should be created', inject([ThemeService], (service: ThemeService) => {
+  it('should be created', inject([CltThemeService], (service: CltThemeService) => {
     expect(service).toBeTruthy();
   }));
 });

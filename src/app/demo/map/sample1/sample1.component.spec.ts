@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Sample1Component } from './sample1.component';
-import { MapModule } from '../../../modules/map/map.module';
+import { CltMapModule } from '../../../modules/map/map.module';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('Sample1Component', () => {
@@ -11,7 +11,7 @@ describe('Sample1Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MapModule.forRoot(),
+        CltMapModule.forRoot(),
         HttpClientModule
       ],
       declarations: [ Sample1Component ]

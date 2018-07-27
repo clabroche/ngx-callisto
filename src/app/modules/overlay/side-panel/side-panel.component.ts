@@ -1,5 +1,5 @@
 import { Component, Renderer2, ChangeDetectorRef } from '@angular/core';
-import { PopupComponent } from '../popup/popup.component';
+import { CltPopupComponent } from '../popup/popup.component';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 
 /**
@@ -39,7 +39,7 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
     ])
   ]
 })
-export class CltSidePanelComponent extends PopupComponent {
+export class CltSidePanelComponent extends CltPopupComponent {
   className = 'sidepanel';
   direction: 'left' | 'right' | 'top' | 'bottom' | 'center'
     = 'right';

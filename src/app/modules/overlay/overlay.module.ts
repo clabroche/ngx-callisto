@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CltNotificationsService } from './providers/notifications.service';
 import { CltNotificationsComponent } from './notifications/notifications.component';
-import { PopupComponent, BodyDirective } from './popup/popup.component';
+import { CltPopupComponent, CltBodyDirective } from './popup/popup.component';
 import { CltSidePanelComponent } from './side-panel/side-panel.component';
 
 @NgModule({
@@ -11,14 +11,14 @@ import { CltSidePanelComponent } from './side-panel/side-panel.component';
   ],
   declarations: [
     CltNotificationsComponent,
-    PopupComponent,
-    BodyDirective,
+    CltPopupComponent,
+    CltBodyDirective,
     CltSidePanelComponent
   ],
   exports: [
     CltNotificationsComponent,
-    PopupComponent,
-    BodyDirective,
+    CltPopupComponent,
+    CltBodyDirective,
     CltSidePanelComponent
   ]
 })

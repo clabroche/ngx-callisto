@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DemoInterface } from '../demo.interface';
-import { MapModule } from '../../modules/map/map.module';
+import { CltMapModule } from '../../modules/map/map.module';
 import { DemoComponent } from '../demo.component';
 
 @Component({
@@ -20,6 +20,6 @@ export class MapBridgeComponent {
 export class MapComponent extends DemoComponent implements DemoInterface {
   name = 'Map';
   link = '/documentation/modules/MapModule.html';
-  relativeModule: any = MapModule;
+  relativeModule: any = CltMapModule;
   sampleComponent = MapBridgeComponent;
 }

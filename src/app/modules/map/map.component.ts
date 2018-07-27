@@ -22,7 +22,7 @@ import * as uuidV4 from 'uuid';
 import * as Geocoder from 'ol-geocoder';
 import { Subject } from 'rxjs';
 import { CltMapLayerComponent } from './map-layer/map-layer.component';
-import { MapService } from './providers/map.service';
+import { CltMapMapService } from './providers/map.service';
 
 @Component({
   selector: 'clt-map',
@@ -61,7 +61,7 @@ export class CltMapComponent implements AfterViewChecked, AfterContentInit {
   @ContentChildren(CltMapLayerComponent) layersComponent: QueryList<CltMapLayerComponent>;
 
   constructor(
-    private mapService: MapService,
+    private mapService: CltMapMapService,
     private componentFactoryResolver: ComponentFactoryResolver,
     private renderer: Renderer2) {}
 

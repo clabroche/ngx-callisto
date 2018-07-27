@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 
-import { MapService } from './map.service';
+import { CltMapMapService } from './map.service';
 import proj from 'ol/proj';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import Feature from 'ol/feature';
@@ -8,8 +8,8 @@ import Point from 'ol/geom/point';
 import Icon from 'ol/style/icon';
 import Style from 'ol/style/style';
 
-describe('MapService', () => {
-  let service: MapService;
+describe('CltMapMapService', () => {
+  let service: CltMapMapService;
   let httpMock: HttpTestingController;
   const dummyAddress = {
     address: { randomProperty: 'randomValue' }
@@ -19,9 +19,9 @@ describe('MapService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [MapService]
+      providers: [CltMapMapService]
     });
-    service = TestBed.get(MapService);
+    service = TestBed.get(CltMapMapService);
     httpMock = TestBed.get(HttpTestingController);
   });
 

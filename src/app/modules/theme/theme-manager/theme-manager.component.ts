@@ -1,20 +1,20 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ThemeService } from '../providers/theme.service';
+import { CltThemeService } from '../providers/theme.service';
 import { CltCommonService } from '../../core/providers/common.service';
 const mockdataTable = require('./datatable_data.json');
 
 @Component({
-  selector: 'app-theme-manager',
+  selector: 'clt-theme-manager',
   templateUrl: './theme-manager.component.html',
   styleUrls: ['./theme-manager.component.scss']
 })
-export class ThemeManagerComponent implements OnInit {
+export class CltThemeManagerComponent implements OnInit {
   mockData = mockdataTable;
   variables = [];
   currentTheme = '';
   @ViewChild('exportButton') exportButton: ElementRef;
   @ViewChild('exportInput') exportInput: ElementRef;
-  constructor(public themeService: ThemeService, private common: CltCommonService) { }
+  constructor(public themeService: CltThemeService, private common: CltCommonService) { }
 
   ngOnInit() {
     this.variables = Object.keys(this.themeService.theme);

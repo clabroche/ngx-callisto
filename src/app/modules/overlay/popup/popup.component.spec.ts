@@ -1,27 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupComponent, BodyDirective } from './popup.component';
+import { CltPopupComponent, CltBodyDirective } from './popup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { FormBuilder, Validators } from '@angular/forms';
 
-describe('PopupComponent', () => {
-  let component: PopupComponent;
-  let fixture: ComponentFixture<PopupComponent>;
+describe('CltPopupComponent', () => {
+  let component: CltPopupComponent;
+  let fixture: ComponentFixture<CltPopupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [BrowserAnimationsModule],
       declarations: [
-        PopupComponent,
-        BodyDirective
+        CltPopupComponent,
+        CltBodyDirective
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupComponent);
+    fixture = TestBed.createComponent(CltPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

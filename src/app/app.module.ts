@@ -7,11 +7,11 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CltOverlayModule } from './modules/overlay/overlay.module';
-import { ThemeModule } from './modules/theme/theme.module';
+import { CltThemeModule } from './modules/theme/theme.module';
 import { CltNavigationsModule } from './modules/navigations/navigations.module';
 import { CltContainersModule } from './modules/containers/containers.module';
 import { HttpClientModule } from '@angular/common/http';
-import { DemoSDK } from './demo/demo-sdk.module';
+import { CltDemoSDKModule } from './demo/demo-sdk.module';
 
 @NgModule({
   declarations: [
@@ -19,11 +19,11 @@ import { DemoSDK } from './demo/demo-sdk.module';
   ],
   imports: [
     BrowserAnimationsModule,
-    DemoSDK,
+    CltDemoSDKModule,
     CltCoreModule.forRoot(),
     CltNavigationsModule.forRoot(),
     CltOverlayModule.forRoot(),
-    ThemeModule.forRoot(),
+    CltThemeModule.forRoot(),
     CltContainersModule,
     HttpClientModule,
     FormsModule,

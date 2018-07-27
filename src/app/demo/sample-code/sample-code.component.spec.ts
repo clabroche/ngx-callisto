@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SampleCodeComponent } from './sample-code.component';
-import { DemoSDK } from '../demo-sdk.module';
+import { CltDemoSDKModule } from '../demo-sdk.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SampleCodeComponent', () => {
@@ -13,7 +13,7 @@ describe('SampleCodeComponent', () => {
       declarations: [],
       imports: [
         NoopAnimationsModule,
-        DemoSDK
+        CltDemoSDKModule
       ]
     })
     .compileComponents();

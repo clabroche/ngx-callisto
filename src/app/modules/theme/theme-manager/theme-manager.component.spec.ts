@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ThemeManagerComponent } from './theme-manager.component';
+import { CltThemeManagerComponent } from './theme-manager.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { TableModule } from 'primeng/table';
 import { ScheduleModule } from 'primeng/schedule';
@@ -11,13 +11,13 @@ import { CltCoreModule } from '../../core/core.module';
 import { CltContainersModule } from '../../containers/containers.module';
 
 
-describe('ThemeManagerComponent', () => {
-  let component: ThemeManagerComponent;
-  let fixture: ComponentFixture<ThemeManagerComponent>;
+describe('CltThemeManagerComponent', () => {
+  let component: CltThemeManagerComponent;
+  let fixture: ComponentFixture<CltThemeManagerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ThemeManagerComponent ],
+      declarations: [ CltThemeManagerComponent ],
       imports: [
         BrowserAnimationsModule,
         CltContainersModule,
@@ -33,7 +33,7 @@ describe('ThemeManagerComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ThemeManagerComponent);
+    fixture = TestBed.createComponent(CltThemeManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

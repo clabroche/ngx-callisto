@@ -1,10 +1,10 @@
-import { ThemeModule } from './theme.module';
+import { CltThemeModule } from './theme.module';
 
-describe('ThemeModule', () => {
-  let themeModule: ThemeModule;
+describe('CltThemeModule', () => {
+  let themeModule: CltThemeModule;
 
   beforeEach(() => {
-    themeModule = new ThemeModule();
+    themeModule = new CltThemeModule();
   });
 
   it('should create an instance', () => {

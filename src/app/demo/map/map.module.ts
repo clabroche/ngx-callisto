@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MapComponent, MapBridgeComponent } from './map.component';
 import { Sample1Component } from './sample1/sample1.component';
-import { MapModule } from '../../modules/map/map.module';
-import { DemoSDK } from '../demo-sdk.module';
+import { CltMapModule } from '../../modules/map/map.module';
+import { CltDemoSDKModule } from '../demo-sdk.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    MapModule.forRoot(),
-    DemoSDK
+    CltMapModule.forRoot(),
+    CltDemoSDKModule
   ],
   declarations: [
     MapComponent,

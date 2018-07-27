@@ -4,7 +4,7 @@ import { CltMapLayerComponent } from './map-layer.component';
 import Map from 'ol/map';
 import View from 'ol/view';
 import Point from 'ol/geom/point';
-import { MapService } from '../providers/map.service';
+import { CltMapMapService } from '../providers/map.service';
 import { HttpClientModule } from '@angular/common/http';
 import Feature from 'ol/feature';
 import Modify from 'ol/interaction/modify';
@@ -16,7 +16,7 @@ describe('CltMapLayerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CltMapLayerComponent ],
-      providers: [MapService],
+      providers: [CltMapMapService],
       imports: [HttpClientModule]
     }).compileComponents();
   }));

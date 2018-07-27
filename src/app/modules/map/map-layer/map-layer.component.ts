@@ -6,7 +6,7 @@ import VectorSource from 'ol/source/vector';
 import VectorLayer from 'ol/layer/vector';
 import Feature from 'ol/feature';
 import * as uuidV4 from 'uuid';
-import { MapService } from '../providers/map.service';
+import { CltMapMapService } from '../providers/map.service';
 @Component({
   selector: 'clt-map-layer',
   templateUrl: './map-layer.component.html',
@@ -21,7 +21,7 @@ export class CltMapLayerComponent {
   modify: Modify;
   @Output() featuremove = new EventEmitter();
 
-  constructor(public mapService: MapService) {
+  constructor(public mapService: CltMapMapService) {
     this.createLayer();
   }
 

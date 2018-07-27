@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThemeService } from './providers/theme.service';
-import { ThemeManagerComponent } from './theme-manager/theme-manager.component';
+import { CltThemeService } from './providers/theme.service';
+import { CltThemeManagerComponent } from './theme-manager/theme-manager.component';
 import { RouterModule } from '@angular/router';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { CltOverlayModule } from '../overlay/overlay.module';
@@ -13,15 +13,15 @@ import { CltContainersModule } from '../containers/containers.module';
     CltContainersModule,
     CltOverlayModule.forRoot()
   ],
-  declarations: [ThemeManagerComponent],
-  exports: [ThemeManagerComponent, RouterModule]
+  declarations: [CltThemeManagerComponent],
+  exports: [CltThemeManagerComponent, RouterModule]
 })
-export class ThemeModule {
+export class CltThemeModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: ThemeModule,
+      ngModule: CltThemeModule,
       providers: [
-        ThemeService
+        CltThemeService
       ]
     };
   }

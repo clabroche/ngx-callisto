@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Configuration } from './modules/navigations/sidebar/sidebar.component';
-import { ThemeService } from './modules/theme/providers/theme.service';
+import { CltThemeService } from './modules/theme/providers/theme.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   conf: Configuration = {};
 
-  constructor(theme: ThemeService, router: Router) {
+  constructor(theme: CltThemeService, router: Router) {
     this.conf = {
       list: [{
         icon: 'fas fa-home',
