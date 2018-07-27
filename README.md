@@ -1,4 +1,4 @@
-# ngx-defi-core
+# ngx-callisto
 
 ![Coverage Status](./documentation/badge.svg)
 ![Angular Support](https://img.shields.io/badge/angular-%3E5.x-blue.svg?style=flat-square)
