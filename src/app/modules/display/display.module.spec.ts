@@ -1,13 +1,13 @@
 import { CltDisplayModule } from './display.module';
 
 describe('CltDisplayModule', () => {
-  let defiDisplayModule: CltDisplayModule;
+  let cltDisplayModule: CltDisplayModule;
 
   beforeEach(() => {
-    defiDisplayModule = new CltDisplayModule();
+    cltDisplayModule = new CltDisplayModule();
   });
 
   it('should create an instance', () => {
-    expect(defiDisplayModule).toBeTruthy();
+    expect(cltDisplayModule).toBeTruthy();
   });
 });

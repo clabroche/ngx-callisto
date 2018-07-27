@@ -9,10 +9,10 @@ import { Component, ViewChildren, ViewChild, QueryList } from '@angular/core';
   selector: 'container',
   template: `
     <clt-display [elements]='[a,b,c,d]' [(visible)]="visible"></clt-display>
-    <div defiDisplayItem name="a" #a="defiDisplayItem"></div>
-    <div defiDisplayItem name="b" #b="defiDisplayItem"></div>
-    <div defiDisplayItem name="c" #c="defiDisplayItem"></div>
-    <div defiDisplayItem name="d" #d="defiDisplayItem"></div>
+    <div cltDisplayItem name="a" #a="cltDisplayItem"></div>
+    <div cltDisplayItem name="b" #b="cltDisplayItem"></div>
+    <div cltDisplayItem name="c" #c="cltDisplayItem"></div>
+    <div cltDisplayItem name="d" #d="cltDisplayItem"></div>
   `
 }) class ContainerComponent {
   @ViewChild(CltDisplayComponent) displayComponent: CltDisplayComponent;

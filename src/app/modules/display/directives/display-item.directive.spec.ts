@@ -5,10 +5,10 @@ import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 @Component({
   selector: 'container',
   template: `
-    <div defiDisplayItem="defiDisplayItem"></div>
+    <div cltDisplayItem="cltDisplayItem"></div>
   `
 }) class ContainerComponent {
-  @ViewChild(CltDisplayItemDirective) defiDisplayItem: CltDisplayItemDirective;
+  @ViewChild(CltDisplayItemDirective) cltDisplayItem: CltDisplayItemDirective;
 }
 describe('CltDisplayItemDirective', () => {
   let component: CltDisplayItemDirective;
@@ -22,7 +22,7 @@ describe('CltDisplayItemDirective', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ContainerComponent);
-    component = fixture.componentInstance.defiDisplayItem;
+    component = fixture.componentInstance.cltDisplayItem;
     window.localStorage.removeItem('display');
   });
 

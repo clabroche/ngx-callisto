@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, Renderer2, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 @Directive({
-  selector: '[defiDisplayItem]',
-  exportAs: 'defiDisplayItem'
+  selector: '[cltDisplayItem]',
+  exportAs: 'cltDisplayItem'
 })
 export class CltDisplayItemDirective implements AfterViewInit {
   @Input() name;

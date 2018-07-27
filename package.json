@@ -1,5 +1,5 @@
 {
-  "name": "ngx-clt-core",
+  "name": "ngx-callisto",
   "version": "3.0.4",
   "scripts": {
     "coverage": "ng test --watch=false --code-coverage",

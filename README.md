@@ -17,7 +17,7 @@ Import module in your RootModule
 ```javascript
 import { BrowserModule } from '@angular/platform-browser';
 ...
-import { CoreModule } from 'ngx-clt-core/dist';
+import { CoreModule } from 'ngx-callisto/dist';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { CoreModule } from 'ngx-clt-core/dist';
 })
 export class AppModule {}
 ```
-All components are exported from top of ``` ngx-clt-core/dist ```, you can import like ``` import { BoxComponent } from 'ngx-clt-core/dist' ```
+All components are exported from top of ``` ngx-callisto/dist ```, you can import like ``` import { BoxComponent } from 'ngx-callisto/dist' ```
 
 ## Development
 

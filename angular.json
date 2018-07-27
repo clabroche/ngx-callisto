@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-clt-core": {
+    "ngx-callisto": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-clt-core",
+            "outputPath": "dist/ngx-callisto",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -52,18 +52,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-clt-core:build"
+            "browserTarget": "ngx-callisto:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-clt-core:build:production"
+              "browserTarget": "ngx-callisto:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-clt-core:build"
+            "browserTarget": "ngx-callisto:build"
           }
         },
         "test": {
@@ -97,7 +97,7 @@
         }
       }
     },
-    "ngx-clt-core-e2e": {
+    "ngx-callisto-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -105,7 +105,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-clt-core:serve"
+            "devServerTarget": "ngx-callisto:serve"
           }
         },
         "lint": {
@@ -120,7 +120,7 @@
       }
     }
   },
-  "defaultProject": "ngx-clt-core",
+  "defaultProject": "ngx-callisto",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
