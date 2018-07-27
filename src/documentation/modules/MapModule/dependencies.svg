@@ -22,69 +22,69 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_MapModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="96,-70 96,-268 400,-268 400,-70 96,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="79,-70 79,-268 417,-268 417,-70 79,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_MapModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="108,-78 108,-130 388,-130 388,-78 108,-78"/>
+<polygon fill="none" stroke="#000000" points="91,-78 91,-130 405,-130 405,-78 91,-78"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_MapModule_exports</title>
-<polygon fill="none" stroke="#000000" points="104,-208 104,-260 392,-260 392,-208 104,-208"/>
+<polygon fill="none" stroke="#000000" points="87,-208 87,-260 409,-260 409,-208 87,-208"/>
 </g>
-<!-- MapComponent -->
+<!-- CltMapComponent -->
 <g id="node1" class="node">
-<title>MapComponent</title>
-<polygon fill="#ffffb3" stroke="#000000" points="380.4916,-122 273.5084,-122 273.5084,-86 380.4916,-86 380.4916,-122"/>
-<text text-anchor="middle" x="327" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">MapComponent</text>
+<title>CltMapComponent</title>
+<polygon fill="#ffffb3" stroke="#000000" points="397.1094,-122 272.8906,-122 272.8906,-86 397.1094,-86 397.1094,-122"/>
+<text text-anchor="middle" x="335" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">CltMapComponent</text>
 </g>
 <!-- MapModule -->
 <g id="node3" class="node">
 <title>MapModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="229.7093,-187 226.7093,-191 205.7093,-191 202.7093,-187 144.2907,-187 144.2907,-151 229.7093,-151 229.7093,-187"/>
-<text text-anchor="middle" x="187" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">MapModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="220.7093,-187 217.7093,-191 196.7093,-191 193.7093,-187 135.2907,-187 135.2907,-151 220.7093,-151 220.7093,-187"/>
+<text text-anchor="middle" x="178" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">MapModule</text>
 </g>
-<!-- MapComponent&#45;&gt;MapModule -->
+<!-- CltMapComponent&#45;&gt;MapModule -->
 <g id="edge1" class="edge">
-<title>MapComponent&#45;&gt;MapModule</title>
-<path fill="none" stroke="#000000" d="M344.9153,-122.0225C344.9153,-139.3734 344.9153,-163 344.9153,-163 344.9153,-163 239.7341,-163 239.7341,-163"/>
-<polygon fill="#000000" stroke="#000000" points="239.7342,-159.5001 229.7341,-163 239.7341,-166.5001 239.7342,-159.5001"/>
+<title>CltMapComponent&#45;&gt;MapModule</title>
+<path fill="none" stroke="#000000" d="M355.7682,-122.0225C355.7682,-139.3734 355.7682,-163 355.7682,-163 355.7682,-163 231.0327,-163 231.0327,-163"/>
+<polygon fill="#000000" stroke="#000000" points="231.0328,-159.5001 221.0327,-163 231.0327,-166.5001 231.0328,-159.5001"/>
 </g>
-<!-- MapLayerComponent -->
+<!-- CltMapLayerComponent -->
 <g id="node2" class="node">
-<title>MapLayerComponent</title>
-<polygon fill="#ffffb3" stroke="#000000" points="255.6345,-122 116.3655,-122 116.3655,-86 255.6345,-86 255.6345,-122"/>
-<text text-anchor="middle" x="186" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">MapLayerComponent</text>
+<title>CltMapLayerComponent</title>
+<polygon fill="#ffffb3" stroke="#000000" points="255.252,-122 98.748,-122 98.748,-86 255.252,-86 255.252,-122"/>
+<text text-anchor="middle" x="177" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">CltMapLayerComponent</text>
 </g>
-<!-- MapLayerComponent&#45;&gt;MapModule -->
+<!-- CltMapLayerComponent&#45;&gt;MapModule -->
 <g id="edge2" class="edge">
-<title>MapLayerComponent&#45;&gt;MapModule</title>
-<path fill="none" stroke="#000000" d="M187,-122.1061C187,-122.1061 187,-140.991 187,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="183.5001,-140.9909 187,-150.991 190.5001,-140.991 183.5001,-140.9909"/>
+<title>CltMapLayerComponent&#45;&gt;MapModule</title>
+<path fill="none" stroke="#000000" d="M178,-122.1061C178,-122.1061 178,-140.991 178,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="174.5001,-140.9909 178,-150.991 181.5001,-140.991 174.5001,-140.9909"/>
 </g>
-<!-- MapComponent  -->
+<!-- CltMapComponent  -->
 <g id="node4" class="node">
-<title>MapComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="384.4927,-252 273.5073,-252 273.5073,-216 384.4927,-216 384.4927,-252"/>
-<text text-anchor="middle" x="329" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">MapComponent </text>
+<title>CltMapComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="400.61,-252 273.39,-252 273.39,-216 400.61,-216 400.61,-252"/>
+<text text-anchor="middle" x="337" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">CltMapComponent </text>
 </g>
-<!-- MapModule&#45;&gt;MapComponent  -->
+<!-- MapModule&#45;&gt;CltMapComponent  -->
 <g id="edge3" class="edge">
-<title>MapModule&#45;&gt;MapComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M229.7868,-175C265.0646,-175 309.3347,-175 309.3347,-175 309.3347,-175 309.3347,-205.9775 309.3347,-205.9775"/>
-<polygon fill="#000000" stroke="#000000" points="305.8348,-205.9774 309.3347,-215.9775 312.8348,-205.9775 305.8348,-205.9774"/>
+<title>MapModule&#45;&gt;CltMapComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M220.8092,-175C260.8348,-175 314.4818,-175 314.4818,-175 314.4818,-175 314.4818,-205.9775 314.4818,-205.9775"/>
+<polygon fill="#000000" stroke="#000000" points="310.9819,-205.9774 314.4818,-215.9775 317.9819,-205.9775 310.9819,-205.9774"/>
 </g>
-<!-- MapLayerComponent  -->
+<!-- CltMapLayerComponent  -->
 <g id="node5" class="node">
-<title>MapLayerComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="255.6341,-252 112.3659,-252 112.3659,-216 255.6341,-216 255.6341,-252"/>
-<text text-anchor="middle" x="184" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">MapLayerComponent </text>
+<title>CltMapLayerComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="255.252,-252 94.748,-252 94.748,-216 255.252,-216 255.252,-252"/>
+<text text-anchor="middle" x="175" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">CltMapLayerComponent </text>
 </g>
-<!-- MapModule&#45;&gt;MapLayerComponent  -->
+<!-- MapModule&#45;&gt;CltMapLayerComponent  -->
 <g id="edge4" class="edge">
-<title>MapModule&#45;&gt;MapLayerComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M187,-187.1061C187,-187.1061 187,-205.991 187,-205.991"/>
-<polygon fill="#000000" stroke="#000000" points="183.5001,-205.9909 187,-215.991 190.5001,-205.991 183.5001,-205.9909"/>
+<title>MapModule&#45;&gt;CltMapLayerComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M178,-187.1061C178,-187.1061 178,-205.991 178,-205.991"/>
+<polygon fill="#000000" stroke="#000000" points="174.5001,-205.9909 178,-215.991 181.5001,-205.991 174.5001,-205.9909"/>
 </g>
 </g>
 </svg>

@@ -5,7 +5,7 @@ import { Component, ViewChild } from '@angular/core';
 @Component({
   selector: '',
   template: ''
-}) class ContainerComponent{
+}) class ContainerComponent {
   @ViewChild(SampleDirective) sampleDirective: SampleDirective;
 }
 describe('SampleDirective', () => {

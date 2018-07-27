@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   conf: Configuration = {};
 
-  constructor(theme: ThemeService, ) {
+  constructor(theme: ThemeService, router: Router) {
     this.conf = {
       list: [{
         icon: 'fas fa-home',
@@ -23,9 +23,11 @@ export class AppComponent {
         url: '/map',
       }],
       bottom: [{
-        icon: 'fas fa-map',
+        icon: 'fas fa-book',
         description: 'Documentation',
-        url: '/documentation'
+        click: function() {
+          window.open('/documentation/index.html');
+        }
       }]
     };
   }
