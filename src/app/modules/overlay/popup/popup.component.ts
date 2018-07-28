@@ -27,7 +27,7 @@ export class CltBodyDirective {
   constructor(public templateRef: TemplateRef<any>) { }
 }
 @Component({
-  selector: 'popup',
+  selector: 'clt-popup',
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.scss'],
   animations: [
@@ -49,8 +49,7 @@ export class CltPopupComponent implements AfterContentInit, OnDestroy {
   @ContentChild(CltBodyDirective) bodyTemplate;
   @ViewChild('host') host: ElementRef;
   @ViewChild('hostContainer') hostContainer: ElementRef;
-  // tslint:disable-next-line:no-input-rename
-  @Input('clt-body') body = '';
+  @Input() body = '';
   @Input() ghost = false;
   @Input() title: string;
 
