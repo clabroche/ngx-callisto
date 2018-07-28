@@ -1,4 +1,5 @@
-import { DefiSideBarService } from '../providers/sidebar.service';
+import { CltSideBarService } from '../providers/sidebar.service';
+import { Router } from '@angular/router';
 /**
  * Item present in sidebar
  */
@@ -18,11 +19,9 @@ export interface Item {
     /**
      * click function to interact outside of the component
      */
-    click?: Array<any> | string | Function;
-    /**
-     * Url to redirect with router
-     */
-    externalUrl?: string;
+    click?: Function;
+    /** url to go */
+    url?: string;
     /**
      * possibilities to add an other list: Not implemented yet
      */
@@ -61,8 +60,9 @@ export interface Configuration {
  * | <div>I want to go to {{route()}}</div>
  * </div>
  */
-export declare class DefiSidebarComponent {
-    sidebar: DefiSideBarService;
+export declare class CltSidebarComponent {
+    sidebar: CltSideBarService;
+    private router;
     /**
      * control css class that open/close sidebar: openHint/closeHint
      */
@@ -75,11 +75,11 @@ export declare class DefiSidebarComponent {
     /**
     * import dependencies
     */
-    constructor(sidebar: DefiSideBarService);
+    constructor(sidebar: CltSideBarService, router: Router);
     /**
      * Go to Home route
      */
-    goTo(data: any): void;
+    goTo(item: any, event?: any): void;
     newWindow(data: any): void;
     /**
      * Toggle sidebar

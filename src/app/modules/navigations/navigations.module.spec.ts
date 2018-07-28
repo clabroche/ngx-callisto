@@ -1,10 +1,10 @@
-import { DefiNavigationsModule } from './navigations.module';
+import { CltNavigationsModule } from './navigations.module';
 
-describe('DefiNavigationsModule', () => {
-  let navigationsModule: DefiNavigationsModule;
+describe('CltNavigationsModule', () => {
+  let navigationsModule: CltNavigationsModule;
 
   beforeEach(() => {
-    navigationsModule = new DefiNavigationsModule();
+    navigationsModule = new CltNavigationsModule();
   });
 
   it('should create an instance', () => {

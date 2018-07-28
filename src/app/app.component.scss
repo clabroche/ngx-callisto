@@ -1,0 +1,15 @@
+#appContainer {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    #appContent{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+        flex-wrap: nowrap;
+        #outletContent{
+            overflow-y: scroll;
+        }
+    }
+}

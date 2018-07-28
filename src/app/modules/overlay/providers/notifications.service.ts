@@ -1,6 +1,6 @@
-import { Injectable, IterableDiffers } from "@angular/core";
-import * as uuid from 'uuid'
-import { Observable, Subject } from "rxjs";
+import { Injectable } from '@angular/core';
+import * as uuid from 'uuid';
+import { Subject } from 'rxjs';
 
 /**
  * Describe a notification
@@ -19,7 +19,7 @@ export interface Notification {
    */
   msg?: string;
   /**
-   * Timeout function 
+   * Timeout function
    */
   timeout?: any;
 }
@@ -27,7 +27,7 @@ export interface Notification {
  * Control the sidebar outside the component
  */
 @Injectable()
-export class DefiNotificationsService {
+export class CltNotificationsService {
   /**
    * Component watch this variable to open/close the sidebar
    */
@@ -37,18 +37,18 @@ export class DefiNotificationsService {
    */
   addEvent: Subject<any> = new Subject();
   /**
-   * Emit event that contains id on remove 
+   * Emit event that contains id on remove
    */
   removeEvent: Subject<any> = new Subject();
 
   /**
-   * Fetch delay from localStorage 
+   * Fetch delay from localStorage
    */
   constructor() {
-    let notificationsDelay = +localStorage.getItem("notificationsDelay");
+    let notificationsDelay = +localStorage.getItem('notificationsDelay');
     if (notificationsDelay < 500) {
       notificationsDelay = 6000;
-      localStorage.setItem("notificationsDelay", "6000");
+      localStorage.setItem('notificationsDelay', '6000');
     }
   }
 
@@ -58,8 +58,8 @@ export class DefiNotificationsService {
   add(title, msg) {
     const notif: Notification = {
       id: uuid.v4(),
-      title: title || "",
-      msg: msg || ""
+      title: title || '',
+      msg: msg || ''
     };
     this.addEvent.next(notif);
     notif.timeout = this.defaultTimeout(notif);
@@ -73,11 +73,11 @@ export class DefiNotificationsService {
   defaultTimeout(notif) {
     return setTimeout(() => {
       this.delete(notif.id);
-    }, +localStorage.getItem("notificationsDelay"));
+    }, +localStorage.getItem('notificationsDelay'));
   }
 
   /**
-   * update notification from id 
+   * update notification from id
    */
   updateNotif(id, _notif: Notification) {
     this.notifications.map(notif => {
@@ -98,7 +98,7 @@ export class DefiNotificationsService {
   }
 
   /**
-   * Delete all notifications 
+   * Delete all notifications
    */
   deleteAll() {
     this.notifications.map(notif => this.delete(notif.id));

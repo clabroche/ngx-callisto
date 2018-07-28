@@ -1,53 +1,57 @@
 @import '../../common';
-
-#navbar{
-    height: $navbarWidth;
-    background-color: $mainColor;
-    color: $mainTextColor;
-    max-height: $navbarWidth;
-    background-size: 100%;
-    
-    #leftRight{
+@import '../../../../placeholders';
+#navbar {
+  height: 60px;
+  position: relative;
+  max-height: 60px !important;
+  color: var(--headerTextColor);
+  background-color: var(--headerBgColor);
+  box-shadow: 0 2px 11px #00000080;
+  i {
+    color: var(--headerTextColor) !important;
+    font-size: 2.5rem !important;
+  }
+  #leftRight {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    #left {
+      height: 100%;
+      padding-left: 5px;
+      display: flex;
+      align-items: center;
+      #logoContainer {
+        height: 80%;
+        ::ng-deep {
+          [logo] {
+            height: 100%;
+            border-radius: 100%;
+            overflow: hidden;
+            img {
+              height: 100%;
+            }
+          }
+        }
+      }
+      #description {
+        margin-left: 10px;
+        color: white;
+        font-size: 1.2em;
+      }
+    }
+    &::ng-deep {
+      #right>[right] {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
         align-items: center;
         height: 100%;
-        #left{
-            height: 100%;
-            padding-left: 5px;
-            display: flex;
-            align-items: center;
-            #logoContainer{
-                height: 80%;
-                ::ng-deep{
-                    [logo]{
-                        height: 100%;
-                        border-radius:100%;
-                        overflow: hidden;
-                        img{
-                            height: 100%;
-                        }
-                    }
-                }
-            }
-            #description{
-                margin-left:10px;
-                color: white;
-                font-size: 1.2em;
-            }
+        margin-right: 10px;
+        i {
+          @include button(var(--headerBgColor), var(--headerTextColor));
+          font-size: 1.7em;
         }
-        &::ng-deep{
-            #right>[right] {
-                display: flex;
-                align-items: center;
-                height: 100%;
-                margin-right: 10px;
-                .icon{
-                    font-size: 1.7em;
-                }
-            }
-        }
+      }
     }
+  }
 }
-

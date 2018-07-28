@@ -5,6 +5,6 @@
  *  |  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
  *  </box>
  */
-export declare class DefiBoxComponent {
+export declare class CltBoxComponent {
     title: String;
 }

@@ -1,18 +1,18 @@
-import { TestBed, async, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 
-import { DefiBoxComponent } from './box.component';
+import { CltBoxComponent } from './box.component';
 
 describe('BoxComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        DefiBoxComponent
+        CltBoxComponent
       ],
     }).compileComponents();
   }));
   it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(DefiBoxComponent);
+    const fixture = TestBed.createComponent(CltBoxComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-})
+});

@@ -1,6 +1,6 @@
 <div class="openSidebar" 
     [ngClass]="{'openSidebar':sidebar._open, 'closeSidebar':!sidebar._open}"
-    [ngStyle]="{'background-image': url ? 'url(img)' : ''}"
+    [ngStyle]="{'background-image': img ? 'url(img)' : ''}"
     id="sidebar">
     <div class="list">
         <div *ngFor='let item of conf.list'>
@@ -20,7 +20,7 @@
 </div>
 
 <ng-template #linkTemplate let-item>
-    <div id="{{item.id}}" class="item" (click)="goTo(item)" (auxclick)="newWindow(item)" (mouseover)="toggleHint($event)" (mouseleave)="toggleHint($event)">
+    <a id="{{item.id}}" class="item" [href]="item.url ? item.url : ''" (click)="goTo(item, $event)" (auxclick)="newWindow(item)" (mouseover)="toggleHint($event)" (mouseleave)="toggleHint($event)">
         <div class="icon">
             <i class="{{item.icon}}"></i>
         </div>
@@ -30,5 +30,5 @@
         <div id="hint-{{item.id}}" class="hintContainer"  [@hintState]="hintState">
             <div class="hint">{{item.description}}</div>
         </div>
-    </div>
+    </a>
 </ng-template>

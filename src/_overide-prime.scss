@@ -1,0 +1,109 @@
+@import "~css-vars/css-vars";
+$css-vars-use-native: true;
+$fontFamily: Lucida Grande,
+Lucida Sans,
+Arial,
+sans-serif;
+@include css-vars((
+    --fontSize:"",
+    --borderRadius:"",
+    //Header
+    --headerBorderWidth:"",
+    --headerBorderColor:"",
+    --headerBgColor:"",
+    --headerBgColorAccent:"",
+    --headerTextColor:"",
+    --headerFontWeight:"",
+    --headerIconTextColor:"",
+    //Content
+    --contentBorderWidth:"",
+    --contentBorderColor:"",
+    --contentBgColor:"",
+    --contentTextColor:"",
+    //Default State
+    --stateDefaultBorderWidth:"",
+    --stateDefaultBorderColor:"",
+    --stateDefaultBgColor:"",
+    --stateDefaultTextColor:"",
+    //Active State
+    --stateActiveBorderColor:"",
+    --stateActiveBgColor:"",
+    --stateActiveTextColor:"",
+    //Highlight State
+    --stateHighlightBorderColor:"",
+    --stateHighlightBgColor:"",
+    --stateHighlightTextColor:"",
+    //Focus State
+    --stateFocusBorderColor:"",
+    --stateFocusBgColor:"",
+    --stateFocusTextColor:"",
+    //Error State
+    --stateErrorBorderColor:"",
+    --stateErrorBgColor:"",
+    --stateErrorTextColor:"",
+    //Hover State
+    --stateHoverBorderColor:"",
+    --stateHoverBgColor:"",
+    --stateHoverTextColor:"",
+    //Forms
+    --inputBgColor:"",
+    --inputTextColor:"",
+    --invalidInputBorderColor:"",
+    --inputGroupTextColor:"",
+    --inputDefaultBorderWidth:"",
+    --inputDefaultBorderColor:"",
+    --inputDefaultBgColor:"",
+    --inputDefaultTextColor:"",
+));
+
+
+$fontSize: var(--fontSize);
+$borderRadius: var(--borderRadius);
+$disabledOpacity: 0.35;
+//Header
+$headerBorderWidth: var(--headerBorderWidth);
+$headerBorderColor: var(--headerBorderColor);
+$headerBgColor: var(--headerBgColor);
+$headerBgColorAccent: var(--headerBgColorAccent);
+$headerTextColor: var(--headerTextColor);
+$headerFontWeight: var(--headerFontWeight);
+$headerIconTextColor: var(--headerIconTextColor);
+//Content
+$contentBorderWidth: var(--contentBorderWidth);
+$contentBorderColor: var(--contentBorderColor);
+$contentBgColor: var(--contentBgColor);
+$contentTextColor: var(--contentTextColor);
+//Default State
+$stateDefaultBorderWidth: var(--stateDefaultBorderWidth);
+$stateDefaultBorderColor: var(--stateDefaultBorderColor);
+$stateDefaultBgColor: var(--stateDefaultBgColor);
+$stateDefaultTextColor: var(--stateDefaultTextColor);
+//Active State
+$stateActiveBorderColor: var(--stateActiveBorderColor);
+$stateActiveBgColor: var(--stateActiveBgColor);
+$stateActiveTextColor: var(--stateActiveTextColor);
+//Highlight State
+$stateHighlightBorderColor: var(--stateHighlightBorderColor);
+$stateHighlightBgColor: var(--stateHighlightBgColor);
+$stateHighlightTextColor: var(--stateHighlightTextColor);
+//Focus State
+$stateFocusBorderColor: var(--stateFocusBorderColor);
+$stateFocusBgColor: var(--stateFocusBgColor);
+$stateFocusTextColor: var(--stateFocusTextColor);
+//Error State
+$stateErrorBorderColor: var(--stateErrorBorderColor);
+$stateErrorBgColor: var(--stateErrorBgColor);
+$stateErrorTextColor: var(--stateErrorTextColor);
+//Hover State
+$stateHoverBorderColor: var(--stateHoverBorderColor);
+$stateHoverBgColor: var(--stateHoverBgColor);
+$stateHoverTextColor: var(--stateHoverTextColor);
+//Forms
+$inputBgColor: var(--inputBgColor);
+$inputTextColor: var(--inputTextColor);
+$invalidInputBorderColor: var(--invalidInputBorderColor);
+$inputGroupTextColor: var(--inputGroupTextColor);
+$inputDefaultBorderWidth: var(--inputDefaultBorderWidth);
+$inputDefaultBorderColor: var(--inputDefaultBorderColor);
+$inputDefaultBgColor: var(--inputDefaultBgColor);
+$inputDefaultTextColor: var(--inputDefaultTextColor);

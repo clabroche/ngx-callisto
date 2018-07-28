@@ -1,8 +1,8 @@
-import { Directive, HostListener, Renderer2, ElementRef } from "@angular/core";
+import { Directive, HostListener, Renderer2, ElementRef } from '@angular/core';
 
 /**
  * spin an icon
- * @example 
+ * @example
  * <button (click)="icon.start()">Click to start</button>
  * <button>
  * | <i class="fa fa-minus-circle" aria-hidden="true" spinning-icon #icon="spinning"></i>
@@ -10,10 +10,10 @@ import { Directive, HostListener, Renderer2, ElementRef } from "@angular/core";
  * <button (click)="icon.stop()">Click to stop</button>
  */
 @Directive({
-  selector: "[defi-spinning-icon]",
-  exportAs:'spinning'
+  selector: '[clt-spinning-icon]',
+  exportAs: 'clt-spinning-icon'
 })
-export class DefiSpinningIconDirective {
+export class CltSpinningIconDirective {
 
   /**
   * Load some dependencies
@@ -25,7 +25,7 @@ export class DefiSpinningIconDirective {
     this.renderer.addClass(this.hostElement.nativeElement, 'fa-spinner');
   }
 
-  stop(){
+  stop() {
     this.renderer.removeClass(this.hostElement.nativeElement, 'spin-animation');
     this.renderer.removeClass(this.hostElement.nativeElement, 'fa-spinner');
   }

@@ -1,30 +1,33 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DefiNotificationsService } from './providers/notifications.service';
-import { DefiNotificationsComponent } from './notifications/notifications.component';
-import { PopupComponent, BodyDirective } from './popup/popup.component';
+import { CltNotificationsService } from './providers/notifications.service';
+import { CltNotificationsComponent } from './notifications/notifications.component';
+import { CltPopupComponent, CltBodyDirective } from './popup/popup.component';
+import { CltSidePanelComponent } from './side-panel/side-panel.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
-    DefiNotificationsComponent,
-    PopupComponent,
-    BodyDirective
+    CltNotificationsComponent,
+    CltPopupComponent,
+    CltBodyDirective,
+    CltSidePanelComponent
   ],
   exports: [
-    DefiNotificationsComponent,
-    PopupComponent,
-    BodyDirective
+    CltNotificationsComponent,
+    CltPopupComponent,
+    CltBodyDirective,
+    CltSidePanelComponent
   ]
 })
-export class DefiOverlayModule {
+export class CltOverlayModule {
   public static forRoot(): ModuleWithProviders {
     return {
-      ngModule: DefiOverlayModule,
+      ngModule: CltOverlayModule,
       providers: [
-        DefiNotificationsService,
+        CltNotificationsService,
       ]
     };
   }

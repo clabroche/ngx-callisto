@@ -1,29 +1,19 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DefiSidePanelComponent } from './side-panel/side-panel.component';
-import { DefiSidePanelService } from './providers/sidepanel.service';
-import { DefiBoxComponent } from './box/box.component';
+import { CltBoxComponent } from './box/box.component';
+import { CltPanelComponent } from './panel/panel.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    DefiSidePanelComponent,
-    DefiBoxComponent
+    CltBoxComponent,
+    CltPanelComponent
   ],
   exports: [
-    DefiSidePanelComponent,
-    DefiBoxComponent
+    CltBoxComponent,
+    CltPanelComponent
   ]
 })
-export class DefiContainersModule {
-  public static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: DefiContainersModule,
-      providers: [
-        DefiSidePanelService,
-      ]
-    };
-  }
-}
+export class CltContainersModule {}

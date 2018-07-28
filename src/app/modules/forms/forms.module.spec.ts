@@ -1,10 +1,10 @@
-import { DefiFormsModule } from './forms.module';
+import { CltFormsModule } from './forms.module';
 
 describe('FormsModule', () => {
-  let formsModule: DefiFormsModule;
+  let formsModule: CltFormsModule;
 
   beforeEach(() => {
-    formsModule = new DefiFormsModule();
+    formsModule = new CltFormsModule();
   });
 
   it('should create an instance', () => {

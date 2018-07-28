@@ -1,2 +1,2 @@
-export declare class DefiFormsModule {
+export declare class CltFormsModule {
 }

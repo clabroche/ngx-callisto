@@ -1,0 +1,6 @@
+@import '../demo.scss';
+::ng-deep{
+    .hey {
+        background-color: red;
+    }
+}

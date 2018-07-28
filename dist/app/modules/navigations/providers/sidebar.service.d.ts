@@ -1,7 +1,7 @@
 /**
  * Control the sidebar outside the component
  */
-export declare class DefiSideBarService {
+export declare class CltSideBarService {
     /**
      * Component watch this variable to open/close the sidebar
      */

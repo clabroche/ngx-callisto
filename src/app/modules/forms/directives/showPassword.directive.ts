@@ -6,9 +6,9 @@ import { Directive, OnDestroy, Input, AfterViewChecked, ElementRef, Renderer2, O
  * <input type="text" [formControlName]="'hello'" [validators]="form.controls['hello']"/>
  */
 @Directive({
-  selector: '[defi-show-password]',
+  selector: '[clt-show-password]',
 })
-export class DefiShowPasswordDirective implements OnInit {
+export class CltShowPasswordDirective implements OnInit {
 
   /**
    * Load some dependencies

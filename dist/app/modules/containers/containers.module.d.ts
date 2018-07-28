@@ -1,4 +1,2 @@
-import { ModuleWithProviders } from '@angular/core';
-export declare class DefiContainersModule {
-    static forRoot(): ModuleWithProviders;
+export declare class CltContainersModule {
 }

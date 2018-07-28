@@ -7,7 +7,7 @@
     | <formErrors [model]="form.controls['email']"></formErrors>
     </form>
  */
-export declare class DefiFormErrorsComponent {
+export declare class CltFormErrorsComponent {
     /**
      * NgModel to tracks invalid status
      */

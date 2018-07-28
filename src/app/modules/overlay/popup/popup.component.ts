@@ -1,45 +1,33 @@
-import { Component, OnInit, Input, Directive, TemplateRef, ContentChild, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  Input,
+  Directive,
+  TemplateRef,
+  ContentChild,
+  EventEmitter,
+  Output,
+  ViewChild,
+  ElementRef,
+  Renderer2,
+  AfterContentInit,
+  ChangeDetectorRef,
+  OnDestroy
+} from '@angular/core';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { Subject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 /**
  * Display a popup
- * @example
- * popup.open().subscibe(result=>{
- * |  // result = undefined or 'ok'
- * })
- * <popup #popup>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating</div>
- * </popup>
- *
- * formGroup: FormGroup
- * popupWithBind.bindForm(formGroup).open().subscibe(result=>{
- * |  // result = undefined or formGroup.value
- * })
- * <popup #popupWithBind>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating with input control etc...</div>
- * </popup>
- *
- * data = { $implicit: 'Hello', name:'world' }
- * popupWithContext.open(data).subscibe(result=>{
- * |  // result = undefined or 'ok'
- * })
- * <popup #popupWithContext>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !</div>
- * </popup>
  */
 
- @Directive({
-   selector: '[popup-body]'
- })
- export class BodyDirective {
-  constructor(public templateRef: TemplateRef<any>) {}
- }
+@Directive({
+  selector: '[clt-popup-body]'
+})
+export class CltBodyDirective {
+  constructor(public templateRef: TemplateRef<any>) { }
+}
 @Component({
-  selector: 'popup',
+  selector: 'clt-popup',
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.scss'],
   animations: [
@@ -57,18 +45,20 @@ import { FormGroup } from '@angular/forms';
     ])
   ]
 })
-export class PopupComponent {
-  @ContentChild(BodyDirective) bodyTemplate;
+export class CltPopupComponent implements AfterContentInit, OnDestroy {
+  @ContentChild(CltBodyDirective) bodyTemplate;
+  @ViewChild('host') host: ElementRef;
+  @ViewChild('hostContainer') hostContainer: ElementRef;
   @Input() body = '';
+  @Input() ghost = false;
   @Input() title: string;
 
   @Input() cancelButton = 'Annuler';
   @Input() validateButton = 'Valider';
 
-  @Input() width = 'auto';
-  @Input() height = 'auto';
-
-  @Input() mainColor = '#343a40';
+  @Input() width;
+  @Input() height;
+  @Input() direction: 'left' | 'right' | 'top' | 'bottom' | 'center' = 'center';
 
   @Input() noActions = false;
 
@@ -77,28 +67,51 @@ export class PopupComponent {
   context: any;
 
   _open = false;
+  @Input() visible = false;
+  @Output() visibleChange = new EventEmitter();
   state = 'close';
 
   result: Subject<any>;
 
   form: FormGroup;
+  className = 'popup';
+  keyEvents;
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
 
+  ngAfterContentInit() {
+    this.cdr.detectChanges();
+    this.keyEvents = window.onkeyup = (e) => {
+      const key = e.keyCode ? e.keyCode : e.which;
+      if (key === 27 && this._open) {
+        console.log('esc');
+        this.close();
+      }
+    };
+  }
+  ngOnDestroy() {
+    window.removeEventListener('keyup', this.keyEvents);
+  }
   open(context?): Subject<any> {
     this.context = context;
     this.result = new Subject();
     this._open = true;
     this.state = 'open';
-    setTimeout(_ => this.openEvent.emit());
+
+    setTimeout(_ => {
+      this.visibleChange.emit(this._open);
+      this.openEvent.emit();
+    });
     return this.result;
   }
   close($event?: Event) {
     if ($event) { this.stopPropagation($event); }
     this._open = false;
     this.state = 'close';
+    setTimeout(_ => { this.visibleChange.emit(this._open); });
     if (this.result) {
       this.result.unsubscribe();
       this.result = null;
-     }
+    }
   }
 
   bindForm(form: FormGroup) {

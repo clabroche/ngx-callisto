@@ -1,0 +1,14 @@
+<div class="panel-container">
+  <div class="panel-header" *ngIf="header">
+    {{header}}
+    <div class="panel-actions">
+        <button *ngIf='toggleable' (click)="toggleCollapse()">
+          <ng-container *ngIf='collapsed'>+</ng-container>
+          <ng-container *ngIf='!collapsed'>-</ng-container>
+        </button>
+    </div>
+  </div>
+  <div class="panel-body" [@state]="state">
+    <ng-content></ng-content>
+  </div>
+</div>

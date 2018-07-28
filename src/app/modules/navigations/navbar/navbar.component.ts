@@ -19,17 +19,18 @@ import { Component, Input } from '@angular/core';
     </navbar>
  */
 @Component({
-  selector: 'defi-navbar',
+  selector: 'clt-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class DefiNavbarComponent {
+export class CltNavbarComponent {
   /**
    * Name displaying on left after icon
    */
   @Input('name') name = '';
 
   @Input('img') img: string;
+  @Input('url') url: string;
 
   /**
    * Load dependencies instances

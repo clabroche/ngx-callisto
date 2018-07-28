@@ -1,0 +1,9 @@
+
+#demo-container {
+    padding: 0 15px;
+    ::ng-deep{
+        .CodeMirror{
+            height: auto;
+        }
+    }
+}

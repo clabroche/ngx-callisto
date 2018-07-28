@@ -1,4 +1,4 @@
-import { Renderer2, ElementRef } from "@angular/core";
+import { Renderer2, ElementRef } from '@angular/core';
 /**
  * spin an icon
  * @example
@@ -8,7 +8,7 @@ import { Renderer2, ElementRef } from "@angular/core";
  * </button>
  * <button (click)="icon.stop()">Click to stop</button>
  */
-export declare class DefiSpinningIconDirective {
+export declare class CltSpinningIconDirective {
     private renderer;
     private hostElement;
     /**

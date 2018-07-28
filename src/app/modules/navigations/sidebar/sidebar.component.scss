@@ -29,15 +29,23 @@ $sidebarWidthClose:$navbarWidth;
   to {transform:scale(1)}
 }
 
+$navbarWidth: 50px;
 #sidebar {
-  color: $mainTextColor;
   height: 100%;
   overflow-x: hidden;
   width: $sidebarWidthClose;
-  background-color: $mainColor;
   display: flex;
   flex-direction: column;
   background-size: auto 100%;
+  background-color: white;
+  position: relative;
+  color: #616161;
+  box-shadow: 2px 0 11px #00000080;
+  &:before {
+    content: "";
+    height: 70px;
+    background-color: var(--headerBgColorAccent);
+  }
   &.openSidebar {
     animation-name: openSidebar;
     animation-duration: 0.2s;
@@ -62,27 +70,28 @@ $sidebarWidthClose:$navbarWidth;
       display: flex;
       align-items: center;
       cursor: pointer;
-      padding-bottom: 15px;
-      padding-top: 15px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      color: #616161;
       &:hover{
-        background-color: rgba(0,0,0,.5);
+        background-color: rgba(0, 0, 0, 0.1);
       }
       .hintContainer{
         position: absolute;
         overflow: hidden;
         left: $sidebarWidthClose;
         max-width: 0;
-        background-color: darken($mainColor,10);
         z-index: 3;
+        background-color: #e7e7e7;
         .hint{
-          color: white;
+          color: #636363;
           padding: 10px;  
         }
       }
       .icon{
         width:$sidebarWidthClose ;
         text-align: center;
-        font-size: 1.5em;
+        font-size: 1.3rem;
       }
       .description{
         &.openSidebar {
@@ -98,7 +107,8 @@ $sidebarWidthClose:$navbarWidth;
       }
     }
     #toggleSidebar{
-      background-color: rgba(0,0,0,.5);
+      background-color: var(--headerBgColorAccent);
+      color: var(--headerTextColor);
       .icon {
         font-size: 1em;
       }

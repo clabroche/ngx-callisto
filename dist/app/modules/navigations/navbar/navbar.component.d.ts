@@ -16,12 +16,13 @@
     |  </div>
     </navbar>
  */
-export declare class DefiNavbarComponent {
+export declare class CltNavbarComponent {
     /**
      * Name displaying on left after icon
      */
     name: string;
     img: string;
+    url: string;
     /**
      * Load dependencies instances
      */

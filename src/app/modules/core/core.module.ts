@@ -1,34 +1,34 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 
-import { DefiCommonService } from './providers/common.service';
-import { DefiSpinningIconDirective } from './directives/spinningIcon.directive';
-import { DefiClickStopPropagation } from './directives/stopPropagation.directive';
-import { DefiToId } from './pipe/toId.pipe';
-import { DefiPopoverComponent } from './popover/popover.component';
+import { CltCommonService } from './providers/common.service';
+import { CltSpinningIconDirective } from './directives/spinningIcon.directive';
+import { CltClickStopPropagationDirective } from './directives/stopPropagation.directive';
+import { CltToId } from './pipe/toId.pipe';
+import { CltPopoverComponent } from './popover/popover.component';
 @NgModule({
   declarations: [
-    DefiClickStopPropagation,
-    DefiSpinningIconDirective,
-    DefiToId,
-    DefiPopoverComponent,
+    CltClickStopPropagationDirective,
+    CltSpinningIconDirective,
+    CltToId,
+    CltPopoverComponent,
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    DefiSpinningIconDirective,
-    DefiToId,
-    DefiPopoverComponent,
-    DefiClickStopPropagation
+    CltSpinningIconDirective,
+    CltToId,
+    CltPopoverComponent,
+    CltClickStopPropagationDirective
   ]
 })
-export class DefiCoreModule {
+export class CltCoreModule {
   public static forRoot(): ModuleWithProviders {
     return {
-      ngModule: DefiCoreModule,
+      ngModule: CltCoreModule,
       providers: [
-        DefiCommonService,
+        CltCommonService,
       ]
     };
   }

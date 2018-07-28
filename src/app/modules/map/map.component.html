@@ -1,0 +1,8 @@
+<div class="map-container" #mapContainer>
+    <div 
+        [id]="id" 
+        class="map" #map>
+        <ng-content></ng-content> <!-- for overlays ... -->
+        <ng-template #layersContainer></ng-template>
+    </div>
+</div>

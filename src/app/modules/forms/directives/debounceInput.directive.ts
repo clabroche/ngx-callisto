@@ -5,13 +5,13 @@ import { debounceTime } from 'rxjs/operators/debounceTime';
 
 /**
  * Directive that debounce an element that supports keyListener
- * @example 
+ * @example
  * <input type="text" debounce-input (debounce)="doSomething($event.target.value)" [debounceTime]="200" />
  */
 @Directive({
-  selector: '[defi-debounce-input]'
+  selector: '[clt-debounce-input]'
 })
-export class DefiDebounceInputDirective implements OnInit, OnDestroy, OnChanges {
+export class CltDebounceInputDirective implements OnInit, OnDestroy, OnChanges {
   /**
    * Describe the debounce time; Default: 500ms
    */
@@ -29,22 +29,22 @@ export class DefiDebounceInputDirective implements OnInit, OnDestroy, OnChanges 
    */
   private subscription: Subscription;
 
-  
+
 
   /**
    * Register observable pipe that describe the flow of the debounce directive
    */
   ngOnInit() {
-    this.createSubsription()
+    this.createSubsription();
   }
-  createSubsription(){
+  createSubsription() {
     this.subscription = this.subject.pipe(
       debounceTime(this.debounceTime)
     ).subscribe(e => this.debounce.emit(e));
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.debounceTime && this.subject.observers[0]) this.subject.observers[0]['dueTime'] = changes.debounceTime.currentValue
+    if (changes.debounceTime && this.subject.observers[0]) this.subject.observers[0]['dueTime'] = changes.debounceTime.currentValue;
   }
   /**
    * Unregister observable on the component destruct
@@ -54,7 +54,7 @@ export class DefiDebounceInputDirective implements OnInit, OnDestroy, OnChanges 
   }
 
   /**
-   * Trigger keyup event and inject it to the pipe of the debounce 
+   * Trigger keyup event and inject it to the pipe of the debounce
    */
   @HostListener('keyup', ['$event'])
   keyupEvent(event) {

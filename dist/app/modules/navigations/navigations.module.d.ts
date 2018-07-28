@@ -1,4 +1,4 @@
 import { ModuleWithProviders } from '@angular/core';
-export declare class DefiNavigationsModule {
+export declare class CltNavigationsModule {
     static forRoot(): ModuleWithProviders;
 }

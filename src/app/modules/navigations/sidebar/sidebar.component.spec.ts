@@ -1,18 +1,11 @@
-import { TestBed, async, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 
-import { Routes, RouterModule, Router } from '@angular/router';
-import { DefiSidebarComponent, Configuration } from './sidebar.component';
-import { DefiSideBarService } from '../providers/sidebar.service';
+import { RouterModule } from '@angular/router';
+import { CltSidebarComponent, Configuration } from './sidebar.component';
+import { CltSideBarService } from '../providers/sidebar.service';
 import { APP_BASE_HREF} from '@angular/common';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
-const callbackFun = function () {
-  return 'random-routes';
-};
 
 const navbarConf: Configuration = {
   list: [{
@@ -22,7 +15,7 @@ const navbarConf: Configuration = {
     click: function () {
       console.log('ho');
     },
-    externalUrl: 'lkjelkjdelk'
+    url: 'lkjelkjdelk'
   }],
   bottom: [{
     icon: 'fa fa-cog',
@@ -30,38 +23,41 @@ const navbarConf: Configuration = {
     click: function () {
       console.log('ho');
     },
-    externalUrl: 'lkjelkjdelk'
+    url: 'lkjelkjdelk'
   }]
 };
 
 
-describe('DefiSidebarComponent', () => {
+describe('CltSidebarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        DefiSidebarComponent
+        CltSidebarComponent
       ],
       imports: [
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        RouterModule.forRoot([{
+          path: '', component: CltSidebarComponent
+        }])
       ],
-      providers: [DefiSideBarService]
+      providers: [CltSideBarService, {provide: APP_BASE_HREF, useValue: '/'}]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(DefiSidebarComponent);
+    const fixture = TestBed.createComponent(CltSidebarComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
   it(`should have good properties and dependencies`, async(() => {
-    const fixture = TestBed.createComponent(DefiSidebarComponent);
+    const fixture = TestBed.createComponent(CltSidebarComponent);
     const app = fixture.debugElement.componentInstance;
 
-    expect(app.sidebar instanceof DefiSideBarService).toBeTruthy();
+    expect(app.sidebar instanceof CltSideBarService).toBeTruthy();
     expect(app.hintState).toEqual('close');
   }));
 
   it(`should toggle slidebar`, async () => {
-    const fixture = TestBed.createComponent(DefiSidebarComponent);
+    const fixture = TestBed.createComponent(CltSidebarComponent);
     const app = fixture.debugElement.componentInstance;
     fixture.detectChanges();
     await wait(300);
@@ -82,8 +78,8 @@ describe('DefiSidebarComponent', () => {
     expect(sidebar.clientWidth).toEqual(175);
   });
   it(`should toggle hint`, async () => {
-    const fixture = TestBed.createComponent(DefiSidebarComponent);
-    const app: DefiSidebarComponent = fixture.debugElement.componentInstance;
+    const fixture = TestBed.createComponent(CltSidebarComponent);
+    const app: CltSidebarComponent = fixture.debugElement.componentInstance;
     fixture.detectChanges();
     app.conf = navbarConf;
     fixture.detectChanges();
@@ -104,7 +100,7 @@ describe('DefiSidebarComponent', () => {
       expect(hint.clientWidth).not.toEqual(0);
   });
   it(`should not toggle hint when sidebar is open`, async () => {
-    const fixture = TestBed.createComponent(DefiSidebarComponent);
+    const fixture = TestBed.createComponent(CltSidebarComponent);
     const app = fixture.debugElement.componentInstance;
     app.conf = navbarConf;
     fixture.detectChanges();

@@ -1,2 +1,25 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<router-outlet></router-outlet>
+<div id="appContainer">
+  <clt-sidebar [conf]="conf">
+
+  </clt-sidebar>
+  <div id="appContent">
+    <clt-navbar name="ngx-callisto">
+      <div logo>
+        <img src="assets/img/logo.jpg" alt="Logo">
+      </div>
+
+      <div right>
+        <i class="fas fa-palette" (click)="sidePanel.open()"></i>
+      </div>
+    </clt-navbar>
+    <div id="outletContent">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<clt-side-panel #sidePanel [ghost]="true">
+  <ng-template clt-popup-body>
+    <clt-theme-manager></clt-theme-manager>
+  </ng-template>
+  <div title>Hey</div>
+</clt-side-panel>

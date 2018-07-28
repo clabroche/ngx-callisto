@@ -1,0 +1,151 @@
+<div id="theme-manager">
+  <clt-panel *ngIf="difference()" header="Export" [toggleable]="true" [collapsed]="true">
+    <label>Nom du theme</label>
+    <input type="text" [value]="currentTheme || 'default'" #exportInput>
+    <a href="#" #exportButton>
+      <button class='btn btn-primary' (click)='export()'>
+        Télécharger le theme
+      </button>
+    </a>
+    <button class='btn btn-primary' (click)='jsonPopup.open()'>
+      Voir le theme
+    </button>
+  </clt-panel>
+
+  <clt-panel header="Gestionnaire de theme" [toggleable]="true" [collapsed]="true">
+    <h3>Selection</h3>
+    <select name="theme" id="theme" (change)="changeTheme($event.target.value)" #selectedTheme>
+      <option *ngFor="let theme of themeService.themes" [value]="theme.name">{{theme.name}}</option>
+    </select>
+  </clt-panel>
+
+  <clt-panel header="Gestionnaire de style" [toggleable]="true" [collapsed]="true">
+    <div>Gestionnaire de style</div>
+    <div class="themeChanger-list">
+      <div class="themeChanger-color">
+        <h3>Header</h3>
+        <ng-container *ngFor="let variable of variables">
+          <ul>
+            <li *ngIf="variable.includes('header')">
+              <label>{{variable}}</label>
+              <div>
+                <div *ngIf="variable.includes('Color')" [(colorPicker)]="themeService.theme[variable]" (colorPickerChange)="themeService.setStyle(variable, $event)"
+                  class='colorPicker' [ngStyle]="{'background-color':themeService.theme[variable] }">
+                </div>
+                <input *ngIf="!variable.includes('Color')" [value]='themeService.theme[variable]' (change)="themeService.setStyle(variable, $event.target.value)"
+                />
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <h3>Content</h3>
+        <ng-container *ngFor="let variable of variables">
+          <ul>
+            <li *ngIf="variable.includes('content')">
+              <label>{{variable}}</label>
+              <div>
+                <div *ngIf="variable.includes('Color')" [(colorPicker)]="themeService.theme[variable]" (colorPickerChange)="themeService.setStyle(variable, $event)"
+                  class='colorPicker' [ngStyle]="{'background-color':themeService.theme[variable] }">
+                </div>
+                <input *ngIf="!variable.includes('Color')" [value]='themeService.theme[variable]' (change)="themeService.setStyle(variable, $event.target.value)"
+                />
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <h3>State Default</h3>
+        <ng-container *ngFor="let variable of variables">
+          <ul>
+            <li *ngIf="variable.includes('stateDefault')">
+              <label>{{variable}}</label>
+              <div>
+                <div *ngIf="variable.includes('Color')" [(colorPicker)]="themeService.theme[variable]" (colorPickerChange)="themeService.setStyle(variable, $event)"
+                  class='colorPicker' [ngStyle]="{'background-color':themeService.theme[variable] }">
+                </div>
+                <input *ngIf="!variable.includes('Color')" [value]='themeService.theme[variable]' (change)="themeService.setStyle(variable, $event.target.value)"
+                />
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <h3>State Active</h3>
+        <ng-container *ngFor="let variable of variables">
+          <ul>
+            <li *ngIf="variable.includes('stateActive')">
+              <label>{{variable}}</label>
+              <div>
+                <div *ngIf="variable.includes('Color')" [(colorPicker)]="themeService.theme[variable]" (colorPickerChange)="themeService.setStyle(variable, $event)"
+                  class='colorPicker' [ngStyle]="{'background-color':themeService.theme[variable] }">
+                </div>
+                <input *ngIf="!variable.includes('Color')" [value]='themeService.theme[variable]' (change)="themeService.setStyle(variable, $event.target.value)"
+                />
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <h3>State Highlight</h3>
+        <ng-container *ngFor="let variable of variables">
+          <ul>
+            <li *ngIf="variable.includes('stateHighlight')">
+              <label>{{variable}}</label>
+              <div>
+                <div *ngIf="variable.includes('Color')" [(colorPicker)]="themeService.theme[variable]" (colorPickerChange)="themeService.setStyle(variable, $event)"
+                  class='colorPicker' [ngStyle]="{'background-color':themeService.theme[variable] }">
+                </div>
+                <input *ngIf="!variable.includes('Color')" [value]='themeService.theme[variable]' (change)="themeService.setStyle(variable, $event.target.value)"
+                />
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <h3>State Focus</h3>
+        <ng-container *ngFor="let variable of variables">
+          <ul>
+            <li *ngIf="variable.includes('stateFocus')">
+              <label>{{variable}}</label>
+              <div>
+                <div *ngIf="variable.includes('Color')" [(colorPicker)]="themeService.theme[variable]" (colorPickerChange)="changeStyle(variable, $event)"
+                  class='colorPicker' [ngStyle]="{'background-color':themeService.theme[variable] }">
+                </div>
+                <input *ngIf="!variable.includes('Color')" [value]='themeService.theme[variable]' (change)="changeStyle(variable, $event.target.value)"
+                />
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <h3>State Error</h3>
+        <ng-container *ngFor="let variable of variables">
+          <ul>
+            <li *ngIf="variable.includes('stateError')">
+              <label>{{variable}}</label>
+              <div>
+                <div *ngIf="variable.includes('Color')" [(colorPicker)]="themeService.theme[variable]" (colorPickerChange)="themeService.setStyle(variable, $event)"
+                  class='colorPicker' [ngStyle]="{'background-color':themeService.theme[variable] }">
+                </div>
+                <input *ngIf="!variable.includes('Color')" [value]='themeService.theme[variable]' (change)="themeService.setStyle(variable, $event.target.value)"
+                />
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <h3>State Hover</h3>
+        <ng-container *ngFor="let variable of variables">
+          <ul>
+            <li *ngIf="variable.includes('stateHover')">
+              <label>{{variable}}</label>
+              <div>
+                <div *ngIf="variable.includes('Color')" [(colorPicker)]="themeService.theme[variable]" (colorPickerChange)="themeService.setStyle(variable, $event)"
+                  class='colorPicker' [ngStyle]="{'background-color':themeService.theme[variable] }">
+                </div>
+                <input *ngIf="!variable.includes('Color')" [value]='themeService.theme[variable]' (change)="themeService.setStyle(variable, $event.target.value)"
+                />
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+      </div>
+    </div>
+  </clt-panel>
+</div>
+
+<clt-popup title='Json' [body]="difference() | json" #jsonPopup></clt-popup>

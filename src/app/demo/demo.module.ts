@@ -1,33 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DemoComponent } from './demo/demo.component';
 import { RouterModule } from '@angular/router';
-import { DefiCoreModule, DefiFormsModule, DefiNavigationsModule, DefiContainersModule } from '../../public_api';
-import { NoopAnimationPlayer } from '@angular/animations';
-import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { Browser } from 'protractor';
-import { BrowserModule } from '@angular/platform-browser';
-import { DefiOverlayModule } from '../modules/overlay/overlay.module';
-
+import { HomeComponent } from './home/home.component';
+import { DemoComponent } from './demo.component';
+import { MapModuleSample } from './map/map.module';
+import { MapComponent } from './map/map.component';
+import { CltDemoSDKModule } from './demo-sdk.module';
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    DefiFormsModule,
-    DefiNavigationsModule,
-    DefiContainersModule,
-    DefiOverlayModule,
-    DefiCoreModule,
+    MapModuleSample,
+    CltDemoSDKModule,
     RouterModule.forChild([
-      {path: '', component: DemoComponent}
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'map', component: MapComponent },
     ])
   ],
   exports: [
-    DemoComponent,
     RouterModule
   ],
-  declarations: [DemoComponent],
+  declarations: [
+    HomeComponent,
+    DemoComponent,
+  ],
 })
 export class DemoModule { }

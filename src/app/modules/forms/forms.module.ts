@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DefiFormErrorsComponent } from './form-errors/form-errors.component';
-import { DefiDebounceInputDirective } from './directives/debounceInput.directive';
-import { DefiValidatorsDirective } from './directives/validators.directive';
-import { DefiShowPasswordDirective } from './directives/showPassword.directive';
+import { CltFormErrorsComponent } from './form-errors/form-errors.component';
+import { CltDebounceInputDirective } from './directives/debounceInput.directive';
+import { CltValidatorsDirective } from './directives/validators.directive';
+import { CltShowPasswordDirective } from './directives/showPassword.directive';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    DefiFormErrorsComponent,
-    DefiDebounceInputDirective,
-    DefiValidatorsDirective,
-    DefiShowPasswordDirective,
+    CltFormErrorsComponent,
+    CltDebounceInputDirective,
+    CltValidatorsDirective,
+    CltShowPasswordDirective,
   ],
   exports: [
-    DefiFormErrorsComponent,
-    DefiDebounceInputDirective,
-    DefiValidatorsDirective,
-    DefiShowPasswordDirective,
+    CltFormErrorsComponent,
+    CltDebounceInputDirective,
+    CltValidatorsDirective,
+    CltShowPasswordDirective,
   ]
 })
-export class DefiFormsModule { }
+export class CltFormsModule { }

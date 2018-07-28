@@ -1,10 +1,10 @@
 @import '../../common';
 :host{
     
-    .defi-popover {
+    .clt-popover {
         position: relative;
         width: 100%;
-        .defi-popover-container{
+        .clt-popover-container{
             padding: 10px;
             transition-property: all;
             transition-duration: 0.1s;
@@ -59,7 +59,7 @@
     }
     
 
-    .defi-popover .defi-popover-container {
+    .clt-popover .clt-popover-container {
         visibility: hidden;
         border: 1px solid #d2d2d2;
         position: absolute;

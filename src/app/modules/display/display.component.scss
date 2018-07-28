@@ -1,0 +1,10 @@
+li{
+    display: flex;
+    .display-name{
+        margin-left:10px;
+        font-weight: bold;
+    }
+}
+:host{
+    width:100%;
+}

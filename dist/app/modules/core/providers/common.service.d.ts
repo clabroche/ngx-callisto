@@ -1,7 +1,7 @@
 /**
  * Describe differences between two object
  */
-export interface differences {
+export interface Differences {
     /**
      * Only when two same prop have not same values
      */
@@ -18,7 +18,7 @@ export interface differences {
 /**
  * Share variable and function commonly use in the app
  */
-export declare class DefiCommonService {
+export declare class CltCommonService {
     /**
      * Api URL
      */
@@ -42,10 +42,7 @@ export declare class DefiCommonService {
     /**
      * Load all
      */
-    differences(a: any, b: any): differences;
-    /**
-     * Export a datable to an csv
-     */
+    differences(a: any, b: any): Differences;
     /**
      * Wait function
      */
@@ -59,7 +56,7 @@ export declare class DefiCommonService {
      */
     stringifyWithoutPropertiesQuote(obj: any): string;
     filter(): {
-        filter: (_: any) => (value: any) => any;
+        filter: () => (value: any) => any;
         update: (search: any, propertiesToSearch: any) => void;
     };
 }

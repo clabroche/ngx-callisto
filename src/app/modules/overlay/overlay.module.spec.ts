@@ -1,10 +1,10 @@
-import { DefiOverlayModule } from './overlay.module';
+import { CltOverlayModule } from './overlay.module';
 
-describe('DefiOverlayModule', () => {
-  let overlayModule: DefiOverlayModule;
+describe('CltOverlayModule', () => {
+  let overlayModule: CltOverlayModule;
 
   beforeEach(() => {
-    overlayModule = new DefiOverlayModule();
+    overlayModule = new CltOverlayModule();
   });
 
   it('should create an instance', () => {

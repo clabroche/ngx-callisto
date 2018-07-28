@@ -1,22 +1,22 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 /**
  * Display Box Container
- * @example 
+ * @example
  *  <box title="Box title">
  *  |  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
  *  </box>
  */
 @Component({
-  selector: "defi-box",
-  templateUrl: "./box.component.html",
-  styleUrls: ["./box.component.scss"]
+  selector: 'clt-box',
+  templateUrl: './box.component.html',
+  styleUrls: ['./box.component.scss']
 })
-export class DefiBoxComponent {
+export class CltBoxComponent {
 
-  @Input() title:String
+  @Input() title: String;
 
 
 
 }
- 
+

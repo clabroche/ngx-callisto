@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-defi-core": {
+    "ngx-callisto": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,16 +13,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-defi-core",
+            "outputPath": "dist/ngx-callisto",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/documentation"
             ],
             "styles": [
+              "./node_modules/ol/ol.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -50,18 +52,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-defi-core:build"
+            "browserTarget": "ngx-callisto:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-defi-core:build:production"
+              "browserTarget": "ngx-callisto:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-defi-core:build"
+            "browserTarget": "ngx-callisto:build"
           }
         },
         "test": {
@@ -95,7 +97,7 @@
         }
       }
     },
-    "ngx-defi-core-e2e": {
+    "ngx-callisto-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,7 +105,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-defi-core:serve"
+            "devServerTarget": "ngx-callisto:serve"
           }
         },
         "lint": {
@@ -118,5 +120,14 @@
       }
     }
   },
-  "defaultProject": "ngx-defi-core"
+  "defaultProject": "ngx-callisto",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  }
 }

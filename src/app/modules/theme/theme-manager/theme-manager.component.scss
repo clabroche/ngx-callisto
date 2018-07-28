@@ -1,0 +1,32 @@
+#theme-manager {
+  height: 95%;
+  max-width: 450px;
+  flex-shrink: 0;
+  h2 {
+    margin-top: 0.5em;
+  }
+  label {
+    margin: 0;
+  }
+  .colorPicker {
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+  }
+  li {
+    border-bottom: 1px solid darkgrey;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    &>div {
+      width: 40%;
+    }
+    input {
+      width: 100%;
+    }
+  }
+  .preview {
+    flex-grow: 1;
+    margin-left: 10px;
+  }
+}

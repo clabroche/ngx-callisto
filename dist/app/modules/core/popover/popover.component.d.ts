@@ -7,7 +7,7 @@ import { SimpleChange, OnChanges, AfterContentInit, ElementRef, Renderer2 } from
     |  <div popover="content">Hey to you! I'm on your right!</div>
     </popover>
  */
-export declare class DefiPopoverComponent implements AfterContentInit, OnChanges {
+export declare class CltPopoverComponent implements AfterContentInit, OnChanges {
     private renderer;
     /**
      * Open or close popover;
@@ -15,13 +15,16 @@ export declare class DefiPopoverComponent implements AfterContentInit, OnChanges
      */
     open: boolean;
     /**
-     * Define the placment of popover
+     * where popover is show
      */
     placement: string;
     popupContainer: ElementRef;
     positionClass: string;
     resizeDetector: any;
     constructor(renderer: Renderer2);
+    /**
+     * Track changes on input open to reflect status on private keys
+     */
     loadState(open: any): void;
     ngOnChanges(changes: {
         [propName: string]: SimpleChange;

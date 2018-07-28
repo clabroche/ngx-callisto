@@ -1,27 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupComponent, BodyDirective } from './popup.component';
+import { CltPopupComponent, CltBodyDirective } from './popup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { FormBuilder, Validators } from '@angular/forms';
 
-describe('PopupComponent', () => {
-  let component: PopupComponent;
-  let fixture: ComponentFixture<PopupComponent>;
+describe('CltPopupComponent', () => {
+  let component: CltPopupComponent;
+  let fixture: ComponentFixture<CltPopupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [BrowserAnimationsModule],
       declarations: [
-        PopupComponent,
-        BodyDirective
+        CltPopupComponent,
+        CltBodyDirective
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupComponent);
+    fixture = TestBed.createComponent(CltPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -45,7 +45,7 @@ describe('PopupComponent', () => {
     expect(component._open).toEqual(true);
     expect(component.state).toEqual('open');
     fixture.detectChanges();
-    const buttonOk = fixture.debugElement.query(By.css('.popup-ok')).nativeElement;
+    const buttonOk = fixture.debugElement.query(By.css('.host-ok')).nativeElement;
     buttonOk.click();
   });
 
@@ -53,18 +53,20 @@ describe('PopupComponent', () => {
     const form = new FormBuilder().group({
       test: ['', Validators.required]
     });
+    component.openEvent.subscribe(_ => {
+      fixture.detectChanges();
+      let buttonOk = fixture.debugElement.query(By.css('.host-ok')).nativeElement;
+      expect(buttonOk.disabled).toBeTruthy();
+
+      form.controls.test.setValue('test');
+      fixture.detectChanges();
+      expect(buttonOk.disabled).toBeFalsy();
+
+      buttonOk = fixture.debugElement.query(By.css('.host-ok')).nativeElement;
+      buttonOk.click();
+    });
     component.bindForm(form).open({ test: 123456 }).subscribe(_ => {
       done();
     });
-    fixture.detectChanges();
-    let buttonOk = fixture.debugElement.query(By.css('.popup-ok')).nativeElement;
-    expect(buttonOk.disabled).toBeTruthy();
-
-    form.controls.test.setValue('test');
-    fixture.detectChanges();
-    expect(buttonOk.disabled).toBeFalsy();
-
-    buttonOk = fixture.debugElement.query(By.css('.popup-ok')).nativeElement;
-    buttonOk.click();
   });
 });

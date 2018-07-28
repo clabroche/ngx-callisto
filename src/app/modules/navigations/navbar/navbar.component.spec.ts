@@ -1,14 +1,14 @@
 import { TestBed, async } from '@angular/core/testing';
-import { DefiNavbarComponent } from './navbar.component';
+import { CltNavbarComponent } from './navbar.component';
 
-describe('DefiNavbarComponent', () => {
+describe('CltNavbarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations:[DefiNavbarComponent],
+      declarations: [CltNavbarComponent],
     }).compileComponents();
   }));
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(DefiNavbarComponent);
+    const fixture = TestBed.createComponent(CltNavbarComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });

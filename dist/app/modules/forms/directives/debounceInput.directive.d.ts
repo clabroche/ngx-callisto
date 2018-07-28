@@ -4,7 +4,7 @@ import { EventEmitter, OnDestroy, OnInit, SimpleChanges, OnChanges } from '@angu
  * @example
  * <input type="text" debounce-input (debounce)="doSomething($event.target.value)" [debounceTime]="200" />
  */
-export declare class DefiDebounceInputDirective implements OnInit, OnDestroy, OnChanges {
+export declare class CltDebounceInputDirective implements OnInit, OnDestroy, OnChanges {
     /**
      * Describe the debounce time; Default: 500ms
      */

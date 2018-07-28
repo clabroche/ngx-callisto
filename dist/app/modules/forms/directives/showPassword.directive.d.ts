@@ -4,7 +4,7 @@ import { ElementRef, Renderer2, OnInit } from '@angular/core';
  * @example
  * <input type="text" [formControlName]="'hello'" [validators]="form.controls['hello']"/>
  */
-export declare class DefiShowPasswordDirective implements OnInit {
+export declare class CltShowPasswordDirective implements OnInit {
     private renderer;
     private hostElement;
     /**

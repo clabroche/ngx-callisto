@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { Subject } from "rxjs";
+import { Subject } from 'rxjs';
 /**
  * Describe a notification
  */
@@ -24,7 +24,7 @@ export interface Notification {
 /**
  * Control the sidebar outside the component
  */
-export declare class DefiNotificationsService {
+export declare class CltNotificationsService {
     /**
      * Component watch this variable to open/close the sidebar
      */

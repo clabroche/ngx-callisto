@@ -4,13 +4,13 @@ import { AfterViewChecked, ElementRef, Renderer2 } from '@angular/core';
  * @example
  * <input type="text" [formControlName]="'hello'" [validators]="form.controls['hello']"/>
  */
-export declare class DefiValidatorsDirective implements AfterViewChecked {
+export declare class CltValidatorsDirective implements AfterViewChecked {
     private renderer;
     private hostElement;
     /**
      * Array of key value that describe all directive to put on the element
      */
-    validators: any;
+    cltValidators: any;
     /**
      * Load some dependencies
      */
