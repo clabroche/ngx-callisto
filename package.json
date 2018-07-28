@@ -1,6 +1,6 @@
 {
   "name": "ngx-callisto",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "scripts": {
     "coverage": "ng test --watch=false --code-coverage && rm -rf src/documentation/coverage && mv coverage src/documentation",
     "test": "ng test",
