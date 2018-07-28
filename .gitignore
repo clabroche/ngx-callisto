@@ -4,6 +4,8 @@
 /tmp
 /out-tsc
 /coverage
+/dist/ngx-callisto
+/src/documentation
 
 # dependencies
 /node_modules

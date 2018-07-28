@@ -1,15 +1,15 @@
 import { OnInit, ElementRef } from '@angular/core';
-import { ThemeService } from '../providers/theme.service';
+import { CltThemeService } from '../providers/theme.service';
 import { CltCommonService } from '../../core/providers/common.service';
-export declare class ThemeManagerComponent implements OnInit {
-    themeService: ThemeService;
+export declare class CltThemeManagerComponent implements OnInit {
+    themeService: CltThemeService;
     private common;
     mockData: any;
     variables: any[];
     currentTheme: string;
     exportButton: ElementRef;
     exportInput: ElementRef;
-    constructor(themeService: ThemeService, common: CltCommonService);
+    constructor(themeService: CltThemeService, common: CltCommonService);
     ngOnInit(): void;
     changeTheme(theme: any): void;
     difference(): {};

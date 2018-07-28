@@ -8,7 +8,7 @@ const cheerio = require('cheerio');
     const arrayOfHtmlFile = await readdirDeep('./src/documentation')
     await Promise.map(arrayOfHtmlFile, async htmlFile=>{
         const $ = cheerio.load(await fse.readFile(htmlFile))
-        $('head').prepend('<base href="documentation">')
+        $('head').prepend('<base href=".">')
         $('.menu .list .copyright').prev().before('<li class="chapter"><a type="chapter-link" href="./coverage/index.html" ><span class="fa fa-fw fa-external-link"></span>Code coverage</a ></li >');
         await fse.writeFile(htmlFile, $.html());
     })

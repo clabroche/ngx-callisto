@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-export declare class MapService {
+export declare class CltMapMapService {
     private http;
     constructor(http: HttpClient);
     convertTolatLong(coordinates: any): any;

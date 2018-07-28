@@ -1,5 +1,5 @@
 import { Renderer2, ChangeDetectorRef } from '@angular/core';
-import { PopupComponent } from '../popup/popup.component';
+import { CltPopupComponent } from '../popup/popup.component';
 /**
  * SidePanel Component
  * @example
@@ -18,7 +18,7 @@ import { PopupComponent } from '../popup/popup.component';
  * </div>
  * <ng-template #template let-value="value"> Hey {{value}} !</ng-template>
  */
-export declare class CltSidePanelComponent extends PopupComponent {
+export declare class CltSidePanelComponent extends CltPopupComponent {
     className: string;
     direction: 'left' | 'right' | 'top' | 'bottom' | 'center';
     /**

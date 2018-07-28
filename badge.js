@@ -8,4 +8,5 @@ lcov2badge.badge({
 }, function(err, svgBadge) {
   if (err) throw err;
   fs.writeFileSync('./src/documentation/badge.svg', svgBadge, 'utf-8')
+  fs.writeFileSync('./badge.svg', svgBadge, 'utf-8')
 });

@@ -1,4 +1,4 @@
-export declare class ThemeService {
+export declare class CltThemeService {
     rootElement: Element;
     themes: {
         name: string;

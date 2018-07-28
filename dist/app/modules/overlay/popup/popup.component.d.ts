@@ -3,38 +3,12 @@ import { Subject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 /**
  * Display a popup
- * @example
- * popup.open().subscibe(result=>{
- * |  // result = undefined or 'ok'
- * })
- * <popup #popup>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating</div>
- * </popup>
- *
- * formGroup: FormGroup
- * popupWithBind.bindForm(formGroup).open().subscibe(result=>{
- * |  // result = undefined or formGroup.value
- * })
- * <popup #popupWithBind>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating with input control etc...</div>
- * </popup>
- *
- * data = { $implicit: 'Hello', name:'world' }
- * popupWithContext.open(data).subscibe(result=>{
- * |  // result = undefined or 'ok'
- * })
- * <popup #popupWithContext>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !</div>
- * </popup>
  */
-export declare class BodyDirective {
+export declare class CltBodyDirective {
     templateRef: TemplateRef<any>;
     constructor(templateRef: TemplateRef<any>);
 }
-export declare class PopupComponent implements AfterContentInit, OnDestroy {
+export declare class CltPopupComponent implements AfterContentInit, OnDestroy {
     private renderer;
     private cdr;
     bodyTemplate: any;
