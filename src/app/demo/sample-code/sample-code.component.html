@@ -1,8 +1,5 @@
 
 <clt-panel [toggleable]="true" [collapsed]="true" header="Add 100 points on map">
-  <div class="sample">
-    <ng-content></ng-content>
-  </div>
   <div class="code" *ngIf='code'>
     <clt-panel header="HTML" [toggleable]="true" [collapsed]="true" (toggleChange)="!$event ? html.codeMirror.refresh() : ''" *ngIf="code.html">
       <ngx-codemirror [ngModel]="code.html" [autoFocus]="true" [options]="{
@@ -20,5 +17,8 @@
         scrollbarStyle: 'null'
       }" #js></ngx-codemirror>
     </clt-panel>
+  </div>
+  <div class="sample">
+    <ng-content></ng-content>
   </div>
 </clt-panel>
