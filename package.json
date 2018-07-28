@@ -5,7 +5,7 @@
     "coverage": "ng test --watch=false --code-coverage && rm -rf src/documentation/coverage && mv coverage src/documentation",
     "test": "ng test",
     "compodoc": "compodoc -d src/documentation -p src/tsconfig.app.json && node compodoc.js",
-    "doc": "npm run compodoc && npm run coverage && npm run badge && npm run build && git add src/documentation dist/ && git commit -m 'update documentation'",
+    "doc": "npm run compodoc && npm run coverage && npm run badge && npm run build",
     "start": "ng serve",
     "autoExport": "node autoExport",
     "packagr": "ng-packagr -p ng-package.json",
