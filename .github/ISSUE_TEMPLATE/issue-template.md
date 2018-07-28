@@ -1,9 +1,3 @@
----
-name: Issue template
-about: Post an issue
-
----
-
 <!--
 PLEASE HELP US PROCESS GITHUB ISSUES FASTER BY PROVIDING THE FOLLOWING INFORMATION.
 
