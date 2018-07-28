@@ -1,23 +1,23 @@
 
-<clt-panel [toggleable]="true" [collapsed]="true" header="Add 100 points on map">
-  <div class="code" *ngIf='code'>
-    <clt-panel header="HTML" [toggleable]="true" [collapsed]="true" (toggleChange)="!$event ? html.codeMirror.refresh() : ''" *ngIf="code.html">
+<clt-panel [toggleable]="true" [collapsed]="true" header="Add 100 points on map" (toggleChange)='refreshCode()'>
+  <p-tabView (activeIndexChange)='refreshCode()'>
+    <p-tabPanel header="HTML">
       <ngx-codemirror [ngModel]="code.html" [autoFocus]="true" [options]="{
         lineNumbers: true,
         theme: 'material',
         mode: 'htmlembedded',
         scrollbarStyle: 'null'
-      }" #html></ngx-codemirror>
-    </clt-panel>
-    <clt-panel header="JS" [toggleable]="true" [collapsed]="true" (toggleChange)="!$event ? js.codeMirror.refresh(): ''" *ngIf="code.js">
+      }" #codeMirror></ngx-codemirror>
+    </p-tabPanel>
+    <p-tabPanel header="JS">
       <ngx-codemirror [ngModel]="code.js" [autoFocus]="true" [options]="{
         lineNumbers: true,
         theme: 'material',
         mode: 'javascript',
         scrollbarStyle: 'null'
-      }" #js></ngx-codemirror>
-    </clt-panel>
-  </div>
+      }" #codeMirror></ngx-codemirror>
+    </p-tabPanel>
+  </p-tabView>
   <div class="sample">
     <ng-content></ng-content>
   </div>

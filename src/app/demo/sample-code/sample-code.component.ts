@@ -1,4 +1,5 @@
-import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, OnChanges, ViewChildren, QueryList } from '@angular/core';
+import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 
 @Component({
   selector: 'sample-code',
@@ -10,6 +11,7 @@ export class SampleCodeComponent implements OnChanges {
     html: string;
     js: string;
   };
+  @ViewChildren('codeMirror') codeMirrors: QueryList<CodemirrorComponent>;
   constructor() { }
   ngOnChanges(changes: SimpleChanges) {
     if (changes.hasOwnProperty('code')) {
@@ -18,5 +20,13 @@ export class SampleCodeComponent implements OnChanges {
         html: changes.code.currentValue.html.trim(),
       };
     }
+  }
+  refreshCode() {
+    setTimeout(() => {
+      this.codeMirrors.forEach(codeMirror=>{
+        console.log('refresh')
+        codeMirror.codeMirror.refresh();
+      })
+    });
   }
 }

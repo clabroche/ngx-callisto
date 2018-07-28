@@ -26,7 +26,7 @@ export class AppComponent {
         icon: 'fas fa-book',
         description: 'Documentation',
         click: function() {
-          window.open('/documentation/index.html');
+          window.open('/ngx-callisto.github.io/documentation/index.html');
         }
       }]
     };
