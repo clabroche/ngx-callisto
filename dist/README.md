@@ -1,16 +1,14 @@
 # ngx-callisto
 
-![Coverage Status](./documentation/badge.svg)
+![Coverage Status](./badge.svg)
 ![Angular Support](https://img.shields.io/badge/angular-%3E5.x-blue.svg?style=flat-square)
 
-Core Module for Angular2+ based applications
+Angular UI Components to develop faster
 
+ https://clabroche.github.io/ngx-callisto.github.io/
 ## Installation 
-Make sure that you are allowed to access this repository and have your ssh agent started
 ```bash
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-npm i git@github.com:clt-informatique-team/ngx-clt-front.git
+npm i git@github.com:clabroche/ngx-callisto.git
 ```
 
 Import module in your RootModule
@@ -35,22 +33,24 @@ import { CoreModule } from 'ngx-callisto/dist';
 })
 export class AppModule {}
 ```
-All components are exported from top of ``` ngx-callisto/dist ```, you can import like ``` import { BoxComponent } from 'ngx-callisto/dist' ```
+
+All components are exported from top of ``` ngx-callisto/dist ```, you can import like:
+
+``` import { BoxComponent } from 'ngx-callisto/dist' ```
 
 ## Development
 
 To update and build this library, you can launch differents scripts from package json
 
 ```
-// Launch an instance of all sandboxed applications
+// Launch documentation
 npm run start
 ```
 ```
-// Generate documentaion folder with code coverage
+// Generate documentation folder with code coverage
 npm run doc
 ```
 ```
-// Generate a specific version of the library with build and commit
-// Launch autoexport script that allow to automatically export all component on module
+// Generate a specific version of the library
 npm run patch | minor | major
 ```
