@@ -1,4 +1,4 @@
 import { ModuleWithProviders } from '@angular/core';
-export declare class ThemeModule {
+export declare class CltThemeModule {
     static forRoot(): ModuleWithProviders;
 }

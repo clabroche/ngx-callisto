@@ -652,22 +652,22 @@ CltNotificationsComponent.ctorParameters = function () { return [
 CltNotificationsComponent.propDecorators = {
     "htmlNotifications": [{ type: core.ViewChildren, args: ['notifModel',] },],
 };
-var BodyDirective = /** @class */ (function () {
-    function BodyDirective(templateRef) {
+var CltBodyDirective = /** @class */ (function () {
+    function CltBodyDirective(templateRef) {
         this.templateRef = templateRef;
     }
-    return BodyDirective;
+    return CltBodyDirective;
 }());
-BodyDirective.decorators = [
+CltBodyDirective.decorators = [
     { type: core.Directive, args: [{
-                selector: '[popup-body]'
+                selector: '[clt-popup-body]'
             },] },
 ];
-BodyDirective.ctorParameters = function () { return [
+CltBodyDirective.ctorParameters = function () { return [
     { type: core.TemplateRef, },
 ]; };
-var PopupComponent = /** @class */ (function () {
-    function PopupComponent(renderer, cdr) {
+var CltPopupComponent = /** @class */ (function () {
+    function CltPopupComponent(renderer, cdr) {
         this.renderer = renderer;
         this.cdr = cdr;
         this.body = '';
@@ -683,7 +683,7 @@ var PopupComponent = /** @class */ (function () {
         this.state = 'close';
         this.className = 'popup';
     }
-    PopupComponent.prototype.ngAfterContentInit = function () {
+    CltPopupComponent.prototype.ngAfterContentInit = function () {
         var _this = this;
         this.cdr.detectChanges();
         this.keyEvents = window.onkeyup = function (e) {
@@ -694,10 +694,10 @@ var PopupComponent = /** @class */ (function () {
             }
         };
     };
-    PopupComponent.prototype.ngOnDestroy = function () {
+    CltPopupComponent.prototype.ngOnDestroy = function () {
         window.removeEventListener('keyup', this.keyEvents);
     };
-    PopupComponent.prototype.open = function (context) {
+    CltPopupComponent.prototype.open = function (context) {
         var _this = this;
         this.context = context;
         this.result = new rxjs.Subject();
@@ -709,7 +709,7 @@ var PopupComponent = /** @class */ (function () {
         });
         return this.result;
     };
-    PopupComponent.prototype.close = function ($event) {
+    CltPopupComponent.prototype.close = function ($event) {
         var _this = this;
         if ($event) {
             this.stopPropagation($event);
@@ -722,14 +722,14 @@ var PopupComponent = /** @class */ (function () {
             this.result = null;
         }
     };
-    PopupComponent.prototype.bindForm = function (form) {
+    CltPopupComponent.prototype.bindForm = function (form) {
         this.form = form;
         return this;
     };
-    PopupComponent.prototype.stopPropagation = function ($event) {
+    CltPopupComponent.prototype.stopPropagation = function ($event) {
         $event.stopPropagation();
     };
-    PopupComponent.prototype.out = function (isValidate, $event, value) {
+    CltPopupComponent.prototype.out = function (isValidate, $event, value) {
         if ($event) {
             $event.preventDefault();
         }
@@ -741,11 +741,11 @@ var PopupComponent = /** @class */ (function () {
             this.result.next(value || 'ok');
         this.close();
     };
-    return PopupComponent;
+    return CltPopupComponent;
 }());
-PopupComponent.decorators = [
+CltPopupComponent.decorators = [
     { type: core.Component, args: [{
-                selector: 'popup',
+                selector: 'clt-popup',
                 template: "<div class=\"host {{direction}} {{ghost ? 'ghost' : ''}}\" (click)=\"close($event)\" [@openState]=\"state\" #host>\n  <div class=\"host-container\" *ngIf=\"_open\" [ngStyle]=\"{width:width, height:height}\" (click)=\"stopPropagation($event)\" #hostContainer>\n    <div class=\"host-title\" #titleRef [ngClass]='titleRef.children.length ? \"\": \"nothing\"'>\n      <ng-content select=\"[title]\"></ng-content>\n      <div *ngIf='!titleRef?.children?.length && title'>\n        {{title}}\n      </div>\n    <div class=\"close\" (click)=\"out(false)\">x</div>\n    </div>\n    <div class=\"host-body\">\n      <div *ngIf='body;else bodyTemplateContainer'>\n        {{body}}\n      </div>\n      <ng-template #bodyTemplateContainer>\n        <ng-container [ngTemplateOutlet]=\"bodyTemplate?.templateRef\"></ng-container>\n      </ng-template>\n    </div>\n    <div class=\"host-actions\" *ngIf='!noActions'>\n      <button class=\"host-action host-cancel\" (click)=\"out(false)\">{{cancelButton}}</button>\n      <button class=\"host-action host-ok\" [ngClass]=\"{'host-disable': form?.invalid}\" [disabled]=\"form?.invalid\" (click)=\"out(true)\">{{validateButton}}</button>\n    </div>\n  </div>\n</div>",
                 styles: [".host .host-container .host-title{padding:10px;font-weight:700;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:var(--headerBgColor);color:var(--headerTextColor);border-width:var(--headerBorderWidth);border-color:var(--headerBorderColor);font-weight:var(--headerFontWeight)}.host{position:absolute;bottom:0;left:0;width:100vw;height:100vh;z-index:1000;background-color:rgba(0,0,0,.8);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;opacity:0}.host .host-container{-webkit-box-shadow:0 0 20px 1px #000;box-shadow:0 0 20px 1px #000;min-width:400px;background-color:#fff;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;max-height:100vh;max-width:100vw;pointer-events:auto}.host .host-container .host-title{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.host .host-container .host-title.nothing{padding:0}.host .host-container .host-title .close{border:none;background-color:var(--headerBgColorAccent);color:var(--headerTextColor);padding:3px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:15px;height:15px;cursor:pointer}.host .host-container .host-title .close:hover{background-color:var(--stateHoverBgColor)}.host .host-container .host-body{padding:10px;-webkit-box-flex:1;-ms-flex:1;flex:1;overflow-y:auto}.host .host-container .host-body::ng-deep>.ng-star-inserted{height:100%}.host .host-container .host-actions{display:-webkit-box;display:-ms-flexbox;display:flex}.host .host-container .host-actions .host-action{padding:10px;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:#fff;cursor:pointer;border:none}.host .host-container .host-actions .host-action.host-ok{background-color:#28a745}.host .host-container .host-actions .host-action.host-cancel{background-color:#dc3545}.host .host-container .host-actions .host-action.host-disable{background-color:#a2a2a2}.host.bottom,.host.right{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}.host.left,.host.top{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}.host.left,.host.right{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.host.left>.host-container,.host.right>.host-container{height:100%}.host.bottom,.host.top{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.host.bottom>.host-container,.host.top>.host-container{width:100%}.host.ghost{pointer-events:none;background-color:transparent}"],
                 animations: [
@@ -764,12 +764,12 @@ PopupComponent.decorators = [
                 ]
             },] },
 ];
-PopupComponent.ctorParameters = function () { return [
+CltPopupComponent.ctorParameters = function () { return [
     { type: core.Renderer2, },
     { type: core.ChangeDetectorRef, },
 ]; };
-PopupComponent.propDecorators = {
-    "bodyTemplate": [{ type: core.ContentChild, args: [BodyDirective,] },],
+CltPopupComponent.propDecorators = {
+    "bodyTemplate": [{ type: core.ContentChild, args: [CltBodyDirective,] },],
     "host": [{ type: core.ViewChild, args: ['host',] },],
     "hostContainer": [{ type: core.ViewChild, args: ['hostContainer',] },],
     "body": [{ type: core.Input },],
@@ -794,7 +794,7 @@ var CltSidePanelComponent = /** @class */ (function (_super) {
         return _this;
     }
     return CltSidePanelComponent;
-}(PopupComponent));
+}(CltPopupComponent));
 CltSidePanelComponent.decorators = [
     { type: core.Component, args: [{
                 selector: 'clt-side-panel',
@@ -840,14 +840,14 @@ CltOverlayModule.decorators = [
                 ],
                 declarations: [
                     CltNotificationsComponent,
-                    PopupComponent,
-                    BodyDirective,
+                    CltPopupComponent,
+                    CltBodyDirective,
                     CltSidePanelComponent
                 ],
                 exports: [
                     CltNotificationsComponent,
-                    PopupComponent,
-                    BodyDirective,
+                    CltPopupComponent,
+                    CltBodyDirective,
                     CltSidePanelComponent
                 ]
             },] },
@@ -1052,26 +1052,26 @@ var CltPassword = /** @class */ (function () {
     };
     return CltPassword;
 }());
-var MapService = /** @class */ (function () {
-    function MapService(http$$1) {
+var CltMapMapService = /** @class */ (function () {
+    function CltMapMapService(http$$1) {
         this.http = http$$1;
     }
-    MapService.prototype.convertTolatLong = function (coordinates) {
+    CltMapMapService.prototype.convertTolatLong = function (coordinates) {
         coordinates = this.transformToFloat(coordinates);
         return OlProj.transform(coordinates, 'EPSG:3857', 'EPSG:4326');
     };
-    MapService.prototype.fromLonLat = function (lonLat) {
+    CltMapMapService.prototype.fromLonLat = function (lonLat) {
         lonLat = this.transformToFloat(lonLat);
         return OlProj.fromLonLat(lonLat);
     };
-    MapService.prototype.transformToFloat = function (coordinates) {
+    CltMapMapService.prototype.transformToFloat = function (coordinates) {
         return coordinates.map(function (coord) {
             if (typeof coord === 'string')
                 return parseFloat(coord);
             return coord;
         });
     };
-    MapService.prototype.reverse = function (lonlat) {
+    CltMapMapService.prototype.reverse = function (lonlat) {
         return this.http.get("http://nominatim.openstreetmap.org/reverse?format=json&lon=" + lonlat[0] + "&lat=" + lonlat[1])
             .toPromise()
             .then(function (reverse) {
@@ -1082,16 +1082,16 @@ var MapService = /** @class */ (function () {
             return reverse.address;
         });
     };
-    MapService.prototype.reverseFromFeature = function (feature) {
+    CltMapMapService.prototype.reverseFromFeature = function (feature) {
         var coordinates = feature.getGeometry().getCoordinates();
         return this.reverse(this.convertTolatLong(coordinates));
     };
-    MapService.prototype.createStyleIcon = function (icon) {
+    CltMapMapService.prototype.createStyleIcon = function (icon) {
         return new Style({
             image: new Icon(icon)
         });
     };
-    MapService.prototype.createBuildingStyleIcon = function (color) {
+    CltMapMapService.prototype.createBuildingStyleIcon = function (color) {
         if (color === void 0) { color = '#8959A8'; }
         return this.createStyleIcon({
             color: color,
@@ -1099,7 +1099,7 @@ var MapService = /** @class */ (function () {
             src: '/assets/img/dot-marker.png'
         });
     };
-    MapService.prototype.createAddressStyleIcon = function () {
+    CltMapMapService.prototype.createAddressStyleIcon = function () {
         return this.createStyleIcon({
             anchor: [0.5, 46],
             anchorXUnits: 'fraction',
@@ -1107,17 +1107,17 @@ var MapService = /** @class */ (function () {
             src: '/assets/img/address-marker.png'
         });
     };
-    return MapService;
+    return CltMapMapService;
 }());
-MapService.decorators = [
+CltMapMapService.decorators = [
     { type: core.Injectable, args: [{
                 providedIn: 'root'
             },] },
 ];
-MapService.ctorParameters = function () { return [
+CltMapMapService.ctorParameters = function () { return [
     { type: http.HttpClient, },
 ]; };
-MapService.ngInjectableDef = core.defineInjectable({ factory: function MapService_Factory() { return new MapService(core.inject(http.HttpClient)); }, token: MapService, providedIn: "root" });
+CltMapMapService.ngInjectableDef = core.defineInjectable({ factory: function CltMapMapService_Factory() { return new CltMapMapService(core.inject(http.HttpClient)); }, token: CltMapMapService, providedIn: "root" });
 var CltMapLayerComponent = /** @class */ (function () {
     function CltMapLayerComponent(mapService) {
         this.mapService = mapService;
@@ -1243,7 +1243,7 @@ CltMapLayerComponent.decorators = [
             },] },
 ];
 CltMapLayerComponent.ctorParameters = function () { return [
-    { type: MapService, },
+    { type: CltMapMapService, },
 ]; };
 CltMapLayerComponent.propDecorators = {
     "featuremove": [{ type: core.Output },],
@@ -1427,7 +1427,7 @@ CltMapComponent.decorators = [
             },] },
 ];
 CltMapComponent.ctorParameters = function () { return [
-    { type: MapService, },
+    { type: CltMapMapService, },
     { type: core.ComponentFactoryResolver, },
     { type: core.Renderer2, },
 ]; };
@@ -1457,20 +1457,20 @@ CltMapComponent.propDecorators = {
     "layersContainer": [{ type: core.ViewChild, args: ['layersContainer', { read: core.ViewContainerRef },] },],
     "layersComponent": [{ type: core.ContentChildren, args: [CltMapLayerComponent,] },],
 };
-var MapModule = /** @class */ (function () {
-    function MapModule() {
+var CltMapModule = /** @class */ (function () {
+    function CltMapModule() {
     }
-    MapModule.forRoot = function () {
+    CltMapModule.forRoot = function () {
         return {
-            ngModule: MapModule,
+            ngModule: CltMapModule,
             providers: [
-                MapService
+                CltMapMapService
             ]
         };
     };
-    return MapModule;
+    return CltMapModule;
 }());
-MapModule.decorators = [
+CltMapModule.decorators = [
     { type: core.NgModule, args: [{
                 imports: [
                     common.CommonModule
@@ -1611,8 +1611,8 @@ CltNavigationsModule.decorators = [
 ];
 var defaultTheme = require('./default.json');
 var bluegreygreen = require('./bluegrey-green.json');
-var ThemeService = /** @class */ (function () {
-    function ThemeService() {
+var CltThemeService = /** @class */ (function () {
+    function CltThemeService() {
         this.themes = [
             { name: 'default', theme: defaultTheme },
             { name: 'bluegreygreen', theme: bluegreygreen }
@@ -1620,45 +1620,45 @@ var ThemeService = /** @class */ (function () {
         this.theme = {};
         this.reload(this.themes[0].theme);
     }
-    ThemeService.prototype.reload = function (theme) {
+    CltThemeService.prototype.reload = function (theme) {
         var _this = this;
         if (theme)
             this.theme = lodash.merge(lodash.cloneDeep(defaultTheme), theme);
         document.getElementsByTagName('html')[0].setAttribute('style', '');
         Object.keys(this.theme).map(function (key) { return _this.setStyle(key, _this.theme[key]); });
     };
-    ThemeService.prototype.setStyle = function (property, value) {
+    CltThemeService.prototype.setStyle = function (property, value) {
         var html = document.getElementsByTagName('html')[0];
         this.theme[property] = value;
         html.style.setProperty(property, value);
     };
-    return ThemeService;
+    return CltThemeService;
 }());
-ThemeService.decorators = [
+CltThemeService.decorators = [
     { type: core.Injectable, args: [{
                 providedIn: 'root'
             },] },
 ];
-ThemeService.ctorParameters = function () { return []; };
-ThemeService.ngInjectableDef = core.defineInjectable({ factory: function ThemeService_Factory() { return new ThemeService(); }, token: ThemeService, providedIn: "root" });
+CltThemeService.ctorParameters = function () { return []; };
+CltThemeService.ngInjectableDef = core.defineInjectable({ factory: function CltThemeService_Factory() { return new CltThemeService(); }, token: CltThemeService, providedIn: "root" });
 var mockdataTable = require('./datatable_data.json');
-var ThemeManagerComponent = /** @class */ (function () {
-    function ThemeManagerComponent(themeService, common$$1) {
+var CltThemeManagerComponent = /** @class */ (function () {
+    function CltThemeManagerComponent(themeService, common$$1) {
         this.themeService = themeService;
         this.common = common$$1;
         this.mockData = mockdataTable;
         this.variables = [];
         this.currentTheme = '';
     }
-    ThemeManagerComponent.prototype.ngOnInit = function () {
+    CltThemeManagerComponent.prototype.ngOnInit = function () {
         this.variables = Object.keys(this.themeService.theme);
     };
-    ThemeManagerComponent.prototype.changeTheme = function (theme) {
+    CltThemeManagerComponent.prototype.changeTheme = function (theme) {
         var selectedTheme = this.themeService.themes.filter(function (_theme) { return _theme.name === theme; })[0];
         this.currentTheme = selectedTheme.name;
         this.themeService.reload(selectedTheme.theme);
     };
-    ThemeManagerComponent.prototype.difference = function () {
+    CltThemeManagerComponent.prototype.difference = function () {
         var _this = this;
         var differences = this.common.differences(this.themeService.theme, this.themeService.themes[0].theme).different;
         if (differences.length) {
@@ -1670,50 +1670,50 @@ var ThemeManagerComponent = /** @class */ (function () {
         }
         return {};
     };
-    ThemeManagerComponent.prototype.changeStyle = function (variable, style$$1) {
+    CltThemeManagerComponent.prototype.changeStyle = function (variable, style$$1) {
         this.themeService.setStyle(variable, style$$1);
     };
-    ThemeManagerComponent.prototype.export = function () {
+    CltThemeManagerComponent.prototype.export = function () {
         console.log('hey');
         var link = this.exportButton.nativeElement;
         link.download = this.exportInput.nativeElement.value + '.json' || 'theme.json';
         var data = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.difference()));
         link.href = 'data:' + data;
     };
-    ThemeManagerComponent.prototype.getTheme = function () {
+    CltThemeManagerComponent.prototype.getTheme = function () {
         return encodeURIComponent(JSON.stringify(this.themeService.theme));
     };
-    return ThemeManagerComponent;
+    return CltThemeManagerComponent;
 }());
-ThemeManagerComponent.decorators = [
+CltThemeManagerComponent.decorators = [
     { type: core.Component, args: [{
-                selector: 'app-theme-manager',
-                template: "<div id=\"theme-manager\">\n  <clt-panel *ngIf=\"difference()\" header=\"Export\" [toggleable]=\"true\" [collapsed]=\"true\">\n    <label>Nom du theme</label>\n    <input type=\"text\" [value]=\"currentTheme || 'default'\" #exportInput>\n    <a href=\"#\" #exportButton>\n      <button class='btn btn-primary' (click)='export()'>\n        T\u00E9l\u00E9charger le theme\n      </button>\n    </a>\n    <button class='btn btn-primary' (click)='jsonPopup.open()'>\n      Voir le theme\n    </button>\n  </clt-panel>\n\n  <clt-panel header=\"Gestionnaire de theme\" [toggleable]=\"true\" [collapsed]=\"true\">\n    <h3>Selection</h3>\n    <select name=\"theme\" id=\"theme\" (change)=\"changeTheme($event.target.value)\" #selectedTheme>\n      <option *ngFor=\"let theme of themeService.themes\" [value]=\"theme.name\">{{theme.name}}</option>\n    </select>\n  </clt-panel>\n\n  <clt-panel header=\"Gestionnaire de style\" [toggleable]=\"true\" [collapsed]=\"true\">\n    <div>Gestionnaire de style</div>\n    <div class=\"themeChanger-list\">\n      <div class=\"themeChanger-color\">\n        <h3>Header</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('header')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>Content</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('content')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Default</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateDefault')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Active</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateActive')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Highlight</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateHighlight')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Focus</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateFocus')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"changeStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"changeStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Error</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateError')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Hover</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateHover')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n      </div>\n    </div>\n  </clt-panel>\n</div>\n\n<popup title='Json' [body]=\"difference() | json\" #jsonPopup></popup>\n",
+                selector: 'clt-theme-manager',
+                template: "<div id=\"theme-manager\">\n  <clt-panel *ngIf=\"difference()\" header=\"Export\" [toggleable]=\"true\" [collapsed]=\"true\">\n    <label>Nom du theme</label>\n    <input type=\"text\" [value]=\"currentTheme || 'default'\" #exportInput>\n    <a href=\"#\" #exportButton>\n      <button class='btn btn-primary' (click)='export()'>\n        T\u00E9l\u00E9charger le theme\n      </button>\n    </a>\n    <button class='btn btn-primary' (click)='jsonPopup.open()'>\n      Voir le theme\n    </button>\n  </clt-panel>\n\n  <clt-panel header=\"Gestionnaire de theme\" [toggleable]=\"true\" [collapsed]=\"true\">\n    <h3>Selection</h3>\n    <select name=\"theme\" id=\"theme\" (change)=\"changeTheme($event.target.value)\" #selectedTheme>\n      <option *ngFor=\"let theme of themeService.themes\" [value]=\"theme.name\">{{theme.name}}</option>\n    </select>\n  </clt-panel>\n\n  <clt-panel header=\"Gestionnaire de style\" [toggleable]=\"true\" [collapsed]=\"true\">\n    <div>Gestionnaire de style</div>\n    <div class=\"themeChanger-list\">\n      <div class=\"themeChanger-color\">\n        <h3>Header</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('header')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>Content</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('content')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Default</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateDefault')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Active</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateActive')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Highlight</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateHighlight')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Focus</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateFocus')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"changeStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"changeStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Error</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateError')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n        <h3>State Hover</h3>\n        <ng-container *ngFor=\"let variable of variables\">\n          <ul>\n            <li *ngIf=\"variable.includes('stateHover')\">\n              <label>{{variable}}</label>\n              <div>\n                <div *ngIf=\"variable.includes('Color')\" [(colorPicker)]=\"themeService.theme[variable]\" (colorPickerChange)=\"themeService.setStyle(variable, $event)\"\n                  class='colorPicker' [ngStyle]=\"{'background-color':themeService.theme[variable] }\">\n                </div>\n                <input *ngIf=\"!variable.includes('Color')\" [value]='themeService.theme[variable]' (change)=\"themeService.setStyle(variable, $event.target.value)\"\n                />\n              </div>\n            </li>\n          </ul>\n        </ng-container>\n      </div>\n    </div>\n  </clt-panel>\n</div>\n\n<clt-popup title='Json' [body]=\"difference() | json\" #jsonPopup></clt-popup>\n",
                 styles: ["#theme-manager{height:95%;max-width:450px;-ms-flex-negative:0;flex-shrink:0}#theme-manager h2{margin-top:.5em}#theme-manager label{margin:0}#theme-manager .colorPicker{width:25px;height:25px;border:1px solid #000}#theme-manager li{border-bottom:1px solid #a9a9a9;padding:10px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}#theme-manager li>div{width:40%}#theme-manager li input{width:100%}#theme-manager .preview{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;margin-left:10px}"]
             },] },
 ];
-ThemeManagerComponent.ctorParameters = function () { return [
-    { type: ThemeService, },
+CltThemeManagerComponent.ctorParameters = function () { return [
+    { type: CltThemeService, },
     { type: CltCommonService, },
 ]; };
-ThemeManagerComponent.propDecorators = {
+CltThemeManagerComponent.propDecorators = {
     "exportButton": [{ type: core.ViewChild, args: ['exportButton',] },],
     "exportInput": [{ type: core.ViewChild, args: ['exportInput',] },],
 };
-var ThemeModule = /** @class */ (function () {
-    function ThemeModule() {
+var CltThemeModule = /** @class */ (function () {
+    function CltThemeModule() {
     }
-    ThemeModule.forRoot = function () {
+    CltThemeModule.forRoot = function () {
         return {
-            ngModule: ThemeModule,
+            ngModule: CltThemeModule,
             providers: [
-                ThemeService
+                CltThemeService
             ]
         };
     };
-    return ThemeModule;
+    return CltThemeModule;
 }());
-ThemeModule.decorators = [
+CltThemeModule.decorators = [
     { type: core.NgModule, args: [{
                 imports: [
                     common.CommonModule,
@@ -1721,8 +1721,8 @@ ThemeModule.decorators = [
                     CltContainersModule,
                     CltOverlayModule.forRoot()
                 ],
-                declarations: [ThemeManagerComponent],
-                exports: [ThemeManagerComponent, router.RouterModule]
+                declarations: [CltThemeManagerComponent],
+                exports: [CltThemeManagerComponent, router.RouterModule]
             },] },
 ];
 
@@ -1746,21 +1746,21 @@ exports.CltFormsModule = CltFormsModule;
 exports.CltPassword = CltPassword;
 exports.CltMapLayerComponent = CltMapLayerComponent;
 exports.CltMapComponent = CltMapComponent;
-exports.MapModule = MapModule;
-exports.MapService = MapService;
+exports.CltMapModule = CltMapModule;
+exports.CltMapMapService = CltMapMapService;
 exports.CltNavbarComponent = CltNavbarComponent;
 exports.CltNavigationsModule = CltNavigationsModule;
 exports.CltSideBarService = CltSideBarService;
 exports.CltSidebarComponent = CltSidebarComponent;
 exports.CltNotificationsComponent = CltNotificationsComponent;
 exports.CltOverlayModule = CltOverlayModule;
-exports.BodyDirective = BodyDirective;
-exports.PopupComponent = PopupComponent;
+exports.CltBodyDirective = CltBodyDirective;
+exports.CltPopupComponent = CltPopupComponent;
 exports.CltNotificationsService = CltNotificationsService;
 exports.CltSidePanelComponent = CltSidePanelComponent;
-exports.ThemeService = ThemeService;
-exports.ThemeManagerComponent = ThemeManagerComponent;
-exports.ThemeModule = ThemeModule;
+exports.CltThemeService = CltThemeService;
+exports.CltThemeManagerComponent = CltThemeManagerComponent;
+exports.CltThemeModule = CltThemeModule;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

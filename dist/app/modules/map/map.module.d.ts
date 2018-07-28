@@ -1,4 +1,4 @@
 import { ModuleWithProviders } from '@angular/core';
-export declare class MapModule {
+export declare class CltMapModule {
     static forRoot(): ModuleWithProviders;
 }

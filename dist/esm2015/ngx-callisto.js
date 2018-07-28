@@ -885,34 +885,8 @@ CltNotificationsComponent.propDecorators = {
  */
 /**
  * Display a popup
- * \@example
- * popup.open().subscibe(result=>{
- * |  // result = undefined or 'ok'
- * })
- * <popup #popup>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating</div>
- * </popup>
- *
- * formGroup: FormGroup
- * popupWithBind.bindForm(formGroup).open().subscibe(result=>{
- * |  // result = undefined or formGroup.value
- * })
- * <popup #popupWithBind>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating with input control etc...</div>
- * </popup>
- *
- * data = { $implicit: 'Hello', name:'world' }
- * popupWithContext.open(data).subscibe(result=>{
- * |  // result = undefined or 'ok'
- * })
- * <popup #popupWithContext>
- * |  <div title>Some templating</div>
- * |  <div body>Some templating with context like: {{popupWithContext.context.hello}} {{popupWithContext.context.name}} !</div>
- * </popup>
  */
-class BodyDirective {
+class CltBodyDirective {
     /**
      * @param {?} templateRef
      */
@@ -920,16 +894,16 @@ class BodyDirective {
         this.templateRef = templateRef;
     }
 }
-BodyDirective.decorators = [
+CltBodyDirective.decorators = [
     { type: Directive, args: [{
-                selector: '[popup-body]'
+                selector: '[clt-popup-body]'
             },] },
 ];
 /** @nocollapse */
-BodyDirective.ctorParameters = () => [
+CltBodyDirective.ctorParameters = () => [
     { type: TemplateRef, },
 ];
-class PopupComponent {
+class CltPopupComponent {
     /**
      * @param {?} renderer
      * @param {?} cdr
@@ -1034,9 +1008,9 @@ class PopupComponent {
         this.close();
     }
 }
-PopupComponent.decorators = [
+CltPopupComponent.decorators = [
     { type: Component, args: [{
-                selector: 'popup',
+                selector: 'clt-popup',
                 template: `<div class="host {{direction}} {{ghost ? 'ghost' : ''}}" (click)="close($event)" [@openState]="state" #host>
   <div class="host-container" *ngIf="_open" [ngStyle]="{width:width, height:height}" (click)="stopPropagation($event)" #hostContainer>
     <div class="host-title" #titleRef [ngClass]='titleRef.children.length ? "": "nothing"'>
@@ -1078,12 +1052,12 @@ PopupComponent.decorators = [
             },] },
 ];
 /** @nocollapse */
-PopupComponent.ctorParameters = () => [
+CltPopupComponent.ctorParameters = () => [
     { type: Renderer2, },
     { type: ChangeDetectorRef, },
 ];
-PopupComponent.propDecorators = {
-    "bodyTemplate": [{ type: ContentChild, args: [BodyDirective,] },],
+CltPopupComponent.propDecorators = {
+    "bodyTemplate": [{ type: ContentChild, args: [CltBodyDirective,] },],
     "host": [{ type: ViewChild, args: ['host',] },],
     "hostContainer": [{ type: ViewChild, args: ['hostContainer',] },],
     "body": [{ type: Input },],
@@ -1122,7 +1096,7 @@ PopupComponent.propDecorators = {
  * </div>
  * <ng-template #template let-value="value"> Hey {{value}} !</ng-template>
  */
-class CltSidePanelComponent extends PopupComponent {
+class CltSidePanelComponent extends CltPopupComponent {
     /**
      * Load dependencies
      * @param {?} renderer
@@ -1207,14 +1181,14 @@ CltOverlayModule.decorators = [
                 ],
                 declarations: [
                     CltNotificationsComponent,
-                    PopupComponent,
-                    BodyDirective,
+                    CltPopupComponent,
+                    CltBodyDirective,
                     CltSidePanelComponent
                 ],
                 exports: [
                     CltNotificationsComponent,
-                    PopupComponent,
-                    BodyDirective,
+                    CltPopupComponent,
+                    CltBodyDirective,
                     CltSidePanelComponent
                 ]
             },] },
@@ -1560,7 +1534,7 @@ class CltPassword {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-class MapService {
+class CltMapMapService {
     /**
      * @param {?} http
      */
@@ -1649,16 +1623,16 @@ class MapService {
         });
     }
 }
-MapService.decorators = [
+CltMapMapService.decorators = [
     { type: Injectable, args: [{
                 providedIn: 'root'
             },] },
 ];
 /** @nocollapse */
-MapService.ctorParameters = () => [
+CltMapMapService.ctorParameters = () => [
     { type: HttpClient, },
 ];
-/** @nocollapse */ MapService.ngInjectableDef = defineInjectable({ factory: function MapService_Factory() { return new MapService(inject(HttpClient)); }, token: MapService, providedIn: "root" });
+/** @nocollapse */ CltMapMapService.ngInjectableDef = defineInjectable({ factory: function CltMapMapService_Factory() { return new CltMapMapService(inject(HttpClient)); }, token: CltMapMapService, providedIn: "root" });
 
 /**
  * @fileoverview added by tsickle
@@ -1833,7 +1807,7 @@ CltMapLayerComponent.decorators = [
 ];
 /** @nocollapse */
 CltMapLayerComponent.ctorParameters = () => [
-    { type: MapService, },
+    { type: CltMapMapService, },
 ];
 CltMapLayerComponent.propDecorators = {
     "featuremove": [{ type: Output },],
@@ -2067,7 +2041,7 @@ CltMapComponent.decorators = [
 ];
 /** @nocollapse */
 CltMapComponent.ctorParameters = () => [
-    { type: MapService, },
+    { type: CltMapMapService, },
     { type: ComponentFactoryResolver, },
     { type: Renderer2, },
 ];
@@ -2102,20 +2076,20 @@ CltMapComponent.propDecorators = {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-class MapModule {
+class CltMapModule {
     /**
      * @return {?}
      */
     static forRoot() {
         return {
-            ngModule: MapModule,
+            ngModule: CltMapModule,
             providers: [
-                MapService
+                CltMapMapService
             ]
         };
     }
 }
-MapModule.decorators = [
+CltMapModule.decorators = [
     { type: NgModule, args: [{
                 imports: [
                     CommonModule
@@ -2431,7 +2405,7 @@ CltNavigationsModule.decorators = [
  */
 const defaultTheme = require('./default.json');
 const bluegreygreen = require('./bluegrey-green.json');
-class ThemeService {
+class CltThemeService {
     constructor() {
         this.themes = [
             { name: 'default', theme: defaultTheme },
@@ -2461,21 +2435,21 @@ class ThemeService {
         html.style.setProperty(property, value);
     }
 }
-ThemeService.decorators = [
+CltThemeService.decorators = [
     { type: Injectable, args: [{
                 providedIn: 'root'
             },] },
 ];
 /** @nocollapse */
-ThemeService.ctorParameters = () => [];
-/** @nocollapse */ ThemeService.ngInjectableDef = defineInjectable({ factory: function ThemeService_Factory() { return new ThemeService(); }, token: ThemeService, providedIn: "root" });
+CltThemeService.ctorParameters = () => [];
+/** @nocollapse */ CltThemeService.ngInjectableDef = defineInjectable({ factory: function CltThemeService_Factory() { return new CltThemeService(); }, token: CltThemeService, providedIn: "root" });
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
 const mockdataTable = require('./datatable_data.json');
-class ThemeManagerComponent {
+class CltThemeManagerComponent {
     /**
      * @param {?} themeService
      * @param {?} common
@@ -2541,9 +2515,9 @@ class ThemeManagerComponent {
         return encodeURIComponent(JSON.stringify(this.themeService.theme));
     }
 }
-ThemeManagerComponent.decorators = [
+CltThemeManagerComponent.decorators = [
     { type: Component, args: [{
-                selector: 'app-theme-manager',
+                selector: 'clt-theme-manager',
                 template: `<div id="theme-manager">
   <clt-panel *ngIf="difference()" header="Export" [toggleable]="true" [collapsed]="true">
     <label>Nom du theme</label>
@@ -2694,17 +2668,17 @@ ThemeManagerComponent.decorators = [
   </clt-panel>
 </div>
 
-<popup title='Json' [body]="difference() | json" #jsonPopup></popup>
+<clt-popup title='Json' [body]="difference() | json" #jsonPopup></clt-popup>
 `,
                 styles: [`#theme-manager{height:95%;max-width:450px;-ms-flex-negative:0;flex-shrink:0}#theme-manager h2{margin-top:.5em}#theme-manager label{margin:0}#theme-manager .colorPicker{width:25px;height:25px;border:1px solid #000}#theme-manager li{border-bottom:1px solid #a9a9a9;padding:10px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}#theme-manager li>div{width:40%}#theme-manager li input{width:100%}#theme-manager .preview{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;margin-left:10px}`]
             },] },
 ];
 /** @nocollapse */
-ThemeManagerComponent.ctorParameters = () => [
-    { type: ThemeService, },
+CltThemeManagerComponent.ctorParameters = () => [
+    { type: CltThemeService, },
     { type: CltCommonService, },
 ];
-ThemeManagerComponent.propDecorators = {
+CltThemeManagerComponent.propDecorators = {
     "exportButton": [{ type: ViewChild, args: ['exportButton',] },],
     "exportInput": [{ type: ViewChild, args: ['exportInput',] },],
 };
@@ -2713,20 +2687,20 @@ ThemeManagerComponent.propDecorators = {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-class ThemeModule {
+class CltThemeModule {
     /**
      * @return {?}
      */
     static forRoot() {
         return {
-            ngModule: ThemeModule,
+            ngModule: CltThemeModule,
             providers: [
-                ThemeService
+                CltThemeService
             ]
         };
     }
 }
-ThemeModule.decorators = [
+CltThemeModule.decorators = [
     { type: NgModule, args: [{
                 imports: [
                     CommonModule,
@@ -2734,8 +2708,8 @@ ThemeModule.decorators = [
                     CltContainersModule,
                     CltOverlayModule.forRoot()
                 ],
-                declarations: [ThemeManagerComponent],
-                exports: [ThemeManagerComponent, RouterModule]
+                declarations: [CltThemeManagerComponent],
+                exports: [CltThemeManagerComponent, RouterModule]
             },] },
 ];
 
@@ -2752,5 +2726,5 @@ ThemeModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { CltBoxComponent, CltContainersModule, CltPanelComponent, CltCoreModule, CltSpinningIconDirective, CltClickStopPropagationDirective, CltToId, CltPopoverComponent, CltCommonService, CltDisplayItemDirective, CltDisplayComponent, CltDisplayModule, CltDebounceInputDirective, CltShowPasswordDirective, CltValidatorsDirective, CltFormErrorsComponent, CltFormsModule, CltPassword, CltMapLayerComponent, CltMapComponent, MapModule, MapService, CltNavbarComponent, CltNavigationsModule, CltSideBarService, CltSidebarComponent, CltNotificationsComponent, CltOverlayModule, BodyDirective, PopupComponent, CltNotificationsService, CltSidePanelComponent, ThemeService, ThemeManagerComponent, ThemeModule };
+export { CltBoxComponent, CltContainersModule, CltPanelComponent, CltCoreModule, CltSpinningIconDirective, CltClickStopPropagationDirective, CltToId, CltPopoverComponent, CltCommonService, CltDisplayItemDirective, CltDisplayComponent, CltDisplayModule, CltDebounceInputDirective, CltShowPasswordDirective, CltValidatorsDirective, CltFormErrorsComponent, CltFormsModule, CltPassword, CltMapLayerComponent, CltMapComponent, CltMapModule, CltMapMapService, CltNavbarComponent, CltNavigationsModule, CltSideBarService, CltSidebarComponent, CltNotificationsComponent, CltOverlayModule, CltBodyDirective, CltPopupComponent, CltNotificationsService, CltSidePanelComponent, CltThemeService, CltThemeManagerComponent, CltThemeModule };
 //# sourceMappingURL=ngx-callisto.js.map

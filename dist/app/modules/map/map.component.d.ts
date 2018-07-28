@@ -3,7 +3,7 @@ import Map from 'ol/map';
 import Layer from 'ol/layer/layer';
 import { Subject } from 'rxjs';
 import { CltMapLayerComponent } from './map-layer/map-layer.component';
-import { MapService } from './providers/map.service';
+import { CltMapMapService } from './providers/map.service';
 export declare class CltMapComponent implements AfterViewChecked, AfterContentInit {
     private mapService;
     private componentFactoryResolver;
@@ -39,7 +39,7 @@ export declare class CltMapComponent implements AfterViewChecked, AfterContentIn
     mapContainer: ElementRef;
     layersContainer: any;
     layersComponent: QueryList<CltMapLayerComponent>;
-    constructor(mapService: MapService, componentFactoryResolver: ComponentFactoryResolver, renderer: Renderer2);
+    constructor(mapService: CltMapMapService, componentFactoryResolver: ComponentFactoryResolver, renderer: Renderer2);
     ngAfterContentInit(): void;
     ngAfterViewChecked(): Promise<{}>;
     getView(): any;
