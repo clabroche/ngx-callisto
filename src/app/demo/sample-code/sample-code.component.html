@@ -1,6 +1,6 @@
 
 <clt-panel [toggleable]="true" [collapsed]="true" header="Add 100 points on map" (toggleChange)='refreshCode()'>
-  <p-tabView (activeIndexChange)='refreshCode()'>
+  <p-tabView (activeIndexChange)='refreshCode()' *ngIf="code">
     <p-tabPanel header="HTML">
       <ngx-codemirror [ngModel]="code.html" [autoFocus]="true" [options]="{
         lineNumbers: true,
