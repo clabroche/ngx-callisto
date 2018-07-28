@@ -1,6 +1,6 @@
 ---
-name: 
-about: 
+name: Issue
+about: Issue
 
 ---
 <!--
