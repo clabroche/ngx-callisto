@@ -7,7 +7,10 @@ import bluegreygreen from './bluegrey-green';
 })
 export class CltThemeService {
   rootElement: Element;
-  themes = [
+  themes: {
+    name: string
+    theme: any
+  }[] = [
     {name: 'default', theme: defaultTheme},
     {name: 'bluegreygreen', theme: bluegreygreen}
   ];
