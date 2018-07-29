@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { merge as _merge, cloneDeep as _clone} from 'lodash';
-import defaultTheme from './default.json';
-import bluegreygreen from './bluegrey-green.json';
+import defaultTheme from './default';
+import bluegreygreen from './bluegrey-green';
 @Injectable({
   providedIn: 'root'
 })

@@ -1,4 +1,4 @@
-{
+export default {
   "--fontSize": "1em",
   "--borderRadius": "0px",
 

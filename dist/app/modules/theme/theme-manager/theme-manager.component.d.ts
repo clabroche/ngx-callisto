@@ -4,7 +4,14 @@ import { CltCommonService } from '../../core/providers/common.service';
 export declare class CltThemeManagerComponent implements OnInit {
     themeService: CltThemeService;
     private common;
-    mockData: any;
+    mockData: {
+        "first_name": string;
+        "last_name": string;
+        "email": string;
+        "gender": string;
+        "city": string;
+        "street_address": string;
+    }[];
     variables: any[];
     currentTheme: string;
     exportButton: ElementRef;

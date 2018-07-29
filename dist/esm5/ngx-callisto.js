@@ -1534,8 +1534,53 @@ CltNavigationsModule.decorators = [
                 ],
             },] },
 ];
-var defaultTheme = require('./default.json');
-var bluegreygreen = require('./bluegrey-green.json');
+var defaultTheme = {
+    "--fontSize": "1em",
+    "--borderRadius": "0px",
+    "--headerBorderWidth": "0px",
+    "--headerBorderColor": "transparent",
+    "--headerBgColor": "#466c80",
+    "--headerBgColorAccent": "#2f5466",
+    "--headerTextColor": "white",
+    "--headerFontWeight": "bold",
+    "--headerIconTextColor": "#ffffff",
+    "--contentBorderWidth": "1px",
+    "--contentBorderColor": "#dddddd",
+    "--contentBgColor": "#ffffff",
+    "--contentTextColor": "#362b36",
+    "--stateDefaultBorderWidth": "0px",
+    "--stateDefaultBorderColor": "transparent",
+    "--stateDefaultBgColor": "#466c80",
+    "--stateDefaultTextColor": "#ffffff",
+    "--stateActiveBorderColor": "transparent",
+    "--stateActiveBgColor": "#7CB342",
+    "--stateActiveTextColor": "#ffffff",
+    "--stateHighlightBorderColor": "transparent",
+    "--stateHighlightBgColor": "#7CB342",
+    "--stateHighlightTextColor": "#ffffff",
+    "--stateFocusBorderColor": "transparent",
+    "--stateFocusBgColor": "#e4f1fb",
+    "--stateFocusTextColor": "#0070a3",
+    "--stateErrorBorderColor": "transparent",
+    "--stateErrorBgColor": "#cd0a0a",
+    "--stateErrorTextColor": "#ffffff",
+    "--stateHoverBorderColor": "transparent",
+    "--stateHoverBgColor": "#455a64",
+    "--stateHoverTextColor": "white",
+    "--inputBgColor": "#ffffff",
+    "--inputTextColor": "#222222",
+    "--invalidInputBorderColor": "transparent",
+    "--inputGroupTextColor": "#2779aa",
+    "--inputDefaultBorderWidth": "1px",
+    "--inputDefaultBorderColor": "#dddddd",
+    "--inputDefaultBgColor": "#ffffff",
+    "--inputDefaultTextColor": "#000000"
+};
+var bluegreygreen = {
+    "--headerBgColor": "#607D8B",
+    "--headerBgColorAccent": "#455a64",
+    "--stateDefaultBgColor": "#9eafb7"
+};
 var CltThemeService = /** @class */ (function () {
     function CltThemeService() {
         this.themes = [
@@ -1566,7 +1611,26 @@ CltThemeService.decorators = [
 ];
 CltThemeService.ctorParameters = function () { return []; };
 CltThemeService.ngInjectableDef = defineInjectable({ factory: function CltThemeService_Factory() { return new CltThemeService(); }, token: CltThemeService, providedIn: "root" });
-var mockdataTable = require('./datatable_data.json');
+var mockdataTable = [{ "first_name": "Salomone", "last_name": "Andriveaux", "email": "sandriveaux0@google.pl", "gender": "Male", "city": "Sukoreno", "street_address": "45677 Oneill Plaza" },
+    { "first_name": "Bartram", "last_name": "Berriman", "email": "bberriman1@umich.edu", "gender": "Male", "city": "Miyang", "street_address": "33 Oak Road" },
+    { "first_name": "Judye", "last_name": "Lambdon", "email": "jlambdon2@ucla.edu", "gender": "Female", "city": "Jeonju", "street_address": "6725 Summer Ridge Alley" },
+    { "first_name": "Benedick", "last_name": "Gamlyn", "email": "bgamlyn3@theatlantic.com", "gender": "Male", "city": "Vavuniya", "street_address": "225 Merrick Plaza" },
+    { "first_name": "Alaster", "last_name": "Balthasar", "email": "abalthasar4@sourceforge.net", "gender": "Male", "city": "Bonoua", "street_address": "6 Cordelia Road" },
+    { "first_name": "Enrique", "last_name": "Pickhaver", "email": "epickhaver5@twitter.com", "gender": "Male", "city": "Majzar", "street_address": "6 Oxford Circle" },
+    { "first_name": "Chevy", "last_name": "Agnolo", "email": "cagnolo6@adobe.com", "gender": "Male", "city": "Acao", "street_address": "1930 Gateway Crossing" },
+    { "first_name": "Ky", "last_name": "Mill", "email": "kmill7@issuu.com", "gender": "Male", "city": "Bol’shoy Karay", "street_address": "576 Arkansas Avenue" },
+    { "first_name": "Lorry", "last_name": "Lawrenceson", "email": "llawrenceson8@artisteer.com", "gender": "Female", "city": "Skomlin", "street_address": "848 Loftsgordon Drive" },
+    { "first_name": "Quincy", "last_name": "Belison", "email": "qbelison9@google.ru", "gender": "Male", "city": "Taotang", "street_address": "1952 Clarendon Center" },
+    { "first_name": "Reba", "last_name": "Wankel", "email": "rwankela@rambler.ru", "gender": "Female", "city": "Sam Khok", "street_address": "83997 Debs Court" },
+    { "first_name": "Reggi", "last_name": "Hale", "email": "rhaleb@webs.com", "gender": "Female", "city": "Obroshyne", "street_address": "16619 3rd Center" },
+    { "first_name": "Barbi", "last_name": "Franzke", "email": "bfranzkec@weibo.com", "gender": "Female", "city": "Yitulihe", "street_address": "73 Merchant Avenue" },
+    { "first_name": "Basil", "last_name": "Duplan", "email": "bdupland@mozilla.com", "gender": "Male", "city": "Tempursari Wetan", "street_address": "56 Florence Street" },
+    { "first_name": "Hedvig", "last_name": "Skillett", "email": "hskillette@oakley.com", "gender": "Female", "city": "Huayllo", "street_address": "140 Merchant Way" },
+    { "first_name": "Flinn", "last_name": "Chadwyck", "email": "fchadwyckf@army.mil", "gender": "Male", "city": "Huangshanguan", "street_address": "3853 Graedel Road" },
+    { "first_name": "Dane", "last_name": "Danilovich", "email": "ddanilovichg@amazon.co.jp", "gender": "Male", "city": "‘Ayn Ḩalāqīm", "street_address": "35 Hoard Avenue" },
+    { "first_name": "Florry", "last_name": "Brou", "email": "fbrouh@studiopress.com", "gender": "Female", "city": "Venda do Valador", "street_address": "36 Russell Plaza" },
+    { "first_name": "Jaine", "last_name": "Napthine", "email": "jnapthinei@state.gov", "gender": "Female", "city": "Xiaocun", "street_address": "83437 Corscot Avenue" },
+    { "first_name": "Yoshi", "last_name": "Crystal", "email": "ycrystalj@disqus.com", "gender": "Female", "city": "Plumtree", "street_address": "2732 Moulton Terrace" }];
 var CltThemeManagerComponent = /** @class */ (function () {
     function CltThemeManagerComponent(themeService, common) {
         this.themeService = themeService;
