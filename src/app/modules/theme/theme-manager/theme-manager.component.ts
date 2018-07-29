@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CltThemeService } from '../providers/theme.service';
 import { CltCommonService } from '../../core/providers/common.service';
-const mockdataTable = require('./datatable_data.json');
+import mockdataTable from './datatable_data.json';
 
 @Component({
   selector: 'clt-theme-manager',
