@@ -1,4 +1,4 @@
-[{"first_name":"Salomone","last_name":"Andriveaux","email":"sandriveaux0@google.pl","gender":"Male","city":"Sukoreno","street_address":"45677 Oneill Plaza"},
+export default [{"first_name":"Salomone","last_name":"Andriveaux","email":"sandriveaux0@google.pl","gender":"Male","city":"Sukoreno","street_address":"45677 Oneill Plaza"},
 {"first_name":"Bartram","last_name":"Berriman","email":"bberriman1@umich.edu","gender":"Male","city":"Miyang","street_address":"33 Oak Road"},
 {"first_name":"Judye","last_name":"Lambdon","email":"jlambdon2@ucla.edu","gender":"Female","city":"Jeonju","street_address":"6725 Summer Ridge Alley"},
 {"first_name":"Benedick","last_name":"Gamlyn","email":"bgamlyn3@theatlantic.com","gender":"Male","city":"Vavuniya","street_address":"225 Merrick Plaza"},

@@ -1,13 +1,16 @@
-import { Injectable, ElementRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { merge as _merge, cloneDeep as _clone} from 'lodash';
-const defaultTheme = require('./default.json');
-const bluegreygreen = require('./bluegrey-green.json');
+import defaultTheme from './default';
+import bluegreygreen from './bluegrey-green';
 @Injectable({
   providedIn: 'root'
 })
 export class CltThemeService {
   rootElement: Element;
-  themes = [
+  themes: {
+    name: string
+    theme: any
+  }[] = [
     {name: 'default', theme: defaultTheme},
     {name: 'bluegreygreen', theme: bluegreygreen}
   ];
